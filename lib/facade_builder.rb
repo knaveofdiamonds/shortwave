@@ -4,10 +4,10 @@ module Shortwave
   module Facade
     module Build
       class Parameter
-        attr_reader :name
+        attr_reader :name, :description
 
-        def initialize(name, required)
-          @name, @required = name, required
+        def initialize(name, required, description)
+          @name, @required, @description = name, required, description
         end
 
         def self.parse(html)
@@ -16,9 +16,9 @@ module Shortwave
             name = node.text.strip.to_sym
             match = node.next.text.strip.match(/\(([^\)]+)\)\s*:\s*(.*)/)
             if match
-              self.new(name, match[1] == "Required")
+              self.new(name, match[1] == "Required", match[2])
             else
-              self.new(name, true)
+              self.new(name, true, "")
             end
           end
         end
