@@ -1,7 +1,7 @@
 require 'helper'
 require 'facade_builder'
 
-class FacadeBuilderSimpleTest < Mini::Test::TestCase
+class RemoteMethodTest < Mini::Test::TestCase
 
   test "parsed method has a description" do
     make_builder "user_getLovedTracks"
