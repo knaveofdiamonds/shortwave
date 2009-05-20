@@ -32,4 +32,10 @@ class FacadeBuilderSimpleTest < Mini::Test::TestCase
     builder = Shortwave::FacadeBuilder.new(raw)
     assert_equal :post, builder.http_method
   end
+
+  test "parsed methods have sample response code" do
+    raw = File.read(File.dirname(__FILE__) + "/data/screens/album_addTags.html")
+    builder = Shortwave::FacadeBuilder.new(raw)
+    assert_equal "<lfm status=\"ok\">\n</lfm>", builder.sample_response
+  end
 end
