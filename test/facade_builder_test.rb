@@ -12,11 +12,14 @@ class FacadeBuilderTest < Mini::Test::TestCase
   end
 
   test "parsed method has a name" do
-    assert_equal "user.getLovedTracks", Nokogiri::HTML(@raw).css("#wstitle ~ h1").text.strip
+    assert_equal "user.getLovedTracks", find_name(@raw)
+  end
+
+  def find_name(html)
+    Nokogiri::HTML(html).css("#wstitle ~ h1").text.strip
   end
 
   def find_description(html)
-    doc = Nokogiri::HTML(html)
-    doc.css(".wsdescription").text.strip
+    Nokogiri::HTML(html).css(".wsdescription").text.strip
   end
 end
