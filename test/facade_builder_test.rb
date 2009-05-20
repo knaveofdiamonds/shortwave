@@ -1,7 +1,7 @@
 require 'helper'
 require 'facade_builder'
 
-class FacadeBuilderTest < Mini::Test::TestCase
+class FacadeBuilderSimpleTest < Mini::Test::TestCase
   def setup
     raw = File.read(File.dirname(__FILE__) + "/data/screens/user_getLovedTracks.html")
     @builder = Shortwave::FacadeBuilder.new(raw)
@@ -17,5 +17,15 @@ class FacadeBuilderTest < Mini::Test::TestCase
 
   test "parsed method has parameters" do
     assert_equal [:user, :api_key], @builder.parameters
+  end
+
+  test "read methods should use http GET" do
+    assert_equal :get, @builder.http_method
+  end
+
+  test "write methods should use http POST" do
+    raw = File.read(File.dirname(__FILE__) + "/data/screens/album_addTags.html")
+    builder = Shortwave::FacadeBuilder.new(raw)
+    assert_equal :post, builder.http_method
   end
 end

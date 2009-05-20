@@ -17,5 +17,9 @@ module Shortwave
     def description
       @doc.css(".wsdescription").text.strip
     end
+
+    def http_method
+      @doc.css("#wsdescriptor").text.include?("HTTP POST request") ? :post : :get
+    end
   end
 end
