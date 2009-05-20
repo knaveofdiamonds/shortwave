@@ -20,7 +20,7 @@ class RemoteMethodTest < Mini::Test::TestCase
 
   test "parsed method has parameters" do
     make_builder "user_getLovedTracks"
-    assert_equal [:user, :api_key], @method.parameters
+    assert_equal [:user, :api_key], @method.parameters.map {|p| p.to_sym }
   end
 
   test "read methods should use http GET" do

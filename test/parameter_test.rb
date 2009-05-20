@@ -9,4 +9,10 @@ class ParameterTest < Mini::Test::TestCase
     assert_equal 2, parameters.size
   end
 
+  test "parameters have a name" do
+    raw = File.read(File.dirname(__FILE__) + "/data/screens/user_getLovedTracks.html")
+    parameters = Shortwave::Facade::Build::Parameter.parse(raw)
+    assert_equal :user, parameters.first.name
+  end
+
 end

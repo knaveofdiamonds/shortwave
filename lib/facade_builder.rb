@@ -4,9 +4,21 @@ module Shortwave
   module Facade
     module Build
       class Parameter
+        attr_reader :name
+
+        def initialize(name)
+          @name = name
+        end
+
         def self.parse(html)
           doc = html.kind_of?(Nokogiri::HTML::Document) ? html : Nokogiri::HTML(html)
-          doc.css("#wsdescriptor h2 ~ .param").map {|node| node.text.strip.to_sym }
+          doc.css("#wsdescriptor h2 ~ .param").map do |node| 
+            self.new(node.text.strip.to_sym)
+          end
+        end
+
+        def to_sym
+          @name
         end
       end
 
