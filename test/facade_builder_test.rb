@@ -11,8 +11,12 @@ class FacadeBuilderSimpleTest < Mini::Test::TestCase
     assert_equal "Get the last 50 tracks loved by a user.", @builder.description
   end
 
+  test "parsed method has a remote name" do
+    assert_equal "user.getLovedTracks", @builder.remote_name
+  end
+
   test "parsed method has a name" do
-    assert_equal "user.getLovedTracks", @builder.name
+    assert_equal :loved_tracks, @builder.name
   end
 
   test "parsed method has parameters" do
