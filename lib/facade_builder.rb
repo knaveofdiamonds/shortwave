@@ -6,17 +6,27 @@ module Shortwave
       class Parameter
         attr_reader :name
 
-        def initialize(name)
-          @name = name
+        def initialize(name, required)
+          @name, @required = name, required
         end
 
         def self.parse(html)
           doc = html.kind_of?(Nokogiri::HTML::Document) ? html : Nokogiri::HTML(html)
-          doc.css("#wsdescriptor h2 ~ .param").map do |node| 
-            self.new(node.text.strip.to_sym)
+          doc.css("#wsdescriptor h2 ~ .param").map do |node|
+            name = node.text.strip.to_sym
+            match = node.next.text.strip.match(/\(([^\)]+)\)\s*:\s*(.*)/)
+            if match
+              self.new(name, match[1] == "Required")
+            else
+              self.new(name, true)
+            end
           end
         end
 
+        def required?
+          @required
+        end
+        
         def to_sym
           @name
         end
