@@ -1,0 +1,7 @@
+= shortwave
+
+Description goes here.
+
+== Copyright
+
+Copyright (c) 2009 Roland Swingler. See LICENSE for details.
