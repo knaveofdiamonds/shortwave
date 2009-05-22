@@ -16,15 +16,15 @@ module Shortwave
         # method documentation
         def self.parse(html)
           doc = html.kind_of?(Nokogiri::HTML::Document) ? html : Nokogiri::HTML(html)
+
           doc.css("#wsdescriptor h2 ~ .param").map do |node|
-            name = node.text.strip.to_sym
-            match = node.next.text.match(/\s*\(([^\)]+)\)\s*:\s*(.*)/)
-            if match
-              self.new(name, match[1] == "Required", match[2])
+            name = node.text.strip
+            if match = name.match(/^(.+)\[(.+)\]$/)
+              match[2].split("|").map {|v| make_parameter(node, match[1] + v) }
             else
-              self.new(name, true, "")
+              make_parameter(node, name)
             end
-          end
+          end.flatten
         end
 
         # Returns true if this parameter is required
@@ -34,6 +34,16 @@ module Shortwave
         
         def to_sym
           @name
+        end
+
+        private
+
+        def self.make_parameter(node, name)
+          if match = node.next.text.match(/\s*\(([^\)]+)\)\s*:\s*(.*)/)
+            self.new(name.to_sym, match[1].start_with?("Required"), match[2])
+          else
+            self.new(name.to_sym, true, "")
+          end
         end
       end
 
