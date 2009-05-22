@@ -24,6 +24,18 @@ module Shortwave
       String.send(:include, StringExtensions)
 
 
+      class Compiler
+        def initialize
+          @lines = []
+        end
+
+        def compile(node)
+          @lines << "def #{node.name}"
+          @lines << "end"
+          @lines
+        end
+      end
+
       # A parameter used in a Last FM api method call.
       class Parameter
         attr_reader :name, :description
