@@ -31,10 +31,6 @@ module Shortwave
         def required?
           @required
         end
-        
-        def to_sym
-          @name
-        end
 
         private
 
