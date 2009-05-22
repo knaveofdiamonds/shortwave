@@ -7,9 +7,14 @@ class CompilerTest < Mini::Test::TestCase
 
   test "outputs a simple method with no arguments" do
     method = stub( :remote_name => "user.getLovedTracks", 
-                   :name => :loved_tracks )
+                   :name => :loved_tracks,
+                   :description => "Returns a user's loved tracks")
 
-    assert_equal ["def loved_tracks", "end"], Compiler.new.compile(method)
+    expected = ["# Returns a user's loved tracks",
+                "def loved_tracks",
+                "end"]
+
+    assert_equal expected, Compiler.new.compile(method)
   end
 
 end

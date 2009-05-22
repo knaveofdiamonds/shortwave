@@ -30,6 +30,7 @@ module Shortwave
         end
 
         def compile(node)
+          @lines << "# #{node.description}" if node.description
           @lines << "def #{node.name}"
           @lines << "end"
           @lines
