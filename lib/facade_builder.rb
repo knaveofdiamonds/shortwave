@@ -3,6 +3,26 @@ require 'nokogiri'
 module Shortwave
   module Facade
     module Build
+      METHOD_NAME_CSS = "#wstitle ~ h1"
+      PARAMETER_CSS   = "#wsdescriptor h2 ~ .param"
+      SAMPLE_CSS      = "#sample pre"
+      DESCRIPTION_CSS = ".wsdescription"
+      METHOD_TYPE_CSS = "#wsdescriptor"
+
+      COMBINED_PARAMS = /^(.+)\[(.+)\]$/
+      PARAMETER_TEXT  = /\s*\(([^\)]+)\)\s*:\s*(.*)/
+      IN_WORD_CAPS    = /(.)([A-Z])/
+      STARTS_WITH_GET = /^.+\.(get)?/
+
+      # Various Helper methods that belong on String
+      module StringExtensions
+        # Convert a string like FooBar to foo_bar
+        def camel_to_snake
+          gsub(IN_WORD_CAPS,"\\1_\\2").tr('A-Z','a-z')
+        end
+      end
+      String.send(:include, StringExtensions)
+
 
       # A parameter used in a Last FM api method call.
       class Parameter
@@ -17,9 +37,9 @@ module Shortwave
         def self.parse(html)
           doc = html.kind_of?(Nokogiri::HTML::Document) ? html : Nokogiri::HTML(html)
 
-          doc.css("#wsdescriptor h2 ~ .param").map do |node|
+          doc.css(PARAMETER_CSS).map do |node|
             name = node.text.strip
-            if match = name.match(/^(.+)\[(.+)\]$/)
+            if match = name.match(COMBINED_PARAMS)
               match[2].split("|").map {|v| make_parameter(node, match[1] + v) }
             else
               make_parameter(node, name)
@@ -35,13 +55,14 @@ module Shortwave
         private
 
         def self.make_parameter(node, name)
-          if match = node.next.text.match(/\s*\(([^\)]+)\)\s*:\s*(.*)/)
+          if match = node.next.text.match(PARAMETER_TEXT)
             self.new(name.to_sym, match[1].start_with?("Required"), match[2])
           else
             self.new(name.to_sym, true, "")
           end
         end
       end
+
 
       # Represents an available method in the Last FM 'rest' api. Provides information
       # about how to call the method.
@@ -52,12 +73,12 @@ module Shortwave
         def initialize(html)
           doc = Nokogiri::HTML(html)
 
-          @remote_name = doc.css("#wstitle ~ h1").text.strip
-          @name = @remote_name.sub(/^.+\.(get)?/,'').gsub(/(.)([A-Z])/,"\\1_\\2").tr('A-Z','a-z').to_sym
-          @parameters = Parameter.parse(doc)
-          @description = doc.css(".wsdescription").text.strip
-          @http_method = doc.css("#wsdescriptor").text.include?("HTTP POST request") ? :post : :get
-          @sample_response = doc.css("#sample pre").text.strip
+          @remote_name     = doc.css(METHOD_NAME_CSS).text.strip
+          @name            = @remote_name.sub(STARTS_WITH_GET,'').camel_to_snake.to_sym
+          @parameters      = Parameter.parse(doc)
+          @description     = doc.css(DESCRIPTION_CSS).text.strip
+          @http_method     = doc.css(METHOD_TYPE_CSS).text.include?("HTTP POST") ? :post : :get
+          @sample_response = doc.css(SAMPLE_CSS).text.strip
         end
       end
     end
