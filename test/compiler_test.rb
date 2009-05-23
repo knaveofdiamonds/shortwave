@@ -73,4 +73,17 @@ class CompilerTest < Mini::Test::TestCase
 
     assert_equal "loved_tracks(user, options={})", Compiler.new.compile(method).signature
   end
+
+  test "method body generates a GET request to the remote method" do
+    method = RemoteMethodStub.new("user.getLovedTracks", 
+                                  :loved_tracks,
+                                  nil,
+                                  nil,
+                                  [ParameterStub.new(:user, "A username", true)])
+    
+    expected = ["data = {:method => \"user.getLovedTracks\", :user => user}.merge(@auth)",
+                "get \"\", data"]
+
+    assert_equal expected, Compiler.new.compile(method).body
+  end
 end

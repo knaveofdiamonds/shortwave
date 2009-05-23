@@ -36,14 +36,22 @@ module Shortwave
             node.sample_response.split("\n").each {|line| method.comment << "# #{line}" }
           end
 
+          required, optional = (node.parameters || []).partition {|p| p.required? }
+          required.reject! {|p| [:api_key, :api_sig, :sk].include?(p.name) }
+
           signature = "#{node.name}"
           unless node.parameters.nil? || node.parameters.empty?
-            params = node.parameters.reject {|p| [:api_key, :api_sig, :sk].include?(p.name) || ! p.required? }.map {|p| p.name }
-            params << "options={}" if node.parameters.any? {|p| ! p.required? }
+            params = required.map {|p| p.name }
+            params << "options={}" unless optional.empty?
             signature << "(" << params.join(", ") << ")"
           end
 
           method.signature = signature
+          get_line = "data = {:method => \"#{node.remote_name}\""
+          required.each {|p| get_line << ", :#{p.name} => #{p.name}" }
+          get_line << "}.merge(@auth)"
+          method.body << get_line
+          method.body << "get \"\", data"
           method
         end
       end
@@ -51,10 +59,11 @@ module Shortwave
 
       class RubyMethod
         attr_accessor :signature
-        attr_reader   :comment
+        attr_reader   :comment, :body
 
         def initialize
           @comment = []
+          @body = []
         end
       end
 
