@@ -92,12 +92,12 @@ module Shortwave
         private
 
         def build_body
-          get_line = "data = {:method => \"#{@node.remote_name}\""
+          get_line = "#{@node.http_method}({:method => \"#{@node.remote_name}\""
           @required.each {|p| get_line << ", :#{p.name} => #{p.name}" }
-          get_line << "}.merge(@auth)"
+          get_line << "}"
           get_line << ".merge(options)" unless @optional.empty?
+          get_line << ")"
           @body << get_line
-          @body << "self.class.#{@node.http_method} \"\", data"
         end
 
         def build_signature

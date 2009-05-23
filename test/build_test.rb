@@ -1,8 +1,6 @@
 require 'helper'
 require 'facade/build/facade_builder'
-require 'fakeweb'
 
-FakeWeb.allow_net_connect = false
 include Shortwave::Facade::Build
 
 class BuildTest < TestCase

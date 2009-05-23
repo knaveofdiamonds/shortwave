@@ -5,9 +5,6 @@ module Shortwave
   module Facade
     
     class Track < Remote
-      def initialize(auth)
-        @auth = auth
-      end
       
       # Love a track for a user profile. This needs to be supplemented with a scrobbling submission containing the 'love' rating (see the audioscrobbler API).
       #
@@ -16,8 +13,7 @@ module Shortwave
       # <lfm status="ok">
       # </lfm>
       def love(track, artist)
-        data = {:method => "track.love", :track => track, :artist => artist}.merge(@auth)
-        self.class.post "", data
+        post({:method => "track.love", :track => track, :artist => artist})
       end
       
       # Remove a user's tag from a track.
@@ -27,8 +23,7 @@ module Shortwave
       # <lfm status="ok">
       # </lfm>
       def remove_tag(artist, track, tags)
-        data = {:method => "track.removeTag", :artist => artist, :track => track, :tags => tags}.merge(@auth)
-        self.class.post "", data
+        post({:method => "track.removeTag", :artist => artist, :track => track, :tags => tags})
       end
       
       # Search for a track by track name. Returns track matches sorted by relevance.
@@ -53,8 +48,7 @@ module Shortwave
       #   </trackmatches>
       # </results>
       def search(track, options={})
-        data = {:method => "track.search", :track => track}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "track.search", :track => track}.merge(options))
       end
       
       # Tag an album using a list of user supplied tags.
@@ -64,8 +58,7 @@ module Shortwave
       # <lfm status="ok">
       # </lfm>
       def add_tags(artist, track, tags)
-        data = {:method => "track.addTags", :artist => artist, :track => track, :tags => tags}.merge(@auth)
-        self.class.post "", data
+        post({:method => "track.addTags", :artist => artist, :track => track, :tags => tags})
       end
       
       # Get the metadata for a track on Last.fm using the artist/track name or a musicbrainz id.
@@ -109,8 +102,7 @@ module Shortwave
       #   </wiki>
       # </track>
       def info(options={})
-        data = {:method => "track.getInfo"}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "track.getInfo"}.merge(options))
       end
       
       # Get the tags applied by an individual user to a track on Last.fm.
@@ -125,8 +117,7 @@ module Shortwave
       #   ...
       # </tags>
       def tags(artist, track)
-        data = {:method => "track.getTags", :artist => artist, :track => track}.merge(@auth)
-        self.class.get "", data
+        get({:method => "track.getTags", :artist => artist, :track => track})
       end
       
       # Get the top fans for this track on Last.fm, based on listening data. Supply either track & artist name or musicbrainz id.
@@ -145,8 +136,7 @@ module Shortwave
       #   ...
       # </topfans>
       def top_fans(options={})
-        data = {:method => "track.getTopFans"}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "track.getTopFans"}.merge(options))
       end
       
       # Ban a track for a given user profile. This needs to be supplemented with a scrobbling submission containing the 'ban' rating (see the audioscrobbler API).
@@ -156,8 +146,7 @@ module Shortwave
       # <lfm status="ok">
       # </lfm>
       def ban(track, artist)
-        data = {:method => "track.ban", :track => track, :artist => artist}.merge(@auth)
-        self.class.post "", data
+        post({:method => "track.ban", :track => track, :artist => artist})
       end
       
       # Get the top tags for this track on Last.fm, ordered by tag count. Supply either track & artist name or mbid.
@@ -178,8 +167,7 @@ module Shortwave
       #   ...
       # </toptags>
       def top_tags(options={})
-        data = {:method => "track.getTopTags"}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "track.getTopTags"}.merge(options))
       end
       
       # Get the similar tracks for this track on Last.fm, based on listening data.
@@ -205,8 +193,7 @@ module Shortwave
       #   ...
       # </similartracks>
       def similar(options={})
-        data = {:method => "track.getSimilar"}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "track.getSimilar"}.merge(options))
       end
       
       # Share a track twith one or more Last.fm users or other friends.
@@ -216,16 +203,12 @@ module Shortwave
       # <lfm status="ok">
       # </lfm>
       def share(artist, recipient, track, options={})
-        data = {:method => "track.share", :artist => artist, :recipient => recipient, :track => track}.merge(@auth).merge(options)
-        self.class.post "", data
+        post({:method => "track.share", :artist => artist, :recipient => recipient, :track => track}.merge(options))
       end
       
     end
     
     class Group < Remote
-      def initialize(auth)
-        @auth = auth
-      end
       
       # Get a list of members for this group.
       #
@@ -250,8 +233,7 @@ module Shortwave
       #   </user>
       # </members>
       def members(group)
-        data = {:method => "group.getMembers", :group => group}.merge(@auth)
-        self.class.get "", data
+        get({:method => "group.getMembers", :group => group})
       end
       
       # Get a list of available charts for this group, expressed as date ranges which can be sent to the chart services.
@@ -264,8 +246,7 @@ module Shortwave
       #   ...
       # </weeklychartlist>
       def weekly_chart_list(group)
-        data = {:method => "group.getWeeklyChartList", :group => group}.merge(@auth)
-        self.class.get "", data
+        get({:method => "group.getWeeklyChartList", :group => group})
       end
       
       # Get an album chart for a group, for a given date range. If no date range is supplied, it will return the most recent album chart for this group.
@@ -283,8 +264,7 @@ module Shortwave
       #   ...
       # </weeklyalbumchart>
       def weekly_album_chart(user, options={})
-        data = {:method => "group.getWeeklyAlbumChart", :user => user}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "group.getWeeklyAlbumChart", :user => user}.merge(options))
       end
       
       # Get a track chart for a group, for a given date range. If no date range is supplied, it will return the most recent album chart for this group.
@@ -302,8 +282,7 @@ module Shortwave
       #   ...
       # </weeklytrackchart>
       def weekly_track_chart(group, options={})
-        data = {:method => "group.getWeeklyTrackChart", :group => group}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "group.getWeeklyTrackChart", :group => group}.merge(options))
       end
       
       # Get an artist chart for a group, for a given date range. If no date range is supplied, it will return the most recent album chart for this group.
@@ -320,16 +299,12 @@ module Shortwave
       #   ...
       # </weeklyartistchart>
       def weekly_artist_chart(group, options={})
-        data = {:method => "group.getWeeklyArtistChart", :group => group}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "group.getWeeklyArtistChart", :group => group}.merge(options))
       end
       
     end
     
     class User < Remote
-      def initialize(auth)
-        @auth = auth
-      end
       
       # Get the last 50 tracks loved by a user.
       #
@@ -353,8 +328,7 @@ module Shortwave
       #   ...
       # </lovedtracks>
       def loved_tracks(user)
-        data = {:method => "user.getLovedTracks", :user => user}.merge(@auth)
-        self.class.get "", data
+        get({:method => "user.getLovedTracks", :user => user})
       end
       
       # Get a list of a user's neighbours on Last.fm.
@@ -373,8 +347,7 @@ module Shortwave
       # 	</neighbours>	
       # </lfm>
       def neighbours(user, options={})
-        data = {:method => "user.getNeighbours", :user => user}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "user.getNeighbours", :user => user}.merge(options))
       end
       
       # Get a list of the recent tracks listened to by this user. Indicates now playing track if the user is currently listening.
@@ -394,8 +367,7 @@ module Shortwave
       #   ...
       # </recenttracks>
       def recent_tracks(user, options={})
-        data = {:method => "user.getRecentTracks", :user => user}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "user.getRecentTracks", :user => user}.merge(options))
       end
       
       # Shout on this user's shoutbox
@@ -404,8 +376,7 @@ module Shortwave
       #
       # <lfm status="ok" />
       def shout(user, message)
-        data = {:method => "user.shout", :user => user, :message => message}.merge(@auth)
-        self.class.post "", data
+        post({:method => "user.shout", :user => user, :message => message})
       end
       
       # Get a list of upcoming events that this user is attending. Easily integratable into calendars, using the ical standard (see 'more formats' section below).
@@ -450,8 +421,7 @@ module Shortwave
       # ...
       # </events>
       def events(user)
-        data = {:method => "user.getEvents", :user => user}.merge(@auth)
-        self.class.get "", data
+        get({:method => "user.getEvents", :user => user})
       end
       
       # Get the top tracks listened to by a user. You can stipulate a time period. Sends the overall chart by default.
@@ -479,8 +449,7 @@ module Shortwave
       #   ...
       # </toptracks>
       def top_tracks(user, options={})
-        data = {:method => "user.getTopTracks", :user => user}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "user.getTopTracks", :user => user}.merge(options))
       end
       
       # Get information about a user profile.
@@ -500,8 +469,7 @@ module Shortwave
       #   <playlists>0</playlists>
       # </user>
       def info()
-        data = {:method => "user.getInfo"}.merge(@auth)
-        self.class.get "", data
+        get({:method => "user.getInfo"})
       end
       
       # Get a paginated list of all events recommended to a user by Last.fm, based on their listening profile.
@@ -548,8 +516,7 @@ module Shortwave
       #   ...
       # </events>
       def recommended_events(options={})
-        data = {:method => "user.getRecommendedEvents"}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "user.getRecommendedEvents"}.merge(options))
       end
       
       # Get the top artists listened to by a user. You can stipulate a time period. Sends the overall chart by default.
@@ -570,8 +537,7 @@ module Shortwave
       #   ...
       # </topartists>
       def top_artists(user, options={})
-        data = {:method => "user.getTopArtists", :user => user}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "user.getTopArtists", :user => user}.merge(options))
       end
       
       # Get a list of the user's friends on Last.fm.
@@ -591,8 +557,7 @@ module Shortwave
       # 	</friends>
       # </lfm>
       def friends(user, options={})
-        data = {:method => "user.getFriends", :user => user}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "user.getFriends", :user => user}.merge(options))
       end
       
       # Get shouts for this user. Also available as an rss feed.
@@ -608,8 +573,7 @@ module Shortwave
       #   ...
       # </shouts>
       def shouts(user)
-        data = {:method => "user.getShouts", :user => user}.merge(@auth)
-        self.class.get "", data
+        get({:method => "user.getShouts", :user => user})
       end
       
       # Get an album chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent album chart for this user.
@@ -627,8 +591,7 @@ module Shortwave
       #   ...
       # </weeklyalbumchart>
       def weekly_album_chart(user, options={})
-        data = {:method => "user.getWeeklyAlbumChart", :user => user}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "user.getWeeklyAlbumChart", :user => user}.merge(options))
       end
       
       # Get an artist chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent artist chart for this user.
@@ -645,8 +608,7 @@ module Shortwave
       #   ...
       # </weeklyartistchart>
       def weekly_artist_chart(user, options={})
-        data = {:method => "user.getWeeklyArtistChart", :user => user}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "user.getWeeklyArtistChart", :user => user}.merge(options))
       end
       
       # Get a list of a user's playlists on Last.fm.
@@ -671,8 +633,7 @@ module Shortwave
       #   ...
       # </playlists>
       def playlists(user)
-        data = {:method => "user.getPlaylists", :user => user}.merge(@auth)
-        self.class.get "", data
+        get({:method => "user.getPlaylists", :user => user})
       end
       
       # Get a paginated list of all events a user has attended in the past.
@@ -718,8 +679,7 @@ module Shortwave
       # ...
       # </events>
       def past_events(user, options={})
-        data = {:method => "user.getPastEvents", :user => user}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "user.getPastEvents", :user => user}.merge(options))
       end
       
       # Get Last.fm artist recommendations for a user
@@ -750,8 +710,7 @@ module Shortwave
       #   </artist>
       # </recommendations>
       def recommended_artists()
-        data = {:method => "user.getRecommendedArtists"}.merge(@auth)
-        self.class.get "", data
+        get({:method => "user.getRecommendedArtists"})
       end
       
       # Get the top albums listened to by a user. You can stipulate a time period. Sends the overall chart by default.
@@ -777,8 +736,7 @@ module Shortwave
       #   </album>
       # </topalbums>
       def top_albums(user, options={})
-        data = {:method => "user.getTopAlbums", :user => user}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "user.getTopAlbums", :user => user}.merge(options))
       end
       
       # Get a list of available charts for this user, expressed as date ranges which can be sent to the chart services.
@@ -791,8 +749,7 @@ module Shortwave
       #   ...
       # </weeklychartlist>
       def weekly_chart_list(user)
-        data = {:method => "user.getWeeklyChartList", :user => user}.merge(@auth)
-        self.class.get "", data
+        get({:method => "user.getWeeklyChartList", :user => user})
       end
       
       # Get the top tags used by this user.
@@ -808,8 +765,7 @@ module Shortwave
       #   ...
       # </toptags>
       def top_tags(user, options={})
-        data = {:method => "user.getTopTags", :user => user}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "user.getTopTags", :user => user}.merge(options))
       end
       
       # Get a track chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent track chart for this user.
@@ -827,16 +783,12 @@ module Shortwave
       #   ...
       # </weeklytrackchart>
       def weekly_track_chart(user, options={})
-        data = {:method => "user.getWeeklyTrackChart", :user => user}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "user.getWeeklyTrackChart", :user => user}.merge(options))
       end
       
     end
     
     class Album < Remote
-      def initialize(auth)
-        @auth = auth
-      end
       
       # Remove a user's tag from an album.
       #
@@ -845,8 +797,7 @@ module Shortwave
       # <lfm status="ok">
       # </lfm>
       def remove_tag(artist, album, tag)
-        data = {:method => "album.removeTag", :artist => artist, :album => album, :tag => tag}.merge(@auth)
-        self.class.post "", data
+        post({:method => "album.removeTag", :artist => artist, :album => album, :tag => tag})
       end
       
       # Tag an album using a list of user supplied tags.
@@ -856,8 +807,7 @@ module Shortwave
       # <lfm status="ok">
       # </lfm>
       def add_tags(artist, album, tags)
-        data = {:method => "album.addTags", :artist => artist, :album => album, :tags => tags}.merge(@auth)
-        self.class.post "", data
+        post({:method => "album.addTags", :artist => artist, :album => album, :tags => tags})
       end
       
       # Get the metadata for an album on Last.fm using the album name or a musicbrainz id. See playlist.fetch on how to get the album playlist.
@@ -885,8 +835,7 @@ module Shortwave
       #   </toptags>
       # </album>
       def info(options={})
-        data = {:method => "album.getInfo"}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "album.getInfo"}.merge(options))
       end
       
       # Get the tags applied by an individual user to an album on Last.fm.
@@ -901,8 +850,7 @@ module Shortwave
       #   ...
       # </tags>
       def tags(artist, album)
-        data = {:method => "album.getTags", :artist => artist, :album => album}.merge(@auth)
-        self.class.get "", data
+        get({:method => "album.getTags", :artist => artist, :album => album})
       end
       
       # Search for an album by name. Returns album matches sorted by relevance.
@@ -929,16 +877,12 @@ module Shortwave
       #   </albummatches>
       # </results>
       def search(album, options={})
-        data = {:method => "album.search", :album => album}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "album.search", :album => album}.merge(options))
       end
       
     end
     
     class Tag < Remote
-      def initialize(auth)
-        @auth = auth
-      end
       
       # Search for tags similar to this one. Returns tags ranked by similarity, based on listening data.
       #
@@ -953,8 +897,7 @@ module Shortwave
       #   ...
       # </similartags>
       def similar(tag)
-        data = {:method => "tag.getSimilar", :tag => tag}.merge(@auth)
-        self.class.get "", data
+        get({:method => "tag.getSimilar", :tag => tag})
       end
       
       # Get an artist chart for a tag, for a given date range. If no date range is supplied, it will return the most recent artist chart for this tag.
@@ -971,8 +914,7 @@ module Shortwave
       #   ...
       # </weeklyartistchart>
       def weekly_artist_chart(tag, options={})
-        data = {:method => "tag.getWeeklyArtistChart", :tag => tag}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "tag.getWeeklyArtistChart", :tag => tag}.merge(options))
       end
       
       # Get the top albums tagged by this tag, ordered by tag count.
@@ -999,8 +941,7 @@ module Shortwave
       #   ...
       # </topalbums>
       def top_albums()
-        data = {:method => "tag.getTopAlbums"}.merge(@auth)
-        self.class.get "", data
+        get({:method => "tag.getTopAlbums"})
       end
       
       # Fetches the top global tags on Last.fm, sorted by popularity (number of times used)
@@ -1016,8 +957,7 @@ module Shortwave
       #   ...
       # </toptags>
       def top_tags()
-        data = {:method => "tag.getTopTags"}.merge(@auth)
-        self.class.get "", data
+        get({:method => "tag.getTopTags"})
       end
       
       # Search for a tag by name. Returns matches sorted by relevance.
@@ -1039,8 +979,7 @@ module Shortwave
       #   </tagmatches>
       # </results>
       def search(tag, options={})
-        data = {:method => "tag.search", :tag => tag}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "tag.search", :tag => tag}.merge(options))
       end
       
       # Get the top artists tagged by this tag, ordered by tag count.
@@ -1061,8 +1000,7 @@ module Shortwave
       #   ...
       # </topartists>
       def top_artists()
-        data = {:method => "tag.getTopArtists"}.merge(@auth)
-        self.class.get "", data
+        get({:method => "tag.getTopArtists"})
       end
       
       # Get the top tracks tagged by this tag, ordered by tag count.
@@ -1090,8 +1028,7 @@ module Shortwave
       #   ...
       # </toptracks>
       def top_tracks()
-        data = {:method => "tag.getTopTracks"}.merge(@auth)
-        self.class.get "", data
+        get({:method => "tag.getTopTracks"})
       end
       
       # Get a list of available charts for this tag, expressed as date ranges which can be sent to the chart services.
@@ -1104,16 +1041,12 @@ module Shortwave
       #   ...
       # </weeklychartlist>
       def weekly_chart_list(tag)
-        data = {:method => "tag.getWeeklyChartList", :tag => tag}.merge(@auth)
-        self.class.get "", data
+        get({:method => "tag.getWeeklyChartList", :tag => tag})
       end
       
     end
     
     class Geo < Remote
-      def initialize(auth)
-        @auth = auth
-      end
       
       # Get all events in a specific location by country or city name.
       #
@@ -1158,8 +1091,7 @@ module Shortwave
       # ...
       # </events>
       def events(options={})
-        data = {:method => "geo.getEvents"}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "geo.getEvents"}.merge(options))
       end
       
       # Get the most popular tracks on Last.fm last week by country
@@ -1185,8 +1117,7 @@ module Shortwave
       #   ...
       # </toptracks>
       def top_tracks(country, options={})
-        data = {:method => "geo.getTopTracks", :country => country}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "geo.getTopTracks", :country => country}.merge(options))
       end
       
       # Get the most popular artists on Last.fm by country
@@ -1207,16 +1138,12 @@ module Shortwave
       #   ...
       # </topartists>
       def top_artists(country)
-        data = {:method => "geo.getTopArtists", :country => country}.merge(@auth)
-        self.class.get "", data
+        get({:method => "geo.getTopArtists", :country => country})
       end
       
     end
     
     class Tasteometer < Remote
-      def initialize(auth)
-        @auth = auth
-      end
       
       # Get a Tasteometer score from two inputs, along with a list of shared artists. If the input is a User or a Myspace URL, some additional information is returned.
       #
@@ -1259,16 +1186,12 @@ module Shortwave
       #     </comparison>
       # </lfm>
       def compare(type1, type2, value1, value2, options={})
-        data = {:method => "tasteometer.compare", :type1 => type1, :type2 => type2, :value1 => value1, :value2 => value2}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "tasteometer.compare", :type1 => type1, :type2 => type2, :value1 => value1, :value2 => value2}.merge(options))
       end
       
     end
     
     class Venue < Remote
-      def initialize(auth)
-        @auth = auth
-      end
       
       # Get a paginated list of all the events held at this venue in the past.
       #
@@ -1313,8 +1236,7 @@ module Shortwave
       #   ...
       # </events>
       def past_events(venue, options={})
-        data = {:method => "venue.getPastEvents", :venue => venue}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "venue.getPastEvents", :venue => venue}.merge(options))
       end
       
       # Get a list of upcoming events at this venue.
@@ -1360,8 +1282,7 @@ module Shortwave
       #   ...
       # </events>
       def events(venue)
-        data = {:method => "venue.getEvents", :venue => venue}.merge(@auth)
-        self.class.get "", data
+        get({:method => "venue.getEvents", :venue => venue})
       end
       
       # Search for a venue by venue name
@@ -1393,16 +1314,12 @@ module Shortwave
       #   </venuematches>
       # </results>
       def search(venue, options={})
-        data = {:method => "venue.search", :venue => venue}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "venue.search", :venue => venue}.merge(options))
       end
       
     end
     
     class Artist < Remote
-      def initialize(auth)
-        @auth = auth
-      end
       
       # Tag an artist with one or more user supplied tags.
       #
@@ -1411,8 +1328,7 @@ module Shortwave
       # <lfm status="ok">
       # </lfm>
       def add_tags(artist, tags)
-        data = {:method => "artist.addTags", :artist => artist, :tags => tags}.merge(@auth)
-        self.class.post "", data
+        post({:method => "artist.addTags", :artist => artist, :tags => tags})
       end
       
       # Get a list of upcoming events for this artist. Easily integratable into calendars, using the ical standard (see feeds section below).
@@ -1456,8 +1372,7 @@ module Shortwave
       # ...
       # </events>
       def events(artist)
-        data = {:method => "artist.getEvents", :artist => artist}.merge(@auth)
-        self.class.get "", data
+        get({:method => "artist.getEvents", :artist => artist})
       end
       
       # Shout in this artist's shoutbox
@@ -1466,8 +1381,7 @@ module Shortwave
       #
       # <lfm status="ok" />
       def shout(artist, message)
-        data = {:method => "artist.shout", :artist => artist, :message => message}.merge(@auth)
-        self.class.post "", data
+        post({:method => "artist.shout", :artist => artist, :message => message})
       end
       
       # Share an artist with Last.fm users or other friends.
@@ -1477,8 +1391,7 @@ module Shortwave
       # <lfm status="ok">
       # </lfm>
       def share(artist, recipient, options={})
-        data = {:method => "artist.share", :artist => artist, :recipient => recipient}.merge(@auth).merge(options)
-        self.class.post "", data
+        post({:method => "artist.share", :artist => artist, :recipient => recipient}.merge(options))
       end
       
       # Get the top tracks by an artist on Last.fm, ordered by popularity
@@ -1499,8 +1412,7 @@ module Shortwave
       #   ...
       # </toptracks>
       def top_tracks(artist)
-        data = {:method => "artist.getTopTracks", :artist => artist}.merge(@auth)
-        self.class.get "", data
+        get({:method => "artist.getTopTracks", :artist => artist})
       end
       
       # Get all the artists similar to this artist
@@ -1518,8 +1430,7 @@ module Shortwave
       #         <artist>
       # ...
       def similar(artist, options={})
-        data = {:method => "artist.getSimilar", :artist => artist}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "artist.getSimilar", :artist => artist}.merge(options))
       end
       
       # Remove a user's tag from an artist.
@@ -1529,8 +1440,7 @@ module Shortwave
       # <lfm status="ok">
       # </lfm>
       def remove_tag(artist, tag)
-        data = {:method => "artist.removeTag", :artist => artist, :tag => tag}.merge(@auth)
-        self.class.post "", data
+        post({:method => "artist.removeTag", :artist => artist, :tag => tag})
       end
       
       # Search for an artist by name. Returns artist matches sorted by relevance.
@@ -1555,8 +1465,7 @@ module Shortwave
       #   </artistmatches>
       # </results>
       def search(artist, options={})
-        data = {:method => "artist.search", :artist => artist}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "artist.search", :artist => artist}.merge(options))
       end
       
       # Get Images for this artist in a variety of sizes.
@@ -1591,8 +1500,7 @@ module Shortwave
       #   ..
       # </images>
       def images(artist, options={})
-        data = {:method => "artist.getImages", :artist => artist}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "artist.getImages", :artist => artist}.merge(options))
       end
       
       # Get the top tags for an artist on Last.fm, ordered by popularity.
@@ -1607,8 +1515,7 @@ module Shortwave
       #   ...
       # </toptags>
       def top_tags(artist)
-        data = {:method => "artist.getTopTags", :artist => artist}.merge(@auth)
-        self.class.get "", data
+        get({:method => "artist.getTopTags", :artist => artist})
       end
       
       # Get the metadata for an artist on Last.fm. Includes biography.
@@ -1651,8 +1558,7 @@ module Shortwave
       #   </bio>
       # </artist>
       def info(options={})
-        data = {:method => "artist.getInfo"}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "artist.getInfo"}.merge(options))
       end
       
       # Get shouts for this artist. Also available as an rss feed.
@@ -1668,8 +1574,7 @@ module Shortwave
       #   ...
       # </shouts>
       def shouts(artist)
-        data = {:method => "artist.getShouts", :artist => artist}.merge(@auth)
-        self.class.get "", data
+        get({:method => "artist.getShouts", :artist => artist})
       end
       
       # Get the tags applied by an individual user to an artist on Last.fm.
@@ -1684,8 +1589,7 @@ module Shortwave
       #   ...
       # </tags>
       def tags(artist)
-        data = {:method => "artist.getTags", :artist => artist}.merge(@auth)
-        self.class.get "", data
+        get({:method => "artist.getTags", :artist => artist})
       end
       
       # Get the top albums for an artist on Last.fm, ordered by popularity.
@@ -1705,8 +1609,7 @@ module Shortwave
       #   ...
       # </topalbums>
       def top_albums(artist)
-        data = {:method => "artist.getTopAlbums", :artist => artist}.merge(@auth)
-        self.class.get "", data
+        get({:method => "artist.getTopAlbums", :artist => artist})
       end
       
       # Get the top fans for an artist on Last.fm, based on listening data.
@@ -1725,16 +1628,12 @@ module Shortwave
       #   ...
       # </topfans>
       def top_fans(artist)
-        data = {:method => "artist.getTopFans", :artist => artist}.merge(@auth)
-        self.class.get "", data
+        get({:method => "artist.getTopFans", :artist => artist})
       end
       
     end
     
     class Library < Remote
-      def initialize(auth)
-        @auth = auth
-      end
       
       # A paginated list of all the albums in a user's library, with play counts and tag counts.
       #
@@ -1759,8 +1658,7 @@ module Shortwave
       #   ...
       # </albums>
       def albums(user, options={})
-        data = {:method => "library.getAlbums", :user => user}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "library.getAlbums", :user => user}.merge(options))
       end
       
       # A paginated list of all the artists in a user's library, with play counts and tag counts.
@@ -1782,8 +1680,7 @@ module Shortwave
       #   ...
       # </artists>
       def artists(user, options={})
-        data = {:method => "library.getArtists", :user => user}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "library.getArtists", :user => user}.merge(options))
       end
       
       # Add an artist to a user's Last.fm library
@@ -1792,8 +1689,7 @@ module Shortwave
       #
       # <lfm status="ok"></lfm>
       def add_artist(artist)
-        data = {:method => "library.addArtist", :artist => artist}.merge(@auth)
-        self.class.post "", data
+        post({:method => "library.addArtist", :artist => artist})
       end
       
       # Add a track to a user's Last.fm library
@@ -1802,8 +1698,7 @@ module Shortwave
       #
       # <lfm status="ok"></lfm>
       def add_track(artist, track)
-        data = {:method => "library.addTrack", :artist => artist, :track => track}.merge(@auth)
-        self.class.post "", data
+        post({:method => "library.addTrack", :artist => artist, :track => track})
       end
       
       # Add an album to a user's Last.fm library
@@ -1812,8 +1707,7 @@ module Shortwave
       #
       # <lfm status="ok"></lfm>
       def add_album(artist, album)
-        data = {:method => "library.addAlbum", :artist => artist, :album => album}.merge(@auth)
-        self.class.post "", data
+        post({:method => "library.addAlbum", :artist => artist, :album => album})
       end
       
       # A paginated list of all the tracks in a user's library, with play counts and tag counts.
@@ -1839,16 +1733,12 @@ module Shortwave
       #     </track>
       # </tracks>
       def tracks(user, options={})
-        data = {:method => "library.getTracks", :user => user}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "library.getTracks", :user => user}.merge(options))
       end
       
     end
     
     class Radio < Remote
-      def initialize(auth)
-        @auth = auth
-      end
       
       # Tune in to a Last.fm radio station.
       #
@@ -1863,8 +1753,7 @@ module Shortwave
       # 	</station>
       # </lfm>
       def tune(station, options={})
-        data = {:method => "radio.tune", :station => station}.merge(@auth).merge(options)
-        self.class.post "", data
+        post({:method => "radio.tune", :station => station}.merge(options))
       end
       
       # Fetch new radio content periodically in an XSPF format.
@@ -1898,16 +1787,12 @@ module Shortwave
       #  </trackList>
       # </playlist>
       def playlist(options={})
-        data = {:method => "radio.getPlaylist"}.merge(@auth).merge(options)
-        self.class.get "", data
+        get({:method => "radio.getPlaylist"}.merge(options))
       end
       
     end
     
     class Auth < Remote
-      def initialize(auth)
-        @auth = auth
-      end
       
       # Fetch an unathorized request token for an API account. This is step 2 of the authentication process for desktop applications. Web applications do not need to use this service.
       #
@@ -1917,8 +1802,7 @@ module Shortwave
       #     <token>cf45fe5a3e3cebe168480a086d7fe481</token>
       # </lfm>
       def token()
-        data = {:method => "auth.getToken"}.merge(@auth)
-        self.class.get "", data
+        get({:method => "auth.getToken"})
       end
       
       # Used by our flash embeds (on trusted domains) to use a site session cookie to seed a ws session without requiring a password. Uses the site cookie so must be accessed over a .last.fm domain.
@@ -1932,8 +1816,7 @@ module Shortwave
       # 	</session>
       # </lfm>
       def web_session()
-        data = {:method => "auth.getWebSession"}.merge(@auth)
-        self.class.get "", data
+        get({:method => "auth.getWebSession"})
       end
       
       # Create a web service session for a user. Used for authenticating a user when the password can be inputted by the user. Only suitable for standalone mobile devices. See the authentication how-to for more.
@@ -1948,8 +1831,7 @@ module Shortwave
       # 	</session>
       # </lfm>
       def mobile_session(username, authToken)
-        data = {:method => "auth.getMobileSession", :username => username, :authToken => authToken}.merge(@auth)
-        self.class.get "", data
+        get({:method => "auth.getMobileSession", :username => username, :authToken => authToken})
       end
       
       # Fetch a session key for a user. The third step in the authentication process. See the authentication how-to for more information.
@@ -1964,16 +1846,12 @@ module Shortwave
       # 	</session>
       # </lfm>
       def session(token)
-        data = {:method => "auth.getSession", :token => token}.merge(@auth)
-        self.class.get "", data
+        get({:method => "auth.getSession", :token => token})
       end
       
     end
     
     class Event < Remote
-      def initialize(auth)
-        @auth = auth
-      end
       
       # Share an event with one or more Last.fm users or other friends.
       #
@@ -1982,8 +1860,7 @@ module Shortwave
       # <lfm status="ok">
       # </lfm>
       def share(event, recipient, options={})
-        data = {:method => "event.share", :event => event, :recipient => recipient}.merge(@auth).merge(options)
-        self.class.post "", data
+        post({:method => "event.share", :event => event, :recipient => recipient}.merge(options))
       end
       
       # Get a list of attendees for an event.
@@ -2002,8 +1879,7 @@ module Shortwave
       #   ...
       # </attendees>
       def attendees(event)
-        data = {:method => "event.getAttendees", :event => event}.merge(@auth)
-        self.class.get "", data
+        get({:method => "event.getAttendees", :event => event})
       end
       
       # Shout in this event's shoutbox
@@ -2012,8 +1888,7 @@ module Shortwave
       #
       # <lfm status="ok" />
       def shout(event, message)
-        data = {:method => "event.shout", :event => event, :message => message}.merge(@auth)
-        self.class.post "", data
+        post({:method => "event.shout", :event => event, :message => message})
       end
       
       # Set a user's attendance status for an event.
@@ -2023,8 +1898,7 @@ module Shortwave
       # <lfm status="ok">
       # </lfm>
       def attend(event, status)
-        data = {:method => "event.attend", :event => event, :status => status}.merge(@auth)
-        self.class.post "", data
+        post({:method => "event.attend", :event => event, :status => status})
       end
       
       # Get the metadata for an event on Last.fm. Includes attendance and lineup information.
@@ -2066,8 +1940,7 @@ module Shortwave
       #   <tag>lastfm:event=328799</tag>
       # </event>
       def info(event)
-        data = {:method => "event.getInfo", :event => event}.merge(@auth)
-        self.class.get "", data
+        get({:method => "event.getInfo", :event => event})
       end
       
       # Get shouts for this event. Also available as an rss feed.
@@ -2083,16 +1956,12 @@ module Shortwave
       #   ...
       # </shouts>
       def shouts(event)
-        data = {:method => "event.getShouts", :event => event}.merge(@auth)
-        self.class.get "", data
+        get({:method => "event.getShouts", :event => event})
       end
       
     end
     
     class Playlist < Remote
-      def initialize(auth)
-        @auth = auth
-      end
       
       # Create a Last.fm playlist on behalf of a user
       #
@@ -2115,8 +1984,7 @@ module Shortwave
       #   </playlist>
       # </playlists>
       def create(options={})
-        data = {:method => "playlist.create"}.merge(@auth).merge(options)
-        self.class.post "", data
+        post({:method => "playlist.create"}.merge(options))
       end
       
       # Add a track to a Last.fm user's playlist
@@ -2126,8 +1994,7 @@ module Shortwave
       # <lfm status="ok">
       # </lfm>
       def add_track(playlistID, track, artist)
-        data = {:method => "playlist.addTrack", :playlistID => playlistID, :track => track, :artist => artist}.merge(@auth)
-        self.class.post "", data
+        post({:method => "playlist.addTrack", :playlistID => playlistID, :track => track, :artist => artist})
       end
       
       # Fetch XSPF playlists using a lastfm playlist url.
@@ -2160,8 +2027,7 @@ module Shortwave
       #   </trackList>
       # </playlist>
       def fetch(playlistURL)
-        data = {:method => "playlist.fetch", :playlistURL => playlistURL}.merge(@auth)
-        self.class.get "", data
+        get({:method => "playlist.fetch", :playlistURL => playlistURL})
       end
       
     end

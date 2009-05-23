@@ -5,9 +5,6 @@ module Shortwave
   module Facade
     <% for klass in klasses %>
     class <%= klass.name %> < Remote
-      def initialize(auth)
-        @auth = auth
-      end
       <% for method in klass.methods %>
       <%= method.comment.join("\n      ") %>
       def <%= method.signature %>
