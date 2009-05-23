@@ -17,6 +17,7 @@ module Shortwave
       IN_WORD_CAPS    = /(.)([A-Z])/
       STARTS_WITH_GET = /^.+\.(get)?/
 
+
       # Various Helper methods that belong on String
       module StringExtensions
         # Convert a string like FooBar to foo_bar
@@ -27,12 +28,7 @@ module Shortwave
       String.send(:include, StringExtensions)
 
 
-      # Given a starting URI, generates a string of ruby code for remote facades.
-      def build(uri)
-        klasses = DocumentationRemote.new.build(uri)
-        ERB.new( File.read(File.dirname(__FILE__) + "/facade_template.erb") ).result(binding)
-      end
-
+      # Helper methods for constructing the Facades
       class FacadeBuilder
         def remote_method_definitions(location)
           return @method_definitions if @method_definitions
@@ -51,15 +47,6 @@ module Shortwave
         include HTTParty
         base_uri "http://last.fm"
 
-        def build(uri)
-          scrape_remote_methods( self.class.get(uri) ).map do |name, method_uris|
-            method_uris.inject( RubyClass.new(name) ) do |klass, u| 
-              add_method(klass, u)
-              klass
-            end
-          end.sort {|a,b| a.name <=> b.name }
-        end
-
         def self.scrape_remote_method_index
           html = get("/api/intro")
           Nokogiri::HTML(html).css(REMOTE_CLASS).inject({}) do |hsh, node|
@@ -68,15 +55,6 @@ module Shortwave
               h
             end
             hsh
-          end
-        end
-
-        private
-
-        def add_method(klass, uri)
-          response = self.class.get(uri)
-          if (200..299).include?(response.code.to_i)
-            klass.methods << RubyMethod.new( RemoteMethod.new(response) )
           end
         end
       end
@@ -119,7 +97,7 @@ module Shortwave
           get_line << "}.merge(@auth)"
           get_line << ".merge(options)" unless @optional.empty?
           @body << get_line
-          @body << "#{@node.http_method} \"\", data"
+          @body << "self.class.#{@node.http_method} \"\", data"
         end
 
         def build_signature
@@ -149,7 +127,7 @@ module Shortwave
         attr_reader :name, :description
 
         def initialize(name, required, description)
-          @name, @required, @description = name, required, description
+          @name, @required, @description = name, required, description.gsub(/\s+/, ' ')
         end
 
         # Returns an array of Parameters, given an HTML page from the Last FM API 
@@ -159,12 +137,14 @@ module Shortwave
 
           doc.css(PARAMETER_CSS).map do |node|
             name = node.text.strip
-            if match = name.match(COMBINED_PARAMS)
-              match[2].split("|").map {|v| make_parameter(node, match[1] + v) }
-            else
-              make_parameter(node, name)
+            unless name.nil? || name.empty?
+              if match = name.match(COMBINED_PARAMS)
+                match[2].split("|").map {|v| make_parameter(node, match[1] + v) }
+              else
+                make_parameter(node, name)
+              end
             end
-          end.flatten
+          end.flatten.compact
         end
 
         # Returns true if this parameter is required
@@ -196,7 +176,7 @@ module Shortwave
           @remote_name     = doc.css(METHOD_NAME_CSS).text.strip
           @name            = @remote_name.sub(STARTS_WITH_GET,'').camel_to_snake.to_sym
           @parameters      = Parameter.parse(doc)
-          @description     = doc.css(DESCRIPTION_CSS).text.strip
+          @description     = doc.css(DESCRIPTION_CSS).text.strip.gsub(/\s+/, ' ')
           @http_method     = doc.css(METHOD_TYPE_CSS).text.include?("HTTP POST") ? :post : :get
           @sample_response = doc.css(SAMPLE_CSS).text.strip
         end

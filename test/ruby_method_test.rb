@@ -83,7 +83,7 @@ class RubyMethodTest < TestCase
                                   :get)
     
     expected = ["data = {:method => \"user.getLovedTracks\", :user => user}.merge(@auth)",
-                "get \"\", data"]
+                "self.class.get \"\", data"]
 
     assert_equal expected, RubyMethod.new(method).body
   end
@@ -98,7 +98,7 @@ class RubyMethodTest < TestCase
                                   :get)
 
     expected = ["data = {:method => \"user.getLovedTracks\", :user => user}.merge(@auth).merge(options)",
-                "get \"\", data"]
+                "self.class.get \"\", data"]
     assert_equal expected, RubyMethod.new(method).body
   end
 
@@ -111,6 +111,6 @@ class RubyMethodTest < TestCase
                                    ParameterStub.new(:number, "optional", false)],
                                   :post)
 
-    assert_equal "post \"\", data", RubyMethod.new(method).body.last
+    assert_equal "self.class.post \"\", data", RubyMethod.new(method).body.last
   end
 end

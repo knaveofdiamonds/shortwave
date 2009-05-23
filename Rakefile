@@ -1,12 +1,10 @@
 require 'rubygems'
 require 'rake'
 
-
 begin
   require "lib/facade_builder"
-  require "yaml"
 
-  include Shortwave::Facade
+  include Shortwave::Facade::Build
   namespace :facade do
     directory "tmp/lastfm"
 
@@ -14,18 +12,41 @@ begin
       REMOTE_METHODS = FacadeBuilder.new.remote_method_definitions("tmp/lastfm/intro.yml")
     end
 
-    desc "Scrape method documentation from last.fm"
     task :scrape => :scrape_method_index do
-      remote_methods = Build::DocumentationRemote.scrape_remote_method_uris
-      remote_methods.each do |name, uri|
+      methods = REMOTE_METHODS.values.inject {|a, b| a.merge(b) }
+      methods.each do |name, uri|
         if ! File.exists?("tmp/lastfm/#{name}.html")
-          response = Build::DocumentationRemote.get(uri)
+          response = DocumentationRemote.get(uri)
           File.open("tmp/lastfm/#{name}.html", "w") {|fh| fh.write(response) }
           warn "Got HTML documentation for #{name}"
         end
       end
     end
+
+    task :parse => :scrape do
+      KLASSES = REMOTE_METHODS.map do |klass_name, methods|
+        warn "Building #{klass_name}"
+        methods.keys.inject(RubyClass.new(klass_name)) do |klass, method_name|
+          warn "  building #{method_name}"
+          klass.methods << RubyMethod.new( RemoteMethod.new( File.read("tmp/lastfm/#{method_name}.html")))
+          klass
+        end
+      end
+    end
+
+    # Fixes any ommissions or mistakes in the HTML documentation
+    task :patch => :parse do
+    end
+
+    desc "Scrapes the HTML documentation from the Last.FM site and uses it to construct ruby facade objects"
+    task :build => [:parse, :patch] do
+      klasses = KLASSES
+      File.open("lib/lastfm.rb", "w") do |fh|
+        fh.write ERB.new(File.read("lib/facade_template.erb")).result(binding)
+      end
+    end
   end
+
 rescue LoadError
   warn "Cannot build a fresh Facade::Remote - missing gems (nokogiri)?"
 end
