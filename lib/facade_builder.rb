@@ -9,7 +9,7 @@ module Shortwave
       SAMPLE_CSS      = "#sample pre"
       DESCRIPTION_CSS = ".wsdescription"
       METHOD_TYPE_CSS = "#wsdescriptor"
-      REMOTE_CLASS    = "li.package"
+      REMOTE_CLASS    = "li.package ~ ul"
 
       COMBINED_PARAMS = /^(.+)\[(.+)\]$/
       PARAMETER_TEXT  = /\s*\(([^\)]+)\)\s*:\s*(.*)/
@@ -47,14 +47,15 @@ module Shortwave
           end.sort {|a,b| a.name <=> b.name }
         end
 
-        private
-
-        def scrape_remote_methods(html)
-          Nokogiri::HTML(html).css(REMOTE_CLASS).inject({}) do |hsh, node|
-            hsh[node.text] = node.next.next.css("a").map {|a| a['href'] }
+        def self.scrape_remote_method_uris
+          html = get("/api/intro")
+          Nokogiri::HTML(html).css(REMOTE_CLASS).css("a").inject({}) do |hsh, node|
+            hsh[node.text] = node["href"]
             hsh
           end
         end
+
+        private
 
         def add_method(klass, uri)
           response = self.class.get(uri)
