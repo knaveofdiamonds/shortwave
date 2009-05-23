@@ -8,6 +8,10 @@ module Shortwave
       
       # Love a track for a user profile. This needs to be supplemented with a scrobbling submission containing the 'love' rating (see the audioscrobbler API).
       #
+      # <b>Parameters</b>
+      # +track+:: A track name (utf8 encoded)
+      # +artist+:: An artist name (utf8 encoded)
+      #
       # Sample response:
       #
       # <lfm status="ok">
@@ -18,6 +22,11 @@ module Shortwave
       
       # Remove a user's tag from a track.
       #
+      # <b>Parameters</b>
+      # +artist+:: The artist name in question
+      # +track+:: The track name in question
+      # +tags+:: A single user tag to remove from this track.
+      #
       # Sample response:
       #
       # <lfm status="ok">
@@ -27,6 +36,14 @@ module Shortwave
       end
       
       # Search for a track by track name. Returns track matches sorted by relevance.
+      #
+      # <b>Parameters</b>
+      # +track+:: The track name in question.
+      #
+      # <b>Options</b>
+      # +limit+:: Limit the number of tracks returned at one time. Default (maximum) is 30.
+      # +page+:: Scan into the results by specifying a page number. Defaults to first page.
+      # +artist+:: Narrow your search by specifying an artist.
       #
       # Sample response:
       #
@@ -53,6 +70,11 @@ module Shortwave
       
       # Tag an album using a list of user supplied tags.
       #
+      # <b>Parameters</b>
+      # +artist+:: The artist name in question
+      # +track+:: The track name in question
+      # +tags+:: A comma delimited list of user supplied tags to apply to this track. Accepts a maximum of 10 tags.
+      #
       # Sample response:
       #
       # <lfm status="ok">
@@ -62,6 +84,11 @@ module Shortwave
       end
       
       # Get the metadata for a track on Last.fm using the artist/track name or a musicbrainz id.
+      #
+      # <b>Options</b>
+      # +artist+:: The artist name in question
+      # +track+:: The track name in question
+      # +mbid+:: The musicbrainz id for the track
       #
       # Sample response:
       #
@@ -107,6 +134,10 @@ module Shortwave
       
       # Get the tags applied by an individual user to a track on Last.fm.
       #
+      # <b>Parameters</b>
+      # +artist+:: The artist name in question
+      # +track+:: The track name in question
+      #
       # Sample response:
       #
       # <tags artist="Sally Shapiro" track="I'll be by your side">
@@ -121,6 +152,11 @@ module Shortwave
       end
       
       # Get the top fans for this track on Last.fm, based on listening data. Supply either track & artist name or musicbrainz id.
+      #
+      # <b>Options</b>
+      # +track+:: The track name in question
+      # +artist+:: The artist name in question
+      # +mbid+:: The musicbrainz id for the track
       #
       # Sample response:
       #
@@ -141,6 +177,10 @@ module Shortwave
       
       # Ban a track for a given user profile. This needs to be supplemented with a scrobbling submission containing the 'ban' rating (see the audioscrobbler API).
       #
+      # <b>Parameters</b>
+      # +track+:: A track name (utf8 encoded)
+      # +artist+:: An artist name (utf8 encoded)
+      #
       # Sample response:
       #
       # <lfm status="ok">
@@ -150,6 +190,11 @@ module Shortwave
       end
       
       # Get the top tags for this track on Last.fm, ordered by tag count. Supply either track & artist name or mbid.
+      #
+      # <b>Options</b>
+      # +track+:: The track name in question
+      # +artist+:: The artist name in question
+      # +mbid+:: The musicbrainz id for the track
       #
       # Sample response:
       #
@@ -171,6 +216,11 @@ module Shortwave
       end
       
       # Get the similar tracks for this track on Last.fm, based on listening data.
+      #
+      # <b>Options</b>
+      # +track+:: The track name in question
+      # +artist+:: The artist name in question
+      # +mbid+:: The musicbrainz id for the track
       #
       # Sample response:
       #
@@ -198,6 +248,14 @@ module Shortwave
       
       # Share a track twith one or more Last.fm users or other friends.
       #
+      # <b>Parameters</b>
+      # +artist+:: An artist name.
+      # +recipient+:: Email Address | Last.fm Username - A comma delimited list of email addresses or Last.fm usernames. Maximum is 10.
+      # +track+:: A track name.
+      #
+      # <b>Options</b>
+      # +message+:: An optional message to send with the recommendation. If not supplied a default message will be used.
+      #
       # Sample response:
       #
       # <lfm status="ok">
@@ -211,6 +269,9 @@ module Shortwave
     class Group < Remote
       
       # Get a list of members for this group.
+      #
+      # <b>Parameters</b>
+      # +group+:: The group name to fetch the members of.
       #
       # Sample response:
       #
@@ -238,6 +299,9 @@ module Shortwave
       
       # Get a list of available charts for this group, expressed as date ranges which can be sent to the chart services.
       #
+      # <b>Parameters</b>
+      # +group+:: The last.fm group name to fetch the charts list for.
+      #
       # Sample response:
       #
       # <weeklychartlist group="mnml">
@@ -250,6 +314,13 @@ module Shortwave
       end
       
       # Get an album chart for a group, for a given date range. If no date range is supplied, it will return the most recent album chart for this group.
+      #
+      # <b>Parameters</b>
+      # +user+:: The last.fm group name to fetch the charts of.
+      #
+      # <b>Options</b>
+      # +from+:: The date at which the chart should start from. See Group.getWeeklyChartList for more.
+      # +to+:: The date at which the chart should end on. See Group.getWeeklyChartList for more.
       #
       # Sample response:
       #
@@ -269,6 +340,13 @@ module Shortwave
       
       # Get a track chart for a group, for a given date range. If no date range is supplied, it will return the most recent album chart for this group.
       #
+      # <b>Parameters</b>
+      # +group+:: The last.fm group name to fetch the charts of.
+      #
+      # <b>Options</b>
+      # +from+:: The date at which the chart should start from. See Group.getWeeklyChartList for more.
+      # +to+:: The date at which the chart should end on. See Group.getWeeklyChartList for more.
+      #
       # Sample response:
       #
       # <weeklytrackchart group="mnml" from="1212321600" to="1212926400">
@@ -286,6 +364,13 @@ module Shortwave
       end
       
       # Get an artist chart for a group, for a given date range. If no date range is supplied, it will return the most recent album chart for this group.
+      #
+      # <b>Parameters</b>
+      # +group+:: The last.fm group name to fetch the charts of.
+      #
+      # <b>Options</b>
+      # +from+:: The date at which the chart should start from. See Group.getWeeklyChartList for more.
+      # +to+:: The date at which the chart should end on. See Group.getWeeklyChartList for more.
       #
       # Sample response:
       #
@@ -307,6 +392,9 @@ module Shortwave
     class User < Remote
       
       # Get the last 50 tracks loved by a user.
+      #
+      # <b>Parameters</b>
+      # +user+:: The user name to fetch the loved tracks for.
       #
       # Sample response:
       #
@@ -333,6 +421,12 @@ module Shortwave
       
       # Get a list of a user's neighbours on Last.fm.
       #
+      # <b>Parameters</b>
+      # +user+:: The last.fm username to fetch the neighbours of.
+      #
+      # <b>Options</b>
+      # +limit+:: An integer used to limit the number of neighbours returned.
+      #
       # Sample response:
       #
       # <lfm status="ok">
@@ -351,6 +445,12 @@ module Shortwave
       end
       
       # Get a list of the recent tracks listened to by this user. Indicates now playing track if the user is currently listening.
+      #
+      # <b>Parameters</b>
+      # +user+:: The last.fm username to fetch the recent tracks of.
+      #
+      # <b>Options</b>
+      # +limit+:: An integer used to limit the number of tracks returned.
       #
       # Sample response:
       #
@@ -372,6 +472,10 @@ module Shortwave
       
       # Shout on this user's shoutbox
       #
+      # <b>Parameters</b>
+      # +user+:: The name of the user to shout on.
+      # +message+:: The message to post to the shoutbox.
+      #
       # Sample response:
       #
       # <lfm status="ok" />
@@ -380,6 +484,9 @@ module Shortwave
       end
       
       # Get a list of upcoming events that this user is attending. Easily integratable into calendars, using the ical standard (see 'more formats' section below).
+      #
+      # <b>Parameters</b>
+      # +user+:: The user to fetch the events for.
       #
       # Sample response:
       #
@@ -425,6 +532,12 @@ module Shortwave
       end
       
       # Get the top tracks listened to by a user. You can stipulate a time period. Sends the overall chart by default.
+      #
+      # <b>Parameters</b>
+      # +user+:: The user name to fetch top tracks for.
+      #
+      # <b>Options</b>
+      # +period+:: overall | 3month | 6month | 12month - The time period over which to retrieve top tracks for.
       #
       # Sample response:
       #
@@ -474,6 +587,10 @@ module Shortwave
       
       # Get a paginated list of all events recommended to a user by Last.fm, based on their listening profile.
       #
+      # <b>Options</b>
+      # +page+:: The page number to scan to.
+      # +limit+:: The number of events to return per page.
+      #
       # Sample response:
       #
       # <events user="RJ" page="1" perPage="20" totalPages="5" total="100">
@@ -521,6 +638,12 @@ module Shortwave
       
       # Get the top artists listened to by a user. You can stipulate a time period. Sends the overall chart by default.
       #
+      # <b>Parameters</b>
+      # +user+:: The user name to fetch top artists for.
+      #
+      # <b>Options</b>
+      # +period+:: overall | 3month | 6month | 12month - The time period over which to retrieve top artists for.
+      #
       # Sample response:
       #
       # <topartists user="RJ" type="overall">
@@ -542,6 +665,14 @@ module Shortwave
       
       # Get a list of the user's friends on Last.fm.
       #
+      # <b>Parameters</b>
+      # +user+:: The last.fm username to fetch the friends of.
+      #
+      # <b>Options</b>
+      # +recenttracks+:: Whether or not to include information about friends' recent listening in the response.
+      # +limit+:: An integer used to limit the number of friends returned per page. The default is 50.
+      # +page+:: The page number to fetch.
+      #
       # Sample response:
       #
       # <lfm status="ok" total="109" page="1" perPage="50" totalPages="3">
@@ -562,6 +693,9 @@ module Shortwave
       
       # Get shouts for this user. Also available as an rss feed.
       #
+      # <b>Parameters</b>
+      # +user+:: The username to fetch shouts for
+      #
       # Sample response:
       #
       # <shouts user="rj" total="495">
@@ -577,6 +711,13 @@ module Shortwave
       end
       
       # Get an album chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent album chart for this user.
+      #
+      # <b>Parameters</b>
+      # +user+:: The last.fm username to fetch the charts of.
+      #
+      # <b>Options</b>
+      # +from+:: The date at which the chart should start from. See User.getChartsList for more.
+      # +to+:: The date at which the chart should end on. See User.getChartsList for more.
       #
       # Sample response:
       #
@@ -596,6 +737,13 @@ module Shortwave
       
       # Get an artist chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent artist chart for this user.
       #
+      # <b>Parameters</b>
+      # +user+:: The last.fm username to fetch the charts of.
+      #
+      # <b>Options</b>
+      # +from+:: The date at which the chart should start from. See User.getWeeklyChartList for more.
+      # +to+:: The date at which the chart should end on. See User.getWeeklyChartList for more.
+      #
       # Sample response:
       #
       # <weeklyartistchart user="RJ" from="1212321600" to="1212926400">
@@ -612,6 +760,9 @@ module Shortwave
       end
       
       # Get a list of a user's playlists on Last.fm.
+      #
+      # <b>Parameters</b>
+      # +user+:: The last.fm username to fetch the playlists of.
       #
       # Sample response:
       #
@@ -637,6 +788,13 @@ module Shortwave
       end
       
       # Get a paginated list of all events a user has attended in the past.
+      #
+      # <b>Parameters</b>
+      # +user+:: The username to fetch the events for.
+      #
+      # <b>Options</b>
+      # +page+:: The page number to scan to.
+      # +limit+:: The number of events to return per page.
       #
       # Sample response:
       #
@@ -715,6 +873,12 @@ module Shortwave
       
       # Get the top albums listened to by a user. You can stipulate a time period. Sends the overall chart by default.
       #
+      # <b>Parameters</b>
+      # +user+:: The user name to fetch top albums for.
+      #
+      # <b>Options</b>
+      # +period+:: overall | 3month | 6month | 12month - The time period over which to retrieve top albums for.
+      #
       # Sample response:
       #
       # <topalbums user="RJ" type="overall">
@@ -741,6 +905,9 @@ module Shortwave
       
       # Get a list of available charts for this user, expressed as date ranges which can be sent to the chart services.
       #
+      # <b>Parameters</b>
+      # +user+:: The last.fm username to fetch the charts list for.
+      #
       # Sample response:
       #
       # <weeklychartlist user="RJ">
@@ -753,6 +920,12 @@ module Shortwave
       end
       
       # Get the top tags used by this user.
+      #
+      # <b>Parameters</b>
+      # +user+:: The user name
+      #
+      # <b>Options</b>
+      # +limit+:: Limit the number of tags returned
       #
       # Sample response:
       #
@@ -769,6 +942,13 @@ module Shortwave
       end
       
       # Get a track chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent track chart for this user.
+      #
+      # <b>Parameters</b>
+      # +user+:: The last.fm username to fetch the charts of.
+      #
+      # <b>Options</b>
+      # +from+:: The date at which the chart should start from. See User.getWeeklyChartList for more.
+      # +to+:: The date at which the chart should end on. See User.getWeeklyChartList for more.
       #
       # Sample response:
       #
@@ -792,6 +972,11 @@ module Shortwave
       
       # Remove a user's tag from an album.
       #
+      # <b>Parameters</b>
+      # +artist+:: The artist name in question
+      # +album+:: The album name in question
+      # +tag+:: A single user tag to remove from this album.
+      #
       # Sample response:
       #
       # <lfm status="ok">
@@ -802,6 +987,11 @@ module Shortwave
       
       # Tag an album using a list of user supplied tags.
       #
+      # <b>Parameters</b>
+      # +artist+:: The artist name in question
+      # +album+:: The album name in question
+      # +tags+:: A comma delimited list of user supplied tags to apply to this album. Accepts a maximum of 10 tags.
+      #
       # Sample response:
       #
       # <lfm status="ok">
@@ -811,6 +1001,12 @@ module Shortwave
       end
       
       # Get the metadata for an album on Last.fm using the album name or a musicbrainz id. See playlist.fetch on how to get the album playlist.
+      #
+      # <b>Options</b>
+      # +artist+:: The artist name in question
+      # +album+:: The album name in question
+      # +mbid+:: The musicbrainz id for the album
+      # +lang+:: The language to return the biography in, expressed as an ISO 639 alpha-2 code.
       #
       # Sample response:
       #
@@ -840,6 +1036,10 @@ module Shortwave
       
       # Get the tags applied by an individual user to an album on Last.fm.
       #
+      # <b>Parameters</b>
+      # +artist+:: The artist name in question
+      # +album+:: The album name in question
+      #
       # Sample response:
       #
       # <tags artist="Sally Shapiro" album="Disco Romance">
@@ -854,6 +1054,13 @@ module Shortwave
       end
       
       # Search for an album by name. Returns album matches sorted by relevance.
+      #
+      # <b>Parameters</b>
+      # +album+:: The album name in question.
+      #
+      # <b>Options</b>
+      # +limit+:: Limit the number of albums returned at one time. Default (maximum) is 30.
+      # +page+:: Scan into the results by specifying a page number. Defaults to first page.
       #
       # Sample response:
       #
@@ -886,6 +1093,9 @@ module Shortwave
       
       # Search for tags similar to this one. Returns tags ranked by similarity, based on listening data.
       #
+      # <b>Parameters</b>
+      # +tag+:: The tag name in question.
+      #
       # Sample response:
       #
       # <similartags tag="Disco">
@@ -901,6 +1111,14 @@ module Shortwave
       end
       
       # Get an artist chart for a tag, for a given date range. If no date range is supplied, it will return the most recent artist chart for this tag.
+      #
+      # <b>Parameters</b>
+      # +tag+:: The tag name in question
+      #
+      # <b>Options</b>
+      # +from+:: The date at which the chart should start from. See Tag.getWeeklyChartList for more.
+      # +to+:: The date at which the chart should end on. See Tag.getWeeklyChartList for more.
+      # +limit+:: The number of chart items to return.
       #
       # Sample response:
       #
@@ -961,6 +1179,13 @@ module Shortwave
       end
       
       # Search for a tag by name. Returns matches sorted by relevance.
+      #
+      # <b>Parameters</b>
+      # +tag+:: The tag name in question.
+      #
+      # <b>Options</b>
+      # +limit+:: Limit the number of tags returned at one time. Default (maximum) is 30.
+      # +page+:: Scan into the results by specifying a page number. Defaults to first page.
       #
       # Sample response:
       #
@@ -1033,6 +1258,9 @@ module Shortwave
       
       # Get a list of available charts for this tag, expressed as date ranges which can be sent to the chart services.
       #
+      # <b>Parameters</b>
+      # +tag+:: The tag name in question
+      #
       # Sample response:
       #
       # <weeklychartlist tag="rock">
@@ -1049,6 +1277,13 @@ module Shortwave
     class Geo < Remote
       
       # Get all events in a specific location by country or city name.
+      #
+      # <b>Options</b>
+      # +location+:: Specifies a location to retrieve events for (service returns nearby events by default)
+      # +lat+:: Specifies a latitude value to retrieve events for (service returns nearby events by default)
+      # +long+:: Specifies a longitude value to retrieve events for (service returns nearby events by default)
+      # +page+:: Display more results by pagination
+      # +distance+:: Find events within a specified distance
       #
       # Sample response:
       #
@@ -1096,6 +1331,12 @@ module Shortwave
       
       # Get the most popular tracks on Last.fm last week by country
       #
+      # <b>Parameters</b>
+      # +country+:: A country name, as defined by the ISO 3166-1 country names standard
+      #
+      # <b>Options</b>
+      # +location+:: A metro name, to fetch the charts for (must be within the country specified)
+      #
       # Sample response:
       #
       # <toptracks country="Spain">  
@@ -1122,6 +1363,9 @@ module Shortwave
       
       # Get the most popular artists on Last.fm by country
       #
+      # <b>Parameters</b>
+      # +country+:: A country name, as defined by the ISO 3166-1 country names standard
+      #
       # Sample response:
       #
       # <topartists country="Spain">
@@ -1146,6 +1390,15 @@ module Shortwave
     class Tasteometer < Remote
       
       # Get a Tasteometer score from two inputs, along with a list of shared artists. If the input is a User or a Myspace URL, some additional information is returned.
+      #
+      # <b>Parameters</b>
+      # +type1+:: 'user' | 'artists' | 'myspace'
+      # +type2+:: 'user' | 'artists' | 'myspace'
+      # +value1+:: [Last.fm username] | [Comma-separated artist names] | [MySpace profile URL]
+      # +value2+:: [Last.fm username] | [Comma-separated artist names] | [MySpace profile URL]
+      #
+      # <b>Options</b>
+      # +limit+:: How many shared artists to display
       #
       # Sample response:
       #
@@ -1195,6 +1448,13 @@ module Shortwave
       
       # Get a paginated list of all the events held at this venue in the past.
       #
+      # <b>Parameters</b>
+      # +venue+:: The id for the venue you would like to fetch event listings for.
+      #
+      # <b>Options</b>
+      # +page+:: The page of results to return.
+      # +limit+:: The maximum number of results to return.
+      #
       # Sample response:
       #
       # <events venue="Cafe OTO" page="1" perPage="50" total="103" totalPages="3">
@@ -1240,6 +1500,9 @@ module Shortwave
       end
       
       # Get a list of upcoming events at this venue.
+      #
+      # <b>Parameters</b>
+      # +venue+:: The id for the venue you would like to fetch event listings for.
       #
       # Sample response:
       #
@@ -1287,6 +1550,14 @@ module Shortwave
       
       # Search for a venue by venue name
       #
+      # <b>Parameters</b>
+      # +venue+:: The venue name you would like to search for.
+      #
+      # <b>Options</b>
+      # +page+:: The results page you would like to fetch
+      # +limit+:: The number of results to fetch per page. Defaults to 50.
+      # +country+:: Filter your results by country. Expressed as an ISO 3166-2 code.
+      #
       # Sample response:
       #
       # <results for="arena">
@@ -1323,6 +1594,10 @@ module Shortwave
       
       # Tag an artist with one or more user supplied tags.
       #
+      # <b>Parameters</b>
+      # +artist+:: The artist name in question.
+      # +tags+:: A comma delimited list of user supplied tags to apply to this artist. Accepts a maximum of 10 tags.
+      #
       # Sample response:
       #
       # <lfm status="ok">
@@ -1332,6 +1607,9 @@ module Shortwave
       end
       
       # Get a list of upcoming events for this artist. Easily integratable into calendars, using the ical standard (see feeds section below).
+      #
+      # <b>Parameters</b>
+      # +artist+:: The artist name in question
       #
       # Sample response:
       #
@@ -1377,6 +1655,10 @@ module Shortwave
       
       # Shout in this artist's shoutbox
       #
+      # <b>Parameters</b>
+      # +artist+:: The name of the artist to shout on.
+      # +message+:: The message to post to the shoutbox.
+      #
       # Sample response:
       #
       # <lfm status="ok" />
@@ -1385,6 +1667,13 @@ module Shortwave
       end
       
       # Share an artist with Last.fm users or other friends.
+      #
+      # <b>Parameters</b>
+      # +artist+:: The artist to share.
+      # +recipient+:: Email Address | Last.fm Username - A comma delimited list of email addresses or Last.fm usernames. Maximum is 10.
+      #
+      # <b>Options</b>
+      # +message+:: An optional message to send with the recommendation. If not supplied a default message will be used.
       #
       # Sample response:
       #
@@ -1395,6 +1684,9 @@ module Shortwave
       end
       
       # Get the top tracks by an artist on Last.fm, ordered by popularity
+      #
+      # <b>Parameters</b>
+      # +artist+:: The artist name in question
       #
       # Sample response:
       #
@@ -1417,6 +1709,12 @@ module Shortwave
       
       # Get all the artists similar to this artist
       #
+      # <b>Parameters</b>
+      # +artist+:: The artist name in question
+      #
+      # <b>Options</b>
+      # +limit+:: Limit the number of similar artists returned
+      #
       # Sample response:
       #
       # <similarartists artist="kid606" streamable="1">
@@ -1435,6 +1733,10 @@ module Shortwave
       
       # Remove a user's tag from an artist.
       #
+      # <b>Parameters</b>
+      # +artist+:: The artist name in question.
+      # +tag+:: A single user tag to remove from this artist.
+      #
       # Sample response:
       #
       # <lfm status="ok">
@@ -1444,6 +1746,13 @@ module Shortwave
       end
       
       # Search for an artist by name. Returns artist matches sorted by relevance.
+      #
+      # <b>Parameters</b>
+      # +artist+:: The artist name in question.
+      #
+      # <b>Options</b>
+      # +limit+:: Limit the number of artists returned at one time. Default (maximum) is 30.
+      # +page+:: Scan into the results by specifying a page number. Defaults to first page.
       #
       # Sample response:
       #
@@ -1469,6 +1778,14 @@ module Shortwave
       end
       
       # Get Images for this artist in a variety of sizes.
+      #
+      # <b>Parameters</b>
+      # +artist+:: The artist name in question.
+      #
+      # <b>Options</b>
+      # +page+:: Which page of limit amount to display.
+      # +limit+:: How many to return. Defaults and maxes out at 50.
+      # +order+:: Sort ordering can be either 'popularity' (default) or 'dateadded'. While ordering by popularity officially selected images by labels and artists will be ordered first. This is ignored and set to 'dateadded' when requested as rss.
       #
       # Sample response:
       #
@@ -1505,6 +1822,9 @@ module Shortwave
       
       # Get the top tags for an artist on Last.fm, ordered by popularity.
       #
+      # <b>Parameters</b>
+      # +artist+:: The artist name in question
+      #
       # Sample response:
       #
       # <toptags artist="Cher">
@@ -1519,6 +1839,11 @@ module Shortwave
       end
       
       # Get the metadata for an artist on Last.fm. Includes biography.
+      #
+      # <b>Options</b>
+      # +artist+:: The artist name in question
+      # +mbid+:: The musicbrainz id for the artist
+      # +lang+:: The language to return the biography in, expressed as an ISO 639 alpha-2 code.
       #
       # Sample response:
       #
@@ -1563,6 +1888,9 @@ module Shortwave
       
       # Get shouts for this artist. Also available as an rss feed.
       #
+      # <b>Parameters</b>
+      # +artist+:: The artist name in question.
+      #
       # Sample response:
       #
       # <shouts artist="Cher" total="495">
@@ -1579,6 +1907,9 @@ module Shortwave
       
       # Get the tags applied by an individual user to an artist on Last.fm.
       #
+      # <b>Parameters</b>
+      # +artist+:: The artist name in question
+      #
       # Sample response:
       #
       # <tags artist="Sally Shapiro">
@@ -1593,6 +1924,9 @@ module Shortwave
       end
       
       # Get the top albums for an artist on Last.fm, ordered by popularity.
+      #
+      # <b>Parameters</b>
+      # +artist+:: The artist name in question
       #
       # Sample response:
       #
@@ -1613,6 +1947,9 @@ module Shortwave
       end
       
       # Get the top fans for an artist on Last.fm, based on listening data.
+      #
+      # <b>Parameters</b>
+      # +artist+:: The artist name in question
       #
       # Sample response:
       #
@@ -1636,6 +1973,13 @@ module Shortwave
     class Library < Remote
       
       # A paginated list of all the albums in a user's library, with play counts and tag counts.
+      #
+      # <b>Parameters</b>
+      # +user+:: The user whose library you want to fetch.
+      #
+      # <b>Options</b>
+      # +limit+:: Limit the amount of albums returned (maximum/default is 50).
+      # +page+:: The page number you wish to scan to.
       #
       # Sample response:
       #
@@ -1663,6 +2007,13 @@ module Shortwave
       
       # A paginated list of all the artists in a user's library, with play counts and tag counts.
       #
+      # <b>Parameters</b>
+      # +user+:: The user whose library you want to fetch.
+      #
+      # <b>Options</b>
+      # +limit+:: Limit the amount of artists returned (maximum/default is 50).
+      # +page+:: The page number you wish to scan to.
+      #
       # Sample response:
       #
       # <artists user="RJ" page="1" perPage="50" totalPages="20">
@@ -1685,6 +2036,9 @@ module Shortwave
       
       # Add an artist to a user's Last.fm library
       #
+      # <b>Parameters</b>
+      # +artist+:: The artist name you wish to add
+      #
       # Sample response:
       #
       # <lfm status="ok"></lfm>
@@ -1693,6 +2047,10 @@ module Shortwave
       end
       
       # Add a track to a user's Last.fm library
+      #
+      # <b>Parameters</b>
+      # +artist+:: The artist that composed the track
+      # +track+:: The track name you wish to add
       #
       # Sample response:
       #
@@ -1703,6 +2061,10 @@ module Shortwave
       
       # Add an album to a user's Last.fm library
       #
+      # <b>Parameters</b>
+      # +artist+:: The artist that composed the track
+      # +album+:: The album name you wish to add
+      #
       # Sample response:
       #
       # <lfm status="ok"></lfm>
@@ -1711,6 +2073,13 @@ module Shortwave
       end
       
       # A paginated list of all the tracks in a user's library, with play counts and tag counts.
+      #
+      # <b>Parameters</b>
+      # +user+:: The user whose library you want to fetch.
+      #
+      # <b>Options</b>
+      # +limit+:: Limit the amount of tracks returned (maximum/default is 50).
+      # +page+:: The page number you wish to scan to.
       #
       # Sample response:
       #
@@ -1742,6 +2111,12 @@ module Shortwave
       
       # Tune in to a Last.fm radio station.
       #
+      # <b>Parameters</b>
+      # +station+:: A lastfm radio URL
+      #
+      # <b>Options</b>
+      # +lang+:: An ISO language code to determine the language to return the station name in, expressed as an ISO 639 alpha-2 code.
+      #
       # Sample response:
       #
       # <lfm status="ok">
@@ -1757,6 +2132,10 @@ module Shortwave
       end
       
       # Fetch new radio content periodically in an XSPF format.
+      #
+      # <b>Options</b>
+      # +discovery+:: Whether to request last.fm content with discovery mode switched on.
+      # +rtp+:: Whether the user is scrobbling or not during this radio session (helps content generation)
       #
       # Sample response:
       #
@@ -1821,6 +2200,10 @@ module Shortwave
       
       # Create a web service session for a user. Used for authenticating a user when the password can be inputted by the user. Only suitable for standalone mobile devices. See the authentication how-to for more.
       #
+      # <b>Parameters</b>
+      # +username+:: The last.fm username.
+      # +authToken+:: A 32-byte ASCII hexadecimal MD5 hash of the last.fm username and the user's password hash. i.e. md5(username + md5(password)), where '+' represents a concatenation.
+      #
       # Sample response:
       #
       # <lfm status="ok">
@@ -1835,6 +2218,9 @@ module Shortwave
       end
       
       # Fetch a session key for a user. The third step in the authentication process. See the authentication how-to for more information.
+      #
+      # <b>Parameters</b>
+      # +token+:: A 32-character ASCII hexadecimal MD5 hash returned by step 1 of the authentication process (following the granting of permissions to the application by the user)
       #
       # Sample response:
       #
@@ -1855,6 +2241,13 @@ module Shortwave
       
       # Share an event with one or more Last.fm users or other friends.
       #
+      # <b>Parameters</b>
+      # +event+:: An event ID
+      # +recipient+:: Email Address | Last.fm Username - A comma delimited list of email addresses or Last.fm usernames. Maximum is 10.
+      #
+      # <b>Options</b>
+      # +message+:: An optional message to send with the recommendation. If not supplied a default message will be used.
+      #
       # Sample response:
       #
       # <lfm status="ok">
@@ -1864,6 +2257,9 @@ module Shortwave
       end
       
       # Get a list of attendees for an event.
+      #
+      # <b>Parameters</b>
+      # +event+:: The numeric last.fm event id
       #
       # Sample response:
       #
@@ -1884,6 +2280,10 @@ module Shortwave
       
       # Shout in this event's shoutbox
       #
+      # <b>Parameters</b>
+      # +event+:: The id of the event to shout on
+      # +message+:: The message to post to the shoutbox
+      #
       # Sample response:
       #
       # <lfm status="ok" />
@@ -1892,6 +2292,10 @@ module Shortwave
       end
       
       # Set a user's attendance status for an event.
+      #
+      # <b>Parameters</b>
+      # +event+:: The numeric last.fm event id
+      # +status+:: The attendance status (0=Attending, 1=Maybe attending, 2=Not attending)
       #
       # Sample response:
       #
@@ -1902,6 +2306,9 @@ module Shortwave
       end
       
       # Get the metadata for an event on Last.fm. Includes attendance and lineup information.
+      #
+      # <b>Parameters</b>
+      # +event+:: The numeric last.fm event id
       #
       # Sample response:
       #
@@ -1945,6 +2352,9 @@ module Shortwave
       
       # Get shouts for this event. Also available as an rss feed.
       #
+      # <b>Parameters</b>
+      # +event+:: The numeric last.fm event id
+      #
       # Sample response:
       #
       # <shouts event="328799" total="5">
@@ -1964,6 +2374,10 @@ module Shortwave
     class Playlist < Remote
       
       # Create a Last.fm playlist on behalf of a user
+      #
+      # <b>Options</b>
+      # +title+:: Title for the playlist
+      # +description+:: Description for the playlist
       #
       # Sample response:
       #
@@ -1989,6 +2403,11 @@ module Shortwave
       
       # Add a track to a Last.fm user's playlist
       #
+      # <b>Parameters</b>
+      # +playlistID+:: The ID of the playlist - this is available in user.getPlaylists.
+      # +track+:: The track name to add to the playlist.
+      # +artist+:: The artist name that corresponds to the track to be added.
+      #
       # Sample response:
       #
       # <lfm status="ok">
@@ -1998,6 +2417,9 @@ module Shortwave
       end
       
       # Fetch XSPF playlists using a lastfm playlist url.
+      #
+      # <b>Parameters</b>
+      # +playlistURL+:: A lastfm protocol playlist url ('lastfm://playlist/...') . See 'playlists' section for more information.
       #
       # Sample response:
       #

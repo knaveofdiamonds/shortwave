@@ -30,7 +30,6 @@ module Shortwave
         data.merge! @auth
       end
     end
-
   end
 end
 

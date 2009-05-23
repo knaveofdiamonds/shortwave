@@ -40,6 +40,25 @@ class RubyMethodTest < TestCase
     assert_equal expected, RubyMethod.new(method).comment
   end
 
+  test "outputs parameter descriptions as a comment" do
+    method = RemoteMethodStub.new("user.getLovedTracks", 
+                                  :loved_tracks,
+                                  "Description",
+                                  nil,
+                                  [ParameterStub.new(:user, "A username", true),
+                                   ParameterStub.new(:optional, "Optional", false),
+                                   ParameterStub.new(:api_key, "api key", true)])
+
+    expected = ["# Description",
+                "#",
+                "# <b>Parameters</b>",
+                "# +user+:: A username",
+                "#",
+                "# <b>Options</b>",
+                "# +optional+:: Optional"]
+    assert_equal expected, RubyMethod.new(method).comment
+  end
+
   test "adds required parameters to the method signature" do
     method = RemoteMethodStub.new("user.getLovedTracks", 
                                   :loved_tracks,

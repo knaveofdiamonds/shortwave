@@ -112,6 +112,18 @@ module Shortwave
         def build_comment
           comment << "# #{@node.description}" if @node.description
 
+          unless @required.empty?
+            comment << "#"
+            comment << "# <b>Parameters</b>"
+            @required.each {|p| comment << "# +#{p.name}+:: #{p.description}" }
+          end
+
+          unless @optional.empty?
+            comment << "#"
+            comment << "# <b>Options</b>"
+            @optional.each {|p| comment << "# +#{p.name}+:: #{p.description}" }
+          end
+
           if @node.sample_response
             comment << "#"
             comment << "# Sample response:"
