@@ -46,4 +46,18 @@ class CompilerTest < Mini::Test::TestCase
 
     assert_equal expected, Compiler.new.compile(method)
   end
+
+  test "api_key parameter should not be part of the signature" do
+    method = RemoteMethodStub.new("user.getLovedTracks", 
+                                  :loved_tracks,
+                                  nil,
+                                  nil,
+                                  [ParameterStub.new(:user, "A username", true),
+                                   ParameterStub.new(:api_key, "API key", true)])
+
+    expected = ["def loved_tracks(user)",
+                "end"]
+
+    assert_equal expected, Compiler.new.compile(method)
+  end
 end
