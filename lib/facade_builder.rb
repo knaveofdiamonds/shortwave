@@ -24,6 +24,14 @@ module Shortwave
       String.send(:include, StringExtensions)
 
 
+      def scrape_remote_methods(html)
+        Nokogiri::HTML(html).css("li.package").inject({}) do |hsh, node|
+          hsh[node.text] = node.next.next.css("a").map {|a| a['href'] }
+          hsh
+        end
+      end
+
+
       class RubyClass
         attr_reader :name, :methods
 
