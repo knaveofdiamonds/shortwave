@@ -1,4 +1,5 @@
 require 'nokogiri'
+require 'httparty'
 
 module Shortwave
   module Facade
@@ -23,6 +24,22 @@ module Shortwave
       end
       String.send(:include, StringExtensions)
 
+      class DocumentationRemote
+        include HTTParty
+        base_uri "http://last.fm"
+      end
+
+      def build(uri)
+        raw_methods = scrape_remote_methods( DocumentationRemote.get(uri) )
+        raw_methods.map do |name, method_uris|
+          klass = RubyClass.new(name)
+          method_uris.each do |u|
+            raw = DocumentationRemote.get(u)
+            klass.methods << RubyMethod.new( RemoteMethod.new(raw) )
+          end
+          klass
+        end.sort {|a,b| a.name <=> b.name }
+      end
 
       def scrape_remote_methods(html)
         Nokogiri::HTML(html).css("li.package").inject({}) do |hsh, node|

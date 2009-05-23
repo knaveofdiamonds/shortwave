@@ -19,10 +19,22 @@ class BuildTest < Mini::Test::TestCase
     assert_equal expected, scrape_remote_methods(raw)
   end
 
-  def scrape_remote_methods(html)
-    Nokogiri::HTML(html).css("li.package").inject({}) do |hsh, node|
-      hsh[node.text] = node.next.next.css("a").map {|a| a['href'] }
-      hsh
-    end
+  test "build method follows links and builds RubyClasses" do
+    FakeWeb.register_uri "http://last.fm/api/intro", :string => screen("intro_truncated")
+    FakeWeb.register_uri "http://last.fm/api/show/?service=302", :string => screen("album_addTags")
+    FakeWeb.register_uri "http://last.fm/api/show/?service=258", :string => screen("tasteometer_compare")
+    FakeWeb.register_uri "http://last.fm/api/show/?service=329", :string => screen("user_getLovedTracks")
+    FakeWeb.register_uri "http://last.fm/api/show/?service=396", :string => screen("venue_search")
+
+    result = build("/api/intro")
+    assert_equal 4, result.size
+    assert_equal "Album", result.first.name
+    assert_equal 1, result.first.methods.size
+  end
+
+  private
+
+  def screen(screen)
+    File.read(File.dirname(__FILE__) + "/data/screens/#{screen}.html")
   end
 end
