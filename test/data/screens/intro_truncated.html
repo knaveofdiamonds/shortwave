@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head profile="http://purl.org/uF/2008/03/">
+    <title>Test fixture page for Last.fm</title>      
+  </head>
+
+
+<body class="a-intro">
+            <div id="page" class="                ">
+        <div class="fixed full">
+            
+
+
+    
+
+
+
+
+
+    
+        <div id="header" class="clearit">
+        <div id="headerWrapper">
+                        <h1><a href="/home" id="lastfmLogo">
+                                    <img src="http://cdn.last.fm/flatness/logo.6.png" width="103" height="50" alt="Last.fm" />
+                    <img src="http://cdn.last.fm/flatness/logo_black.3.png" width="103" height="50" style="display: none;" alt="Last.fm" />
+                                <span>Last.fm</span>
+            </a></h1>
+            <ul id="primaryNav" class="clearit">
+                <li id="musicNav">
+                    <a href="/music">Music</a>
+                </li>
+                <li id="videosNav">
+                    <a href="/videos">Videos</a>
+                </li>
+                <li id="listenNav">
+                    <a href="/listen">Radio</a>
+                </li>
+                <li id="eventsNav">
+                    <a href="/events">Events</a>
+                </li>
+                <li id="chartsNav">
+                    <a href="/charts">Charts</a>
+                </li>
+                <li>
+                    <form id="siteSearch" method="get" action="/search">
+                    
+                        <select name="m" id="siteSearchSelect">
+                            <option value="all">Music</option>
+                                                        <option value="event">Event</option>
+                            <option value="tag">Tag</option>
+                                                        <option value="user">User</option>
+                            <option value="group">Group</option>
+                            <option value="label">Label</option>
+                        </select>
+                        <input id="siteSearchBox" placeholder="Search" type="text" autosave="fm.last.searchhistory" results="5" name="q" size="16" />
+                        
+                        <input class="submit" type="submit" value="" title="Go" id="siteSearchSubmit" />
+                    </form>
+                </li>
+            </ul>
+            
+            <div id="idBadger">
+                                    <a href="/user/knaveofdiamonds" id="idBadgerUser" title="Roland Swingler, United Kingdom"><span class="userImage"><img width="16" height="16" alt="" src="http://userserve-ak.last.fm/serve/34s/10636291.jpg" /></span> <span>knaveofdiamonds</span></a><a href="/user/knaveofdiamonds" id="idBadgerDropper" title="Roland Swingler, United Kingdom">▼</a>
+                    <ul id="idBadgerDropDown">
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/user/knaveofdiamonds" title="Roland Swingler, United Kingdom">Profile</a></li>
+                        <li><a href="/home/recs">Recommended</a></li>
+                        <li><a href="/user/knaveofdiamonds/library" title="">Library</a></li>
+                        <li><a href="/user/knaveofdiamonds/events" title="">Events</a></li>
+                        <li><a href="/settings">Settings</a></li>
+                                            </ul>
+                             </div>
+             <div id="headLinks">
+                <p>
+                                                                <a href="/login/logout">Log out</a> | <a href="/inbox">Inbox</a> |
+                                                    <a href="#" title="Switch Colour Style" id="colourToggle">Paint it Black</a> |
+                            <script>
+    $('colourToggle').observe('click', function (e) {
+        e.stop();
+        LFM.Display.colourToggle(e.element(), LFM.String.toRedStr, LFM.String.toBlackStr);
+    });
+                            </script>
+                                                                <a href="/help">Help</a>
+                                        |
+        <img src="http://cdn.last.fm/depth/flags/mini/globe.gif" id="langToggleFlag" alt="Change language" />
+    <a href="/api/intro?change=language" title="Click here to change your language" rel="nofollow" id="headerLangToggle">English</a>
+    
+                </p>
+            </div>
+        </div><!-- #headerWrapper -->
+    </div>
+    
+    <script>
+    LFM.Display.setupHeader();    new LFM.Activityfeed.DeleteListener();
+</script>
+    <!-- Adserving start -->
+
+                                                    <div id="LastAd_Skin" class="LastAd">
+            <div align="center">
+            <script type="text/javascript">
+                                if(typeof writeSkin == 'function') writeSkin();
+                            </script>
+            </div>
+            </div>
+                            <script>
+                    $("LastAd_Skin").hide();
+                </script>
+                        <!-- Adserving end --><div id='content'>
+<div class="fullWidth">
+    <div id="leftcol">
+<h2>API Doc</h2>
+
+<ul class="wspanel">
+    <li><a href="/api/intro">Overview</a></li>
+    <li><a href="/api/authentication">User Authentication</a></li>
+    <li><a href="/api/submissions">Submissions</a></li>
+    <li><a href="/api/radio">Radio API</a></li>
+    <li><a href="/api/playlists">Playlists</a></li>
+    <li><a href="/api/downloads">Downloads</a></li>
+    <li><a href="/api/rest">REST requests</a></li>
+    <li><a href="/api/xmlrpc">XML-RPC requests</a></li>
+</ul>
+
+<h2>API Methods</h2>
+<ul class="wspanel">
+    <li class="package"><b>Album</b></li>
+        <ul>
+                    <li><a href="/api/show/?service=302">album.addTags</a></li>
+                </ul>
+    <li class="package"><b>Tasteometer</b></li>
+        <ul>
+                    <li><a href="/api/show/?service=258">tasteometer.compare</a></li>
+                </ul>
+    <li class="package"><b>User</b></li>
+        <ul>
+                    <li><a href="/api/show/?service=329">user.getLovedTracks</a></li>
+                </ul>
+    <li class="package"><b>Venue</b></li>
+        <ul>
+                    <li><a href="/api/show/?service=396">venue.search</a></li>
+                </ul>
+</ul>
+</div>    <div id="main">
+    <div id="wstitle">
+    <h1 class="header"><a href="/api">Last.fm Web Services</a></h1>
+    <a href="/api/intro">API</a> | <a href="/api/feeds">Feeds</a> | <a href="/api/account">Your API Account</a>
+    </div>         <h2>Overview</h2>
+        <p>
+            The Last.fm API allows you to call <i>methods</i> that respond in <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a> style xml. Individual methods are detailed in the menu on the left.</p>
+            <div class="wsdescription">The API root URL is located at <a href="http://ws.audioscrobbler.com/2.0/">http://ws.audioscrobbler.com/2.0/</a></div>
+            <p>
+                Generally speaking, you will send a <i>method</i> parameter expressed as 'package.method' along with method specific arguments to the root URL. The API supports multiple transport formats but will respond in Last.fm idiom xml by default.
+            </p>
+            <p>
+            Note:
+            <ul class="stations">
+            <li>Please use an identifiable User-Agent header on all requests. Like this you don't risk getting banned and it helps our logging.</li>
+            <li>Use common sense when deciding how many calls to make. For example, if you're making a web application, try not to hit the API on page load. You account may be suspended if your application is continuously making several calls per second. See our <a href="/api/tos">terms of service</a> for more.</li>
+            </ul>
+        </p>
+        <h3>Encoding</h3>
+            Use <a href="http://www.utf-8.com/">UTF-8</a> encoding when sending arguments to API methods.</li>
+        <h3>Request Styles</h3>
+            You can get more information on how to work with <a href="/api/rest">REST requests</a> or <a href="/api/xmlrpc">XML-RPC requests</a> when calling the Last.fm API.
+        <h3>Authentication</h3>
+        The <a href="/api/authentication">authentication protocol</a> allows you to perform actions on user accounts in a manner that is secure for Last.fm users. All write services require authentication.
+        <h3>Submissions</h3>
+        You can use our <a href="/api/submissions">submissions API</a> to submit listening information to Last.fm user profiles (aka 'Scrobbling'). Useful for media players looking to integrate with Last.fm.
+        <h3>Discussion</h3>
+        Join the <a href="http://www.last.fm/group/Last.fm%2520Web%2520Services">Last.fm Web Services</a> group to receive notifications about new Web Services, access to beta API's, provide feedback and discuss development with other developers.
+         </div>
+</div>
+</div>
+
+<div id="LastFooter">
+     
+    <div id="footer_ads" style="display: none;" class="clearit">
+        <div class="footer_ad_wrapper">
+            
+            <!-- Adserving start -->
+
+                                                    <div id="LastAd_Footer1" class="LastAd">
+            <div align="center">
+            <script type="text/javascript">
+                                    if ($("footer_ads")) $("footer_ads").show();
+                                if(typeof writeFooter1 == 'function') writeFooter1();
+                            </script>
+            </div>
+            </div>
+                            <script>
+                    $("LastAd_Footer1").hide();
+                </script>
+                        <!-- Adserving end -->            <!-- Adserving start -->
+
+                                                    <div id="LastAd_Footer2" class="LastAd">
+            <div align="center">
+            <script type="text/javascript">
+                                    if ($("footer_ads")) $("footer_ads").show();
+                                if(typeof writeFooter2 == 'function') writeFooter2();
+                            </script>
+            </div>
+            </div>
+                            <script>
+                    $("LastAd_Footer2").hide();
+                </script>
+                        <!-- Adserving end -->            <!-- Adserving start -->
+
+                                                    <div id="LastAd_Footer3" class="LastAd">
+            <div align="center">
+            <script type="text/javascript">
+                                    if ($("footer_ads")) $("footer_ads").show();
+                                if(typeof writeFooter3 == 'function') writeFooter3();
+                            </script>
+            </div>
+            </div>
+                            <script>
+                    $("LastAd_Footer3").hide();
+                </script>
+                        <!-- Adserving end -->            <!-- Adserving start -->
+
+                                                    <div id="LastAd_Footer4" class="LastAd last">
+            <div align="center">
+            <script type="text/javascript">
+                                    if ($("footer_ads")) $("footer_ads").show();
+                                if(typeof writeFooter4 == 'function') writeFooter4();
+                            </script>
+            </div>
+            </div>
+                            <script>
+                    $("LastAd_Footer4").hide();
+                </script>
+                        <!-- Adserving end -->            
+        </div><!-- .footer_ad_wrapper -->
+    </div><!-- #footer_ads --> 
+        
+    <ul id="footerStuff" class="clearit">
+        <li></li>
+
+        <li><p id="uploadYourMusic">
+            <strong>Do you make music? Upload it!</strong><br /><a href="/uploadmusic?accountType=artist">Artists</a> or <a href="/uploadmusic?accountType=label">Labels</a>
+        </p></li>
+    </ul><!-- #footerStuff -->
+
+    <div id="footer_content">
+        <ul id="footerLinks" class="clearit">
+            <li class="first">
+                <dl>
+                    <dt>Learn About Us</dt>
+                    <dd><a href="/about/contact">Contact</a></dd>
+                    <dd><a href="/about">About Us</a></dd>
+                    <dd><a href="/about/team">Team</a></dd>
+                    <dd><a href="/about/jobs">Jobs</a></dd>
+                    <dd><a href="/resources">Media Kit</a></dd>
+                    <dd><a href="/advertise">Advertise</a></dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>Get Help</dt>
+                    <dd><a href="/help/faq">FAQ</a></dd>
+                    <dd><a href="/forum/21713">Website Support</a></dd>
+                    <dd><a href="/forum/34905">Scrobbler Support</a></dd>
+                    <dd><a href="/group/Last.fm+for+iPhone+and+iPod+Touch">iPhone Support</a></dd>
+                </dl>
+            </li>
+        
+            <li>
+                <dl>
+                    <dt>Join In</dt>
+                                        <dd><a href="/users">Find People</a></dd>
+                    <dd><a href="/users/groups">Find Groups</a></dd>
+                    <dd><a href="/forum">Forums</a></dd>
+                    <dd><a href="/help/guidelines">Community Guidelines</a></dd>
+                    <dd><a href="/about/moderators">Moderators</a></dd>
+                    <dd><a href="/promotions">Contests &amp; Promotions</a></dd>
+                </dl>
+            </li>
+            <li class="last">
+                <dl>
+                    <dt>Do More</dt>
+                    <dd><a href="/download">Last.fm Scrobbler</a></dd>
+                    <dd><a href="/download#content_ipod">iPod Scrobbler</a></dd>
+                    <dd><a href="/download#content_iphone">iPhone App</a></dd>
+                    <dd><a href="http://build.last.fm">More Apps</a></dd>
+                    <dd><a href="/music/+free-music-downloads">Free Music Downloads</a></dd>
+                    <dd><a href="/hardware">Hardware</a></dd>
+                    <dd><a href="/widgets">Widgets</a></dd>                    <dd><a href="/tools/charts">Chart Images</a></dd>
+                    <dd><a href="/subscribe">Subscribe</a></dd>
+                    <dd><a href="/api">API</a></dd>
+                </dl>
+            </li>
+        </ul><!-- #footerLinks -->
+        
+        <div id="justCantGetEnough" class="clearit">
+            <blockquote>“Pimp my Last.fm”</blockquote>
+            <p>
+                <strong>More Last.fm Sites:</strong>
+                <a href="http://blog.last.fm/">Blog</a>
+                | <a href="http://musicmanager.last.fm">Music Manager</a>
+                | <a href="http://build.last.fm">Build</a>
+                | <a href="http://playground.last.fm">Playground</a>
+                                    | <a href="http://www.last.fm/bestof/2008">Best of 2008</a>
+                            </p>
+        </div>
+        
+        <div id="legalities">
+                            <div id="cbsi_f">
+<form>
+<script language="javascript">
+document.write("<div><label class=\"rb_visit_txt\" for=\"cbsi_footer_menu\">Visit other Sites</label><select name=\"cbsi_footer_menu\" id=\"cbsi_footer_menu\" class=\"rb_visit_sel\"><option value=\"\">Select Site</option><option value=\"http://www.bnet.com\">BNET</option><option value=\"http://www.cbscares.com\">CBS Cares</option><option value=\"http://www.cbssports.com/cbscollegesports/\">CBS College Sports</option><option value=\"http://www.cbsradio.com/streaming/\">CBS Radio</option><option value=\"http://www.cbs.com\">CBS.com</option><option value=\"http://www.cbsnews.com\">CBSNews.com</option><option value=\"http://www.cbssports.com\">CBSSports.com</option><option value=\"http://www.chow.com\">CHOW</option><option value=\"http://www.cnet.com\">CNET</option><option value=\"http://www.cnetcontentsolutions.com\">CNET Content Solutions</option><option value=\"http://www.gamespot.com\">GameSpot</option><option value=\"http://www.cnetnetworks.com/advertise/media-kit/international.html?tag=ft\">International</option><option value=\"http://www.last.fm\">Last.fm</option><option value=\"http://www.maxpreps.com\">MaxPreps</option><option value=\"http://www.metacritic.com\">Metacritic.com</option><option value=\"http://moneywatch.bnet.com\">Moneywatch</option><option value=\"http://www.mp3.com\">MP3.com</option><option value=\"http://www.mysimon.com\">mySimon</option><option value=\"http://www.ncaa.com\">NCAA</option><option value=\"http://www.search.com\">Search.com</option><option value=\"http://www.shopper.com\">Shopper.com</option><option value=\"http://www.sho.com\">Showtime</option><option value=\"http://www.techrepublic.com\">TechRepublic</option><option value=\"http://www.theinsider.com\">The Insider</option><option value=\"http://www.tv.com\">TV.com</option><option value=\"http://www.urbanbaby.com\">UrbanBaby.com</option><option value=\"http://www.zdnet.com\">ZDNet</option></select><input type=\"button\" class=\"rb_visit_go\" value=\"Go\" onClick=\"window.location=document.getElementById('cbsi_footer_menu').options[document.getElementById('cbsi_footer_menu').selectedIndex].value;\" /></div>");
+</script>
+</form>
+  <noscript>
+	<a href="http://www.bnet.com">BNET</a>  | <a href="http://www.cbscares.com">CBS Cares</a>  | <a href="http://www.cbssports.com/cbscollegesports/">CBS College Sports</a>  | <a href="http://www.cbsradio.com/streaming/">CBS Radio</a>  | <a href="http://www.cbs.com">CBS.com</a>  | <a href="http://www.cbsnews.com">CBSNews.com</a>  | <a href="http://www.cbssports.com">CBSSports.com</a>  | <a href="http://www.chow.com">CHOW</a>  | <a href="http://www.cnet.com">CNET</a>  | <a href="http://www.cnetcontentsolutions.com">CNET Content Solutions</a>  | <a href="http://www.gamespot.com">GameSpot</a>  | <a href="http://www.cnetnetworks.com/advertise/media-kit/international.html?tag=ft">International</a>  | <a href="http://www.last.fm">Last.fm</a>  | <a href="http://www.maxpreps.com">MaxPreps</a>  | <a href="http://www.metacritic.com">Metacritic.com</a>  | <a href="http://moneywatch.bnet.com">Moneywatch</a>  | <a href="http://www.mp3.com">MP3.com</a>  | <a href="http://www.mysimon.com">mySimon</a>  | <a href="http://www.ncaa.com">NCAA</a>  | <a href="http://www.search.com">Search.com</a>  | <a href="http://www.shopper.com">Shopper.com</a>  | <a href="http://www.sho.com">Showtime</a>  | <a href="http://www.techrepublic.com">TechRepublic</a>  | <a href="http://www.theinsider.com">The Insider</a>  | <a href="http://www.tv.com">TV.com</a>  | <a href="http://www.urbanbaby.com">UrbanBaby.com</a>  | <a href="http://www.zdnet.com">ZDNet</a> 
+  </noscript>
+<p id="cbsi_f_pop">
+Popular on CBS sites: <a href='http://www.cnet.com/apple-iphone.html'>iPhone 3G</a> | <a href='http://fantasynews.cbssports.com/fantasyfootball'>Fantasy Football</a> | <a href='http://moneywatch.bnet.com'>Moneywatch</a> | <a href='http://download.cnet.com/windows/antivirus-software/'>Antivirus Software</a> | <a href='http://www.chow.com/recipes'>Recipes</a> | <a href='http://www.gamespot.com/pc/strategy/spore/index.html'>Spore</a><!-- cbth:100 -->
+</p>
+</div>                <p id="copy">
+                    &copy; 2009 Last.fm Ltd. All rights reserved. | 
+                    <a href="/legal/terms" target="_blank">Terms of Use</a> 
+                    and <a href="/legal/privacy" target="_blank">Privacy Policy</a> | <span class="date">Updated November 21, 2008</span><br />
+                        
+                                    </p>
+        </div><!-- #legalities -->
+        
+                    </div>
+</div><!-- #LastFooter -->
+
+    <ul id="langSelector" style="display: none; visibility: hidden;" class="nojs">
+            
+        
+                <li><a href="http://www.lastfm.de/api/intro?setlang=de" class="icon"><img src="http://cdn.last.fm/depth/flags/mini/de.gif" /> <span>Deutsch</span></a></li>
+                    <li><a href="http://www.lastfm.es/api/intro?setlang=es" class="icon"><img src="http://cdn.last.fm/depth/flags/mini/es.gif" /> <span>Español</span></a></li>
+                    <li><a href="http://www.lastfm.fr/api/intro?setlang=fr" class="icon"><img src="http://cdn.last.fm/depth/flags/mini/fr.gif" /> <span>Français</span></a></li>
+                    <li><a href="http://www.lastfm.it/api/intro?setlang=it" class="icon"><img src="http://cdn.last.fm/depth/flags/mini/it.gif" /> <span>Italiano</span></a></li>
+                    <li><a href="http://www.lastfm.jp/api/intro?setlang=jp" class="icon"><img src="http://cdn.last.fm/depth/flags/mini/jp.gif" /> <span>日本語</span></a></li>
+                    <li><a href="http://www.lastfm.pl/api/intro?setlang=pl" class="icon"><img src="http://cdn.last.fm/depth/flags/mini/pl.gif" /> <span>Polski</span></a></li>
+                    <li><a href="http://www.lastfm.com.br/api/intro?setlang=pt" class="icon"><img src="http://cdn.last.fm/depth/flags/mini/pt.gif" /> <span>Português</span></a></li>
+                    <li><a href="http://www.lastfm.ru/api/intro?setlang=ru" class="icon"><img src="http://cdn.last.fm/depth/flags/mini/ru.gif" /> <span>Руccкий</span></a></li>
+                    <li><a href="http://www.lastfm.se/api/intro?setlang=sv" class="icon"><img src="http://cdn.last.fm/depth/flags/mini/se.gif" /> <span>Svenska</span></a></li>
+                    <li><a href="http://www.lastfm.com.tr/api/intro?setlang=tr" class="icon"><img src="http://cdn.last.fm/depth/flags/mini/tr.gif" /> <span>Türkçe</span></a></li>
+                    <li><a href="http://cn.last.fm/api/intro?setlang=zh" class="icon"><img src="http://cdn.last.fm/depth/flags/mini/zh.gif" /> <span>简体中文</span></a></li>
+        
+</ul>
+
+<script>
+
+    $("langSelector").className = "js";
+    LFM.set("Page", {
+        navDropDown: new LFM.Display.DropDown(
+            "headerLangToggle",
+            "headerLangToggle",
+            "langSelector",
+            {
+                align: "right",
+                onShow: function (dropdown) {
+                    dropdown.ddbody.setStyle({
+                        top: (dropdown.ddbody.getStyle("top").toPixels() + 3) + "px"
+                    });
+                }
+            }
+        )
+    });
+
+</script>
+<div id="multiButtonMenu" style="display: none;">
+    <div>
+        <ul class="lfmDropDownBody">
+            <li class="mAddToLibrary"><a href="#">Add to my Library</a></li>
+            <li class="mAddToFriends"><a href="#">Add to Friends</a></li>
+            
+            <!-- <li class="save"><a href="#">Bookmark</a></li> -->
+            <li class="mSend"><a href="#">Share</a></li>
+            
+            <li class="mLove"><a href="#">Love track</a></li>
+            <li class="mUnlove"><a href="#">Unlove track</a></li>
+            <li class="mBan"><a href="#">Ban track from radio</a></li>
+            <li class="mUnban"><a href="#">Unban track from radio</a></li>
+
+                                    
+            <li class="mAddTags"><a href="#">Add tags</a></li>
+            <li class="mAddToPlaylist"><a href="#">Add to playlist</a></li>
+                        <li class="mMessage"><a href="#">Send a message</a></li>
+                        <li class="mEditDetails"><a href="#">Edit Details</a></li>
+            <li class="mMessageAll"><a href="#">Message All Users</a></li>
+            <li class="mEditPermissions"><a href="#">Edit Permissions</a></li>
+            <li class="mAbdicate"><a href="#">Abdicate</a></li>
+            <li class="mLeave"><a href="#">Leave Group</a></li>
+            
+            <li class="mRemoveFromLibrary"><a href="#">Remove from your Library</a></li>
+            
+            <li class="mLoading"><a href="#">&nbsp;</a></li>
+        </ul>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="http://dw.com.com/js/dw.js"></script>
+<script type="text/javascript">
+    DW.pageParams = {
+        siteid: '190',
+        ptid: '',
+        onid: ''
+    };
+    DW.clear();
+</script>
+<noscript>
+    <img src="http://dw.com.com/clear/c.gif?ts=1243081435&amp;sid=" />
+</noscript>
+
+        
+    <script src="http://surveys.cnet.com/html/surveys/1361.js"></script> 
+
+<script>
+
+    LFM.Button.MultiButton.setup();
+    LFM.Display.setMinHeight();
+
+</script>
+
+</div>
+        </div>
+    </div>
+            </body>
+</html>
