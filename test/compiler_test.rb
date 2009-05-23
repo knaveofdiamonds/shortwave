@@ -4,7 +4,13 @@ require 'facade_builder'
 include Shortwave::Facade::Build
 
 RemoteMethodStub = Struct.new(:remote_name, :name, :description, :sample_response, :parameters)
-ParameterStub    = Struct.new(:name, :description, :required?)
+ParameterStub    = Struct.new(:name, :description, :required)
+
+class ParameterStub
+  def required?
+    required
+  end
+end
 
 class CompilerTest < Mini::Test::TestCase
 
@@ -55,5 +61,16 @@ class CompilerTest < Mini::Test::TestCase
 
       assert_equal "def loved_tracks(user)", Compiler.new.compile(method).first
     end
+  end
+
+  test "optional parameters should be collapsed to an options hash" do
+    method = RemoteMethodStub.new("user.getLovedTracks", 
+                                  :loved_tracks,
+                                  nil,
+                                  nil,
+                                  [ParameterStub.new(:user, "A username", true),
+                                   ParameterStub.new(:number, "optional", false)])
+
+    assert_equal "def loved_tracks(user, options={})", Compiler.new.compile(method).first
   end
 end
