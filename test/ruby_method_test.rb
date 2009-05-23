@@ -12,7 +12,7 @@ class ParameterStub
   end
 end
 
-class RubyMethodTest < Mini::Test::TestCase
+class RubyMethodTest < TestCase
 
   test "outputs a simple method signature with no arguments" do
     method = RemoteMethodStub.new("user.getLovedTracks", :loved_tracks)

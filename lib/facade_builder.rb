@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'httparty'
+require 'yaml'
 
 module Shortwave
   module Facade
@@ -9,7 +10,7 @@ module Shortwave
       SAMPLE_CSS      = "#sample pre"
       DESCRIPTION_CSS = ".wsdescription"
       METHOD_TYPE_CSS = "#wsdescriptor"
-      REMOTE_CLASS    = "li.package ~ ul"
+      REMOTE_CLASS    = "li.package"
 
       COMBINED_PARAMS = /^(.+)\[(.+)\]$/
       PARAMETER_TEXT  = /\s*\(([^\)]+)\)\s*:\s*(.*)/
@@ -32,6 +33,18 @@ module Shortwave
         ERB.new( File.read(File.dirname(__FILE__) + "/facade_template.erb") ).result(binding)
       end
 
+      class FacadeBuilder
+        def remote_method_definitions(location)
+          return @method_definitions if @method_definitions
+          if File.exists?( location )
+            @method_definitions = YAML.load(File.read(location))
+          else
+            response = Build::DocumentationRemote.scrape_remote_method_index
+            File.open(location, "w") {|fh| fh.write(response.to_yaml) }
+            @method_definitions = response
+          end
+        end
+      end
 
       # A remote facade for the Last FM html documentation
       class DocumentationRemote
@@ -47,10 +60,13 @@ module Shortwave
           end.sort {|a,b| a.name <=> b.name }
         end
 
-        def self.scrape_remote_method_uris
+        def self.scrape_remote_method_index
           html = get("/api/intro")
-          Nokogiri::HTML(html).css(REMOTE_CLASS).css("a").inject({}) do |hsh, node|
-            hsh[node.text] = node["href"]
+          Nokogiri::HTML(html).css(REMOTE_CLASS).inject({}) do |hsh, node|
+            hsh[node.text] = node.next.next.css("a").inject({}) do |h, anchor|
+              h[anchor.text] = anchor["href"]
+              h
+            end
             hsh
           end
         end

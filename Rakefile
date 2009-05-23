@@ -4,12 +4,18 @@ require 'rake'
 
 begin
   require "lib/facade_builder"
+  require "yaml"
+
   include Shortwave::Facade
   namespace :facade do
     directory "tmp/lastfm"
 
+    task :scrape_method_index => "tmp/lastfm" do
+      REMOTE_METHODS = FacadeBuilder.new.remote_method_definitions("tmp/lastfm/intro.yml")
+    end
+
     desc "Scrape method documentation from last.fm"
-    task :scrape => "tmp/lastfm" do
+    task :scrape => :scrape_method_index do
       remote_methods = Build::DocumentationRemote.scrape_remote_method_uris
       remote_methods.each do |name, uri|
         if ! File.exists?("tmp/lastfm/#{name}.html")

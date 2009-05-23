@@ -1,14 +1,14 @@
 require 'rubygems'
-require 'mini/test'
+require 'test/unit'
 require 'mocha'
 
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'shortwave'
 
-class Mini::Test::TestCase
-  include Mocha::Standalone
+TestCase = Test::Unit::TestCase
 
+class TestCase
   def self.test(name, &block)
     test_name = "test_#{name.gsub(/\s+/, '_')}".to_sym
     defined = instance_method(test_name) rescue false
@@ -23,5 +23,3 @@ class Mini::Test::TestCase
     end
   end
 end
-
-Mini::Test.autorun

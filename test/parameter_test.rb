@@ -1,7 +1,7 @@
 require 'helper'
 require 'facade_builder'
 
-class ParameterTest < Mini::Test::TestCase
+class ParameterTest < TestCase
 
   test "can be parsed from an html screen" do
     assert_equal 2, make_parameters("user_getLovedTracks").size

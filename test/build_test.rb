@@ -6,18 +6,19 @@ require 'fakeweb'
 
 include Shortwave::Facade::Build
 
-class BuildTest < Mini::Test::TestCase
+class BuildTest < TestCase
 
   test "finds all remote methods from the intro page" do
     FakeWeb.register_uri :get, "http://last.fm/api/intro", :string => screen("intro_truncated")
 
     expected = {
-      "album.addTags" => "/api/show/?service=302",
-      "tasteometer.compare" => "/api/show/?service=258",
-      "user.getLovedTracks" => "/api/show/?service=329",
-      "venue.search" => "/api/show/?service=396"}
+      "Album" => {"album.addTags" => "/api/show/?service=302"},
+      "Tasteometer" => {"tasteometer.compare" => "/api/show/?service=258"},
+      "User" => {"user.getLovedTracks" => "/api/show/?service=329"},
+      "Venue" => {"venue.search" => "/api/show/?service=396"}
+    }
 
-    assert_equal expected, DocumentationRemote.scrape_remote_method_uris
+    assert_equal expected, DocumentationRemote.scrape_remote_method_index
   end
 
 #   test "build method follows links and builds RubyClasses" do
