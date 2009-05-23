@@ -2,7 +2,7 @@ require 'rubygems'
 require 'rake'
 
 begin
-  require "lib/facade_builder"
+  require "lib/facade/build/facade_builder"
 
   include Shortwave::Facade::Build
   namespace :facade do
@@ -41,8 +41,8 @@ begin
     desc "Scrapes the HTML documentation from the Last.FM site and uses it to construct ruby facade objects"
     task :build => [:parse, :patch] do
       klasses = KLASSES
-      File.open("lib/lastfm.rb", "w") do |fh|
-        fh.write ERB.new(File.read("lib/facade_template.erb")).result(binding)
+      File.open("lib/facade/lastfm.rb", "w") do |fh|
+        fh.write ERB.new(File.read("lib/facade/build/facade_template.erb")).result(binding)
       end
     end
   end

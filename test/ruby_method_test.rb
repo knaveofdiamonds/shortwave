@@ -1,5 +1,5 @@
 require 'helper'
-require 'facade_builder'
+require 'facade/build/facade_builder'
 
 include Shortwave::Facade::Build
 
