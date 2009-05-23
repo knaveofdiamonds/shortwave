@@ -26,34 +26,7 @@ module Shortwave
 
       class Compiler
         def compile(node)
-          method = RubyMethod.new
-          method.comment << "# #{node.description}" if node.description
-
-          if node.sample_response
-            method.comment << "#"
-            method.comment << "# Sample response:"
-            method.comment << "#"
-            node.sample_response.split("\n").each {|line| method.comment << "# #{line}" }
-          end
-
-          required, optional = (node.parameters || []).partition {|p| p.required? }
-          required.reject! {|p| [:api_key, :api_sig, :sk].include?(p.name) }
-
-          signature = "#{node.name}"
-          unless node.parameters.nil? || node.parameters.empty?
-            params = required.map {|p| p.name }
-            params << "options={}" unless optional.empty?
-            signature << "(" << params.join(", ") << ")"
-          end
-
-          method.signature = signature
-          get_line = "data = {:method => \"#{node.remote_name}\""
-          required.each {|p| get_line << ", :#{p.name} => #{p.name}" }
-          get_line << "}.merge(@auth)"
-          get_line << ".merge(options)" unless optional.empty?
-          method.body << get_line
-          method.body << "#{node.http_method} \"\", data"
-          method
+          RubyMethod.new.build(node)
         end
       end
 
@@ -65,6 +38,48 @@ module Shortwave
         def initialize
           @comment = []
           @body = []
+        end
+
+        def build(node)
+          @node = node
+          @required, @optional = (@node.parameters || []).partition {|p| p.required? }
+          @required.reject! {|p| [:api_key, :api_sig, :sk].include?(p.name) }
+
+          build_comment
+          build_signature
+          build_body
+          self
+        end
+
+        private
+
+        def build_body
+          get_line = "data = {:method => \"#{@node.remote_name}\""
+          @required.each {|p| get_line << ", :#{p.name} => #{p.name}" }
+          get_line << "}.merge(@auth)"
+          get_line << ".merge(options)" unless @optional.empty?
+          @body << get_line
+          @body << "#{@node.http_method} \"\", data"
+        end
+
+        def build_signature
+          @signature = "#{@node.name}"
+          unless @node.parameters.nil? || @node.parameters.empty?
+            params = @required.map {|p| p.name }
+            params << "options={}" unless @optional.empty?
+            @signature << "(" << params.join(", ") << ")"
+          end
+        end
+
+        def build_comment
+          comment << "# #{@node.description}" if @node.description
+
+          if @node.sample_response
+            comment << "#"
+            comment << "# Sample response:"
+            comment << "#"
+            @node.sample_response.split("\n").each {|line| comment << "# #{line}" }
+          end
         end
       end
 
