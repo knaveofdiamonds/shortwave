@@ -3,7 +3,7 @@ require 'facade_builder'
 
 include Shortwave::Facade::Build
 
-RemoteMethodStub = Struct.new(:remote_name, :name, :description, :sample_response, :parameters)
+RemoteMethodStub = Struct.new(:remote_name, :name, :description, :sample_response, :parameters, :http_method)
 ParameterStub    = Struct.new(:name, :description, :required)
 
 class ParameterStub
@@ -79,7 +79,8 @@ class CompilerTest < Mini::Test::TestCase
                                   :loved_tracks,
                                   nil,
                                   nil,
-                                  [ParameterStub.new(:user, "A username", true)])
+                                  [ParameterStub.new(:user, "A username", true)],
+                                  :get)
     
     expected = ["data = {:method => \"user.getLovedTracks\", :user => user}.merge(@auth)",
                 "get \"\", data"]
@@ -93,10 +94,23 @@ class CompilerTest < Mini::Test::TestCase
                                   nil,
                                   nil,
                                   [ParameterStub.new(:user, "A username", true),
-                                   ParameterStub.new(:number, "optional", false)])
+                                   ParameterStub.new(:number, "optional", false)],
+                                  :get)
 
     expected = ["data = {:method => \"user.getLovedTracks\", :user => user}.merge(@auth).merge(options)",
                 "get \"\", data"]
     assert_equal expected, Compiler.new.compile(method).body
+  end
+
+  test "write methods are sent via POST" do
+    method = RemoteMethodStub.new("user.getLovedTracks", 
+                                  :loved_tracks,
+                                  nil,
+                                  nil,
+                                  [ParameterStub.new(:user, "A username", true),
+                                   ParameterStub.new(:number, "optional", false)],
+                                  :post)
+
+    assert_equal "post \"\", data", Compiler.new.compile(method).body.last
   end
 end

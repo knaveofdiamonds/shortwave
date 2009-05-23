@@ -52,7 +52,7 @@ module Shortwave
           get_line << "}.merge(@auth)"
           get_line << ".merge(options)" unless optional.empty?
           method.body << get_line
-          method.body << "get \"\", data"
+          method.body << "#{node.http_method} \"\", data"
           method
         end
       end
