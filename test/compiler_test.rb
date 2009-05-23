@@ -41,23 +41,19 @@ class CompilerTest < Mini::Test::TestCase
                                   nil,
                                   [ParameterStub.new(:user, "A username", true)])
 
-    expected = ["def loved_tracks(user)",
-                "end"]
-
-    assert_equal expected, Compiler.new.compile(method)
+    assert_equal "def loved_tracks(user)", Compiler.new.compile(method).first
   end
 
-  test "api_key parameter should not be part of the signature" do
-    method = RemoteMethodStub.new("user.getLovedTracks", 
-                                  :loved_tracks,
-                                  nil,
-                                  nil,
-                                  [ParameterStub.new(:user, "A username", true),
-                                   ParameterStub.new(:api_key, "API key", true)])
+  [:api_key, :api_sig, :sk].each do |param|
+    test "#{param} parameter should not be part of the signature" do
+      method = RemoteMethodStub.new("user.getLovedTracks", 
+                                    :loved_tracks,
+                                    nil,
+                                    nil,
+                                    [ParameterStub.new(:user, "A username", true),
+                                     ParameterStub.new(param, "API key", true)])
 
-    expected = ["def loved_tracks(user)",
-                "end"]
-
-    assert_equal expected, Compiler.new.compile(method)
+      assert_equal "def loved_tracks(user)", Compiler.new.compile(method).first
+    end
   end
 end

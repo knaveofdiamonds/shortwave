@@ -41,7 +41,7 @@ module Shortwave
 
           signature = "def #{node.name}"
           unless node.parameters.nil? || node.parameters.empty?
-            params = node.parameters.reject {|p| p.name == :api_key }.map {|p| p.name }
+            params = node.parameters.reject {|p| [:api_key, :api_sig, :sk].include?(p.name) }.map {|p| p.name }
             signature << "(" << params.join(", ") << ")"
           end
 
