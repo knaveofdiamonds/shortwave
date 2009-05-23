@@ -1,6 +1,30 @@
 require 'rubygems'
 require 'rake'
 
+
+begin
+  require "lib/facade_builder"
+  include Shortwave::Facade
+  namespace :facade do
+    directory "tmp/lastfm"
+
+    desc "Scrape method documentation from last.fm"
+    task :scrape => "tmp/lastfm" do
+      remote_methods = Build::DocumentationRemote.scrape_remote_method_uris
+      remote_methods.each do |name, uri|
+        if ! File.exists?("tmp/lastfm/#{name}.html")
+          response = Build::DocumentationRemote.get(uri)
+          File.open("tmp/lastfm/#{name}.html", "w") {|fh| fh.write(response) }
+          warn "Got HTML documentation for #{name}"
+        end
+      end
+    end
+  end
+rescue LoadError
+  warn "Cannot build a fresh Facade::Remote - missing gems (nokogiri)?"
+end
+
+
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
