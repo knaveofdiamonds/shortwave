@@ -25,10 +25,11 @@ module Shortwave
 
 
       class RubyClass
-        attr_reader :name
+        attr_reader :name, :methods
 
         def initialize(name)
           @name = name
+          @methods = []
         end
       end
 
