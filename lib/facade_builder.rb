@@ -25,32 +25,39 @@ module Shortwave
 
 
       class Compiler
-        def initialize
-          @lines = []
-        end
-
         def compile(node)
-          @lines << "# #{node.description}" if node.description
+          method = RubyMethod.new
+          method.comment << "# #{node.description}" if node.description
 
           if node.sample_response
-            @lines << "#"
-            @lines << "# Sample response:"
-            @lines << "#"
-            node.sample_response.split("\n").each {|line| @lines << "# #{line}" }
+            method.comment << "#"
+            method.comment << "# Sample response:"
+            method.comment << "#"
+            node.sample_response.split("\n").each {|line| method.comment << "# #{line}" }
           end
 
-          signature = "def #{node.name}"
+          signature = "#{node.name}"
           unless node.parameters.nil? || node.parameters.empty?
             params = node.parameters.reject {|p| [:api_key, :api_sig, :sk].include?(p.name) || ! p.required? }.map {|p| p.name }
             params << "options={}" if node.parameters.any? {|p| ! p.required? }
             signature << "(" << params.join(", ") << ")"
           end
 
-          @lines << signature
-          @lines << "end"
-          @lines
+          method.signature = signature
+          method
         end
       end
+
+
+      class RubyMethod
+        attr_accessor :signature
+        attr_reader   :comment
+
+        def initialize
+          @comment = []
+        end
+      end
+
 
       # A parameter used in a Last FM api method call.
       class Parameter

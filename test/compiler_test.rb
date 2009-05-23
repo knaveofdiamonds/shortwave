@@ -14,14 +14,14 @@ end
 
 class CompilerTest < Mini::Test::TestCase
 
-  test "outputs a simple method with no arguments" do
-    method = RemoteMethodStub.new("user.getLovedTracks", :loved_tracks, "Returns a user's loved tracks")
+  test "outputs a simple method signature with no arguments" do
+    method = RemoteMethodStub.new("user.getLovedTracks", :loved_tracks)
+    assert_equal "loved_tracks", Compiler.new.compile(method).signature
+  end
 
-    expected = ["# Returns a user's loved tracks",
-                "def loved_tracks",
-                "end"]
-
-    assert_equal expected, Compiler.new.compile(method)
+  test "outputs the description as first line of comment" do
+    method = RemoteMethodStub.new("user.getLovedTracks", :loved_tracks, "A user's loved tracks")
+    assert_equal "# A user's loved tracks", Compiler.new.compile(method).comment.first
   end
 
   test "outputs the sample response as a comment, if present" do
@@ -37,7 +37,7 @@ class CompilerTest < Mini::Test::TestCase
                 "# <lfm status=\"ok\">",
                 "# </lfm>"]
 
-    assert_equal expected, Compiler.new.compile(method)[0..5]
+    assert_equal expected, Compiler.new.compile(method).comment
   end
 
   test "adds required parameters to the method signature" do
@@ -47,7 +47,7 @@ class CompilerTest < Mini::Test::TestCase
                                   nil,
                                   [ParameterStub.new(:user, "A username", true)])
 
-    assert_equal "def loved_tracks(user)", Compiler.new.compile(method).first
+    assert_equal "loved_tracks(user)", Compiler.new.compile(method).signature
   end
 
   [:api_key, :api_sig, :sk].each do |param|
@@ -59,7 +59,7 @@ class CompilerTest < Mini::Test::TestCase
                                     [ParameterStub.new(:user, "A username", true),
                                      ParameterStub.new(param, "API key", true)])
 
-      assert_equal "def loved_tracks(user)", Compiler.new.compile(method).first
+      assert_equal "loved_tracks(user)", Compiler.new.compile(method).signature
     end
   end
 
@@ -71,6 +71,6 @@ class CompilerTest < Mini::Test::TestCase
                                   [ParameterStub.new(:user, "A username", true),
                                    ParameterStub.new(:number, "optional", false)])
 
-    assert_equal "def loved_tracks(user, options={})", Compiler.new.compile(method).first
+    assert_equal "loved_tracks(user, options={})", Compiler.new.compile(method).signature
   end
 end
