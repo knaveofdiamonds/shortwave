@@ -24,6 +24,14 @@ module Shortwave
       String.send(:include, StringExtensions)
 
 
+      class RubyClass
+        attr_reader :name
+
+        def initialize(name)
+          @name = name
+        end
+      end
+
       class RubyMethod
         attr_accessor :signature
         attr_reader   :comment, :body
