@@ -8,77 +8,38 @@ module Shortwave
       
       # Love a track for a user profile. This needs to be supplemented with a scrobbling submission containing the 'love' rating (see the audioscrobbler API).
       #
-      # <b>Parameters</b>
       # +track+:: A track name (utf8 encoded)
       # +artist+:: An artist name (utf8 encoded)
-      #
-      # Sample response:
-      #
-      # <lfm status="ok">
-      # </lfm>
       def love(track, artist)
         post({:method => "track.love", :track => track, :artist => artist})
       end
       
       # Remove a user's tag from a track.
       #
-      # <b>Parameters</b>
       # +artist+:: The artist name in question
       # +track+:: The track name in question
       # +tags+:: A single user tag to remove from this track.
-      #
-      # Sample response:
-      #
-      # <lfm status="ok">
-      # </lfm>
       def remove_tag(artist, track, tags)
         post({:method => "track.removeTag", :artist => artist, :track => track, :tags => tags})
       end
       
       # Search for a track by track name. Returns track matches sorted by relevance.
       #
-      # <b>Parameters</b>
       # +track+:: The track name in question.
       #
       # <b>Options</b>
       # +limit+:: Limit the number of tracks returned at one time. Default (maximum) is 30.
       # +page+:: Scan into the results by specifying a page number. Defaults to first page.
       # +artist+:: Narrow your search by specifying an artist.
-      #
-      # Sample response:
-      #
-      # <results for="Believe" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">
-      #   <opensearch:Query role="request" searchTerms="Believe" startPage="1"/>
-      #   <opensearch:totalResults>25329</opensearch:totalResults>
-      #   <opensearch:startIndex>0</opensearch:startIndex>
-      #   <opensearch:itemsPerPage>20</opensearch:itemsPerPage>
-      #   <trackmatches>
-      #     <track>
-      #       <name>Believe</name>
-      #       <artist>Disturbed</artist>
-      #       <url>http://www.last.fm/music/Disturbed/_/Believe</url>
-      #       <streamable fulltrack="0">1</streamable>
-      #       <listeners>66068</listeners>
-      #       <image size="small">...</image>
-      #     </track>
-      #     ...
-      #   </trackmatches>
-      # </results>
       def search(track, options={})
         get({:method => "track.search", :track => track}.merge(options))
       end
       
       # Tag an album using a list of user supplied tags.
       #
-      # <b>Parameters</b>
       # +artist+:: The artist name in question
       # +track+:: The track name in question
       # +tags+:: A comma delimited list of user supplied tags to apply to this track. Accepts a maximum of 10 tags.
-      #
-      # Sample response:
-      #
-      # <lfm status="ok">
-      # </lfm>
       def add_tags(artist, track, tags)
         post({:method => "track.addTags", :artist => artist, :track => track, :tags => tags})
       end
@@ -89,64 +50,14 @@ module Shortwave
       # +artist+:: The artist name in question
       # +track+:: The track name in question
       # +mbid+:: The musicbrainz id for the track
-      #
-      # Sample response:
-      #
-      # <track>
-      #   <id>1019817</id>
-      #   <name>Believe</name>
-      #   <mbid/>
-      #   <url>http://www.last.fm/music/Cher/_/Believe</url>
-      #   <duration>240000</duration>
-      #   <streamable fulltrack="1">1</streamable>
-      #   <listeners>69572</listeners>
-      #   <playcount>281445</playcount>
-      #   <artist>
-      #     <name>Cher</name>
-      #     <mbid>bfcc6d75-a6a5-4bc6-8282-47aec8531818</mbid>
-      #     <url>http://www.last.fm/music/Cher</url>
-      #   </artist>
-      #   <album position="1">
-      #     <artist>Cher</artist>
-      #     <title>Believe</title>
-      #     <mbid>61bf0388-b8a9-48f4-81d1-7eb02706dfb0</mbid>
-      #     <url>http://www.last.fm/music/Cher/Believe</url>
-      #     <image size="small">http://userserve-ak.last.fm/serve/34/8674593.jpg</image>
-      #     <image size="medium">http://userserve-ak.last.fm/serve/64/8674593.jpg</image>
-      #     <image size="large">http://userserve-ak.last.fm/serve/126/8674593.jpg</image>
-      #   </album>
-      #   <toptags>
-      #     <tag>
-      #       <name>pop</name>
-      #       <url>http://www.last.fm/tag/pop</url>
-      #     </tag>
-      #     ...
-      #   </toptags>
-      #   <wiki>
-      #     <published>Sun, 27 Jul 2008 15:44:58 +0000</published>
-      #     <summary>...</summary>
-      #     <content>...</content>
-      #   </wiki>
-      # </track>
       def info(options={})
         get({:method => "track.getInfo"}.merge(options))
       end
       
       # Get the tags applied by an individual user to a track on Last.fm.
       #
-      # <b>Parameters</b>
       # +artist+:: The artist name in question
       # +track+:: The track name in question
-      #
-      # Sample response:
-      #
-      # <tags artist="Sally Shapiro" track="I'll be by your side">
-      #   <tag>
-      #     <name>swedish</name>
-      #     <url>http://www.last.fm/tag/swedish</url>
-      #   </tag>
-      #   ...
-      # </tags>
       def tags(artist, track)
         get({:method => "track.getTags", :artist => artist, :track => track})
       end
@@ -157,34 +68,14 @@ module Shortwave
       # +track+:: The track name in question
       # +artist+:: The artist name in question
       # +mbid+:: The musicbrainz id for the track
-      #
-      # Sample response:
-      #
-      # <topfans artist="Cher" track="Believe">
-      #   <user>
-      #     <name>snevekat</name>
-      #     <url>http://www.last.fm/user/snevekat/</url>
-      #     <image size="small">http://userserve-ak.last.fm/serve/50/1599285.jpg</image>
-      #     <image size="medium">http://userserve-ak.last.fm/serve/85/1599285.jpg</image>
-      #     <image size="large">http://userserve-ak.last.fm/serve/160/1599285.jpg</image>
-      #     <weight>1000000</weight>
-      #   </user>
-      #   ...
-      # </topfans>
       def top_fans(options={})
         get({:method => "track.getTopFans"}.merge(options))
       end
       
       # Ban a track for a given user profile. This needs to be supplemented with a scrobbling submission containing the 'ban' rating (see the audioscrobbler API).
       #
-      # <b>Parameters</b>
       # +track+:: A track name (utf8 encoded)
       # +artist+:: An artist name (utf8 encoded)
-      #
-      # Sample response:
-      #
-      # <lfm status="ok">
-      # </lfm>
       def ban(track, artist)
         post({:method => "track.ban", :track => track, :artist => artist})
       end
@@ -195,22 +86,6 @@ module Shortwave
       # +track+:: The track name in question
       # +artist+:: The artist name in question
       # +mbid+:: The musicbrainz id for the track
-      #
-      # Sample response:
-      #
-      # <toptags artist="Cher" track="Believe">
-      #   <tag>
-      #     <name>pop</name>
-      #     <count>97</count>
-      #     <url>www.last.fm/tag/pop</url>
-      #   </tag>
-      #   <tag>
-      #     <name>dance</name>
-      #     <count>88</count>
-      #     <url>www.last.fm/tag/dance</url>
-      #   </tag>
-      #   ...
-      # </toptags>
       def top_tags(options={})
         get({:method => "track.getTopTags"}.merge(options))
       end
@@ -221,45 +96,18 @@ module Shortwave
       # +track+:: The track name in question
       # +artist+:: The artist name in question
       # +mbid+:: The musicbrainz id for the track
-      #
-      # Sample response:
-      #
-      # <similartracks track="Believe" artist="Cher">
-      #   <track>
-      #     <name>Ray of Light</name>
-      #     <mbid/>
-      #     <match>10.95</match>
-      #     <url>http://www.last.fm/music/Madonna/_/Ray+of+Light</url>
-      #     <streamable fulltrack="0">1</streamable>
-      #     <artist>
-      #       <name>Madonna</name>
-      #       <mbid>79239441-bfd5-4981-a70c-55c3f15c1287</mbid>
-      #       <url>http://www.last.fm/music/Madonna</url>
-      #     </artist>
-      #     <image size="small">http://cdn.last.fm/coverart/50x50/1934.jpg</image>
-      #     <image size="medium">http://cdn.last.fm/coverart/130x130/1934.jpg</image>
-      #     <image size="large">http://cdn.last.fm/coverart/130x130/1934.jpg</image>
-      #   </track>
-      #   ...
-      # </similartracks>
       def similar(options={})
         get({:method => "track.getSimilar"}.merge(options))
       end
       
       # Share a track twith one or more Last.fm users or other friends.
       #
-      # <b>Parameters</b>
       # +artist+:: An artist name.
       # +recipient+:: Email Address | Last.fm Username - A comma delimited list of email addresses or Last.fm usernames. Maximum is 10.
       # +track+:: A track name.
       #
       # <b>Options</b>
       # +message+:: An optional message to send with the recommendation. If not supplied a default message will be used.
-      #
-      # Sample response:
-      #
-      # <lfm status="ok">
-      # </lfm>
       def share(artist, recipient, track, options={})
         post({:method => "track.share", :artist => artist, :recipient => recipient, :track => track}.merge(options))
       end
@@ -270,119 +118,47 @@ module Shortwave
       
       # Get a list of members for this group.
       #
-      # <b>Parameters</b>
       # +group+:: The group name to fetch the members of.
-      #
-      # Sample response:
-      #
-      # <members for="mnml" page="4" perPage="50" totalPages="23">
-      #   <user>
-      #     <name>sonicsson</name>
-      #     <realname>kai</realname>
-      #     <image size="small">...</image>
-      #     <image size="medium">...</image>
-      #     <image size="large">...</image>
-      #     <url>http://www.last.fm/user/sonicsson</url>
-      #   </user>
-      #   <user>
-      #     <name>zorax</name>
-      #     <realname>Long Island , New York</realname>
-      #     <image size="small">...</image>
-      #     <image size="medium">...</image>
-      #     <image size="large">...</image>
-      #     <url>http://www.last.fm/user/zorax</url>
-      #   </user>
-      # </members>
       def members(group)
         get({:method => "group.getMembers", :group => group})
       end
       
       # Get a list of available charts for this group, expressed as date ranges which can be sent to the chart services.
       #
-      # <b>Parameters</b>
       # +group+:: The last.fm group name to fetch the charts list for.
-      #
-      # Sample response:
-      #
-      # <weeklychartlist group="mnml">
-      #   <chart from="1159099200" to="1159704000"/>
-      #   <chart from="1159704000" to="1160308800"/>
-      #   ...
-      # </weeklychartlist>
       def weekly_chart_list(group)
         get({:method => "group.getWeeklyChartList", :group => group})
       end
       
       # Get an album chart for a group, for a given date range. If no date range is supplied, it will return the most recent album chart for this group.
       #
-      # <b>Parameters</b>
       # +user+:: The last.fm group name to fetch the charts of.
       #
       # <b>Options</b>
       # +from+:: The date at which the chart should start from. See Group.getWeeklyChartList for more.
       # +to+:: The date at which the chart should end on. See Group.getWeeklyChartList for more.
-      #
-      # Sample response:
-      #
-      # <weeklyalbumchart group="mnml" from="1212321600" to="1212926400">
-      #   <album rank="1">
-      #     <artist mbid="9ddce51c-2b75-4b3e-ac8c-1db09e7c89c6">Burial</artist>
-      #     <name>Untrue</name>
-      #     <mbid/>
-      #     <playcount>35</playcount>
-      #     <url>http://www.last.fm/music/Burial/Untrue</url>
-      #   </album>
-      #   ...
-      # </weeklyalbumchart>
       def weekly_album_chart(user, options={})
         get({:method => "group.getWeeklyAlbumChart", :user => user}.merge(options))
       end
       
       # Get a track chart for a group, for a given date range. If no date range is supplied, it will return the most recent album chart for this group.
       #
-      # <b>Parameters</b>
       # +group+:: The last.fm group name to fetch the charts of.
       #
       # <b>Options</b>
       # +from+:: The date at which the chart should start from. See Group.getWeeklyChartList for more.
       # +to+:: The date at which the chart should end on. See Group.getWeeklyChartList for more.
-      #
-      # Sample response:
-      #
-      # <weeklytrackchart group="mnml" from="1212321600" to="1212926400">
-      #   <track rank="1">
-      #     <artist mbid="9940c604-2456-4193-a403-ab18420bc1e9">Booka Shade</artist>
-      #     <name>Charlotte</name>
-      #     <mbid/>
-      #     <playcount>18</playcount>
-      #     <url>http://www.last.fm/music/Booka+Shade/_/Charlotte</url>
-      #   </track>
-      #   ...
-      # </weeklytrackchart>
       def weekly_track_chart(group, options={})
         get({:method => "group.getWeeklyTrackChart", :group => group}.merge(options))
       end
       
       # Get an artist chart for a group, for a given date range. If no date range is supplied, it will return the most recent album chart for this group.
       #
-      # <b>Parameters</b>
       # +group+:: The last.fm group name to fetch the charts of.
       #
       # <b>Options</b>
       # +from+:: The date at which the chart should start from. See Group.getWeeklyChartList for more.
       # +to+:: The date at which the chart should end on. See Group.getWeeklyChartList for more.
-      #
-      # Sample response:
-      #
-      # <weeklyartistchart group="mnml" from="1212321600" to="1212926400">
-      #   <artist rank="1">
-      #     <name>Booka Shade</name>
-      #     <mbid>9940c604-2456-4193-a403-ab18420bc1e9</mbid>
-      #     <playcount>74</playcount>
-      #     <url>http://www.last.fm/music/Booka+Shade</url>
-      #   </artist>
-      #   ...
-      # </weeklyartistchart>
       def weekly_artist_chart(group, options={})
         get({:method => "group.getWeeklyArtistChart", :group => group}.merge(options))
       end
@@ -393,194 +169,57 @@ module Shortwave
       
       # Get the last 50 tracks loved by a user.
       #
-      # <b>Parameters</b>
       # +user+:: The user name to fetch the loved tracks for.
-      #
-      # Sample response:
-      #
-      # <lovedtracks user="RJ">
-      #   <track>
-      #     <name>The Glass Prison</name>
-      #     <mbid/>
-      #     <url>www.last.fm/music/Dream+Theater/_/The+Glass+Prison</url>
-      #     <date uts="1216371514">18 Jul 2008, 08:58</date>
-      #     <artist>
-      #       <name>Dream Theater</name>
-      #       <mbid>28503ab7-8bf2-4666-a7bd-2644bfc7cb1d</mbid>
-      #       <url>http://www.last.fm/music/Dream+Theater</url>
-      #     </artist>
-      #     <image size="small">...</image>
-      #     <image size="medium">...</image>
-      #     <image size="large">...</image>
-      #   </track>
-      #   ...
-      # </lovedtracks>
       def loved_tracks(user)
         get({:method => "user.getLovedTracks", :user => user})
       end
       
       # Get a list of a user's neighbours on Last.fm.
       #
-      # <b>Parameters</b>
       # +user+:: The last.fm username to fetch the neighbours of.
       #
       # <b>Options</b>
       # +limit+:: An integer used to limit the number of neighbours returned.
-      #
-      # Sample response:
-      #
-      # <lfm status="ok">
-      # 	<neighbours for="joanofarctan">
-      # 		<user>
-      # 			<name>polaroide</name>
-      # 			<url>http://www.last.fm/user/polaroide/</url>
-      # 			<image>http://userserve-ak.last.fm/serve//1451306.gif</image>
-      # 			<match>100</match>
-      # 		</user>
-      # 		...
-      # 	</neighbours>	
-      # </lfm>
       def neighbours(user, options={})
         get({:method => "user.getNeighbours", :user => user}.merge(options))
       end
       
       # Get a list of the recent tracks listened to by this user. Indicates now playing track if the user is currently listening.
       #
-      # <b>Parameters</b>
       # +user+:: The last.fm username to fetch the recent tracks of.
       #
       # <b>Options</b>
       # +limit+:: An integer used to limit the number of tracks returned.
-      #
-      # Sample response:
-      #
-      # <recenttracks user="RJ">
-      #   <track nowplaying="true">
-      #     <artist mbid="2f9ecbed-27be-40e6-abca-6de49d50299e">Aretha Franklin</artist>
-      #     <name>Sisters Are Doing It For Themselves</name>
-      #     <mbid/>
-      #     <album mbid=""/>
-      #     <url>www.last.fm/music/Aretha+Franklin/_/Sisters+Are+Doing+It+For+Themselves</url>
-      #     <date uts="1213031819">9 Jun 2008, 17:16</date>
-      #     <streamable>1</streamable>
-      #   </track>
-      #   ...
-      # </recenttracks>
       def recent_tracks(user, options={})
         get({:method => "user.getRecentTracks", :user => user}.merge(options))
       end
       
       # Shout on this user's shoutbox
       #
-      # <b>Parameters</b>
       # +user+:: The name of the user to shout on.
       # +message+:: The message to post to the shoutbox.
-      #
-      # Sample response:
-      #
-      # <lfm status="ok" />
       def shout(user, message)
         post({:method => "user.shout", :user => user, :message => message})
       end
       
       # Get a list of upcoming events that this user is attending. Easily integratable into calendars, using the ical standard (see 'more formats' section below).
       #
-      # <b>Parameters</b>
       # +user+:: The user to fetch the events for.
-      #
-      # Sample response:
-      #
-      # <events user="mokele" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" total="23">
-      # <event>
-      #   <id>544957</id>
-      #   <title>Cult of Luna</title>
-      #   <artists>
-      #     <artist>Cult of Luna</artist>
-      #     <artist>The Ocean</artist>
-      #     <artist>Devil Sold His Soul</artist>
-      #     <headliner>Cult of Luna</headliner>
-      #   </artists>
-      #   <venue>
-      #     <name>Scala</name>
-      #     <location>
-      #       <city>London</city>
-      #       <country>United Kingdom</country>
-      #       <street>275 Pentonville Road, Kings Cross</street>
-      #       <postalcode>N1 9NL</postalcode>
-      #       <geo:point>
-      #          <geo:lat>51.530767071208</geo:lat>
-      #          <geo:long>-0.120263446498872</geo:long>
-      #       </geo:point>
-      #       <timezone>GMT</timezone>
-      #     </location>
-      #     <url>http://www.last.fm/venue/8777871</url>
-      #   </venue>
-      #   <startDate>Tue, 01 Jul 2008</startDate>
-      #   <description></description>
-      #   <image size="small">...</image>
-      #   <image size="medium">...</image>
-      #   <image size="large">...</image>
-      #   <attendance>42</attendance>
-      #   <reviews>0</reviews>
-      #   <tag>lastfm:event=544957</tag>
-      #   <url>http://www.last.fm/event/544957</url>
-      # </event>
-      # ...
-      # </events>
       def events(user)
         get({:method => "user.getEvents", :user => user})
       end
       
       # Get the top tracks listened to by a user. You can stipulate a time period. Sends the overall chart by default.
       #
-      # <b>Parameters</b>
       # +user+:: The user name to fetch top tracks for.
       #
       # <b>Options</b>
       # +period+:: overall | 3month | 6month | 12month - The time period over which to retrieve top tracks for.
-      #
-      # Sample response:
-      #
-      # <toptracks user="RJ" type="overall">  
-      #   <track rank="1">
-      #     <name>Learning to Live</name>
-      #     <playcount>42</playcount>
-      #     <mbid/>
-      #     <url>
-      #       http://www.last.fm/music/Dream+Theater/_/Learning+to+Live
-      #     </url>
-      #     <streamable fulltrack="0">1</streamable>
-      #     <artist>
-      #       <name>Dream Theater</name>
-      #       <mbid>28503ab7-8bf2-4666-a7bd-2644bfc7cb1d</mbid>
-      #       <url>http://www.last.fm/music/Dream+Theater</url>
-      #     </artist>
-      #     <image size="small">...</image>
-      #     <image size="medium">...</image>
-      #     <image size="large">...</image>
-      #   </track>
-      #   ...
-      # </toptracks>
       def top_tracks(user, options={})
         get({:method => "user.getTopTracks", :user => user}.merge(options))
       end
       
       # Get information about a user profile.
-      #
-      # Sample response:
-      #
-      # <user>
-      #   <name>joanofarctan</name>
-      #   <url>http://www.last.fm/user/joanofarctan</url>
-      #   <image>...</image>
-      #   <lang>en</lang>
-      #   <country>UK</country>
-      #   <age>27</age>
-      #   <gender>m</gender>
-      #   <subscriber>1</subscriber>
-      #   <playcount>14332</playcount>
-      #   <playlists>0</playlists>
-      # </user>
       def info()
         get({:method => "user.getInfo"})
       end
@@ -590,378 +229,118 @@ module Shortwave
       # <b>Options</b>
       # +page+:: The page number to scan to.
       # +limit+:: The number of events to return per page.
-      #
-      # Sample response:
-      #
-      # <events user="RJ" page="1" perPage="20" totalPages="5" total="100">
-      #   <event>
-      #     <id>792218</id>
-      #     <title>Night Slugs presents: TROUBLE & BASS</title>
-      #     <artists>
-      #       <artist>Drop the Lime</artist>
-      #       <artist>Math Head</artist>
-      #       <artist>L-VIS 1990</artist>
-      #       <artist>The Captain</artist>
-      #       <artist>Bok Bok</artist>
-      #       <artist>Star Eyes</artist>
-      #       <headliner>Drop the Lime</headliner>
-      #     </artists>
-      #     <venue>
-      #       <name>East Village</name>
-      #       <location>
-      #         <city>London</city>
-      #         <country>United Kingdom</country>
-      #         <street>89 Great Eastern Street</street>
-      #         <postalcode>EC2A 3HX</postalcode>
-      #         <geo:point>
-      #           <geo:lat>51.4916446565303</geo:lat>
-      #           <geo:long>-0.17852783203125</geo:long>
-      #         </geo:point>
-      #       </location>
-      #       <url>http://www.last.fm/venue/8910355</url>
-      #     </venue>
-      #     <startDate>Thu, 23 Oct 2008 21:00:00</startDate>
-      #     <description>...</description>
-      #     <image size="small">...</image>
-      #     <image size="medium">...</image>
-      #     <image size="large">...</image>
-      #     <attendance>8</attendance>
-      #     <reviews>0</reviews>
-      #     <tag>lastfm:event=792218</tag>
-      #     <url>http://www.last.fm/event/792218</url>
-      #   </event>
-      #   ...
-      # </events>
       def recommended_events(options={})
         get({:method => "user.getRecommendedEvents"}.merge(options))
       end
       
       # Get the top artists listened to by a user. You can stipulate a time period. Sends the overall chart by default.
       #
-      # <b>Parameters</b>
       # +user+:: The user name to fetch top artists for.
       #
       # <b>Options</b>
       # +period+:: overall | 3month | 6month | 12month - The time period over which to retrieve top artists for.
-      #
-      # Sample response:
-      #
-      # <topartists user="RJ" type="overall">
-      #   <artist rank="1">
-      #     <name>Dream Theater</name>
-      #     <playcount>1337</playcount>
-      #     <mbid>28503ab7-8bf2-4666-a7bd-2644bfc7cb1d</mbid>
-      #     <url>http://www.last.fm/music/Dream+Theater</url>
-      #     <streamable>1</streamable>
-      #     <image size="small">...</image>
-      #     <image size="medium">...</image>
-      #     <image size="large">...</image>
-      #   </artist>
-      #   ...
-      # </topartists>
       def top_artists(user, options={})
         get({:method => "user.getTopArtists", :user => user}.merge(options))
       end
       
       # Get a list of the user's friends on Last.fm.
       #
-      # <b>Parameters</b>
       # +user+:: The last.fm username to fetch the friends of.
       #
       # <b>Options</b>
       # +recenttracks+:: Whether or not to include information about friends' recent listening in the response.
       # +limit+:: An integer used to limit the number of friends returned per page. The default is 50.
       # +page+:: The page number to fetch.
-      #
-      # Sample response:
-      #
-      # <lfm status="ok" total="109" page="1" perPage="50" totalPages="3">
-      # 	<friends user="joanofarctan">
-      # 		<user>
-      # 			<name>polaroide</name>
-      # 			<image size="small">...</image>
-      # 			<image size="medium">...</image>
-      # 			<image size="large">...</image>
-      # 			<url>http://www.last.fm/user/polaroide/</url>
-      # 		</user>
-      # 		...
-      # 	</friends>
-      # </lfm>
       def friends(user, options={})
         get({:method => "user.getFriends", :user => user}.merge(options))
       end
       
       # Get shouts for this user. Also available as an rss feed.
       #
-      # <b>Parameters</b>
       # +user+:: The username to fetch shouts for
-      #
-      # Sample response:
-      #
-      # <shouts user="rj" total="495">
-      #   <shout>
-      #     <body>Blah</body>
-      #     <author>joanofarctan</author>
-      #     <date>Fri, 12 Dec 2008 13:20:41</date>
-      #   </shout>
-      #   ...
-      # </shouts>
       def shouts(user)
         get({:method => "user.getShouts", :user => user})
       end
       
       # Get an album chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent album chart for this user.
       #
-      # <b>Parameters</b>
       # +user+:: The last.fm username to fetch the charts of.
       #
       # <b>Options</b>
       # +from+:: The date at which the chart should start from. See User.getChartsList for more.
       # +to+:: The date at which the chart should end on. See User.getChartsList for more.
-      #
-      # Sample response:
-      #
-      # <weeklyalbumchart user="RJ" from="1212321600" to="1212926400">
-      #   <album rank="1">
-      #     <artist mbid="80e577ba-841f-43ba-9f32-72e7c1692336">David Hudson</artist>
-      #     <name>Bedarra</name>
-      #     <mbid>dc30face-71db-413a-bcae-06accbd64aae</mbid>
-      #     <playcount>10</playcount>
-      #     <url>http://www.last.fm/music/David+Hudson+and+Friends/Bedarra</url>
-      #   </album>
-      #   ...
-      # </weeklyalbumchart>
       def weekly_album_chart(user, options={})
         get({:method => "user.getWeeklyAlbumChart", :user => user}.merge(options))
       end
       
       # Get an artist chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent artist chart for this user.
       #
-      # <b>Parameters</b>
       # +user+:: The last.fm username to fetch the charts of.
       #
       # <b>Options</b>
       # +from+:: The date at which the chart should start from. See User.getWeeklyChartList for more.
       # +to+:: The date at which the chart should end on. See User.getWeeklyChartList for more.
-      #
-      # Sample response:
-      #
-      # <weeklyartistchart user="RJ" from="1212321600" to="1212926400">
-      #   <artist rank="1">
-      #     <name>David Hudson and Friends</name>
-      #     <mbid>80e577ba-841f-43ba-9f32-72e7c1692336</mbid>
-      #     <playcount>18</playcount>
-      #     <url>http://www.last.fm/music/David+Hudson+and+Friends</url>
-      #   </artist>
-      #   ...
-      # </weeklyartistchart>
       def weekly_artist_chart(user, options={})
         get({:method => "user.getWeeklyArtistChart", :user => user}.merge(options))
       end
       
       # Get a list of a user's playlists on Last.fm.
       #
-      # <b>Parameters</b>
       # +user+:: The last.fm username to fetch the playlists of.
-      #
-      # Sample response:
-      #
-      # <playlists user="RJ">
-      #   <playlist>
-      #     <id>2615079</id>
-      #     <title>Duck playlist</title>
-      #     <description>Duck and cover</description>
-      #     <date>2008-05-22T09:40:09</date>
-      #     <size>10</size>
-      #     <duration>2143</duration>
-      #     <streamable>0</streamable>
-      #     <creator>http://www.last.fm/user/RJ</creator>
-      #     <url>http://www.last.fm/user/RJ/library/playlists/1k1t3_duck_playlist</url>
-      #     <image size="small">http://userserve-ak.last.fm/serve/34/5985590.jpg</image>
-      #     <image size="medium">http://userserve-ak.last.fm/serve/64/5985590.jpg</image>
-      #     <image size="large">http://userserve-ak.last.fm/serve/126/5985590.jpg</image>
-      #   </playlist>
-      #   ...
-      # </playlists>
       def playlists(user)
         get({:method => "user.getPlaylists", :user => user})
       end
       
       # Get a paginated list of all events a user has attended in the past.
       #
-      # <b>Parameters</b>
       # +user+:: The username to fetch the events for.
       #
       # <b>Options</b>
       # +page+:: The page number to scan to.
       # +limit+:: The number of events to return per page.
-      #
-      # Sample response:
-      #
-      # <events user="joanofarctan" page="1" perPage="20" totalPages="4" total="77">
-      # <event>
-      #   <id>640418</id>
-      #   <title>Nikka Costa</title>
-      #   <artists>
-      #     <artist>Nikka Costa</artist>
-      #     <headliner>Nikka Costa</headliner>
-      #   </artists>
-      #   <venue>
-      #     <name>Bowery Ballroom</name>
-      #     <location>
-      #       <city>New York</city>
-      #       <country>United States</country>
-      #       <street>6 Delancey</street>
-      #       <postalcode>10002</postalcode>
-      #       <geo:point>
-      #          <geo:lat>40.71417</geo:lat>
-      #          <geo:long>-74.00639</geo:long>
-      #       </geo:point>
-      #       <timezone>EST</timezone>
-      #     </location>
-      #     <url>http://www.last.fm/venue/8779095</url>
-      #   </venue>
-      #   <startDate>Mon, 30 Jun 2008</startDate>
-      #   <startTime>20:00</startTime>
-      #   <description><![CDATA[Doors 8pm<br />
-      # $20<br />
-      # 18+]]></description>
-      #   <image size="small">...</image>
-      #   <image size="medium">...</image>
-      #   <image size="large">...</image>
-      #   <attendance>42</attendance>
-      #   <reviews>0</reviews>
-      #   <tag>lastfm:event=640418</tag>
-      #   <url>http://www.last.fm/event/640418</url>
-      # </event>
-      # ...
-      # </events>
       def past_events(user, options={})
         get({:method => "user.getPastEvents", :user => user}.merge(options))
       end
       
       # Get Last.fm artist recommendations for a user
-      #
-      # Sample response:
-      #
-      # <recommendations user="joanofarctan" page="4" perPage="50" totalPages="6" total="276">
-      #   <artist>
-      #     <name>Quest.Room.Project</name>
-      #     <mbid/>
-      #     <url>http://www.last.fm/music/Quest.Room.Project</url>
-      #     <streamable>1</streamable>
-      #     <image size="small">...</image>
-      #     <image size="medium">...</image>
-      #     <image size="large">...</image>
-      #   </artist>
-      #   <artist>
-      #     <name>Senior Soul</name>
-      #     <mbid>a25cebd7-679f-40c5-b451-7f40c1f25c5b</mbid>
-      #     <url>http://www.last.fm/music/Senior+Soul</url>
-      #     <streamable>0</streamable>
-      #     <image size="small">...</image>
-      #     <image size="medium">...</image>
-      #     <image size="large">...</image>
-      #   </artist>
-      #   <artist>
-      #   ...
-      #   </artist>
-      # </recommendations>
       def recommended_artists()
         get({:method => "user.getRecommendedArtists"})
       end
       
       # Get the top albums listened to by a user. You can stipulate a time period. Sends the overall chart by default.
       #
-      # <b>Parameters</b>
       # +user+:: The user name to fetch top albums for.
       #
       # <b>Options</b>
       # +period+:: overall | 3month | 6month | 12month - The time period over which to retrieve top albums for.
-      #
-      # Sample response:
-      #
-      # <topalbums user="RJ" type="overall">
-      #   <album rank="1">
-      #     <name>Images and Words</name>
-      #     <playcount>174</playcount>
-      #     <mbid>f20971f2-c8ad-4d26-91ab-730f6dedafb2</mbid>  
-      #     <url>
-      #       http://www.last.fm/music/Dream+Theater/Images+and+Words
-      #     </url>
-      #     <artist>
-      #       <name>Dream Theater</name>
-      #       <mbid>28503ab7-8bf2-4666-a7bd-2644bfc7cb1d</mbid>
-      #       <url>http://www.last.fm/music/Dream+Theater</url>
-      #     </artist>
-      #     <image size="small">...</image>
-      #     <image size="medium">...</image>
-      #     <image size="large">...</image>
-      #   </album>
-      # </topalbums>
       def top_albums(user, options={})
         get({:method => "user.getTopAlbums", :user => user}.merge(options))
       end
       
       # Get a list of available charts for this user, expressed as date ranges which can be sent to the chart services.
       #
-      # <b>Parameters</b>
       # +user+:: The last.fm username to fetch the charts list for.
-      #
-      # Sample response:
-      #
-      # <weeklychartlist user="RJ">
-      #   <chart from="1108296002" to="1108900802"/>
-      #   <chart from="1108900801" to="1109505601"/>
-      #   ...
-      # </weeklychartlist>
       def weekly_chart_list(user)
         get({:method => "user.getWeeklyChartList", :user => user})
       end
       
       # Get the top tags used by this user.
       #
-      # <b>Parameters</b>
       # +user+:: The user name
       #
       # <b>Options</b>
       # +limit+:: Limit the number of tags returned
-      #
-      # Sample response:
-      #
-      # <toptags user="RJ">
-      #   <tag>
-      #     <name>rock</name>
-      #     <count>12</count>
-      #     <url>www.last.fm/tag/rock</url>
-      #   </tag>
-      #   ...
-      # </toptags>
       def top_tags(user, options={})
         get({:method => "user.getTopTags", :user => user}.merge(options))
       end
       
       # Get a track chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent track chart for this user.
       #
-      # <b>Parameters</b>
       # +user+:: The last.fm username to fetch the charts of.
       #
       # <b>Options</b>
       # +from+:: The date at which the chart should start from. See User.getWeeklyChartList for more.
       # +to+:: The date at which the chart should end on. See User.getWeeklyChartList for more.
-      #
-      # Sample response:
-      #
-      # <weeklytrackchart user="joanofarctan" from="1212321600" to="1212926400">
-      #   <track rank="1">
-      #     <artist mbid="17b0d7f1-fad3-404e-87ae-874e6e158c3a">Dirk Leyers</artist>
-      #     <name>Wellen</name>
-      #     <mbid/>
-      #     <playcount>3</playcount>
-      #     <url>http://www.last.fm/music/Dirk+Leyers/_/Wellen</url>
-      #   </track>
-      #   ...
-      # </weeklytrackchart>
       def weekly_track_chart(user, options={})
         get({:method => "user.getWeeklyTrackChart", :user => user}.merge(options))
       end
@@ -972,30 +351,18 @@ module Shortwave
       
       # Remove a user's tag from an album.
       #
-      # <b>Parameters</b>
       # +artist+:: The artist name in question
       # +album+:: The album name in question
       # +tag+:: A single user tag to remove from this album.
-      #
-      # Sample response:
-      #
-      # <lfm status="ok">
-      # </lfm>
       def remove_tag(artist, album, tag)
         post({:method => "album.removeTag", :artist => artist, :album => album, :tag => tag})
       end
       
       # Tag an album using a list of user supplied tags.
       #
-      # <b>Parameters</b>
       # +artist+:: The artist name in question
       # +album+:: The album name in question
       # +tags+:: A comma delimited list of user supplied tags to apply to this album. Accepts a maximum of 10 tags.
-      #
-      # Sample response:
-      #
-      # <lfm status="ok">
-      # </lfm>
       def add_tags(artist, album, tags)
         post({:method => "album.addTags", :artist => artist, :album => album, :tags => tags})
       end
@@ -1007,82 +374,25 @@ module Shortwave
       # +album+:: The album name in question
       # +mbid+:: The musicbrainz id for the album
       # +lang+:: The language to return the biography in, expressed as an ISO 639 alpha-2 code.
-      #
-      # Sample response:
-      #
-      # <album>
-      #   <name>Believe</name>
-      #   <artist>Cher</artist>
-      #   <id>2026126</id>
-      #   <mbid>61bf0388-b8a9-48f4-81d1-7eb02706dfb0</mbid>
-      #   <url>http://www.last.fm/music/Cher/Believe</url>
-      #   <releasedate>    6 Apr 1999, 00:00</releasedate>
-      #   <image size="small">...</image>
-      #   <image size="medium">...</image>
-      #   <image size="large">...</image>
-      #   <listeners>47602</listeners>
-      #   <playcount>212991</playcount>
-      #   <toptags>
-      #     <tag>
-      #       <name>pop</name>
-      #       <url>http://www.last.fm/tag/pop</url>
-      #     </tag>
-      #     ...
-      #   </toptags>
-      # </album>
       def info(options={})
         get({:method => "album.getInfo"}.merge(options))
       end
       
       # Get the tags applied by an individual user to an album on Last.fm.
       #
-      # <b>Parameters</b>
       # +artist+:: The artist name in question
       # +album+:: The album name in question
-      #
-      # Sample response:
-      #
-      # <tags artist="Sally Shapiro" album="Disco Romance">
-      #   <tag>
-      #     <name>swedish</name>
-      #     <url>http://www.last.fm/tag/swedish</url>
-      #   </tag>
-      #   ...
-      # </tags>
       def tags(artist, album)
         get({:method => "album.getTags", :artist => artist, :album => album})
       end
       
       # Search for an album by name. Returns album matches sorted by relevance.
       #
-      # <b>Parameters</b>
       # +album+:: The album name in question.
       #
       # <b>Options</b>
       # +limit+:: Limit the number of albums returned at one time. Default (maximum) is 30.
       # +page+:: Scan into the results by specifying a page number. Defaults to first page.
-      #
-      # Sample response:
-      #
-      # <results for="believe">
-      #   <opensearch:Query role="request" searchTerms="believe" startPage="1"/>
-      #   <opensearch:totalResults>734</opensearch:totalResults>
-      #   <opensearch:startIndex>0</opensearch:startIndex>
-      #   <opensearch:itemsPerPage>20</opensearch:itemsPerPage>
-      #   <albummatches>
-      #     <album>
-      #       <name>Make Believe</name>
-      #       <artist>Weezer</artist>
-      #       <id>2025180</id>
-      #       <url>http://www.last.fm/music/Weezer/Make+Believe</url>
-      #       <image size="small">http://userserve-ak.last.fm/serve/34/8673675.jpg</image>
-      #       <image size="medium">http://userserve-ak.last.fm/serve/64/8673675.jpg</image>
-      #       <image size="large">http://userserve-ak.last.fm/serve/126/8673675.jpg</image>
-      #       <streamable>0</streamable>
-      #     </album>
-      #     ...
-      #   </albummatches>
-      # </results>
       def search(album, options={})
         get({:method => "album.search", :album => album}.merge(options))
       end
@@ -1093,181 +403,57 @@ module Shortwave
       
       # Search for tags similar to this one. Returns tags ranked by similarity, based on listening data.
       #
-      # <b>Parameters</b>
       # +tag+:: The tag name in question.
-      #
-      # Sample response:
-      #
-      # <similartags tag="Disco">
-      #   <tag>
-      #     <name>high energy</name>
-      #     <url>http://www.last.fm/tag/high energy</url>
-      #     <streamable>1</streamable>
-      #   </tag>
-      #   ...
-      # </similartags>
       def similar(tag)
         get({:method => "tag.getSimilar", :tag => tag})
       end
       
       # Get an artist chart for a tag, for a given date range. If no date range is supplied, it will return the most recent artist chart for this tag.
       #
-      # <b>Parameters</b>
       # +tag+:: The tag name in question
       #
       # <b>Options</b>
       # +from+:: The date at which the chart should start from. See Tag.getWeeklyChartList for more.
       # +to+:: The date at which the chart should end on. See Tag.getWeeklyChartList for more.
       # +limit+:: The number of chart items to return.
-      #
-      # Sample response:
-      #
-      # <weeklyartistchart tag="rock" from="1220788800" to="1221393600">
-      #   <artist rank="1">
-      #     <name>Coldplay</name>
-      #     <mbid>cc197bad-dc9c-440d-a5b5-d52ba2e14234</mbid>
-      #     <weight>1351069952</weight>
-      #     <url>http://www.last.fm/music/Coldplay</url>
-      #   </artist>
-      #   ...
-      # </weeklyartistchart>
       def weekly_artist_chart(tag, options={})
         get({:method => "tag.getWeeklyArtistChart", :tag => tag}.merge(options))
       end
       
       # Get the top albums tagged by this tag, ordered by tag count.
-      #
-      # Sample response:
-      #
-      # <topalbums tag="Disco">
-      #   <album rank="">
-      #     <name>Overpowered</name>
-      #     <tagcount>104</tagcount>
-      #     <mbid/>
-      #     <url>
-      #       http://www.last.fm/music/Róisín+Murphy/Overpowered
-      #     </url>
-      #     <artist>
-      #       <name>Róisín Murphy</name>
-      #       <mbid>4c56405d-ba8e-4283-99c3-1dc95bdd50e7</mbid>
-      #       <url>http://www.last.fm/music/Róisín+Murphy</url>
-      #     </artist>
-      #     <image size="small">...</image>
-      #     <image size="medium">...</image>
-      #     <image size="large">...</image>
-      #   </album>
-      #   ...
-      # </topalbums>
       def top_albums()
         get({:method => "tag.getTopAlbums"})
       end
       
       # Fetches the top global tags on Last.fm, sorted by popularity (number of times used)
-      #
-      # Sample response:
-      #
-      # <toptags>
-      #   <tag>
-      #     <name>rock</name>
-      #     <count>1994155</count>
-      #     <url>www.last.fm/tag/rock</url>
-      #   </tag>
-      #   ...
-      # </toptags>
       def top_tags()
         get({:method => "tag.getTopTags"})
       end
       
       # Search for a tag by name. Returns matches sorted by relevance.
       #
-      # <b>Parameters</b>
       # +tag+:: The tag name in question.
       #
       # <b>Options</b>
       # +limit+:: Limit the number of tags returned at one time. Default (maximum) is 30.
       # +page+:: Scan into the results by specifying a page number. Defaults to first page.
-      #
-      # Sample response:
-      #
-      # <results for="disco" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">
-      #   <opensearch:Query role="request" searchTerms="disco" startPage="1"/>
-      #   <opensearch:totalResults>2097</opensearch:totalResults>
-      #   <opensearch:startIndex>0</opensearch:startIndex>
-      #   <opensearch:itemsPerPage>20</opensearch:itemsPerPage>
-      #   <tagmatches>
-      #     <tag>
-      #       <name>disco</name>
-      #       <tagcount>48336</count>
-      #       <url>www.last.fm/tag/disco</url>
-      #     </tag>
-      #     ...
-      #   </tagmatches>
-      # </results>
       def search(tag, options={})
         get({:method => "tag.search", :tag => tag}.merge(options))
       end
       
       # Get the top artists tagged by this tag, ordered by tag count.
-      #
-      # Sample response:
-      #
-      # <topartists tag="Disco">
-      #   <artist rank="">
-      #     <name>ABBA</name>
-      #     <tagcount>689</tagcount>
-      #     <mbid>d87e52c5-bb8d-4da8-b941-9f4928627dc8</mbid>
-      #     <url>http://www.last.fm/music/ABBA</url>
-      #     <streamable>1</streamable>
-      #     <image size="small">...</image>
-      #     <image size="medium">...</image>
-      #     <image size="large">...</image>
-      #   </artist>
-      #   ...
-      # </topartists>
       def top_artists()
         get({:method => "tag.getTopArtists"})
       end
       
       # Get the top tracks tagged by this tag, ordered by tag count.
-      #
-      # Sample response:
-      #
-      # <toptracks tag="Disco">
-      #   <track rank="">
-      #     <name>Stayin' Alive</name>
-      #     <tagcount>229</tagcount>
-      #     <mbid/>
-      #     <url>
-      #       http://www.last.fm/music/Bee+Gees/_/Stayin'+Alive
-      #     </url>
-      #     <streamable fulltrack="0">1</streamable>
-      #     <artist>
-      #       <name>Bee Gees</name>
-      #       <mbid>bf0f7e29-dfe1-416c-b5c6-f9ebc19ea810</mbid>
-      #       <url>http://www.last.fm/music/Bee+Gees</url>
-      #     </artist>
-      #     <image size="small">...</image>
-      #     <image size="medium">...</image>
-      #     <image size="large">...</image>
-      #   </track>
-      #   ...
-      # </toptracks>
       def top_tracks()
         get({:method => "tag.getTopTracks"})
       end
       
       # Get a list of available charts for this tag, expressed as date ranges which can be sent to the chart services.
       #
-      # <b>Parameters</b>
       # +tag+:: The tag name in question
-      #
-      # Sample response:
-      #
-      # <weeklychartlist tag="rock">
-      #   <chart from="1108296002" to="1108900802"/>
-      #   <chart from="1108900801" to="1109505601"/>
-      #   ...
-      # </weeklychartlist>
       def weekly_chart_list(tag)
         get({:method => "tag.getWeeklyChartList", :tag => tag})
       end
@@ -1284,103 +470,23 @@ module Shortwave
       # +long+:: Specifies a longitude value to retrieve events for (service returns nearby events by default)
       # +page+:: Display more results by pagination
       # +distance+:: Find events within a specified distance
-      #
-      # Sample response:
-      #
-      # <events location="New York" page="1" totalpages="105" total="1050">
-      # <event>
-      #   <id>640418</id>
-      #   <title>Nikka Costa</title>
-      #   <artists>
-      #     <artist>Nikka Costa</artist>
-      #     <headliner>Nikka Costa</headliner>
-      #   </artists>
-      #   <venue>
-      #     <name>Bowery Ballroom</name>
-      #     <location>
-      #       <city>New York</city>
-      #       <country>United States</country>
-      #       <street>6 Delancey</street>
-      #       <postalcode>10002</postalcode>
-      #       <geo:point>
-      #          <geo:lat>40.71417</geo:lat>
-      #          <geo:long>-74.00639</geo:long>
-      #       </geo:point>
-      #       <timezone>EST</timezone>
-      #     </location>
-      #     <url>http://www.last.fm/venue/8779095</url>
-      #   </venue>
-      #   <startDate>Mon, 30 Jun 2008</startDate>
-      #   <startTime>20:00</startTime>
-      #   <description><![CDATA[Doors 8pm<br />
-      # $20<br />
-      # 18+]]></description>
-      #   <image size="small">...</image>
-      #   <image size="medium">...</image>
-      #   <image size="large">...</image>
-      #  <attendance>42</attendance>
-      #   <reviews>0</reviews>
-      #   <tag>lastfm:event=640418</</tag>
-      #   <url>http://www.last.fm/event/640418</url>
-      # </event>
-      # ...
-      # </events>
       def events(options={})
         get({:method => "geo.getEvents"}.merge(options))
       end
       
       # Get the most popular tracks on Last.fm last week by country
       #
-      # <b>Parameters</b>
       # +country+:: A country name, as defined by the ISO 3166-1 country names standard
       #
       # <b>Options</b>
       # +location+:: A metro name, to fetch the charts for (must be within the country specified)
-      #
-      # Sample response:
-      #
-      # <toptracks country="Spain">  
-      #   <track rank="1">
-      #     <name>Violet Hill</name>
-      #     <playcount>1055</playcount>
-      #     <mbid/>
-      #     <url>http://www.last.fm/music/Coldplay/_/Violet+Hill</url>
-      #     <streamable fulltrack="0">1</streamable>
-      #     <artist>
-      #       <name>Coldplay</name>
-      #       <mbid>cc197bad-dc9c-440d-a5b5-d52ba2e14234</mbid>
-      #       <url>http://www.last.fm/music/Coldplay</url>
-      #     </artist>
-      #     <image size="small">...</image>
-      #     <image size="medium">...</image>
-      #     <image size="large">...</image>
-      #   </track>
-      #   ...
-      # </toptracks>
       def top_tracks(country, options={})
         get({:method => "geo.getTopTracks", :country => country}.merge(options))
       end
       
       # Get the most popular artists on Last.fm by country
       #
-      # <b>Parameters</b>
       # +country+:: A country name, as defined by the ISO 3166-1 country names standard
-      #
-      # Sample response:
-      #
-      # <topartists country="Spain">
-      #   <artist rank="1">
-      #     <name>Coldplay</name>
-      #     <playcount>3199</playcount>
-      #     <mbid>cc197bad-dc9c-440d-a5b5-d52ba2e14234</mbid>
-      #     <url>http://www.last.fm/music/Coldplay</url>
-      #     <streamable>1</streamable>
-      #     <image size="small">...</image>
-      #     <image size="medium">...</image>
-      #     <image size="large">...</image>
-      #   </artist>
-      #   ...
-      # </topartists>
       def top_artists(country)
         get({:method => "geo.getTopArtists", :country => country})
       end
@@ -1391,7 +497,6 @@ module Shortwave
       
       # Get a Tasteometer score from two inputs, along with a list of shared artists. If the input is a User or a Myspace URL, some additional information is returned.
       #
-      # <b>Parameters</b>
       # +type1+:: 'user' | 'artists' | 'myspace'
       # +type2+:: 'user' | 'artists' | 'myspace'
       # +value1+:: [Last.fm username] | [Comma-separated artist names] | [MySpace profile URL]
@@ -1399,45 +504,6 @@ module Shortwave
       #
       # <b>Options</b>
       # +limit+:: How many shared artists to display
-      #
-      # Sample response:
-      #
-      # <lfm status="ok">
-      #     <comparison>
-      #         <result>
-      #             <score>0.74</score>
-      #             <artists matches="43">
-      #                 <artist>
-      #                     <name>Radiohead</name>
-      #                     <url>http://www.last.fm/music/Radiohead</url>
-      #                     <image size="large">http://userserve-ak.last.fm/serve/160/169665.gif</image>
-      #                     <image size="medium">http://userserve-ak.last.fm/serve/85/169665.gif</image>
-      #                     <image size="small">http://userserve-ak.last.fm/serve/50/169665.gif</image>
-      #                 </artist>
-      #                 <artist>
-      #                     <name>The Beatles</name>
-      #                     <url>http://www.last.fm/music/The+Beatles</url>
-      #                     <image size="large">http://userserve-ak.last.fm/serve/160/153358.jpg</image>
-      #                     <image size="medium">http://userserve-ak.last.fm/serve/85/153358.jpg</image>
-      #                     <image size="small">http://userserve-ak.last.fm/serve/50/153358.jpg</image>
-      #                 </artist>
-      #             </artists>
-      #         </result>
-      #         <input>
-      #             <user>
-      #                 <name>jwheare</name>
-      #                 <url>http://www.last.fm/user/jwheare/</url>
-      #                 <image size="large">http://userserve-ak.last.fm/serve/160/857567.png</image>
-      #                 <image size="medium">http://userserve-ak.last.fm/serve/85/857567.png</image>
-      #                 <image size="small">http://userserve-ak.last.fm/serve/50/857567.png</image>
-      #             </user>
-      #             <myspace>
-      #                 <url>http://www.myspace.com/mcscrobbler</url>
-      #                 <image>http://x.myspace.com/images/clear.gif</image>
-      #             </myspace>
-      #         </input>
-      #     </comparison>
-      # </lfm>
       def compare(type1, type2, value1, value2, options={})
         get({:method => "tasteometer.compare", :type1 => type1, :type2 => type2, :value1 => value1, :value2 => value2}.merge(options))
       end
@@ -1448,142 +514,30 @@ module Shortwave
       
       # Get a paginated list of all the events held at this venue in the past.
       #
-      # <b>Parameters</b>
       # +venue+:: The id for the venue you would like to fetch event listings for.
       #
       # <b>Options</b>
       # +page+:: The page of results to return.
       # +limit+:: The maximum number of results to return.
-      #
-      # Sample response:
-      #
-      # <events venue="Cafe OTO" page="1" perPage="50" total="103" totalPages="3">
-      #   <event status="2">
-      #     <id>835264</id>
-      #     <title>Calling Signals 08</title>
-      #     <artists>
-      #       <artist>Frode Gjerstad</artist>
-      #       <artist>Lol Coxhill</artist>
-      #       <artist>Paal Nilssen-Love</artist>
-      #       <artist>Nick Stephens</artist>
-      #       <headliner>Frode Gjerstad</headliner>
-      #     </artists>
-      #     <venue>
-      #       <id>8908030</id>
-      #       <name>Cafe OTO</name>
-      #       <location>
-      #         <city>London</city>
-      #         <country>United Kingdom</country>
-      #         <street>20 Ashwin St</street>
-      #         <postalcode>E8 3DL</postalcode>
-      #         <geo:point>
-      #           <geo:lat>51.4916446565303</geo:lat>
-      #           <geo:long>-0.17852783203125</geo:long>
-      #         </geo:point>
-      #       </location>
-      #       <url>http://www.last.fm/venue/8908030</url>
-      #     </venue>
-      #     <startDate>Mon, 15 Dec 2008 20:00:00</startDate>
-      #     <description>...</description>
-      #     <image size="small">...</image>
-      #     <image size="medium">...</image>
-      #     <image size="large">...</image>
-      #     <attendance>2</attendance>
-      #     <reviews>0</reviews>
-      #     <tag>lastfm:event=835264</tag>
-      #     <url>http://www.last.fm/event/835264</url>
-      #   </event>
-      #   ...
-      # </events>
       def past_events(venue, options={})
         get({:method => "venue.getPastEvents", :venue => venue}.merge(options))
       end
       
       # Get a list of upcoming events at this venue.
       #
-      # <b>Parameters</b>
       # +venue+:: The id for the venue you would like to fetch event listings for.
-      #
-      # Sample response:
-      #
-      # <events venue="Cafe OTO">
-      #   <event status="2">
-      #     <id>835264</id>
-      #     <title>Calling Signals 08</title>
-      #     <artists>
-      #       <artist>Frode Gjerstad</artist>
-      #       <artist>Lol Coxhill</artist>
-      #       <artist>Paal Nilssen-Love</artist>
-      #       <artist>Nick Stephens</artist>
-      #       <headliner>Frode Gjerstad</headliner>
-      #     </artists>
-      #     <venue>
-      #       <id>8908030</id>
-      #       <name>Cafe OTO</name>
-      #       <location>
-      #         <city>London</city>
-      #         <country>United Kingdom</country>
-      #         <street>20 Ashwin St</street>
-      #         <postalcode>E8 3DL</postalcode>
-      #         <geo:point>
-      #           <geo:lat>51.4916446565303</geo:lat>
-      #           <geo:long>-0.17852783203125</geo:long>
-      #         </geo:point>
-      #       </location>
-      #       <url>http://www.last.fm/venue/8908030</url>
-      #     </venue>
-      #     <startDate>Mon, 15 Dec 2008 20:00:00</startDate>
-      #     <description>...</description>
-      #     <image size="small">...</image>
-      #     <image size="medium">...</image>
-      #     <image size="large">...</image>
-      #     <attendance>2</attendance>
-      #     <reviews>0</reviews>
-      #     <tag>lastfm:event=835264</tag>
-      #     <url>http://www.last.fm/event/835264</url>
-      #   </event>
-      #   ...
-      # </events>
       def events(venue)
         get({:method => "venue.getEvents", :venue => venue})
       end
       
       # Search for a venue by venue name
       #
-      # <b>Parameters</b>
       # +venue+:: The venue name you would like to search for.
       #
       # <b>Options</b>
       # +page+:: The results page you would like to fetch
       # +limit+:: The number of results to fetch per page. Defaults to 50.
       # +country+:: Filter your results by country. Expressed as an ISO 3166-2 code.
-      #
-      # Sample response:
-      #
-      # <results for="arena">
-      #   <opensearch:Query role="request" searchTerms="arena" startPage="1"/>
-      #   <opensearch:totalResults>92</opensearch:totalResults>
-      #   <opensearch:startIndex>0</opensearch:startIndex>
-      #   <opensearch:itemsPerPage>50</opensearch:itemsPerPage>
-      #   <venuematches>
-      #     <venue>
-      #       <id>8816229</id>
-      #       <name>Arena</name>
-      #       <location>
-      #         <city>Exeter</city>
-      #         <country>United Kingdom</country>
-      #         <street/>
-      #         <postalcode/>
-      #         <geo:point>
-      #           <geo:lat>50.7</geo:lat>
-      #           <geo:long>-3.5333333</geo:long>
-      #         </geo:point>
-      #       </location>
-      #       <url>http://www.last.fm/venue/8816229</url>
-      #     </venue>
-      #     ...
-      #   </venuematches>
-      # </results>
       def search(venue, options={})
         get({:method => "venue.search", :venue => venue}.merge(options))
       end
@@ -1594,246 +548,89 @@ module Shortwave
       
       # Tag an artist with one or more user supplied tags.
       #
-      # <b>Parameters</b>
       # +artist+:: The artist name in question.
       # +tags+:: A comma delimited list of user supplied tags to apply to this artist. Accepts a maximum of 10 tags.
-      #
-      # Sample response:
-      #
-      # <lfm status="ok">
-      # </lfm>
       def add_tags(artist, tags)
         post({:method => "artist.addTags", :artist => artist, :tags => tags})
       end
       
       # Get a list of upcoming events for this artist. Easily integratable into calendars, using the ical standard (see feeds section below).
       #
-      # <b>Parameters</b>
       # +artist+:: The artist name in question
-      #
-      # Sample response:
-      #
-      # <events artist="Cher" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" total="4">
-      # <event>
-      #     <id>599858</id>
-      #   <title>Cher</title>
-      #   <artists>
-      #     <artist>Cher</artist>
-      #     <headliner>Cher</headliner>
-      #   </artists>
-      #   <venue>
-      #     <name>The Colosseum at Caesars Palace</name>
-      #     <location>
-      #       <city>Las Vegas</city>
-      #       <country>United States</country>
-      #       <street></street>
-      #       <postalcode></postalcode>
-      #       <geo:point>
-      #          <geo:lat>36.2265501474709</geo:lat>
-      #          <geo:long>-115.0048828125</geo:long>
-      #       </geo:point>
-      #       <timezone>PST</timezone>
-      #      </location>
-      #     <url>http://www.last.fm/venue/8841108</url>
-      #   </venue>
-      #   <startDate>Sat, 16 Aug 2008</startDate>
-      #   <startTime>19:30</startTime>
-      #   <description></description>
-      #   <image size="small">...</image>
-      #   <image size="medium">...</image>
-      #   <image size="large">...</image>
-      #   <attendance>42</attendance>
-      #   <reviews>0</reviews>
-      #   <tag>lastfm:event=669027</tag>
-      #   <url>http://www.last.fm/event/599858</url>
-      # </event>
-      # ...
-      # </events>
       def events(artist)
         get({:method => "artist.getEvents", :artist => artist})
       end
       
       # Shout in this artist's shoutbox
       #
-      # <b>Parameters</b>
       # +artist+:: The name of the artist to shout on.
       # +message+:: The message to post to the shoutbox.
-      #
-      # Sample response:
-      #
-      # <lfm status="ok" />
       def shout(artist, message)
         post({:method => "artist.shout", :artist => artist, :message => message})
       end
       
       # Share an artist with Last.fm users or other friends.
       #
-      # <b>Parameters</b>
       # +artist+:: The artist to share.
       # +recipient+:: Email Address | Last.fm Username - A comma delimited list of email addresses or Last.fm usernames. Maximum is 10.
       #
       # <b>Options</b>
       # +message+:: An optional message to send with the recommendation. If not supplied a default message will be used.
-      #
-      # Sample response:
-      #
-      # <lfm status="ok">
-      # </lfm>
       def share(artist, recipient, options={})
         post({:method => "artist.share", :artist => artist, :recipient => recipient}.merge(options))
       end
       
       # Get the top tracks by an artist on Last.fm, ordered by popularity
       #
-      # <b>Parameters</b>
       # +artist+:: The artist name in question
-      #
-      # Sample response:
-      #
-      # <toptracks artist="Cher">
-      #   <track rank="1">
-      #     <name>Believe</name>
-      #     <mbid/>
-      #     <playcount>56325</playcount>
-      #     <listeners>23217</listeners>
-      #     <url>http://www.last.fm/music/Cher/_/Believe</url>
-      #     <image size="small">...</image>
-      #     <image size=" medium">...</image>
-      #     <image size="large">...</image>
-      #   </track>
-      #   ...
-      # </toptracks>
       def top_tracks(artist)
         get({:method => "artist.getTopTracks", :artist => artist})
       end
       
       # Get all the artists similar to this artist
       #
-      # <b>Parameters</b>
       # +artist+:: The artist name in question
       #
       # <b>Options</b>
       # +limit+:: Limit the number of similar artists returned
-      #
-      # Sample response:
-      #
-      # <similarartists artist="kid606" streamable="1">
-      # 	<artist>
-      # 		<name>Venetian Snares</name>
-      # 		<mbid>56abaa47-0101-463b-b37e-e961136fec39</mbid>
-      # 		<match>100</match>
-      # 		<url>/music/Venetian+Snares</url>
-      # 		<image>http://userserve-ak.last.fm/serve/160/211799.jpg</image>
-      # 	</artist>
-      #         <artist>
-      # ...
       def similar(artist, options={})
         get({:method => "artist.getSimilar", :artist => artist}.merge(options))
       end
       
       # Remove a user's tag from an artist.
       #
-      # <b>Parameters</b>
       # +artist+:: The artist name in question.
       # +tag+:: A single user tag to remove from this artist.
-      #
-      # Sample response:
-      #
-      # <lfm status="ok">
-      # </lfm>
       def remove_tag(artist, tag)
         post({:method => "artist.removeTag", :artist => artist, :tag => tag})
       end
       
       # Search for an artist by name. Returns artist matches sorted by relevance.
       #
-      # <b>Parameters</b>
       # +artist+:: The artist name in question.
       #
       # <b>Options</b>
       # +limit+:: Limit the number of artists returned at one time. Default (maximum) is 30.
       # +page+:: Scan into the results by specifying a page number. Defaults to first page.
-      #
-      # Sample response:
-      #
-      # <results for="cher" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">
-      #   <opensearch:Query role="request" searchTerms="cher" startPage="1"/>
-      #   <opensearch:totalResults>386</opensearch:totalResults>
-      #   <opensearch:startIndex>0</opensearch:startIndex>
-      #   <opensearch:itemsPerPage>20</opensearch:itemsPerPage>
-      #   <artistmatches>
-      #     <artist>
-      #       <name>Cher</name>
-      #       <mbid>bfcc6d75-a6a5-4bc6-8282-47aec8531818</mbid>
-      #       <url>www.last.fm/music/Cher</url>
-      #       <image_small>http://userserve-ak.last.fm/serve/50/342437.jpg</image_small>
-      #       <image>http://userserve-ak.last.fm/serve/160/342437.jpg</image>
-      #       <streamable>1</streamable>
-      #     </artist>
-      # 	...
-      #   </artistmatches>
-      # </results>
       def search(artist, options={})
         get({:method => "artist.search", :artist => artist}.merge(options))
       end
       
       # Get Images for this artist in a variety of sizes.
       #
-      # <b>Parameters</b>
       # +artist+:: The artist name in question.
       #
       # <b>Options</b>
       # +page+:: Which page of limit amount to display.
       # +limit+:: How many to return. Defaults and maxes out at 50.
       # +order+:: Sort ordering can be either 'popularity' (default) or 'dateadded'. While ordering by popularity officially selected images by labels and artists will be ordered first. This is ignored and set to 'dateadded' when requested as rss.
-      #
-      # Sample response:
-      #
-      # <images artist="Cher" page="1" totalpages="4" total="174">
-      #   <image>
-      #     <title/>
-      #     <url>http://www.last.fm/music/Cher/+images/340992</url>
-      #     <dateadded>Sun, 27 May 2007 20:21:51</dateadded>
-      #     <format>jpg</format>
-      #     <owner type="user">
-      #       <name>Fluchi</name>
-      #       <url>http://www.last.fm/user/Fluchi</url>
-      #     </owner>
-      #     <sizes>
-      #       <size name="original" width="900" height="1553">
-      #         http://userserve-ak.last.fm/serve/_/340992/Cher.jpg
-      #       </size>
-      #       <size name="large" width="126" height="217">http://....jpg</size>
-      #       <size name="largesquare" width="126" height="126">http://....jpg</size>
-      #       <size name="medium" width="64" height="110">http://....jpg</size>
-      #       <size name="small" width="34" height="59">http://....jpg</size>
-      #     </sizes>
-      #     <votes>
-      #       <thumbsup>67</thumbsup>
-      #       <thumbsdown>31</thumbsdown>
-      #     </votes>
-      #   </image>
-      #   <image>
-      #   ..
-      # </images>
       def images(artist, options={})
         get({:method => "artist.getImages", :artist => artist}.merge(options))
       end
       
       # Get the top tags for an artist on Last.fm, ordered by popularity.
       #
-      # <b>Parameters</b>
       # +artist+:: The artist name in question
-      #
-      # Sample response:
-      #
-      # <toptags artist="Cher">
-      #   <tag>
-      #     <name>pop</name>
-      #     <url>http://www.last.fm/tag/pop</url>
-      #   </tag>
-      #   ...
-      # </toptags>
       def top_tags(artist)
         get({:method => "artist.getTopTags", :artist => artist})
       end
@@ -1844,126 +641,34 @@ module Shortwave
       # +artist+:: The artist name in question
       # +mbid+:: The musicbrainz id for the artist
       # +lang+:: The language to return the biography in, expressed as an ISO 639 alpha-2 code.
-      #
-      # Sample response:
-      #
-      # <artist>
-      #   <name>Cher</name>
-      #   <mbid>bfcc6d75-a6a5-4bc6-8282-47aec8531818</mbid>
-      #   <url>http://www.last.fm/music/Cher</url>
-      #   <image size="small">http://userserve-ak.last.fm/serve/50/285717.jpg</image>
-      #   <image size="medium">http://userserve-ak.last.fm/serve/85/285717.jpg</image>
-      #   <image size="large">http://userserve-ak.last.fm/serve/160/285717.jpg</image>
-      #   <streamable>1</streamable>
-      #   <stats>
-      #     <listeners>196440</listeners>
-      #     <plays>1599101</plays>
-      #   </stats>
-      #   <similar>
-      #     <artist>
-      #       <name>Madonna</name>
-      #       <url>http://www.last.fm/music/Madonna</url>
-      #       <image size="small">http://userserve-ak.last.fm/serve/50/5112299.jpg</image>
-      #       <image size="medium">http://userserve-ak.last.fm/serve/85/5112299.jpg></image>
-      #       <image size="large">http://userserve-ak.last.fm/serve/160/5112299.jpg</image>
-      #     </artist>
-      #     ...
-      #   </similar>
-      #   <tags>
-      #     <tag>
-      #       <name>pop</name>
-      #       <url>http://www.last.fm/tag/pop</url>
-      #     </tag>
-      #     ...
-      #   </tags>
-      #   <bio>
-      #     <published>Thu, 13 Mar 2008 03:59:18 +0000</published>
-      #     <summary>...</summary>
-      #     <content>...</content>
-      #   </bio>
-      # </artist>
       def info(options={})
         get({:method => "artist.getInfo"}.merge(options))
       end
       
       # Get shouts for this artist. Also available as an rss feed.
       #
-      # <b>Parameters</b>
       # +artist+:: The artist name in question.
-      #
-      # Sample response:
-      #
-      # <shouts artist="Cher" total="495">
-      #   <shout>
-      #     <body>Blah</body>
-      #     <author>joanofarctan</author>
-      #     <date>Fri, 12 Dec 2008 13:20:41</date>
-      #   </shout>
-      #   ...
-      # </shouts>
       def shouts(artist)
         get({:method => "artist.getShouts", :artist => artist})
       end
       
       # Get the tags applied by an individual user to an artist on Last.fm.
       #
-      # <b>Parameters</b>
       # +artist+:: The artist name in question
-      #
-      # Sample response:
-      #
-      # <tags artist="Sally Shapiro">
-      #   <tag>
-      #     <name>italo</name>
-      #     <url>http://www.last.fm/tag/italo</url>
-      #   </tag>
-      #   ...
-      # </tags>
       def tags(artist)
         get({:method => "artist.getTags", :artist => artist})
       end
       
       # Get the top albums for an artist on Last.fm, ordered by popularity.
       #
-      # <b>Parameters</b>
       # +artist+:: The artist name in question
-      #
-      # Sample response:
-      #
-      # <topalbums artist="Cher">
-      #   <album rank="1">
-      #     <name>Believe</name>
-      #     <mbid>61bf0388-b8a9-48f4-81d1-7eb02706dfb0</mbid>
-      #     <listeners>24486</listeners>
-      #     <url>http://www.last.fm/music/Cher/Believe</url>
-      #     <image size="small">...</image>
-      #     <image size=" medium">...</image>
-      #     <image size="large">...</image>
-      #   </album>
-      #   ...
-      # </topalbums>
       def top_albums(artist)
         get({:method => "artist.getTopAlbums", :artist => artist})
       end
       
       # Get the top fans for an artist on Last.fm, based on listening data.
       #
-      # <b>Parameters</b>
       # +artist+:: The artist name in question
-      #
-      # Sample response:
-      #
-      # <topfans artist="Cher">
-      #   <user>
-      #     <name>Haldeth</name>
-      #     <url>http://www.last.fm/user/Haldeth/</url>
-      #     <image size="small">http://userserve-ak.last.fm/serve/50/2032958.gif</image>
-      #     <image size="medium">http://userserve-ak.last.fm/serve/85/2032958.gif</image>
-      #     <image size="large">http://userserve-ak.last.fm/serve/160/2032958.gif</image>
-      #     <weight>114242000</weight>
-      #   </user>
-      #   ...
-      # </topfans>
       def top_fans(artist)
         get({:method => "artist.getTopFans", :artist => artist})
       end
@@ -1974,133 +679,56 @@ module Shortwave
       
       # A paginated list of all the albums in a user's library, with play counts and tag counts.
       #
-      # <b>Parameters</b>
       # +user+:: The user whose library you want to fetch.
       #
       # <b>Options</b>
       # +limit+:: Limit the amount of albums returned (maximum/default is 50).
       # +page+:: The page number you wish to scan to.
-      #
-      # Sample response:
-      #
-      # <albums user="RJ" page="1" perPage="50" totalPages="20">
-      #   <album rank="1">
-      #     <name>Images and Words</name>
-      #     <playcount>183</playcount>
-      #     <tagcount>0</tagcount>
-      #     <mbid>f20971f2-c8ad-4d26-91ab-730f6dedafb2</mbid>
-      #     <url>http://www.last.fm/music/Dream+Theater/Images+and+Words</url>
-      #     <artist>
-      #       <name>Dream Theater</name>
-      #       <mbid>28503ab7-8bf2-4666-a7bd-2644bfc7cb1d</mbid>
-      #       <url>http://www.last.fm/music/Dream+Theater</url>
-      #     </artist>
-      #     <image size="small">...</image>
-      #     <image size="medium">...</image>
-      #     <image size="large">...</image>
-      #   </album>
-      #   ...
-      # </albums>
       def albums(user, options={})
         get({:method => "library.getAlbums", :user => user}.merge(options))
       end
       
       # A paginated list of all the artists in a user's library, with play counts and tag counts.
       #
-      # <b>Parameters</b>
       # +user+:: The user whose library you want to fetch.
       #
       # <b>Options</b>
       # +limit+:: Limit the amount of artists returned (maximum/default is 50).
       # +page+:: The page number you wish to scan to.
-      #
-      # Sample response:
-      #
-      # <artists user="RJ" page="1" perPage="50" totalPages="20">
-      #   <artist rank="1">
-      #     <name>Dream Theater</name>
-      #     <playcount>1346</playcount>
-      #     <tagcount>0</tagcount>
-      #     <mbid>28503ab7-8bf2-4666-a7bd-2644bfc7cb1d</mbid>
-      #     <url>http://www.last.fm/music/Dream+Theater</url>
-      #     <streamable>1</streamable>
-      #     <image size="small">http://userserve-ak.last.fm/serve/50/95853.jpg</image>
-      #     <image size="medium">http://userserve-ak.last.fm/serve/85/95853.jpg</image>
-      #     <image size="large">http://userserve-ak.last.fm/serve/160/95853.jpg</image>
-      #   </artist>
-      #   ...
-      # </artists>
       def artists(user, options={})
         get({:method => "library.getArtists", :user => user}.merge(options))
       end
       
       # Add an artist to a user's Last.fm library
       #
-      # <b>Parameters</b>
       # +artist+:: The artist name you wish to add
-      #
-      # Sample response:
-      #
-      # <lfm status="ok"></lfm>
       def add_artist(artist)
         post({:method => "library.addArtist", :artist => artist})
       end
       
       # Add a track to a user's Last.fm library
       #
-      # <b>Parameters</b>
       # +artist+:: The artist that composed the track
       # +track+:: The track name you wish to add
-      #
-      # Sample response:
-      #
-      # <lfm status="ok"></lfm>
       def add_track(artist, track)
         post({:method => "library.addTrack", :artist => artist, :track => track})
       end
       
       # Add an album to a user's Last.fm library
       #
-      # <b>Parameters</b>
       # +artist+:: The artist that composed the track
       # +album+:: The album name you wish to add
-      #
-      # Sample response:
-      #
-      # <lfm status="ok"></lfm>
       def add_album(artist, album)
         post({:method => "library.addAlbum", :artist => artist, :album => album})
       end
       
       # A paginated list of all the tracks in a user's library, with play counts and tag counts.
       #
-      # <b>Parameters</b>
       # +user+:: The user whose library you want to fetch.
       #
       # <b>Options</b>
       # +limit+:: Limit the amount of tracks returned (maximum/default is 50).
       # +page+:: The page number you wish to scan to.
-      #
-      # Sample response:
-      #
-      # <tracks user="RJ" page="1" perPage="50" totalPages="20">
-      # <track rank="1">
-      #     <name>Learning to Live</name>
-      #     <playcount>44</playcount>
-      #     <tagcount>0</tagcount>
-      #     <mbid></mbid>
-      #     <url>http://www.last.fm/music/Dream+Theater/_/Learning+to+Live</url>
-      #     <streamable fulltrack="0">1</streamable>
-      #         <artist>
-      #         <name>Dream Theater</name>
-      #         <mbid>28503ab7-8bf2-4666-a7bd-2644bfc7cb1d</mbid>
-      #         <url>http://www.last.fm/music/Dream+Theater</url>
-      #     </artist>
-      #     <image size="small">...</image>
-      #     <image size="medium">...</image>
-      #     <image size="large">...</image>
-      #     </track>
-      # </tracks>
       def tracks(user, options={})
         get({:method => "library.getTracks", :user => user}.merge(options))
       end
@@ -2111,22 +739,10 @@ module Shortwave
       
       # Tune in to a Last.fm radio station.
       #
-      # <b>Parameters</b>
       # +station+:: A lastfm radio URL
       #
       # <b>Options</b>
       # +lang+:: An ISO language code to determine the language to return the station name in, expressed as an ISO 639 alpha-2 code.
-      #
-      # Sample response:
-      #
-      # <lfm status="ok">
-      # 	<station>
-      # 		<type>artist</type>
-      # 		<name>Cher Similar Artists</name>
-      # 		<url>http://www.last.fm/listen/artist/Cher/similarartists</url>
-      # 		<supportsdiscovery>1</supportsdiscovery>
-      # 	</station>
-      # </lfm>
       def tune(station, options={})
         post({:method => "radio.tune", :station => station}.merge(options))
       end
@@ -2136,35 +752,6 @@ module Shortwave
       # <b>Options</b>
       # +discovery+:: Whether to request last.fm content with discovery mode switched on.
       # +rtp+:: Whether the user is scrobbling or not during this radio session (helps content generation)
-      #
-      # Sample response:
-      #
-      # <playlist version="1" xmlns="http://xspf.org/ns/0/">
-      #  <title>+Cher+Similar+Artists</title>
-      #  <creator>Last.fm</creator>
-      #  <date>2007-11-26T17:34:38</date>
-      #  <link rel="http://www.last.fm/expiry">3600</link>
-      #  <trackList>
-      #   <track>
-      #    <location>http://play.last.fm/ ... .mp3</location>
-      #    <title>Two People (Live)</title>
-      #    <identifier>8212510</identifier>
-      #    <album>Tina Live In Europe</album>
-      #    <creator>Tina Turner</creator>
-      #    <duration>265000</duration>
-      #    <image>http:// ... .jpg</image>
-      #    <extension application="http://www.last.fm">
-      #      <artistpage></artistpage>
-      #      <albumpage>...</albumpage>
-      #      <trackpage>...</trackpage>
-      #      <buyTrackURL>...</buyTrackURL>
-      #      <buyAlbumURL>...</buyAlbumURL>
-      #      <freeTrackURL>...</freeTrackURL>
-      #    </extension>
-      #   </track>
-      #    ...
-      #  </trackList>
-      # </playlist>
       def playlist(options={})
         get({:method => "radio.getPlaylist"}.merge(options))
       end
@@ -2174,63 +761,26 @@ module Shortwave
     class Auth < Remote
       
       # Fetch an unathorized request token for an API account. This is step 2 of the authentication process for desktop applications. Web applications do not need to use this service.
-      #
-      # Sample response:
-      #
-      # <lfm status="ok">
-      #     <token>cf45fe5a3e3cebe168480a086d7fe481</token>
-      # </lfm>
       def token()
         get({:method => "auth.getToken"})
       end
       
       # Used by our flash embeds (on trusted domains) to use a site session cookie to seed a ws session without requiring a password. Uses the site cookie so must be accessed over a .last.fm domain.
-      #
-      # Sample response:
-      #
-      # <lfm status="ok">
-      # 	<session>
-      # 		<name>MyLastFMUsername</name>
-      # 		<key>d580d57f32848f5dcf574d1ce18d78b2</key>
-      # 	</session>
-      # </lfm>
       def web_session()
         get({:method => "auth.getWebSession"})
       end
       
       # Create a web service session for a user. Used for authenticating a user when the password can be inputted by the user. Only suitable for standalone mobile devices. See the authentication how-to for more.
       #
-      # <b>Parameters</b>
       # +username+:: The last.fm username.
       # +authToken+:: A 32-byte ASCII hexadecimal MD5 hash of the last.fm username and the user's password hash. i.e. md5(username + md5(password)), where '+' represents a concatenation.
-      #
-      # Sample response:
-      #
-      # <lfm status="ok">
-      # 	<session>
-      # 		<name>MyLastFMUsername</name>
-      # 		<key>d580d57f32848f5dcf574d1ce18d78b2</key>
-      # 		<subscriber>0</subscriber>
-      # 	</session>
-      # </lfm>
       def mobile_session(username, authToken)
         get({:method => "auth.getMobileSession", :username => username, :authToken => authToken})
       end
       
       # Fetch a session key for a user. The third step in the authentication process. See the authentication how-to for more information.
       #
-      # <b>Parameters</b>
       # +token+:: A 32-character ASCII hexadecimal MD5 hash returned by step 1 of the authentication process (following the granting of permissions to the application by the user)
-      #
-      # Sample response:
-      #
-      # <lfm status="ok">
-      # 	<session>
-      # 		<name>MyLastFMUsername</name>
-      # 		<key>d580d57f32848f5dcf574d1ce18d78b2</key>
-      # 		<subscriber>0</subscriber>
-      # 	</session>
-      # </lfm>
       def session(token)
         get({:method => "auth.getSession", :token => token})
       end
@@ -2241,130 +791,48 @@ module Shortwave
       
       # Share an event with one or more Last.fm users or other friends.
       #
-      # <b>Parameters</b>
       # +event+:: An event ID
       # +recipient+:: Email Address | Last.fm Username - A comma delimited list of email addresses or Last.fm usernames. Maximum is 10.
       #
       # <b>Options</b>
       # +message+:: An optional message to send with the recommendation. If not supplied a default message will be used.
-      #
-      # Sample response:
-      #
-      # <lfm status="ok">
-      # </lfm>
       def share(event, recipient, options={})
         post({:method => "event.share", :event => event, :recipient => recipient}.merge(options))
       end
       
       # Get a list of attendees for an event.
       #
-      # <b>Parameters</b>
       # +event+:: The numeric last.fm event id
-      #
-      # Sample response:
-      #
-      # <attendees event="328799" total="41">
-      #   <user>
-      #     <name>ikea</name>
-      #     <realname>Jane</realname>
-      #     <image size="small">http://userserve-ak.last.fm/serve/34/17805805.jpg</image>
-      #     <image size="medium">http://userserve-ak.last.fm/serve/64/17805805.jpg</image>
-      #     <image size="large">http://userserve-ak.last.fm/serve/126/17805805.jpg</image>
-      #     <url>http://www.last.fm/user/ikea</url>
-      #   </user>
-      #   ...
-      # </attendees>
       def attendees(event)
         get({:method => "event.getAttendees", :event => event})
       end
       
       # Shout in this event's shoutbox
       #
-      # <b>Parameters</b>
       # +event+:: The id of the event to shout on
       # +message+:: The message to post to the shoutbox
-      #
-      # Sample response:
-      #
-      # <lfm status="ok" />
       def shout(event, message)
         post({:method => "event.shout", :event => event, :message => message})
       end
       
       # Set a user's attendance status for an event.
       #
-      # <b>Parameters</b>
       # +event+:: The numeric last.fm event id
       # +status+:: The attendance status (0=Attending, 1=Maybe attending, 2=Not attending)
-      #
-      # Sample response:
-      #
-      # <lfm status="ok">
-      # </lfm>
       def attend(event, status)
         post({:method => "event.attend", :event => event, :status => status})
       end
       
       # Get the metadata for an event on Last.fm. Includes attendance and lineup information.
       #
-      # <b>Parameters</b>
       # +event+:: The numeric last.fm event id
-      #
-      # Sample response:
-      #
-      # <event>
-      #   <id>328799</id>
-      #   <title>Philip Glass</title>
-      #   <artists>
-      #     <artist>Philip Glass</artist>
-      #     <artist>Orchestra and Chorus of Erfurt Theatre</artist>
-      #     <headliner>Philip Glass</headliner>
-      #   </artists>
-      #   <venue>
-      #     <name>Barbican Centre</name>
-      #     <location>
-      #       <city>London</city>
-      #       <country>United Kingdom</country>
-      #       <street>Silk Street</street>
-      #       <postalcode>EC2Y 8DS</postalcode>
-      #       <geo:point>
-      #         <geo:lat>51.5</geo:lat>
-      #         <geo:long>-0.1166667</geo:long>
-      #       </geo:point>
-      #       <timezone>GMT</timezone>
-      #     </location>
-      #     <url>http://www.last.fm/venue/8777860</url>
-      #   </venue>
-      #   <startDate>Thu, 12 Jun 2008</startDate>
-      #   <startTime>19:30</startTime>
-      #   <description></description>
-      #   <image size="small">http://userserve-ak.last.fm/serve/50/320636.jpg</image>
-      #   <image size="medium">http://userserve-ak.last.fm/serve/85/320636.jpg</image>
-      #   <image size="large">http://userserve-ak.last.fm/serve/160/320636.jpg</image>
-      #   <url>http://www.last.fm/event/328799</url> 
-      #   <attendance>42</attendance>
-      #   <reviews>0</reviews>
-      #   <tag>lastfm:event=328799</tag>
-      # </event>
       def info(event)
         get({:method => "event.getInfo", :event => event})
       end
       
       # Get shouts for this event. Also available as an rss feed.
       #
-      # <b>Parameters</b>
       # +event+:: The numeric last.fm event id
-      #
-      # Sample response:
-      #
-      # <shouts event="328799" total="5">
-      #   <shout>
-      #     <body>Blah</body>
-      #     <author>joanofarctan</author>
-      #     <date>Fri, 12 Dec 2008 13:20:41</date>
-      #   </shout>
-      #   ...
-      # </shouts>
       def shouts(event)
         get({:method => "event.getShouts", :event => event})
       end
@@ -2378,76 +846,22 @@ module Shortwave
       # <b>Options</b>
       # +title+:: Title for the playlist
       # +description+:: Description for the playlist
-      #
-      # Sample response:
-      #
-      # <playlists user="RJ">
-      #   <playlist>
-      #     <id>2615079</id>
-      #     <title>Duck playlist</title>
-      #     <description>Duck and cover</description>
-      #     <date>2008-05-22T09:40:09</date>
-      #     <size>0</size>
-      #     <duration>0</duration>
-      #     <streamable>0</streamable>
-      #     <creator>http://www.last.fm/user/RJ</creator>
-      #     <url>http://www.last.fm/user/RJ/library/playlists/1k1t3_duck_playlist</url>
-      #     <image size="small"></image>
-      #     <image size="medium"></image>
-      #     <image size="large"></image>
-      #   </playlist>
-      # </playlists>
       def create(options={})
         post({:method => "playlist.create"}.merge(options))
       end
       
       # Add a track to a Last.fm user's playlist
       #
-      # <b>Parameters</b>
       # +playlistID+:: The ID of the playlist - this is available in user.getPlaylists.
       # +track+:: The track name to add to the playlist.
       # +artist+:: The artist name that corresponds to the track to be added.
-      #
-      # Sample response:
-      #
-      # <lfm status="ok">
-      # </lfm>
       def add_track(playlistID, track, artist)
         post({:method => "playlist.addTrack", :playlistID => playlistID, :track => track, :artist => artist})
       end
       
       # Fetch XSPF playlists using a lastfm playlist url.
       #
-      # <b>Parameters</b>
       # +playlistURL+:: A lastfm protocol playlist url ('lastfm://playlist/...') . See 'playlists' section for more information.
-      #
-      # Sample response:
-      #
-      # <playlist version="1">
-      #   <title>Cher - Believe</title>
-      #   <annotation>Cher - Believe</annotation>
-      #   <creator>http://www.last.fm/music/Cher/Believe</creator>
-      #   <date>2008-06-17T11:08:56</date>
-      #   <trackList>
-      #     <track>
-      #       <title>Believe</title>
-      #       <identifier>http://www.last.fm/music/Cher/_/Believe</identifier>
-      #       <album>Believe</album>
-      #       <creator>Cher</creator>
-      #       <duration>240000</duration>
-      #       <info>http://www.last.fm/music/Cher/_/Believe</info>
-      #       <image>
-      #         http://cdn.last.fm/coverart/130x130/2026126-648749258.jpg
-      #       </image>
-      #       <extension application="http://www.last.fm">
-      #         <artistpage>http://www.last.fm/music/Cher</artistpage>
-      #         <albumpage>http://www.last.fm/music/Cher/Believe</albumpage>
-      #         <trackpage>http://www.last.fm/music/Cher/_/Believe</trackpage>
-      #       </extension>
-      #     </track>
-      #     ...
-      #   </trackList>
-      # </playlist>
       def fetch(playlistURL)
         get({:method => "playlist.fetch", :playlistURL => playlistURL})
       end

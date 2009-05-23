@@ -24,22 +24,6 @@ class RubyMethodTest < TestCase
     assert_equal "# A user's loved tracks", RubyMethod.new(method).comment.first
   end
 
-  test "outputs the sample response as a comment, if present" do
-    method = RemoteMethodStub.new("user.getLovedTracks", 
-                                  :loved_tracks,
-                                  "Returns a user's loved tracks",
-                                  "<lfm status=\"ok\">\n</lfm>" )
-
-    expected = ["# Returns a user's loved tracks",
-                "#",
-                "# Sample response:",
-                "#",
-                "# <lfm status=\"ok\">",
-                "# </lfm>"]
-
-    assert_equal expected, RubyMethod.new(method).comment
-  end
-
   test "outputs parameter descriptions as a comment" do
     method = RemoteMethodStub.new("user.getLovedTracks", 
                                   :loved_tracks,
@@ -51,7 +35,6 @@ class RubyMethodTest < TestCase
 
     expected = ["# Description",
                 "#",
-                "# <b>Parameters</b>",
                 "# +user+:: A username",
                 "#",
                 "# <b>Options</b>",

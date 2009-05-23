@@ -114,7 +114,6 @@ module Shortwave
 
           unless @required.empty?
             comment << "#"
-            comment << "# <b>Parameters</b>"
             @required.each {|p| comment << "# +#{p.name}+:: #{p.description}" }
           end
 
@@ -122,13 +121,6 @@ module Shortwave
             comment << "#"
             comment << "# <b>Options</b>"
             @optional.each {|p| comment << "# +#{p.name}+:: #{p.description}" }
-          end
-
-          if @node.sample_response
-            comment << "#"
-            comment << "# Sample response:"
-            comment << "#"
-            @node.sample_response.split("\n").each {|line| comment << "# #{line}" }
           end
         end
       end
