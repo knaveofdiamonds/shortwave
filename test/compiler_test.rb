@@ -16,12 +16,12 @@ class CompilerTest < Mini::Test::TestCase
 
   test "outputs a simple method signature with no arguments" do
     method = RemoteMethodStub.new("user.getLovedTracks", :loved_tracks)
-    assert_equal "loved_tracks", Compiler.new.compile(method).signature
+    assert_equal "loved_tracks", RubyMethod.new(method).signature
   end
 
   test "outputs the description as first line of comment" do
     method = RemoteMethodStub.new("user.getLovedTracks", :loved_tracks, "A user's loved tracks")
-    assert_equal "# A user's loved tracks", Compiler.new.compile(method).comment.first
+    assert_equal "# A user's loved tracks", RubyMethod.new(method).comment.first
   end
 
   test "outputs the sample response as a comment, if present" do
@@ -37,7 +37,7 @@ class CompilerTest < Mini::Test::TestCase
                 "# <lfm status=\"ok\">",
                 "# </lfm>"]
 
-    assert_equal expected, Compiler.new.compile(method).comment
+    assert_equal expected, RubyMethod.new(method).comment
   end
 
   test "adds required parameters to the method signature" do
@@ -47,7 +47,7 @@ class CompilerTest < Mini::Test::TestCase
                                   nil,
                                   [ParameterStub.new(:user, "A username", true)])
 
-    assert_equal "loved_tracks(user)", Compiler.new.compile(method).signature
+    assert_equal "loved_tracks(user)", RubyMethod.new(method).signature
   end
 
   [:api_key, :api_sig, :sk].each do |param|
@@ -59,7 +59,7 @@ class CompilerTest < Mini::Test::TestCase
                                     [ParameterStub.new(:user, "A username", true),
                                      ParameterStub.new(param, "API key", true)])
 
-      assert_equal "loved_tracks(user)", Compiler.new.compile(method).signature
+      assert_equal "loved_tracks(user)", RubyMethod.new(method).signature
     end
   end
 
@@ -71,7 +71,7 @@ class CompilerTest < Mini::Test::TestCase
                                   [ParameterStub.new(:user, "A username", true),
                                    ParameterStub.new(:number, "optional", false)])
 
-    assert_equal "loved_tracks(user, options={})", Compiler.new.compile(method).signature
+    assert_equal "loved_tracks(user, options={})", RubyMethod.new(method).signature
   end
 
   test "method body generates a GET request to the remote method" do
@@ -85,7 +85,7 @@ class CompilerTest < Mini::Test::TestCase
     expected = ["data = {:method => \"user.getLovedTracks\", :user => user}.merge(@auth)",
                 "get \"\", data"]
 
-    assert_equal expected, Compiler.new.compile(method).body
+    assert_equal expected, RubyMethod.new(method).body
   end
 
   test "optional parameters are merged into the sent data" do
@@ -99,7 +99,7 @@ class CompilerTest < Mini::Test::TestCase
 
     expected = ["data = {:method => \"user.getLovedTracks\", :user => user}.merge(@auth).merge(options)",
                 "get \"\", data"]
-    assert_equal expected, Compiler.new.compile(method).body
+    assert_equal expected, RubyMethod.new(method).body
   end
 
   test "write methods are sent via POST" do
@@ -111,6 +111,6 @@ class CompilerTest < Mini::Test::TestCase
                                    ParameterStub.new(:number, "optional", false)],
                                   :post)
 
-    assert_equal "post \"\", data", Compiler.new.compile(method).body.last
+    assert_equal "post \"\", data", RubyMethod.new(method).body.last
   end
 end

@@ -24,23 +24,13 @@ module Shortwave
       String.send(:include, StringExtensions)
 
 
-      class Compiler
-        def compile(node)
-          RubyMethod.new.build(node)
-        end
-      end
-
-
       class RubyMethod
         attr_accessor :signature
         attr_reader   :comment, :body
 
-        def initialize
+        def initialize(node)
           @comment = []
           @body = []
-        end
-
-        def build(node)
           @node = node
           @required, @optional = (@node.parameters || []).partition {|p| p.required? }
           @required.reject! {|p| [:api_key, :api_sig, :sk].include?(p.name) }
