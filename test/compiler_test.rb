@@ -86,4 +86,17 @@ class CompilerTest < Mini::Test::TestCase
 
     assert_equal expected, Compiler.new.compile(method).body
   end
+
+  test "optional parameters are merged into the sent data" do
+    method = RemoteMethodStub.new("user.getLovedTracks", 
+                                  :loved_tracks,
+                                  nil,
+                                  nil,
+                                  [ParameterStub.new(:user, "A username", true),
+                                   ParameterStub.new(:number, "optional", false)])
+
+    expected = ["data = {:method => \"user.getLovedTracks\", :user => user}.merge(@auth).merge(options)",
+                "get \"\", data"]
+    assert_equal expected, Compiler.new.compile(method).body
+  end
 end
