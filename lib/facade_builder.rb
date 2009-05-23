@@ -31,6 +31,14 @@ module Shortwave
 
         def compile(node)
           @lines << "# #{node.description}" if node.description
+
+          if node.sample_response
+            @lines << "#"
+            @lines << "# Sample response:"
+            @lines << "#"
+            node.sample_response.split("\n").each {|line| @lines << "# #{line}" }
+          end
+
           @lines << "def #{node.name}"
           @lines << "end"
           @lines
