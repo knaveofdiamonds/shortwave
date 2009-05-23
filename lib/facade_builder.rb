@@ -39,7 +39,12 @@ module Shortwave
             node.sample_response.split("\n").each {|line| @lines << "# #{line}" }
           end
 
-          @lines << "def #{node.name}"
+          signature = "def #{node.name}"
+          unless node.parameters.nil? || node.parameters.empty?
+            signature << "(" << node.parameters.map {|p| p.name }.join(", ") << ")"
+          end
+
+          @lines << signature
           @lines << "end"
           @lines
         end

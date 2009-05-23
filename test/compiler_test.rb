@@ -3,7 +3,9 @@ require 'facade_builder'
 
 include Shortwave::Facade::Build
 
-RemoteMethodStub = Struct.new(:remote_name, :name, :description, :sample_response)
+RemoteMethodStub = Struct.new(:remote_name, :name, :description, :sample_response, :parameters)
+ParameterStub    = Struct.new(:name, :description, :required?)
+
 class CompilerTest < Mini::Test::TestCase
 
   test "outputs a simple method with no arguments" do
@@ -32,4 +34,16 @@ class CompilerTest < Mini::Test::TestCase
     assert_equal expected, Compiler.new.compile(method)[0..5]
   end
 
+  test "adds required parameters to the method signature" do
+    method = RemoteMethodStub.new("user.getLovedTracks", 
+                                  :loved_tracks,
+                                  nil,
+                                  nil,
+                                  [ParameterStub.new(:user, "A username", true)])
+
+    expected = ["def loved_tracks(user)",
+                "end"]
+
+    assert_equal expected, Compiler.new.compile(method)
+  end
 end
