@@ -25,6 +25,15 @@ module Shortwave
       end
       String.send(:include, StringExtensions)
 
+
+      # Given a starting URI, generates a string of ruby code for remote facades.
+      def build(uri)
+        klasses = DocumentationRemote.new.build(uri)
+        ERB.new( File.read(File.dirname(__FILE__) + "/facade_template.erb") ).result(binding)
+      end
+
+
+      # A remote facade for the Last FM html documentation
       class DocumentationRemote
         include HTTParty
         base_uri "http://last.fm"
@@ -37,15 +46,15 @@ module Shortwave
             end
           end.sort {|a,b| a.name <=> b.name }
         end
-                
+
+        private
+
         def scrape_remote_methods(html)
           Nokogiri::HTML(html).css(REMOTE_CLASS).inject({}) do |hsh, node|
             hsh[node.text] = node.next.next.css("a").map {|a| a['href'] }
             hsh
           end
         end
-
-        private
 
         def add_method(klass, uri)
           response = self.class.get(uri)
@@ -56,6 +65,7 @@ module Shortwave
       end
 
 
+      # The class of a RemoteFacade to be generated
       class RubyClass
         attr_reader :name, :methods
 
@@ -65,6 +75,8 @@ module Shortwave
         end
       end
 
+
+      # A ruby method in a RemoteFacade that will be generated
       class RubyMethod
         attr_accessor :signature
         attr_reader   :comment, :body

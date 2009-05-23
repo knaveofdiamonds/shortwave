@@ -16,7 +16,7 @@ class BuildTest < Mini::Test::TestCase
       "User" => ["/api/show/?service=329"],
       "Venue" => ["/api/show/?service=396"]}
 
-    assert_equal expected, DocumentationRemote.new.scrape_remote_methods(raw)
+    assert_equal expected, DocumentationRemote.new.send( :scrape_remote_methods, raw )
   end
 
   test "build method follows links and builds RubyClasses" do
