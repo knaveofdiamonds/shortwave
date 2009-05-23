@@ -9,6 +9,7 @@ module Shortwave
       SAMPLE_CSS      = "#sample pre"
       DESCRIPTION_CSS = ".wsdescription"
       METHOD_TYPE_CSS = "#wsdescriptor"
+      REMOTE_CLASS    = "li.package"
 
       COMBINED_PARAMS = /^(.+)\[(.+)\]$/
       PARAMETER_TEXT  = /\s*\(([^\)]+)\)\s*:\s*(.*)/
@@ -27,24 +28,30 @@ module Shortwave
       class DocumentationRemote
         include HTTParty
         base_uri "http://last.fm"
-      end
 
-      def build(uri)
-        raw_methods = scrape_remote_methods( DocumentationRemote.get(uri) )
-        raw_methods.map do |name, method_uris|
-          klass = RubyClass.new(name)
-          method_uris.each do |u|
-            raw = DocumentationRemote.get(u)
-            klass.methods << RubyMethod.new( RemoteMethod.new(raw) )
+        def build(uri)
+          scrape_remote_methods( self.class.get(uri) ).map do |name, method_uris|
+            method_uris.inject( RubyClass.new(name) ) do |klass, u| 
+              add_method(klass, u)
+              klass
+            end
+          end.sort {|a,b| a.name <=> b.name }
+        end
+                
+        def scrape_remote_methods(html)
+          Nokogiri::HTML(html).css(REMOTE_CLASS).inject({}) do |hsh, node|
+            hsh[node.text] = node.next.next.css("a").map {|a| a['href'] }
+            hsh
           end
-          klass
-        end.sort {|a,b| a.name <=> b.name }
-      end
+        end
 
-      def scrape_remote_methods(html)
-        Nokogiri::HTML(html).css("li.package").inject({}) do |hsh, node|
-          hsh[node.text] = node.next.next.css("a").map {|a| a['href'] }
-          hsh
+        private
+
+        def add_method(klass, uri)
+          response = self.class.get(uri)
+          if (200..299).include?(response.code.to_i)
+            klass.methods << RubyMethod.new( RemoteMethod.new(response) )
+          end
         end
       end
 
