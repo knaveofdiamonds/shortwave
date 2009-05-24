@@ -13,11 +13,20 @@ class AuthenticationTest < TestCase
   end
 
   test "merges in the api key to the parameters if user authentication is not required" do
-    assert_equal( {:foo => "bar", :api_key => "123"}, @auth.merge!(:foo => "bar")  )
+    assert_equal( {:foo => "bar", :api_key => "123"}, @auth.merge!(:standard, :foo => "bar")  )
   end
 
   test "raises Authentication error unless session_key is set" do
-    assert_raise(AuthenticationError) { @auth.merge!({}, true) }
+    assert_raise(AuthenticationError) { @auth.merge!(:session, {}) }
   end
-  
+end
+
+class MobileAuthenticationTest < TestCase
+  test "mobile session calls through to Last.fm api" do
+    FakeWeb.register_uri :get, "http://ws.audioscrobbler.com/2.0/?username=bob&method=auth.getMobileSession&authToken=4ea54fb6bc6cda12c4eff51263c21cd4&api_key=123&api_sig=bff4f0a37a6e2b99e36542f41eadecde", :string => "ok"
+
+    @auth = MobileAuthentication.new("123", "789")
+    @auth.authenticate("bob", "secret")
+    assert @auth.signed_in?
+  end
 end

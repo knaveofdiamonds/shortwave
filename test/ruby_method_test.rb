@@ -84,7 +84,7 @@ class RubyMethodTest < TestCase
                                   [ParameterStub.new(:user, "A username", true)],
                                   :get)
     
-    expected = ["get({:method => \"user.getLovedTracks\", :user => user})"]
+    expected = ["get(:standard, {:method => \"user.getLovedTracks\", :user => user})"]
     assert_equal expected, RubyMethod.new(method).body
   end
 
@@ -97,7 +97,7 @@ class RubyMethodTest < TestCase
                                    ParameterStub.new(:number, "optional", false)],
                                   :get)
 
-    expected = ["get({:method => \"user.getLovedTracks\", :user => user}.merge(options))"]
+    expected = ["get(:standard, {:method => \"user.getLovedTracks\", :user => user}.merge(options))"]
     assert_equal expected, RubyMethod.new(method).body
   end
 
@@ -111,5 +111,27 @@ class RubyMethodTest < TestCase
                                   :post)
 
     assert_equal "post", RubyMethod.new(method).body.first[0..3]
+  end
+
+  test "method with an sk parameter should be a session method" do
+    method = RemoteMethodStub.new("user.getLovedTracks", 
+                                  :loved_tracks,
+                                  nil,
+                                  nil,
+                                  [ParameterStub.new(:sk, "sk", true)],
+                                  :get)
+    expected = ["get(:session, {:method => \"user.getLovedTracks\"})"]
+    assert_equal expected, RubyMethod.new(method).body
+  end
+
+  test "method with an api_sig but no sk parameter should be a signed method" do
+    method = RemoteMethodStub.new("user.getLovedTracks", 
+                                  :loved_tracks,
+                                  nil,
+                                  nil,
+                                  [ParameterStub.new(:api_sig, "api_sig", true)],
+                                  :get)
+    expected = ["get(:signed, {:method => \"user.getLovedTracks\"})"]
+    assert_equal expected, RubyMethod.new(method).body
   end
 end

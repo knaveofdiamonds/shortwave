@@ -11,7 +11,7 @@ module Shortwave
       # +track+:: A track name (utf8 encoded)
       # +artist+:: An artist name (utf8 encoded)
       def love(track, artist)
-        post({:method => "track.love", :track => track, :artist => artist})
+        post(:session, {:method => "track.love", :track => track, :artist => artist})
       end
       
       # Remove a user's tag from a track.
@@ -20,7 +20,7 @@ module Shortwave
       # +track+:: The track name in question
       # +tags+:: A single user tag to remove from this track.
       def remove_tag(artist, track, tags)
-        post({:method => "track.removeTag", :artist => artist, :track => track, :tags => tags})
+        post(:session, {:method => "track.removeTag", :artist => artist, :track => track, :tags => tags})
       end
       
       # Search for a track by track name. Returns track matches sorted by relevance.
@@ -32,7 +32,7 @@ module Shortwave
       # +page+:: Scan into the results by specifying a page number. Defaults to first page.
       # +artist+:: Narrow your search by specifying an artist.
       def search(track, options={})
-        get({:method => "track.search", :track => track}.merge(options))
+        get(:standard, {:method => "track.search", :track => track}.merge(options))
       end
       
       # Tag an album using a list of user supplied tags.
@@ -41,7 +41,7 @@ module Shortwave
       # +track+:: The track name in question
       # +tags+:: A comma delimited list of user supplied tags to apply to this track. Accepts a maximum of 10 tags.
       def add_tags(artist, track, tags)
-        post({:method => "track.addTags", :artist => artist, :track => track, :tags => tags})
+        post(:session, {:method => "track.addTags", :artist => artist, :track => track, :tags => tags})
       end
       
       # Get the metadata for a track on Last.fm using the artist/track name or a musicbrainz id.
@@ -51,7 +51,7 @@ module Shortwave
       # +track+:: The track name in question
       # +mbid+:: The musicbrainz id for the track
       def info(options={})
-        get({:method => "track.getInfo"}.merge(options))
+        get(:standard, {:method => "track.getInfo"}.merge(options))
       end
       
       # Get the tags applied by an individual user to a track on Last.fm.
@@ -59,7 +59,7 @@ module Shortwave
       # +artist+:: The artist name in question
       # +track+:: The track name in question
       def tags(artist, track)
-        get({:method => "track.getTags", :artist => artist, :track => track})
+        get(:session, {:method => "track.getTags", :artist => artist, :track => track})
       end
       
       # Get the top fans for this track on Last.fm, based on listening data. Supply either track & artist name or musicbrainz id.
@@ -69,7 +69,7 @@ module Shortwave
       # +artist+:: The artist name in question
       # +mbid+:: The musicbrainz id for the track
       def top_fans(options={})
-        get({:method => "track.getTopFans"}.merge(options))
+        get(:standard, {:method => "track.getTopFans"}.merge(options))
       end
       
       # Ban a track for a given user profile. This needs to be supplemented with a scrobbling submission containing the 'ban' rating (see the audioscrobbler API).
@@ -77,7 +77,7 @@ module Shortwave
       # +track+:: A track name (utf8 encoded)
       # +artist+:: An artist name (utf8 encoded)
       def ban(track, artist)
-        post({:method => "track.ban", :track => track, :artist => artist})
+        post(:session, {:method => "track.ban", :track => track, :artist => artist})
       end
       
       # Get the top tags for this track on Last.fm, ordered by tag count. Supply either track & artist name or mbid.
@@ -87,7 +87,7 @@ module Shortwave
       # +artist+:: The artist name in question
       # +mbid+:: The musicbrainz id for the track
       def top_tags(options={})
-        get({:method => "track.getTopTags"}.merge(options))
+        get(:standard, {:method => "track.getTopTags"}.merge(options))
       end
       
       # Get the similar tracks for this track on Last.fm, based on listening data.
@@ -97,7 +97,7 @@ module Shortwave
       # +artist+:: The artist name in question
       # +mbid+:: The musicbrainz id for the track
       def similar(options={})
-        get({:method => "track.getSimilar"}.merge(options))
+        get(:standard, {:method => "track.getSimilar"}.merge(options))
       end
       
       # Share a track twith one or more Last.fm users or other friends.
@@ -109,7 +109,7 @@ module Shortwave
       # <b>Options</b>
       # +message+:: An optional message to send with the recommendation. If not supplied a default message will be used.
       def share(artist, recipient, track, options={})
-        post({:method => "track.share", :artist => artist, :recipient => recipient, :track => track}.merge(options))
+        post(:session, {:method => "track.share", :artist => artist, :recipient => recipient, :track => track}.merge(options))
       end
       
     end
@@ -120,7 +120,7 @@ module Shortwave
       #
       # +user+:: The user name to fetch the loved tracks for.
       def loved_tracks(user)
-        get({:method => "user.getLovedTracks", :user => user})
+        get(:standard, {:method => "user.getLovedTracks", :user => user})
       end
       
       # Get a list of a user's neighbours on Last.fm.
@@ -130,7 +130,7 @@ module Shortwave
       # <b>Options</b>
       # +limit+:: An integer used to limit the number of neighbours returned.
       def neighbours(user, options={})
-        get({:method => "user.getNeighbours", :user => user}.merge(options))
+        get(:standard, {:method => "user.getNeighbours", :user => user}.merge(options))
       end
       
       # Get a list of the recent tracks listened to by this user. Indicates now playing track if the user is currently listening.
@@ -140,7 +140,7 @@ module Shortwave
       # <b>Options</b>
       # +limit+:: An integer used to limit the number of tracks returned.
       def recent_tracks(user, options={})
-        get({:method => "user.getRecentTracks", :user => user}.merge(options))
+        get(:standard, {:method => "user.getRecentTracks", :user => user}.merge(options))
       end
       
       # Shout on this user's shoutbox
@@ -148,14 +148,14 @@ module Shortwave
       # +user+:: The name of the user to shout on.
       # +message+:: The message to post to the shoutbox.
       def shout(user, message)
-        post({:method => "user.shout", :user => user, :message => message})
+        post(:session, {:method => "user.shout", :user => user, :message => message})
       end
       
       # Get a list of upcoming events that this user is attending. Easily integratable into calendars, using the ical standard (see 'more formats' section below).
       #
       # +user+:: The user to fetch the events for.
       def events(user)
-        get({:method => "user.getEvents", :user => user})
+        get(:standard, {:method => "user.getEvents", :user => user})
       end
       
       # Get the top tracks listened to by a user. You can stipulate a time period. Sends the overall chart by default.
@@ -165,12 +165,12 @@ module Shortwave
       # <b>Options</b>
       # +period+:: overall | 3month | 6month | 12month - The time period over which to retrieve top tracks for.
       def top_tracks(user, options={})
-        get({:method => "user.getTopTracks", :user => user}.merge(options))
+        get(:standard, {:method => "user.getTopTracks", :user => user}.merge(options))
       end
       
       # Get information about a user profile.
       def info()
-        get({:method => "user.getInfo"})
+        get(:session, {:method => "user.getInfo"})
       end
       
       # Get a paginated list of all events recommended to a user by Last.fm, based on their listening profile.
@@ -179,7 +179,7 @@ module Shortwave
       # +page+:: The page number to scan to.
       # +limit+:: The number of events to return per page.
       def recommended_events(options={})
-        get({:method => "user.getRecommendedEvents"}.merge(options))
+        get(:session, {:method => "user.getRecommendedEvents"}.merge(options))
       end
       
       # Get the top artists listened to by a user. You can stipulate a time period. Sends the overall chart by default.
@@ -189,7 +189,7 @@ module Shortwave
       # <b>Options</b>
       # +period+:: overall | 3month | 6month | 12month - The time period over which to retrieve top artists for.
       def top_artists(user, options={})
-        get({:method => "user.getTopArtists", :user => user}.merge(options))
+        get(:standard, {:method => "user.getTopArtists", :user => user}.merge(options))
       end
       
       # Get a list of the user's friends on Last.fm.
@@ -201,14 +201,14 @@ module Shortwave
       # +limit+:: An integer used to limit the number of friends returned per page. The default is 50.
       # +page+:: The page number to fetch.
       def friends(user, options={})
-        get({:method => "user.getFriends", :user => user}.merge(options))
+        get(:standard, {:method => "user.getFriends", :user => user}.merge(options))
       end
       
       # Get shouts for this user. Also available as an rss feed.
       #
       # +user+:: The username to fetch shouts for
       def shouts(user)
-        get({:method => "user.getShouts", :user => user})
+        get(:standard, {:method => "user.getShouts", :user => user})
       end
       
       # Get an album chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent album chart for this user.
@@ -219,7 +219,7 @@ module Shortwave
       # +from+:: The date at which the chart should start from. See User.getChartsList for more.
       # +to+:: The date at which the chart should end on. See User.getChartsList for more.
       def weekly_album_chart(user, options={})
-        get({:method => "user.getWeeklyAlbumChart", :user => user}.merge(options))
+        get(:standard, {:method => "user.getWeeklyAlbumChart", :user => user}.merge(options))
       end
       
       # Get an artist chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent artist chart for this user.
@@ -230,14 +230,14 @@ module Shortwave
       # +from+:: The date at which the chart should start from. See User.getWeeklyChartList for more.
       # +to+:: The date at which the chart should end on. See User.getWeeklyChartList for more.
       def weekly_artist_chart(user, options={})
-        get({:method => "user.getWeeklyArtistChart", :user => user}.merge(options))
+        get(:standard, {:method => "user.getWeeklyArtistChart", :user => user}.merge(options))
       end
       
       # Get a list of a user's playlists on Last.fm.
       #
       # +user+:: The last.fm username to fetch the playlists of.
       def playlists(user)
-        get({:method => "user.getPlaylists", :user => user})
+        get(:standard, {:method => "user.getPlaylists", :user => user})
       end
       
       # Get a paginated list of all events a user has attended in the past.
@@ -248,12 +248,12 @@ module Shortwave
       # +page+:: The page number to scan to.
       # +limit+:: The number of events to return per page.
       def past_events(user, options={})
-        get({:method => "user.getPastEvents", :user => user}.merge(options))
+        get(:standard, {:method => "user.getPastEvents", :user => user}.merge(options))
       end
       
       # Get Last.fm artist recommendations for a user
       def recommended_artists()
-        get({:method => "user.getRecommendedArtists"})
+        get(:session, {:method => "user.getRecommendedArtists"})
       end
       
       # Get the top albums listened to by a user. You can stipulate a time period. Sends the overall chart by default.
@@ -263,14 +263,14 @@ module Shortwave
       # <b>Options</b>
       # +period+:: overall | 3month | 6month | 12month - The time period over which to retrieve top albums for.
       def top_albums(user, options={})
-        get({:method => "user.getTopAlbums", :user => user}.merge(options))
+        get(:standard, {:method => "user.getTopAlbums", :user => user}.merge(options))
       end
       
       # Get a list of available charts for this user, expressed as date ranges which can be sent to the chart services.
       #
       # +user+:: The last.fm username to fetch the charts list for.
       def weekly_chart_list(user)
-        get({:method => "user.getWeeklyChartList", :user => user})
+        get(:standard, {:method => "user.getWeeklyChartList", :user => user})
       end
       
       # Get the top tags used by this user.
@@ -280,7 +280,7 @@ module Shortwave
       # <b>Options</b>
       # +limit+:: Limit the number of tags returned
       def top_tags(user, options={})
-        get({:method => "user.getTopTags", :user => user}.merge(options))
+        get(:standard, {:method => "user.getTopTags", :user => user}.merge(options))
       end
       
       # Get a track chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent track chart for this user.
@@ -291,7 +291,7 @@ module Shortwave
       # +from+:: The date at which the chart should start from. See User.getWeeklyChartList for more.
       # +to+:: The date at which the chart should end on. See User.getWeeklyChartList for more.
       def weekly_track_chart(user, options={})
-        get({:method => "user.getWeeklyTrackChart", :user => user}.merge(options))
+        get(:standard, {:method => "user.getWeeklyTrackChart", :user => user}.merge(options))
       end
       
     end
@@ -302,14 +302,14 @@ module Shortwave
       #
       # +group+:: The group name to fetch the members of.
       def members(group)
-        get({:method => "group.getMembers", :group => group})
+        get(:standard, {:method => "group.getMembers", :group => group})
       end
       
       # Get a list of available charts for this group, expressed as date ranges which can be sent to the chart services.
       #
       # +group+:: The last.fm group name to fetch the charts list for.
       def weekly_chart_list(group)
-        get({:method => "group.getWeeklyChartList", :group => group})
+        get(:standard, {:method => "group.getWeeklyChartList", :group => group})
       end
       
       # Get an album chart for a group, for a given date range. If no date range is supplied, it will return the most recent album chart for this group.
@@ -320,7 +320,7 @@ module Shortwave
       # +from+:: The date at which the chart should start from. See Group.getWeeklyChartList for more.
       # +to+:: The date at which the chart should end on. See Group.getWeeklyChartList for more.
       def weekly_album_chart(user, options={})
-        get({:method => "group.getWeeklyAlbumChart", :user => user}.merge(options))
+        get(:standard, {:method => "group.getWeeklyAlbumChart", :user => user}.merge(options))
       end
       
       # Get a track chart for a group, for a given date range. If no date range is supplied, it will return the most recent album chart for this group.
@@ -331,7 +331,7 @@ module Shortwave
       # +from+:: The date at which the chart should start from. See Group.getWeeklyChartList for more.
       # +to+:: The date at which the chart should end on. See Group.getWeeklyChartList for more.
       def weekly_track_chart(group, options={})
-        get({:method => "group.getWeeklyTrackChart", :group => group}.merge(options))
+        get(:standard, {:method => "group.getWeeklyTrackChart", :group => group}.merge(options))
       end
       
       # Get an artist chart for a group, for a given date range. If no date range is supplied, it will return the most recent album chart for this group.
@@ -342,7 +342,7 @@ module Shortwave
       # +from+:: The date at which the chart should start from. See Group.getWeeklyChartList for more.
       # +to+:: The date at which the chart should end on. See Group.getWeeklyChartList for more.
       def weekly_artist_chart(group, options={})
-        get({:method => "group.getWeeklyArtistChart", :group => group}.merge(options))
+        get(:standard, {:method => "group.getWeeklyArtistChart", :group => group}.merge(options))
       end
       
     end
@@ -353,7 +353,7 @@ module Shortwave
       #
       # +tag+:: The tag name in question.
       def similar(tag)
-        get({:method => "tag.getSimilar", :tag => tag})
+        get(:standard, {:method => "tag.getSimilar", :tag => tag})
       end
       
       # Get an artist chart for a tag, for a given date range. If no date range is supplied, it will return the most recent artist chart for this tag.
@@ -365,19 +365,19 @@ module Shortwave
       # +to+:: The date at which the chart should end on. See Tag.getWeeklyChartList for more.
       # +limit+:: The number of chart items to return.
       def weekly_artist_chart(tag, options={})
-        get({:method => "tag.getWeeklyArtistChart", :tag => tag}.merge(options))
+        get(:standard, {:method => "tag.getWeeklyArtistChart", :tag => tag}.merge(options))
       end
       
       # Get the top albums tagged by this tag, ordered by tag count.
       #
-      # +tag+:: Last FM tag
+      # +tag+:: Last.fm tag
       def top_albums(tag)
-        get({:method => "tag.getTopAlbums", :tag => tag})
+        get(:standard, {:method => "tag.getTopAlbums", :tag => tag})
       end
       
       # Fetches the top global tags on Last.fm, sorted by popularity (number of times used)
       def top_tags()
-        get({:method => "tag.getTopTags"})
+        get(:standard, {:method => "tag.getTopTags"})
       end
       
       # Search for a tag by name. Returns matches sorted by relevance.
@@ -388,28 +388,28 @@ module Shortwave
       # +limit+:: Limit the number of tags returned at one time. Default (maximum) is 30.
       # +page+:: Scan into the results by specifying a page number. Defaults to first page.
       def search(tag, options={})
-        get({:method => "tag.search", :tag => tag}.merge(options))
+        get(:standard, {:method => "tag.search", :tag => tag}.merge(options))
       end
       
       # Get the top artists tagged by this tag, ordered by tag count.
       #
-      # +tag+:: Last FM tag
+      # +tag+:: Last.fm tag
       def top_artists(tag)
-        get({:method => "tag.getTopArtists", :tag => tag})
+        get(:standard, {:method => "tag.getTopArtists", :tag => tag})
       end
       
       # Get the top tracks tagged by this tag, ordered by tag count.
       #
-      # +tag+:: Last FM tag
+      # +tag+:: Last.fm tag
       def top_tracks(tag)
-        get({:method => "tag.getTopTracks", :tag => tag})
+        get(:standard, {:method => "tag.getTopTracks", :tag => tag})
       end
       
       # Get a list of available charts for this tag, expressed as date ranges which can be sent to the chart services.
       #
       # +tag+:: The tag name in question
       def weekly_chart_list(tag)
-        get({:method => "tag.getWeeklyChartList", :tag => tag})
+        get(:standard, {:method => "tag.getWeeklyChartList", :tag => tag})
       end
       
     end
@@ -422,7 +422,7 @@ module Shortwave
       # +album+:: The album name in question
       # +tag+:: A single user tag to remove from this album.
       def remove_tag(artist, album, tag)
-        post({:method => "album.removeTag", :artist => artist, :album => album, :tag => tag})
+        post(:session, {:method => "album.removeTag", :artist => artist, :album => album, :tag => tag})
       end
       
       # Tag an album using a list of user supplied tags.
@@ -431,7 +431,7 @@ module Shortwave
       # +album+:: The album name in question
       # +tags+:: A comma delimited list of user supplied tags to apply to this album. Accepts a maximum of 10 tags.
       def add_tags(artist, album, tags)
-        post({:method => "album.addTags", :artist => artist, :album => album, :tags => tags})
+        post(:session, {:method => "album.addTags", :artist => artist, :album => album, :tags => tags})
       end
       
       # Get the metadata for an album on Last.fm using the album name or a musicbrainz id. See playlist.fetch on how to get the album playlist.
@@ -442,7 +442,7 @@ module Shortwave
       # +mbid+:: The musicbrainz id for the album
       # +lang+:: The language to return the biography in, expressed as an ISO 639 alpha-2 code.
       def info(options={})
-        get({:method => "album.getInfo"}.merge(options))
+        get(:standard, {:method => "album.getInfo"}.merge(options))
       end
       
       # Get the tags applied by an individual user to an album on Last.fm.
@@ -450,7 +450,7 @@ module Shortwave
       # +artist+:: The artist name in question
       # +album+:: The album name in question
       def tags(artist, album)
-        get({:method => "album.getTags", :artist => artist, :album => album})
+        get(:session, {:method => "album.getTags", :artist => artist, :album => album})
       end
       
       # Search for an album by name. Returns album matches sorted by relevance.
@@ -461,7 +461,7 @@ module Shortwave
       # +limit+:: Limit the number of albums returned at one time. Default (maximum) is 30.
       # +page+:: Scan into the results by specifying a page number. Defaults to first page.
       def search(album, options={})
-        get({:method => "album.search", :album => album}.merge(options))
+        get(:standard, {:method => "album.search", :album => album}.merge(options))
       end
       
     end
@@ -476,14 +476,14 @@ module Shortwave
       # +page+:: The page of results to return.
       # +limit+:: The maximum number of results to return.
       def past_events(venue, options={})
-        get({:method => "venue.getPastEvents", :venue => venue}.merge(options))
+        get(:standard, {:method => "venue.getPastEvents", :venue => venue}.merge(options))
       end
       
       # Get a list of upcoming events at this venue.
       #
       # +venue+:: The id for the venue you would like to fetch event listings for.
       def events(venue)
-        get({:method => "venue.getEvents", :venue => venue})
+        get(:standard, {:method => "venue.getEvents", :venue => venue})
       end
       
       # Search for a venue by venue name
@@ -495,7 +495,7 @@ module Shortwave
       # +limit+:: The number of results to fetch per page. Defaults to 50.
       # +country+:: Filter your results by country. Expressed as an ISO 3166-2 code.
       def search(venue, options={})
-        get({:method => "venue.search", :venue => venue}.merge(options))
+        get(:standard, {:method => "venue.search", :venue => venue}.merge(options))
       end
       
     end
@@ -512,7 +512,7 @@ module Shortwave
       # <b>Options</b>
       # +limit+:: How many shared artists to display
       def compare(type1, type2, value1, value2, options={})
-        get({:method => "tasteometer.compare", :type1 => type1, :type2 => type2, :value1 => value1, :value2 => value2}.merge(options))
+        get(:standard, {:method => "tasteometer.compare", :type1 => type1, :type2 => type2, :value1 => value1, :value2 => value2}.merge(options))
       end
       
     end
@@ -528,7 +528,7 @@ module Shortwave
       # +page+:: Display more results by pagination
       # +distance+:: Find events within a specified distance
       def events(options={})
-        get({:method => "geo.getEvents"}.merge(options))
+        get(:standard, {:method => "geo.getEvents"}.merge(options))
       end
       
       # Get the most popular tracks on Last.fm last week by country
@@ -538,14 +538,14 @@ module Shortwave
       # <b>Options</b>
       # +location+:: A metro name, to fetch the charts for (must be within the country specified)
       def top_tracks(country, options={})
-        get({:method => "geo.getTopTracks", :country => country}.merge(options))
+        get(:standard, {:method => "geo.getTopTracks", :country => country}.merge(options))
       end
       
       # Get the most popular artists on Last.fm by country
       #
       # +country+:: A country name, as defined by the ISO 3166-1 country names standard
       def top_artists(country)
-        get({:method => "geo.getTopArtists", :country => country})
+        get(:standard, {:method => "geo.getTopArtists", :country => country})
       end
       
     end
@@ -559,7 +559,7 @@ module Shortwave
       # <b>Options</b>
       # +lang+:: An ISO language code to determine the language to return the station name in, expressed as an ISO 639 alpha-2 code.
       def tune(station, options={})
-        post({:method => "radio.tune", :station => station}.merge(options))
+        post(:session, {:method => "radio.tune", :station => station}.merge(options))
       end
       
       # Fetch new radio content periodically in an XSPF format.
@@ -568,7 +568,7 @@ module Shortwave
       # +discovery+:: Whether to request last.fm content with discovery mode switched on.
       # +rtp+:: Whether the user is scrobbling or not during this radio session (helps content generation)
       def playlist(options={})
-        get({:method => "radio.getPlaylist"}.merge(options))
+        get(:session, {:method => "radio.getPlaylist"}.merge(options))
       end
       
     end
@@ -583,7 +583,7 @@ module Shortwave
       # +limit+:: Limit the amount of albums returned (maximum/default is 50).
       # +page+:: The page number you wish to scan to.
       def albums(user, options={})
-        get({:method => "library.getAlbums", :user => user}.merge(options))
+        get(:standard, {:method => "library.getAlbums", :user => user}.merge(options))
       end
       
       # A paginated list of all the artists in a user's library, with play counts and tag counts.
@@ -594,14 +594,14 @@ module Shortwave
       # +limit+:: Limit the amount of artists returned (maximum/default is 50).
       # +page+:: The page number you wish to scan to.
       def artists(user, options={})
-        get({:method => "library.getArtists", :user => user}.merge(options))
+        get(:standard, {:method => "library.getArtists", :user => user}.merge(options))
       end
       
       # Add an artist to a user's Last.fm library
       #
       # +artist+:: The artist name you wish to add
       def add_artist(artist)
-        post({:method => "library.addArtist", :artist => artist})
+        post(:session, {:method => "library.addArtist", :artist => artist})
       end
       
       # Add a track to a user's Last.fm library
@@ -609,7 +609,7 @@ module Shortwave
       # +artist+:: The artist that composed the track
       # +track+:: The track name you wish to add
       def add_track(artist, track)
-        post({:method => "library.addTrack", :artist => artist, :track => track})
+        post(:session, {:method => "library.addTrack", :artist => artist, :track => track})
       end
       
       # Add an album to a user's Last.fm library
@@ -617,7 +617,7 @@ module Shortwave
       # +artist+:: The artist that composed the track
       # +album+:: The album name you wish to add
       def add_album(artist, album)
-        post({:method => "library.addAlbum", :artist => artist, :album => album})
+        post(:session, {:method => "library.addAlbum", :artist => artist, :album => album})
       end
       
       # A paginated list of all the tracks in a user's library, with play counts and tag counts.
@@ -628,7 +628,7 @@ module Shortwave
       # +limit+:: Limit the amount of tracks returned (maximum/default is 50).
       # +page+:: The page number you wish to scan to.
       def tracks(user, options={})
-        get({:method => "library.getTracks", :user => user}.merge(options))
+        get(:standard, {:method => "library.getTracks", :user => user}.merge(options))
       end
       
     end
@@ -640,14 +640,14 @@ module Shortwave
       # +artist+:: The artist name in question.
       # +tags+:: A comma delimited list of user supplied tags to apply to this artist. Accepts a maximum of 10 tags.
       def add_tags(artist, tags)
-        post({:method => "artist.addTags", :artist => artist, :tags => tags})
+        post(:session, {:method => "artist.addTags", :artist => artist, :tags => tags})
       end
       
       # Get a list of upcoming events for this artist. Easily integratable into calendars, using the ical standard (see feeds section below).
       #
       # +artist+:: The artist name in question
       def events(artist)
-        get({:method => "artist.getEvents", :artist => artist})
+        get(:standard, {:method => "artist.getEvents", :artist => artist})
       end
       
       # Shout in this artist's shoutbox
@@ -655,7 +655,7 @@ module Shortwave
       # +artist+:: The name of the artist to shout on.
       # +message+:: The message to post to the shoutbox.
       def shout(artist, message)
-        post({:method => "artist.shout", :artist => artist, :message => message})
+        post(:session, {:method => "artist.shout", :artist => artist, :message => message})
       end
       
       # Share an artist with Last.fm users or other friends.
@@ -666,14 +666,14 @@ module Shortwave
       # <b>Options</b>
       # +message+:: An optional message to send with the recommendation. If not supplied a default message will be used.
       def share(artist, recipient, options={})
-        post({:method => "artist.share", :artist => artist, :recipient => recipient}.merge(options))
+        post(:session, {:method => "artist.share", :artist => artist, :recipient => recipient}.merge(options))
       end
       
       # Get the top tracks by an artist on Last.fm, ordered by popularity
       #
       # +artist+:: The artist name in question
       def top_tracks(artist)
-        get({:method => "artist.getTopTracks", :artist => artist})
+        get(:standard, {:method => "artist.getTopTracks", :artist => artist})
       end
       
       # Get all the artists similar to this artist
@@ -683,7 +683,7 @@ module Shortwave
       # <b>Options</b>
       # +limit+:: Limit the number of similar artists returned
       def similar(artist, options={})
-        get({:method => "artist.getSimilar", :artist => artist}.merge(options))
+        get(:standard, {:method => "artist.getSimilar", :artist => artist}.merge(options))
       end
       
       # Remove a user's tag from an artist.
@@ -691,7 +691,7 @@ module Shortwave
       # +artist+:: The artist name in question.
       # +tag+:: A single user tag to remove from this artist.
       def remove_tag(artist, tag)
-        post({:method => "artist.removeTag", :artist => artist, :tag => tag})
+        post(:session, {:method => "artist.removeTag", :artist => artist, :tag => tag})
       end
       
       # Search for an artist by name. Returns artist matches sorted by relevance.
@@ -702,7 +702,7 @@ module Shortwave
       # +limit+:: Limit the number of artists returned at one time. Default (maximum) is 30.
       # +page+:: Scan into the results by specifying a page number. Defaults to first page.
       def search(artist, options={})
-        get({:method => "artist.search", :artist => artist}.merge(options))
+        get(:standard, {:method => "artist.search", :artist => artist}.merge(options))
       end
       
       # Get Images for this artist in a variety of sizes.
@@ -714,14 +714,14 @@ module Shortwave
       # +limit+:: How many to return. Defaults and maxes out at 50.
       # +order+:: Sort ordering can be either 'popularity' (default) or 'dateadded'. While ordering by popularity officially selected images by labels and artists will be ordered first. This is ignored and set to 'dateadded' when requested as rss.
       def images(artist, options={})
-        get({:method => "artist.getImages", :artist => artist}.merge(options))
+        get(:standard, {:method => "artist.getImages", :artist => artist}.merge(options))
       end
       
       # Get the top tags for an artist on Last.fm, ordered by popularity.
       #
       # +artist+:: The artist name in question
       def top_tags(artist)
-        get({:method => "artist.getTopTags", :artist => artist})
+        get(:standard, {:method => "artist.getTopTags", :artist => artist})
       end
       
       # Get the metadata for an artist on Last.fm. Includes biography.
@@ -731,35 +731,35 @@ module Shortwave
       # +mbid+:: The musicbrainz id for the artist
       # +lang+:: The language to return the biography in, expressed as an ISO 639 alpha-2 code.
       def info(options={})
-        get({:method => "artist.getInfo"}.merge(options))
+        get(:standard, {:method => "artist.getInfo"}.merge(options))
       end
       
       # Get shouts for this artist. Also available as an rss feed.
       #
       # +artist+:: The artist name in question.
       def shouts(artist)
-        get({:method => "artist.getShouts", :artist => artist})
+        get(:standard, {:method => "artist.getShouts", :artist => artist})
       end
       
       # Get the tags applied by an individual user to an artist on Last.fm.
       #
       # +artist+:: The artist name in question
       def tags(artist)
-        get({:method => "artist.getTags", :artist => artist})
+        get(:session, {:method => "artist.getTags", :artist => artist})
       end
       
       # Get the top albums for an artist on Last.fm, ordered by popularity.
       #
       # +artist+:: The artist name in question
       def top_albums(artist)
-        get({:method => "artist.getTopAlbums", :artist => artist})
+        get(:standard, {:method => "artist.getTopAlbums", :artist => artist})
       end
       
       # Get the top fans for an artist on Last.fm, based on listening data.
       #
       # +artist+:: The artist name in question
       def top_fans(artist)
-        get({:method => "artist.getTopFans", :artist => artist})
+        get(:standard, {:method => "artist.getTopFans", :artist => artist})
       end
       
     end
@@ -774,14 +774,14 @@ module Shortwave
       # <b>Options</b>
       # +message+:: An optional message to send with the recommendation. If not supplied a default message will be used.
       def share(event, recipient, options={})
-        post({:method => "event.share", :event => event, :recipient => recipient}.merge(options))
+        post(:session, {:method => "event.share", :event => event, :recipient => recipient}.merge(options))
       end
       
       # Get a list of attendees for an event.
       #
       # +event+:: The numeric last.fm event id
       def attendees(event)
-        get({:method => "event.getAttendees", :event => event})
+        get(:standard, {:method => "event.getAttendees", :event => event})
       end
       
       # Shout in this event's shoutbox
@@ -789,7 +789,7 @@ module Shortwave
       # +event+:: The id of the event to shout on
       # +message+:: The message to post to the shoutbox
       def shout(event, message)
-        post({:method => "event.shout", :event => event, :message => message})
+        post(:session, {:method => "event.shout", :event => event, :message => message})
       end
       
       # Set a user's attendance status for an event.
@@ -797,21 +797,21 @@ module Shortwave
       # +event+:: The numeric last.fm event id
       # +status+:: The attendance status (0=Attending, 1=Maybe attending, 2=Not attending)
       def attend(event, status)
-        post({:method => "event.attend", :event => event, :status => status})
+        post(:session, {:method => "event.attend", :event => event, :status => status})
       end
       
       # Get the metadata for an event on Last.fm. Includes attendance and lineup information.
       #
       # +event+:: The numeric last.fm event id
       def info(event)
-        get({:method => "event.getInfo", :event => event})
+        get(:standard, {:method => "event.getInfo", :event => event})
       end
       
       # Get shouts for this event. Also available as an rss feed.
       #
       # +event+:: The numeric last.fm event id
       def shouts(event)
-        get({:method => "event.getShouts", :event => event})
+        get(:standard, {:method => "event.getShouts", :event => event})
       end
       
     end
@@ -820,12 +820,12 @@ module Shortwave
       
       # Fetch an unathorized request token for an API account. This is step 2 of the authentication process for desktop applications. Web applications do not need to use this service.
       def token()
-        get({:method => "auth.getToken"})
+        get(:signed, {:method => "auth.getToken"})
       end
       
       # Used by our flash embeds (on trusted domains) to use a site session cookie to seed a ws session without requiring a password. Uses the site cookie so must be accessed over a .last.fm domain.
       def web_session()
-        get({:method => "auth.getWebSession"})
+        get(:signed, {:method => "auth.getWebSession"})
       end
       
       # Create a web service session for a user. Used for authenticating a user when the password can be inputted by the user. Only suitable for standalone mobile devices. See the authentication how-to for more.
@@ -833,14 +833,14 @@ module Shortwave
       # +username+:: The last.fm username.
       # +authToken+:: A 32-byte ASCII hexadecimal MD5 hash of the last.fm username and the user's password hash. i.e. md5(username + md5(password)), where '+' represents a concatenation.
       def mobile_session(username, authToken)
-        get({:method => "auth.getMobileSession", :username => username, :authToken => authToken})
+        get(:signed, {:method => "auth.getMobileSession", :username => username, :authToken => authToken})
       end
       
       # Fetch a session key for a user. The third step in the authentication process. See the authentication how-to for more information.
       #
       # +token+:: A 32-character ASCII hexadecimal MD5 hash returned by step 1 of the authentication process (following the granting of permissions to the application by the user)
       def session(token)
-        get({:method => "auth.getSession", :token => token})
+        get(:signed, {:method => "auth.getSession", :token => token})
       end
       
     end
@@ -853,7 +853,7 @@ module Shortwave
       # +title+:: Title for the playlist
       # +description+:: Description for the playlist
       def create(options={})
-        post({:method => "playlist.create"}.merge(options))
+        post(:session, {:method => "playlist.create"}.merge(options))
       end
       
       # Add a track to a Last.fm user's playlist
@@ -862,14 +862,14 @@ module Shortwave
       # +track+:: The track name to add to the playlist.
       # +artist+:: The artist name that corresponds to the track to be added.
       def add_track(playlistID, track, artist)
-        post({:method => "playlist.addTrack", :playlistID => playlistID, :track => track, :artist => artist})
+        post(:session, {:method => "playlist.addTrack", :playlistID => playlistID, :track => track, :artist => artist})
       end
       
       # Fetch XSPF playlists using a lastfm playlist url.
       #
       # +playlistURL+:: A lastfm protocol playlist url ('lastfm://playlist/...') . See 'playlists' section for more information.
       def fetch(playlistURL)
-        get({:method => "playlist.fetch", :playlistURL => playlistURL})
+        get(:standard, {:method => "playlist.fetch", :playlistURL => playlistURL})
       end
       
     end

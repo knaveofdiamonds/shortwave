@@ -1,6 +1,7 @@
 require 'restclient'
 require 'uri'
 require 'digest/md5'
+include Digest
 
 module Shortwave
   module Facade
@@ -10,19 +11,33 @@ module Shortwave
     class Authentication
       def initialize(api_key, secret)
         @api_key, @secret = api_key, secret
+        @session_key = nil
       end
 
-      def merge!(params, requires_user_auth=false)
-        if requires_user_auth
-          raise AuthenticationError.new("Requires authentication!") unless @session_key
-        else
-          params.merge!(:api_key => @api_key)
-        end
+      def signed_in?
+        ! @session_key.nil?
+      end
+
+      def merge!(type, params)
+        raise AuthenticationError.new("Requires authentication!") if type == :session && @session_key.nil?
+
+        params.merge!(:api_key => @api_key)
+        params.merge!(:sk => @session_key) if type == :session
+        params.merge!(:api_sig => signature(params)) if type == :session || type == :signed
+        params
       end
 
       def signature(params)
         sorted_params = params.map {|k,v| [k.to_s, v.to_s] }.sort_by {|a| a[0] }
-        Digest::MD5.hexdigest(sorted_params.flatten.join("") + @secret)
+        MD5.hexdigest(sorted_params.flatten.join("") + @secret)
+      end
+    end
+
+
+    class MobileAuthentication < Authentication
+      def authenticate(username, password)
+        # FIXME - actually extract the session key
+        @session_key = Auth.new(self).mobile_session(username, MD5.hexdigest(username + MD5.hexdigest(password)))
       end
     end
 
@@ -37,14 +52,14 @@ module Shortwave
       BASE_URI = "http://ws.audioscrobbler.com/2.0/"
       DISALLOWED = Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
 
-      def get(data)
-        @auth.merge!(data)
+      def get(type, data)
+        @auth.merge!(type, data)
         uri = BASE_URI + "?" + data.map {|k,v| "#{k.to_s}=#{URI.escape(v, DISALLOWED)}"}.join("&")
         RestClient.get uri
       end
 
-      def post(data)
-        @auth.merge!(data)
+      def post(type, data)
+        @auth.merge!(type, data)
         RestClient.post BASE_URI, data
       end
     end

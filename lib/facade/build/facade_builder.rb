@@ -80,7 +80,8 @@ module Shortwave
           @comment = []
           @body = []
           @node = node
-          @required, @optional = (@node.parameters || []).partition {|p| p.required? }
+          @parameters = node.parameters || []
+          @required, @optional = (@parameters).partition {|p| p.required? }
           @required.reject! {|p| [:api_key, :api_sig, :sk].include?(p.name) }
 
           build_comment
@@ -92,7 +93,15 @@ module Shortwave
         private
 
         def build_body
-          get_line = "#{@node.http_method}({:method => \"#{@node.remote_name}\""
+          mode = if @parameters.any? {|p| p.name == :sk }
+                   :session
+                 elsif @parameters.any? {|p| p.name == :api_sig }
+                   :signed
+                 else
+                   :standard
+                 end
+
+          get_line = "#{@node.http_method}(:#{mode}, {:method => \"#{@node.remote_name}\""
           @required.each {|p| get_line << ", :#{p.name} => #{p.name}" }
           get_line << "}"
           get_line << ".merge(options)" unless @optional.empty?
