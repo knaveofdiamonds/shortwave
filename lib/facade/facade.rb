@@ -3,6 +3,18 @@ require 'uri'
 
 module Shortwave
   module Facade
+    class Authentication
+      def initialize(api_key, secret)
+        @api_key, @secret = api_key, secret
+      end
+
+      def signature(params)
+        Digest::MD5.hexdigest(params.map {|k,v| [k.to_s, v.to_s] }.sort_by {|a| a[0] }.flatten.join("") + @secret)
+      end
+    end
+
+
+
     class Remote
       def initialize(auth)
         @auth = auth
