@@ -19,9 +19,11 @@ class RemoteTest < TestCase
     assert_equal "ok", data
   end
 
-  test "merges the api_key from the authentication object" do
-    FakeWeb.register_uri :get, "http://ws.audioscrobbler.com/2.0/?api_key=123&foo=bar", :string => "ok"
-    data = Remote.new({:api_key => "123"}).send(:get, {:foo => "bar"})
-    assert_equal "ok", data
+  test "merges details from the authentication object" do
+    mock = mock()
+    mock.expects(:merge!)
+    RestClient.expects(:get)
+
+    Remote.new(mock).send(:get, {:foo => "bar"})
   end
 end

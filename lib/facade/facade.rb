@@ -1,5 +1,6 @@
 require 'restclient'
 require 'uri'
+require 'digest/md5'
 
 module Shortwave
   module Facade
@@ -8,11 +9,15 @@ module Shortwave
         @api_key, @secret = api_key, secret
       end
 
+      def merge!(params)
+        params.merge!(:api_key => @api_key)
+      end
+
       def signature(params)
-        Digest::MD5.hexdigest(params.map {|k,v| [k.to_s, v.to_s] }.sort_by {|a| a[0] }.flatten.join("") + @secret)
+        sorted_params = params.map {|k,v| [k.to_s, v.to_s] }.sort_by {|a| a[0] }
+        Digest::MD5.hexdigest(sorted_params.flatten.join("") + @secret)
       end
     end
-
 
 
     class Remote
@@ -26,20 +31,14 @@ module Shortwave
       DISALLOWED = Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
 
       def get(data)
-        merge_authentication(data)
+        @auth.merge!(data)
         uri = BASE_URI + "?" + data.map {|k,v| "#{k.to_s}=#{URI.escape(v, DISALLOWED)}"}.join("&")
         RestClient.get uri
       end
 
       def post(data)
-        merge_authentication(data)
+        @auth.merge!(data)
         RestClient.post BASE_URI, data
-      end
-
-      private
-
-      def merge_authentication(data)
-        data.merge! @auth
       end
     end
   end
