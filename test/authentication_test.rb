@@ -15,4 +15,9 @@ class AuthenticationTest < TestCase
   test "merges in the api key to the parameters if user authentication is not required" do
     assert_equal( {:foo => "bar", :api_key => "123"}, @auth.merge!(:foo => "bar")  )
   end
+
+  test "raises Authentication error unless session_key is set" do
+    assert_raise(AuthenticationError) { @auth.merge!({}, true) }
+  end
+  
 end

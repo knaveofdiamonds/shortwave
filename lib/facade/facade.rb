@@ -4,13 +4,20 @@ require 'digest/md5'
 
 module Shortwave
   module Facade
+    class AuthenticationError < StandardError
+    end
+
     class Authentication
       def initialize(api_key, secret)
         @api_key, @secret = api_key, secret
       end
 
-      def merge!(params)
-        params.merge!(:api_key => @api_key)
+      def merge!(params, requires_user_auth=false)
+        if requires_user_auth
+          raise AuthenticationError.new("Requires authentication!") unless @session_key
+        else
+          params.merge!(:api_key => @api_key)
+        end
       end
 
       def signature(params)
