@@ -1,10 +1,10 @@
 require 'helper'
-include Shortwave::Facade
+include Shortwave
 include Digest
 
 class AuthenticationTest < TestCase
   def setup
-    @auth = Authentication.new("123", "789")
+    @auth = Authentication::Base.new("123", "789")
   end
 
   test "can construct a method signature, given a hash of parameters and a secret" do
@@ -17,7 +17,7 @@ class AuthenticationTest < TestCase
   end
 
   test "raises Authentication error unless session_key is set" do
-    assert_raise(AuthenticationError) { @auth.merge!(:session, {}) }
+    assert_raise(Authentication::NotAuthorised) { @auth.merge!(:session, {}) }
   end
 end
 
@@ -25,7 +25,7 @@ class MobileAuthenticationTest < TestCase
   test "mobile session calls through to Last.fm api" do
     FakeWeb.register_uri :get, "http://ws.audioscrobbler.com/2.0/?username=bob&method=auth.getMobileSession&authToken=4ea54fb6bc6cda12c4eff51263c21cd4&api_key=123&api_sig=bff4f0a37a6e2b99e36542f41eadecde", :string => "ok"
 
-    @auth = MobileAuthentication.new("123", "789")
+    @auth = Authentication::Mobile.new("123", "789")
     @auth.authenticate("bob", "secret")
     assert @auth.signed_in?
   end
