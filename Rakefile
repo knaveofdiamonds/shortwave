@@ -9,11 +9,11 @@ begin
     directory "tmp/lastfm"
 
     task :scrape_method_index => "tmp/lastfm" do
-      REMOTE_METHODS = FacadeBuilder.new.remote_method_definitions("tmp/lastfm/intro.yml")
+      REMOTE_METHOD_DEFINITIONS = FacadeBuilder.new.remote_method_definitions("tmp/lastfm/intro.yml")
     end
 
     task :scrape => :scrape_method_index do
-      methods = REMOTE_METHODS.values.inject {|a, b| a.merge(b) }
+      methods = REMOTE_METHOD_DEFINITIONS.values.inject {|a, b| a.merge(b) }
       methods.each do |name, uri|
         if ! File.exists?("tmp/lastfm/#{name}.html")
           response = DocumentationRemote.get(uri)
@@ -24,22 +24,41 @@ begin
     end
 
     task :parse => :scrape do
-      KLASSES = REMOTE_METHODS.map do |klass_name, methods|
-        warn "Building #{klass_name}"
-        methods.keys.inject(RubyClass.new(klass_name)) do |klass, method_name|
-          warn "  building #{method_name}"
-          klass.methods << RubyMethod.new( RemoteMethod.new( File.read("tmp/lastfm/#{method_name}.html")))
-          klass
+      REMOTE_METHODS = {}
+      REMOTE_METHOD_DEFINITIONS.each do |klass_name, methods|
+        REMOTE_METHODS[klass_name] = []
+        methods.keys.each do |method_name|
+          warn "parsing #{method_name}"
+          REMOTE_METHODS[klass_name] << RemoteMethod.new( File.read("tmp/lastfm/#{method_name}.html"))
         end
       end
     end
 
     # Fixes any ommissions or mistakes in the HTML documentation
     task :patch => :parse do
+      patch_methods "Tag", :top_artists, :top_tracks, :top_albums do |method|
+        method.parameters << Parameter.new(:tag, true, "Last.fm tag")
+      end
+    end
+
+    def patch_methods(klass, *methods, &block)
+      REMOTE_METHODS[klass].select {|m| methods.include?(m.name) }.each do |method|
+        yield method
+      end
+    end
+
+    task :build => :patch do
+      KLASSES = REMOTE_METHODS.map do |klass_name, methods|
+        warn "Building #{klass_name}"
+        methods.inject(RubyClass.new(klass_name)) do |klass, method|
+          klass.methods << RubyMethod.new(method)
+          klass
+        end
+      end
     end
 
     desc "Scrapes the HTML documentation from the Last.FM site and uses it to construct ruby facade objects"
-    task :build => [:parse, :patch] do
+    task :compile => :build do
       klasses = KLASSES
       File.open("lib/facade/lastfm.rb", "w") do |fh|
         fh.write ERB.new(File.read("lib/facade/build/facade_template.erb")).result(binding)

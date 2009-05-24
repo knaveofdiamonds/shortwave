@@ -114,57 +114,6 @@ module Shortwave
       
     end
     
-    class Group < Remote
-      
-      # Get a list of members for this group.
-      #
-      # +group+:: The group name to fetch the members of.
-      def members(group)
-        get({:method => "group.getMembers", :group => group})
-      end
-      
-      # Get a list of available charts for this group, expressed as date ranges which can be sent to the chart services.
-      #
-      # +group+:: The last.fm group name to fetch the charts list for.
-      def weekly_chart_list(group)
-        get({:method => "group.getWeeklyChartList", :group => group})
-      end
-      
-      # Get an album chart for a group, for a given date range. If no date range is supplied, it will return the most recent album chart for this group.
-      #
-      # +user+:: The last.fm group name to fetch the charts of.
-      #
-      # <b>Options</b>
-      # +from+:: The date at which the chart should start from. See Group.getWeeklyChartList for more.
-      # +to+:: The date at which the chart should end on. See Group.getWeeklyChartList for more.
-      def weekly_album_chart(user, options={})
-        get({:method => "group.getWeeklyAlbumChart", :user => user}.merge(options))
-      end
-      
-      # Get a track chart for a group, for a given date range. If no date range is supplied, it will return the most recent album chart for this group.
-      #
-      # +group+:: The last.fm group name to fetch the charts of.
-      #
-      # <b>Options</b>
-      # +from+:: The date at which the chart should start from. See Group.getWeeklyChartList for more.
-      # +to+:: The date at which the chart should end on. See Group.getWeeklyChartList for more.
-      def weekly_track_chart(group, options={})
-        get({:method => "group.getWeeklyTrackChart", :group => group}.merge(options))
-      end
-      
-      # Get an artist chart for a group, for a given date range. If no date range is supplied, it will return the most recent album chart for this group.
-      #
-      # +group+:: The last.fm group name to fetch the charts of.
-      #
-      # <b>Options</b>
-      # +from+:: The date at which the chart should start from. See Group.getWeeklyChartList for more.
-      # +to+:: The date at which the chart should end on. See Group.getWeeklyChartList for more.
-      def weekly_artist_chart(group, options={})
-        get({:method => "group.getWeeklyArtistChart", :group => group}.merge(options))
-      end
-      
-    end
-    
     class User < Remote
       
       # Get the last 50 tracks loved by a user.
@@ -347,6 +296,124 @@ module Shortwave
       
     end
     
+    class Group < Remote
+      
+      # Get a list of members for this group.
+      #
+      # +group+:: The group name to fetch the members of.
+      def members(group)
+        get({:method => "group.getMembers", :group => group})
+      end
+      
+      # Get a list of available charts for this group, expressed as date ranges which can be sent to the chart services.
+      #
+      # +group+:: The last.fm group name to fetch the charts list for.
+      def weekly_chart_list(group)
+        get({:method => "group.getWeeklyChartList", :group => group})
+      end
+      
+      # Get an album chart for a group, for a given date range. If no date range is supplied, it will return the most recent album chart for this group.
+      #
+      # +user+:: The last.fm group name to fetch the charts of.
+      #
+      # <b>Options</b>
+      # +from+:: The date at which the chart should start from. See Group.getWeeklyChartList for more.
+      # +to+:: The date at which the chart should end on. See Group.getWeeklyChartList for more.
+      def weekly_album_chart(user, options={})
+        get({:method => "group.getWeeklyAlbumChart", :user => user}.merge(options))
+      end
+      
+      # Get a track chart for a group, for a given date range. If no date range is supplied, it will return the most recent album chart for this group.
+      #
+      # +group+:: The last.fm group name to fetch the charts of.
+      #
+      # <b>Options</b>
+      # +from+:: The date at which the chart should start from. See Group.getWeeklyChartList for more.
+      # +to+:: The date at which the chart should end on. See Group.getWeeklyChartList for more.
+      def weekly_track_chart(group, options={})
+        get({:method => "group.getWeeklyTrackChart", :group => group}.merge(options))
+      end
+      
+      # Get an artist chart for a group, for a given date range. If no date range is supplied, it will return the most recent album chart for this group.
+      #
+      # +group+:: The last.fm group name to fetch the charts of.
+      #
+      # <b>Options</b>
+      # +from+:: The date at which the chart should start from. See Group.getWeeklyChartList for more.
+      # +to+:: The date at which the chart should end on. See Group.getWeeklyChartList for more.
+      def weekly_artist_chart(group, options={})
+        get({:method => "group.getWeeklyArtistChart", :group => group}.merge(options))
+      end
+      
+    end
+    
+    class Tag < Remote
+      
+      # Search for tags similar to this one. Returns tags ranked by similarity, based on listening data.
+      #
+      # +tag+:: The tag name in question.
+      def similar(tag)
+        get({:method => "tag.getSimilar", :tag => tag})
+      end
+      
+      # Get an artist chart for a tag, for a given date range. If no date range is supplied, it will return the most recent artist chart for this tag.
+      #
+      # +tag+:: The tag name in question
+      #
+      # <b>Options</b>
+      # +from+:: The date at which the chart should start from. See Tag.getWeeklyChartList for more.
+      # +to+:: The date at which the chart should end on. See Tag.getWeeklyChartList for more.
+      # +limit+:: The number of chart items to return.
+      def weekly_artist_chart(tag, options={})
+        get({:method => "tag.getWeeklyArtistChart", :tag => tag}.merge(options))
+      end
+      
+      # Get the top albums tagged by this tag, ordered by tag count.
+      #
+      # +tag+:: Last FM tag
+      def top_albums(tag)
+        get({:method => "tag.getTopAlbums", :tag => tag})
+      end
+      
+      # Fetches the top global tags on Last.fm, sorted by popularity (number of times used)
+      def top_tags()
+        get({:method => "tag.getTopTags"})
+      end
+      
+      # Search for a tag by name. Returns matches sorted by relevance.
+      #
+      # +tag+:: The tag name in question.
+      #
+      # <b>Options</b>
+      # +limit+:: Limit the number of tags returned at one time. Default (maximum) is 30.
+      # +page+:: Scan into the results by specifying a page number. Defaults to first page.
+      def search(tag, options={})
+        get({:method => "tag.search", :tag => tag}.merge(options))
+      end
+      
+      # Get the top artists tagged by this tag, ordered by tag count.
+      #
+      # +tag+:: Last FM tag
+      def top_artists(tag)
+        get({:method => "tag.getTopArtists", :tag => tag})
+      end
+      
+      # Get the top tracks tagged by this tag, ordered by tag count.
+      #
+      # +tag+:: Last FM tag
+      def top_tracks(tag)
+        get({:method => "tag.getTopTracks", :tag => tag})
+      end
+      
+      # Get a list of available charts for this tag, expressed as date ranges which can be sent to the chart services.
+      #
+      # +tag+:: The tag name in question
+      def weekly_chart_list(tag)
+        get({:method => "tag.getWeeklyChartList", :tag => tag})
+      end
+      
+    end
+    
     class Album < Remote
       
       # Remove a user's tag from an album.
@@ -399,63 +466,53 @@ module Shortwave
       
     end
     
-    class Tag < Remote
+    class Venue < Remote
       
-      # Search for tags similar to this one. Returns tags ranked by similarity, based on listening data.
+      # Get a paginated list of all the events held at this venue in the past.
       #
-      # +tag+:: The tag name in question.
-      def similar(tag)
-        get({:method => "tag.getSimilar", :tag => tag})
-      end
-      
-      # Get an artist chart for a tag, for a given date range. If no date range is supplied, it will return the most recent artist chart for this tag.
-      #
-      # +tag+:: The tag name in question
+      # +venue+:: The id for the venue you would like to fetch event listings for.
       #
       # <b>Options</b>
-      # +from+:: The date at which the chart should start from. See Tag.getWeeklyChartList for more.
-      # +to+:: The date at which the chart should end on. See Tag.getWeeklyChartList for more.
-      # +limit+:: The number of chart items to return.
-      def weekly_artist_chart(tag, options={})
-        get({:method => "tag.getWeeklyArtistChart", :tag => tag}.merge(options))
+      # +page+:: The page of results to return.
+      # +limit+:: The maximum number of results to return.
+      def past_events(venue, options={})
+        get({:method => "venue.getPastEvents", :venue => venue}.merge(options))
       end
       
-      # Get the top albums tagged by this tag, ordered by tag count.
-      def top_albums()
-        get({:method => "tag.getTopAlbums"})
-      end
-      
-      # Fetches the top global tags on Last.fm, sorted by popularity (number of times used)
-      def top_tags()
-        get({:method => "tag.getTopTags"})
-      end
-      
-      # Search for a tag by name. Returns matches sorted by relevance.
+      # Get a list of upcoming events at this venue.
       #
-      # +tag+:: The tag name in question.
+      # +venue+:: The id for the venue you would like to fetch event listings for.
+      def events(venue)
+        get({:method => "venue.getEvents", :venue => venue})
+      end
+      
+      # Search for a venue by venue name
+      #
+      # +venue+:: The venue name you would like to search for.
       #
       # <b>Options</b>
-      # +limit+:: Limit the number of tags returned at one time. Default (maximum) is 30.
-      # +page+:: Scan into the results by specifying a page number. Defaults to first page.
-      def search(tag, options={})
-        get({:method => "tag.search", :tag => tag}.merge(options))
+      # +page+:: The results page you would like to fetch
+      # +limit+:: The number of results to fetch per page. Defaults to 50.
+      # +country+:: Filter your results by country. Expressed as an ISO 3166-2 code.
+      def search(venue, options={})
+        get({:method => "venue.search", :venue => venue}.merge(options))
       end
       
-      # Get the top artists tagged by this tag, ordered by tag count.
-      def top_artists()
-        get({:method => "tag.getTopArtists"})
-      end
+    end
+    
+    class Tasteometer < Remote
       
-      # Get the top tracks tagged by this tag, ordered by tag count.
-      def top_tracks()
-        get({:method => "tag.getTopTracks"})
-      end
-      
-      # Get a list of available charts for this tag, expressed as date ranges which can be sent to the chart services.
+      # Get a Tasteometer score from two inputs, along with a list of shared artists. If the input is a User or a Myspace URL, some additional information is returned.
       #
-      # +tag+:: The tag name in question
-      def weekly_chart_list(tag)
-        get({:method => "tag.getWeeklyChartList", :tag => tag})
+      # +type1+:: 'user' | 'artists' | 'myspace'
+      # +type2+:: 'user' | 'artists' | 'myspace'
+      # +value1+:: [Last.fm username] | [Comma-separated artist names] | [MySpace profile URL]
+      # +value2+:: [Last.fm username] | [Comma-separated artist names] | [MySpace profile URL]
+      #
+      # <b>Options</b>
+      # +limit+:: How many shared artists to display
+      def compare(type1, type2, value1, value2, options={})
+        get({:method => "tasteometer.compare", :type1 => type1, :type2 => type2, :value1 => value1, :value2 => value2}.merge(options))
       end
       
     end
@@ -493,53 +550,85 @@ module Shortwave
       
     end
     
-    class Tasteometer < Remote
+    class Radio < Remote
       
-      # Get a Tasteometer score from two inputs, along with a list of shared artists. If the input is a User or a Myspace URL, some additional information is returned.
+      # Tune in to a Last.fm radio station.
       #
-      # +type1+:: 'user' | 'artists' | 'myspace'
-      # +type2+:: 'user' | 'artists' | 'myspace'
-      # +value1+:: [Last.fm username] | [Comma-separated artist names] | [MySpace profile URL]
-      # +value2+:: [Last.fm username] | [Comma-separated artist names] | [MySpace profile URL]
+      # +station+:: A lastfm radio URL
       #
       # <b>Options</b>
-      # +limit+:: How many shared artists to display
-      def compare(type1, type2, value1, value2, options={})
-        get({:method => "tasteometer.compare", :type1 => type1, :type2 => type2, :value1 => value1, :value2 => value2}.merge(options))
+      # +lang+:: An ISO language code to determine the language to return the station name in, expressed as an ISO 639 alpha-2 code.
+      def tune(station, options={})
+        post({:method => "radio.tune", :station => station}.merge(options))
+      end
+      
+      # Fetch new radio content periodically in an XSPF format.
+      #
+      # <b>Options</b>
+      # +discovery+:: Whether to request last.fm content with discovery mode switched on.
+      # +rtp+:: Whether the user is scrobbling or not during this radio session (helps content generation)
+      def playlist(options={})
+        get({:method => "radio.getPlaylist"}.merge(options))
       end
       
     end
     
-    class Venue < Remote
+    class Library < Remote
       
-      # Get a paginated list of all the events held at this venue in the past.
+      # A paginated list of all the albums in a user's library, with play counts and tag counts.
       #
-      # +venue+:: The id for the venue you would like to fetch event listings for.
+      # +user+:: The user whose library you want to fetch.
       #
       # <b>Options</b>
-      # +page+:: The page of results to return.
-      # +limit+:: The maximum number of results to return.
-      def past_events(venue, options={})
-        get({:method => "venue.getPastEvents", :venue => venue}.merge(options))
+      # +limit+:: Limit the amount of albums returned (maximum/default is 50).
+      # +page+:: The page number you wish to scan to.
+      def albums(user, options={})
+        get({:method => "library.getAlbums", :user => user}.merge(options))
       end
       
-      # Get a list of upcoming events at this venue.
+      # A paginated list of all the artists in a user's library, with play counts and tag counts.
       #
-      # +venue+:: The id for the venue you would like to fetch event listings for.
-      def events(venue)
-        get({:method => "venue.getEvents", :venue => venue})
-      end
-      
-      # Search for a venue by venue name
-      #
-      # +venue+:: The venue name you would like to search for.
+      # +user+:: The user whose library you want to fetch.
       #
       # <b>Options</b>
-      # +page+:: The results page you would like to fetch
-      # +limit+:: The number of results to fetch per page. Defaults to 50.
-      # +country+:: Filter your results by country. Expressed as an ISO 3166-2 code.
-      def search(venue, options={})
-        get({:method => "venue.search", :venue => venue}.merge(options))
+      # +limit+:: Limit the amount of artists returned (maximum/default is 50).
+      # +page+:: The page number you wish to scan to.
+      def artists(user, options={})
+        get({:method => "library.getArtists", :user => user}.merge(options))
+      end
+      
+      # Add an artist to a user's Last.fm library
+      #
+      # +artist+:: The artist name you wish to add
+      def add_artist(artist)
+        post({:method => "library.addArtist", :artist => artist})
+      end
+      
+      # Add a track to a user's Last.fm library
+      #
+      # +artist+:: The artist that composed the track
+      # +track+:: The track name you wish to add
+      def add_track(artist, track)
+        post({:method => "library.addTrack", :artist => artist, :track => track})
+      end
+      
+      # Add an album to a user's Last.fm library
+      #
+      # +artist+:: The artist that composed the track
+      # +album+:: The album name you wish to add
+      def add_album(artist, album)
+        post({:method => "library.addAlbum", :artist => artist, :album => album})
+      end
+      
+      # A paginated list of all the tracks in a user's library, with play counts and tag counts.
+      #
+      # +user+:: The user whose library you want to fetch.
+      #
+      # <b>Options</b>
+      # +limit+:: Limit the amount of tracks returned (maximum/default is 50).
+      # +page+:: The page number you wish to scan to.
+      def tracks(user, options={})
+        get({:method => "library.getTracks", :user => user}.merge(options))
       end
       
     end
@@ -675,118 +764,6 @@ module Shortwave
       
     end
     
-    class Library < Remote
-      
-      # A paginated list of all the albums in a user's library, with play counts and tag counts.
-      #
-      # +user+:: The user whose library you want to fetch.
-      #
-      # <b>Options</b>
-      # +limit+:: Limit the amount of albums returned (maximum/default is 50).
-      # +page+:: The page number you wish to scan to.
-      def albums(user, options={})
-        get({:method => "library.getAlbums", :user => user}.merge(options))
-      end
-      
-      # A paginated list of all the artists in a user's library, with play counts and tag counts.
-      #
-      # +user+:: The user whose library you want to fetch.
-      #
-      # <b>Options</b>
-      # +limit+:: Limit the amount of artists returned (maximum/default is 50).
-      # +page+:: The page number you wish to scan to.
-      def artists(user, options={})
-        get({:method => "library.getArtists", :user => user}.merge(options))
-      end
-      
-      # Add an artist to a user's Last.fm library
-      #
-      # +artist+:: The artist name you wish to add
-      def add_artist(artist)
-        post({:method => "library.addArtist", :artist => artist})
-      end
-      
-      # Add a track to a user's Last.fm library
-      #
-      # +artist+:: The artist that composed the track
-      # +track+:: The track name you wish to add
-      def add_track(artist, track)
-        post({:method => "library.addTrack", :artist => artist, :track => track})
-      end
-      
-      # Add an album to a user's Last.fm library
-      #
-      # +artist+:: The artist that composed the track
-      # +album+:: The album name you wish to add
-      def add_album(artist, album)
-        post({:method => "library.addAlbum", :artist => artist, :album => album})
-      end
-      
-      # A paginated list of all the tracks in a user's library, with play counts and tag counts.
-      #
-      # +user+:: The user whose library you want to fetch.
-      #
-      # <b>Options</b>
-      # +limit+:: Limit the amount of tracks returned (maximum/default is 50).
-      # +page+:: The page number you wish to scan to.
-      def tracks(user, options={})
-        get({:method => "library.getTracks", :user => user}.merge(options))
-      end
-      
-    end
-    
-    class Radio < Remote
-      
-      # Tune in to a Last.fm radio station.
-      #
-      # +station+:: A lastfm radio URL
-      #
-      # <b>Options</b>
-      # +lang+:: An ISO language code to determine the language to return the station name in, expressed as an ISO 639 alpha-2 code.
-      def tune(station, options={})
-        post({:method => "radio.tune", :station => station}.merge(options))
-      end
-      
-      # Fetch new radio content periodically in an XSPF format.
-      #
-      # <b>Options</b>
-      # +discovery+:: Whether to request last.fm content with discovery mode switched on.
-      # +rtp+:: Whether the user is scrobbling or not during this radio session (helps content generation)
-      def playlist(options={})
-        get({:method => "radio.getPlaylist"}.merge(options))
-      end
-      
-    end
-    
-    class Auth < Remote
-      
-      # Fetch an unathorized request token for an API account. This is step 2 of the authentication process for desktop applications. Web applications do not need to use this service.
-      def token()
-        get({:method => "auth.getToken"})
-      end
-      
-      # Used by our flash embeds (on trusted domains) to use a site session cookie to seed a ws session without requiring a password. Uses the site cookie so must be accessed over a .last.fm domain.
-      def web_session()
-        get({:method => "auth.getWebSession"})
-      end
-      
-      # Create a web service session for a user. Used for authenticating a user when the password can be inputted by the user. Only suitable for standalone mobile devices. See the authentication how-to for more.
-      #
-      # +username+:: The last.fm username.
-      # +authToken+:: A 32-byte ASCII hexadecimal MD5 hash of the last.fm username and the user's password hash. i.e. md5(username + md5(password)), where '+' represents a concatenation.
-      def mobile_session(username, authToken)
-        get({:method => "auth.getMobileSession", :username => username, :authToken => authToken})
-      end
-      
-      # Fetch a session key for a user. The third step in the authentication process. See the authentication how-to for more information.
-      #
-      # +token+:: A 32-character ASCII hexadecimal MD5 hash returned by step 1 of the authentication process (following the granting of permissions to the application by the user)
-      def session(token)
-        get({:method => "auth.getSession", :token => token})
-      end
-      
-    end
-    
     class Event < Remote
       
       # Share an event with one or more Last.fm users or other friends.
@@ -835,6 +812,35 @@ module Shortwave
       # +event+:: The numeric last.fm event id
       def shouts(event)
         get({:method => "event.getShouts", :event => event})
+      end
+      
+    end
+    
+    class Auth < Remote
+      
+      # Fetch an unathorized request token for an API account. This is step 2 of the authentication process for desktop applications. Web applications do not need to use this service.
+      def token()
+        get({:method => "auth.getToken"})
+      end
+      
+      # Used by our flash embeds (on trusted domains) to use a site session cookie to seed a ws session without requiring a password. Uses the site cookie so must be accessed over a .last.fm domain.
+      def web_session()
+        get({:method => "auth.getWebSession"})
+      end
+      
+      # Create a web service session for a user. Used for authenticating a user when the password can be inputted by the user. Only suitable for standalone mobile devices. See the authentication how-to for more.
+      #
+      # +username+:: The last.fm username.
+      # +authToken+:: A 32-byte ASCII hexadecimal MD5 hash of the last.fm username and the user's password hash. i.e. md5(username + md5(password)), where '+' represents a concatenation.
+      def mobile_session(username, authToken)
+        get({:method => "auth.getMobileSession", :username => username, :authToken => authToken})
+      end
+      
+      # Fetch a session key for a user. The third step in the authentication process. See the authentication how-to for more information.
+      #
+      # +token+:: A 32-character ASCII hexadecimal MD5 hash returned by step 1 of the authentication process (following the granting of permissions to the application by the user)
+      def session(token)
+        get({:method => "auth.getSession", :token => token})
       end
       
     end

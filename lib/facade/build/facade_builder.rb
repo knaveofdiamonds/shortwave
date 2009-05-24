@@ -74,7 +74,7 @@ module Shortwave
       # A ruby method in a RemoteFacade that will be generated
       class RubyMethod
         attr_accessor :signature
-        attr_reader   :comment, :body
+        attr_reader   :comment, :body, :name
 
         def initialize(node)
           @comment = []
