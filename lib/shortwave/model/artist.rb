@@ -18,7 +18,7 @@ module Shortwave
       private
 
       def facade
-        @session.tag_facade
+        @session.artist_facade
       end
     end
   end
