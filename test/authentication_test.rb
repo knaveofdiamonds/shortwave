@@ -17,7 +17,7 @@ class AuthenticationTest < TestCase
   end
 
   test "raises Authentication error unless session_key is set" do
-    assert_raise(Authentication::NotAuthorised) { @auth.merge!(:session, {}) }
+    assert_raise(Authentication::NotAuthenticated) { @auth.merge!(:session, {}) }
   end
 end
 
