@@ -60,7 +60,7 @@ begin
     desc "Scrapes the HTML documentation from the Last.FM site and uses it to construct ruby facade objects"
     task :compile => :build do
       klasses = KLASSES
-      File.open("lib/facade/lastfm.rb", "w") do |fh|
+      File.open("lib/shortwave/facade/lastfm.rb", "w") do |fh|
         fh.write ERB.new(File.read("lib/facade/build/facade_template.erb")).result(binding)
       end
     end
