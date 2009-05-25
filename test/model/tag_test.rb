@@ -2,6 +2,12 @@ require 'helper'
 include Shortwave
 
 class TagTest < TestCase
+  def setup
+    @facade = mock()
+    @facade.stubs(:session).returns(stub(:tag_facade => @facade))
+    @provider = Provider::TagProvider.new(@facade)
+  end
+
   test "can be parsed from xml" do
     parsed = Model::Tag.parse(xml("tag_search"))
     assert_equal 20, parsed.size
@@ -11,10 +17,9 @@ class TagTest < TestCase
   end
 
   test "has similar tags" do
-    facade = mock()
-    facade.expects(:similar).with("disco").returns(xml("tag_similar"))
-    facade.stubs(:session).returns(stub(:tag_facade => facade))
-    similar = Provider::TagProvider.new(facade).build(:name => "disco").similar
+    @facade.expects(:similar).with("disco").returns(xml("tag_similar"))
+    similar = @provider.build(:name => "disco").similar
+
     assert_equal 50, similar.size
     assert_equal "italo disco", similar.first.name
     assert_equal true, similar.first.streamable
