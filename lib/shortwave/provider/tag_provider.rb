@@ -12,6 +12,11 @@ module Shortwave
         tag
       end
 
+      def popular
+        response = @facade.top_tags
+        Model::Tag.parse(response).each {|tag| tag.session = @facade.session }
+      end
+
       def build(attributes={})
         tag = Model::Tag.new
         attributes.each {|attr, value| tag.send("#{attr}=".to_sym, value) }

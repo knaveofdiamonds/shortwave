@@ -22,4 +22,10 @@ class TagProviderTest < TestCase
   test "can build a tag from attributes" do
     assert_equal "disco", @provider.build(:name => "disco").name
   end
+
+  test "can get most popular tags" do
+    xml = File.read(File.dirname(__FILE__) + "/../model/data/tag_top_tags.xml")
+    @facade.expects(:top_tags).returns(xml)
+    assert_equal 250, @provider.popular.size
+  end
 end
