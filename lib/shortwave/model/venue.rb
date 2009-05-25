@@ -5,6 +5,7 @@ module Shortwave
       
       tag "venue"
       element :name, String
+      element :url, String
     end
   end
 end
