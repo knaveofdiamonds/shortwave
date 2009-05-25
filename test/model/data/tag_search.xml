@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lfm status="ok">
+<results for="disco" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">
+<opensearch:Query role="request" searchTerms="disco" startPage="1" />
+<opensearch:totalResults>3568</opensearch:totalResults>
+<opensearch:startIndex>0</opensearch:startIndex>
+<opensearch:itemsPerPage>20</opensearch:itemsPerPage>
+<tagmatches>
+<tag>
+    <name>disco</name>
+    <count>75545</count>
+    <url>www.last.fm/tag/disco</url>
+</tag>
+<tag>
+    <name>italo disco</name>
+    <count>8382</count>
+    <url>www.last.fm/tag/italo%20disco</url>
+</tag>
+<tag>
+    <name>disco house</name>
+    <count>3443</count>
+    <url>www.last.fm/tag/disco%20house</url>
+</tag>
+<tag>
+    <name>disco punk</name>
+    <count>1526</count>
+    <url>www.last.fm/tag/disco%20punk</url>
+</tag>
+<tag>
+    <name>italo-disco</name>
+    <count>2076</count>
+    <url>www.last.fm/tag/italo-disco</url>
+</tag>
+<tag>
+    <name>indie disco</name>
+    <count>2386</count>
+    <url>www.last.fm/tag/indie%20disco</url>
+</tag>
+<tag>
+    <name>disco polo</name>
+    <count>827</count>
+    <url>www.last.fm/tag/disco%20polo</url>
+</tag>
+<tag>
+    <name>space disco</name>
+    <count>1919</count>
+    <url>www.last.fm/tag/space%20disco</url>
+</tag>
+<tag>
+    <name>disco funk</name>
+    <count>1598</count>
+    <url>www.last.fm/tag/disco%20funk</url>
+</tag>
+<tag>
+    <name>euro disco</name>
+    <count>734</count>
+    <url>www.last.fm/tag/euro%20disco</url>
+</tag>
+<tag>
+    <name>disco rock</name>
+    <count>252</count>
+    <url>www.last.fm/tag/disco%20rock</url>
+</tag>
+<tag>
+    <name>panic at the disco</name>
+    <count>2226</count>
+    <url>www.last.fm/tag/panic%20at%20the%20disco</url>
+</tag>
+<tag>
+    <name>evil disco</name>
+    <count>274</count>
+    <url>www.last.fm/tag/evil%20disco</url>
+</tag>
+<tag>
+    <name>electro disco</name>
+    <count>736</count>
+    <url>www.last.fm/tag/electro%20disco</url>
+</tag>
+<tag>
+    <name>nu disco</name>
+    <count>552</count>
+    <url>www.last.fm/tag/nu%20disco</url>
+</tag>
+<tag>
+    <name>disco trance</name>
+    <count>1547</count>
+    <url>www.last.fm/tag/disco%20trance</url>
+</tag>
+<tag>
+    <name>death disco</name>
+    <count>175</count>
+    <url>www.last.fm/tag/death%20disco</url>
+</tag>
+<tag>
+    <name>gay disco</name>
+    <count>334</count>
+    <url>www.last.fm/tag/gay%20disco</url>
+</tag>
+<tag>
+    <name>disco pop</name>
+    <count>273</count>
+    <url>www.last.fm/tag/disco%20pop</url>
+</tag>
+<tag>
+    <name>disco music</name>
+    <count>602</count>
+    <url>www.last.fm/tag/disco%20music</url>
+</tag>
+</tagmatches>
+</results></lfm>
