@@ -61,7 +61,7 @@ begin
     task :compile => :build do
       klasses = KLASSES
       File.open("lib/shortwave/facade/lastfm.rb", "w") do |fh|
-        fh.write ERB.new(File.read("lib/facade/build/facade_template.erb")).result(binding)
+        fh.write ERB.new(File.read("lib/shortwave/facade/build/facade_template.erb")).result(binding)
       end
     end
   end
