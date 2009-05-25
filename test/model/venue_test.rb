@@ -19,4 +19,8 @@ class VenueTest < TestCase
   test "venue has a location" do
     assert @venue.location.kind_of?( Model::Location )
   end
+
+  test "venue has an id" do
+    assert_equal 8777134, @venue.id
+  end
 end

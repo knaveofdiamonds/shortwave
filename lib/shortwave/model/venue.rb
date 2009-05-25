@@ -4,13 +4,13 @@ module Shortwave
       include HappyMapper
 
       tag "location"
-      
     end
 
     class Venue
       include HappyMapper
       
       tag "venue"
+      element :id, Integer
       element :name, String
       element :url, String
       has_one :location, Location
