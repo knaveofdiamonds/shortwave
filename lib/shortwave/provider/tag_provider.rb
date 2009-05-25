@@ -1,18 +1,14 @@
 module Shortwave
   module Provider
     class TagProvider < Base
-      def initialize(facade)
-        super(Model::Tag, facade)
-      end
-
+      # Returns a tag named "name"
       def get(name)
-        response = @facade.search(name)
-        parse_model response, :single => true
+        parse_model @facade.search(name), :single => true
       end
 
+      # Returns the most popular tags from Last.fm
       def popular
-        response = @facade.top_tags
-        Model::Tag.parse(response).each {|tag| tag.session = @facade.session }
+        parse_collection @facade.top_tags
       end
     end
   end
