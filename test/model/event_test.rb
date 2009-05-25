@@ -8,7 +8,27 @@ class EventTest < TestCase
     @event = Model::Event.parse(xml("venue_events"), :single => true)
   end
 
-  test "event has an id" do
+  test "has an id" do
     assert_equal 968618, @event.id
+  end
+
+  test "has an url" do
+    assert_equal "http://www.last.fm/event/968618", @event.url
+  end
+
+  test "has an attendance count" do
+    assert_equal 55, @event.attendance_count
+  end
+
+  test "has a description" do
+    assert_equal "", @event.description
+  end
+
+  test "has a start time" do
+    assert_equal Time.local(2009, 6, 1, 19, 30, 0), @event.starts_at
+  end
+
+  test "has a name" do
+    assert_equal "Phoenix", @event.name
   end
 end
