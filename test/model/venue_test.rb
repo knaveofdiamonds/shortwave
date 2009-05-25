@@ -15,4 +15,8 @@ class VenueTest < TestCase
   test "venue has a url" do
     assert_equal "http://www.last.fm/venue/8777134", @venue.url
   end
+
+  test "venue has a location" do
+    assert @venue.location.kind_of?( Model::Location )
+  end
 end
