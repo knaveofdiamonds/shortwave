@@ -1,3 +1,7 @@
+class StubSession
+  include Provider::ProviderMethods
+end
+
 module ProviderTestHelper
   def setup
     super

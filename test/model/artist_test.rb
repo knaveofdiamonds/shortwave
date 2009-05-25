@@ -1,7 +1,7 @@
 require 'helper'
-include Shortwave
 
 class ArtistTest < TestCase
+  include ProviderTestHelper
 
   test "has a name" do
     parsed = Model::Artist.parse(xml("artist_info"), :single => true)
@@ -32,11 +32,5 @@ class ArtistTest < TestCase
     parsed = Model::Artist.parse(xml("artist_info"), :single => true)
     assert parsed.biography
     assert parsed.biography_summary
-  end
-
-  private
-  
-  def xml(file)
-    File.read(File.dirname(__FILE__) + "/data/#{file}.xml")
   end
 end

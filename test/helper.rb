@@ -30,4 +30,6 @@ class TestCase
   end
 end
 
+include Shortwave
 require 'provider_test_helper'
+

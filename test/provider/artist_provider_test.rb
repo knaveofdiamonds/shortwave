@@ -1,9 +1,4 @@
 require 'helper'
-include Shortwave
-
-class StubSession
-  include Provider::ProviderMethods
-end
 
 class ArtistProviderTest < TestCase
   include ProviderTestHelper

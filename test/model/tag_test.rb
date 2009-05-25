@@ -1,9 +1,10 @@
 require 'helper'
-include Shortwave
 
 class TagTest < TestCase
+  include ProviderTestHelper
+
   def setup
-    @facade = mock()
+    super
     @facade.stubs(:session).returns(stub(:tag_facade => @facade))
     @provider = Provider::TagProvider.new(@facade)
   end
@@ -23,11 +24,5 @@ class TagTest < TestCase
     assert_equal 50, similar.size
     assert_equal "italo disco", similar.first.name
     assert_equal true, similar.first.streamable
-  end
-
-  private
-  
-  def xml(file)
-    File.read(File.dirname(__FILE__) + "/data/#{file}.xml")
   end
 end
