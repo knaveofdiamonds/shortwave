@@ -6,16 +6,15 @@ class StubSession
 end
 
 class TagProviderTest < TestCase
+  include ProviderTestHelper
+
   def setup
     super
-    @facade = mock()
-    @facade.stubs(:session).returns(StubSession.new)
     @provider = Provider::TagProvider.new(@facade)
   end
 
   test "can get a single tag" do
-    xml = File.read(File.dirname(__FILE__) + "/../model/data/tag_search.xml")
-    @facade.expects(:search).with("disco").returns(xml)
+    @facade.expects(:search).with("disco").returns(xml("tag_search"))
     assert_equal "disco", @provider.get("disco").name
   end
 
@@ -24,8 +23,7 @@ class TagProviderTest < TestCase
   end
 
   test "can get most popular tags" do
-    xml = File.read(File.dirname(__FILE__) + "/../model/data/tag_top_tags.xml")
-    @facade.expects(:top_tags).returns(xml)
+    @facade.expects(:top_tags).returns(xml("tag_top_tags"))
     assert_equal 250, @provider.popular.size
   end
 end

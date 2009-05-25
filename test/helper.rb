@@ -29,3 +29,5 @@ class TestCase
     end
   end
 end
+
+require 'provider_test_helper'
