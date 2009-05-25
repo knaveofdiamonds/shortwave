@@ -2,22 +2,26 @@ require 'helper'
 include Shortwave
 include Digest
 
-class AuthenticationTest < TestCase
+class SessionTest < TestCase
   def setup
-    @auth = Authentication::Session.new("123", "789")
+    @session = Authentication::Session.new("123", "789")
   end
 
   test "can construct a method signature, given a hash of parameters and a secret" do
     params = {:foo => "bar", :api_key => 123}
-    assert_equal MD5.hexdigest("api_key123foobar789"), @auth.signature(params)
+    assert_equal MD5.hexdigest("api_key123foobar789"), @session.signature(params)
   end
 
   test "merges in the api key to the parameters if user authentication is not required" do
-    assert_equal( {:foo => "bar", :api_key => "123"}, @auth.merge!(:standard, :foo => "bar")  )
+    assert_equal( {:foo => "bar", :api_key => "123"}, @session.merge!(:standard, :foo => "bar")  )
   end
 
   test "raises Authentication error unless session_key is set" do
-    assert_raise(Authentication::NotAuthenticated) { @auth.merge!(:session, {}) }
+    assert_raise(Authentication::NotAuthenticated) { @session.merge!(:session, {}) }
+  end
+
+  test "session can produce providers" do
+    assert @session.tag.kind_of?(Provider::TagProvider)
   end
 end
 

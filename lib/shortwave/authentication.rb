@@ -10,9 +10,17 @@ module Shortwave
     class NotAuthenticated < StandardError
     end
 
+    module ProviderMethods
+      def tag
+        Provider::TagProvider.new(Facade::Tag.new(self))
+      end
+    end
+
     # Base functionality for session-based authentication mechanisms. Don't use this
     # directly - use one of its subclasses: Web, Desktop or Mobile.
     class Session
+      include ProviderMethods
+
       attr_reader :session_key
       
       # Creates a new authneticator with your api account key and secret.
