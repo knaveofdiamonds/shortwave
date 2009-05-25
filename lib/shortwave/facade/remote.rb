@@ -15,7 +15,7 @@ module Shortwave
 
       def get(type, data)
         @auth.merge!(type, data)
-        uri = BASE_URI + "?" + data.map {|k,v| "#{k.to_s}=#{URI.escape(v, DISALLOWED)}"}.join("&")
+        uri = BASE_URI + "?" + data.map {|k,v| "#{k.to_s}=#{URI.escape(v.to_s, DISALLOWED)}"}.join("&")
         RestClient.get uri
       end
 
