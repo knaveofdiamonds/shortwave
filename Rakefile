@@ -2,7 +2,7 @@ require 'rubygems'
 require 'rake'
 
 begin
-  require "lib/facade/build/facade_builder"
+  require "lib/shortwave/facade/build/facade_builder"
 
   include Shortwave::Facade::Build
   namespace :facade do

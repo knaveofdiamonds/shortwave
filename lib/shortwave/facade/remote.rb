@@ -26,5 +26,3 @@ module Shortwave
     end
   end
 end
-
-require File.dirname(__FILE__) + '/lastfm'
