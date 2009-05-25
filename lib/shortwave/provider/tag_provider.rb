@@ -7,12 +7,15 @@ module Shortwave
 
       def get(name)
         response = @facade.search(name)
-        Model::Tag.parse(response).first
+        tag = Model::Tag.parse(response).first
+        tag.session = @facade.session
+        tag
       end
 
       def build(attributes={})
         tag = Model::Tag.new
         attributes.each {|attr, value| tag.send("#{attr}=".to_sym, value) }
+        tag.session = @facade.session
         tag
       end
     end

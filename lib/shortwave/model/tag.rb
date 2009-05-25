@@ -7,6 +7,8 @@ module Shortwave
       element :name, String
       element :count, Integer
       element :url, String
+
+      attr_accessor :session
     end
   end
 end

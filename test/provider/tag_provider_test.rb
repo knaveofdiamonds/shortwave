@@ -1,10 +1,15 @@
 require 'helper'
 include Shortwave
 
+class StubSession
+  include Authentication::ProviderMethods
+end
+
 class TagProviderTest < TestCase
   def setup
     super
     @facade = mock()
+    @facade.stubs(:session).returns(StubSession.new)
     @provider = Provider::TagProvider.new(@facade)
   end
 
