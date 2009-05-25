@@ -1,9 +1,6 @@
 module Shortwave
   module Model
-    class Event
-      include HappyMapper
-
-      tag "event"
+    class Event < BaseModel
       element :id, Integer
       element :description, String
       element :url, String
