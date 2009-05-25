@@ -12,7 +12,7 @@ module Shortwave
 
     # Base functionality for session-based authentication mechanisms. Don't use this
     # directly - use one of its subclasses: Web, Desktop or Mobile.
-    class Base
+    class Session
       attr_reader :session_key
       
       # Creates a new authneticator with your api account key and secret.
@@ -58,7 +58,7 @@ module Shortwave
 
     # Authentication for mobile applications. Don't use this for web/desktop applications
     # use either Authentication::Web or Authentication::Desktop instead
-    class Mobile < Base
+    class Mobile < Session
       # Authenticates with a user's username and password
       def authenticate(username, password)
         response = @facade.mobile_session(username, MD5.hexdigest(username + MD5.hexdigest(password)))
@@ -68,7 +68,7 @@ module Shortwave
 
     # Authentication for web applications. Send your user to the page given by +uri+
     # and use the token provided to your callback url as an argument to +authenticate+
-    class Web < Base
+    class Web < Session
       # The uri you should direct users to in their web browser, so they can authenticate. If successful,
       # the callback url defined in your api account will be called, with a token parameter. Pass this
       # token to the authenticate method.
@@ -85,7 +85,7 @@ module Shortwave
 
     # Authentication for destop applications. Send your user to the page given by +uri+
     # and then call +authenticate+.
-    class Desktop < Base
+    class Desktop < Session
       # A uri the user should log in at.
       def uri
         response = @facade.token

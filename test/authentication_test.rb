@@ -4,7 +4,7 @@ include Digest
 
 class AuthenticationTest < TestCase
   def setup
-    @auth = Authentication::Base.new("123", "789")
+    @auth = Authentication::Session.new("123", "789")
   end
 
   test "can construct a method signature, given a hash of parameters and a secret" do
