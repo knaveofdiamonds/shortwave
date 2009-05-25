@@ -2,7 +2,7 @@ require 'helper'
 include Shortwave
 
 class StubSession
-  include Authentication::ProviderMethods
+  include Provider::ProviderMethods
 end
 
 class TagProviderTest < TestCase

@@ -20,6 +20,10 @@ class SessionTest < TestCase
     assert_raise(Authentication::NotAuthenticated) { @session.merge!(:session, {}) }
   end
 
+  test "can be constructed with a session key" do
+    @session = Authentication::Session.new("123", "456", "789")
+    assert @session.signed_in?
+  end
   test "session can produce providers" do
     assert @session.tag.kind_of?(Provider::TagProvider)
   end
