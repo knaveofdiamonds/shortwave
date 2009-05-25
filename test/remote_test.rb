@@ -4,7 +4,7 @@ include Shortwave::Facade
 
 class RemoteTest < TestCase
   def setup
-    FakeWeb.clean_registry
+    super
     @auth = mock()
     @auth.expects(:merge!)
   end

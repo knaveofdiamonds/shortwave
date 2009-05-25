@@ -11,6 +11,10 @@ FakeWeb.allow_net_connect = false
 TestCase = Test::Unit::TestCase
 
 class TestCase
+  def setup
+    FakeWeb.clean_registry
+  end
+
   def self.test(name, &block)
     test_name = "test_#{name.gsub(/\s+/, '_')}".to_sym
     defined = instance_method(test_name) rescue false
