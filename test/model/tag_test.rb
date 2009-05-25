@@ -22,7 +22,6 @@ class TagTest < TestCase
     similar = @provider.build(:name => "disco").similar
 
     assert_equal 50, similar.size
-    assert_equal "italo disco", similar.first.name
     assert_equal true, similar.first.streamable
   end
 end
