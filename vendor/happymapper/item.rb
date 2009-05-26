@@ -20,7 +20,7 @@ module HappyMapper
       self.tag = o.delete(:tag) || name.to_s
       self.options = {:single => true}.merge(o)
       
-      @xml_type = self.class.to_s.split('::').last.downcase
+      @xml_type = self.class.name.split('::').last.downcase
     end
         
     def from_xml_node(node, namespace)
@@ -34,36 +34,23 @@ module HappyMapper
             end
           end
         end
-      else
-        if options[:parser]
-          find(node, namespace) do |nodes|
-            nodes.map do |n|
-              if n.respond_to?(:content) && !options[:raw]
-                value = n.content
-              else
-                value = n.to_s
-              end
-              
-              begin
-                type.send(options[:parser].to_sym, value)
-              rescue
-                nil
-              end
-            end
+      elsif options[:parser]
+        find(node, namespace) do |nodes|
+          nodes.map do |n|
+            value = (n.respond_to?(:content) && ! options[:raw]) ? n.content : n.to_s
+            type.send(options[:parser].to_sym, value) rescue nil
           end
-        else
-          type.parse(node, options)
         end
+      else
+        type.parse(node, options)
       end
     end
     
     def xpath(namespace = self.namespace)
       xpath  = ''
-      xpath += './/' if options[:deep]
-      xpath += "#{namespace}:" if namespace
-      xpath += tag
-      # puts "xpath: #{xpath}"
-      xpath
+      xpath << './/' if options[:deep]
+      xpath << "#{namespace}:" if namespace
+      xpath << tag
     end
     
     def primitive?
@@ -75,7 +62,7 @@ module HappyMapper
     end
     
     def attribute?
-      !element?
+      ! element?
     end
     
     def method_name
@@ -93,16 +80,10 @@ module HappyMapper
         elsif type == Boolean   then ['true', 't', '1'].include?(value.to_s.downcase)
         elsif type == Integer
           # ganked from datamapper
-          value_to_i = value.to_i
-          if value_to_i == 0 && value != '0'
-            value_to_s = value.to_s
-            begin
-              Integer(value_to_s =~ /^(\d+)/ ? $1 : value_to_s)
-            rescue ArgumentError
-              nil
-            end
+          if value.to_i == 0 && value != '0'
+            Integer(value.to_s =~ /^(\d+)/ ? $1 : value.to_s) rescue ArgumentError nil
           else
-            value_to_i
+            value.to_i
           end
         else
           value
@@ -113,6 +94,7 @@ module HappyMapper
     end
     
     private
+
       def find(node, namespace, &block)
         # this node has a custom namespace (that is present in the doc)
         if self.namespace && node.namespaces.find_by_prefix(self.namespace)
