@@ -32,4 +32,8 @@ class ArtistTest < TestCase
     assert @artist.biography
     assert @artist.biography_summary
   end
+
+  test "has images" do
+    assert_equal 3, @artist.images.size
+  end
 end
