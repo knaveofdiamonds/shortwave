@@ -8,9 +8,15 @@ module Shortwave
       element :review_count, Integer, :tag => "reviews"
       element :starts_at, Time, :tag => "startDate"
       element :name, String, :tag => "title"
-      element :headliner_raw, Artist, :tag => "artsits/headliner"
+      element :headliner_raw, String, :tag => "artists/headliner"
       element :artists_raw, String, :tag => "artists/artist", :single => false
       
+      # Returns the headline act for this event
+      def headliner
+        @headliner ||= artists.detect {|a| a.name == headliner_raw }
+      end
+
+      # Returns the list of artists playing at this event
       def artists
         @artists ||= artists_raw.map {|a| @session.artist.build(:name => a) }
       end

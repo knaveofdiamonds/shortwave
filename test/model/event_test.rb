@@ -42,4 +42,9 @@ class EventTest < TestCase
     assert_equal 2, @event.artists_raw.size
     assert_equal "Phoenix", @event.artists.first.name
   end
+
+  test "has a headliner" do
+    @event.session = StubSession.new
+    assert_equal "Phoenix", @event.headliner.name
+  end
 end
