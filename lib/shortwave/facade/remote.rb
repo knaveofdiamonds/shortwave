@@ -8,6 +8,10 @@ module Shortwave
         @auth = auth
       end
 
+      def session
+        @auth
+      end
+
       protected
       
       BASE_URI = "http://ws.audioscrobbler.com/2.0/"

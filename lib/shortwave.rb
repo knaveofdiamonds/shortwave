@@ -1,5 +1,5 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__) + "/shortwave")
-require 'happymapper'
+require File.dirname(__FILE__) + '/../../happymapper/lib/happymapper'
 require 'facade'
 require 'authentication'
 require 'provider/base'

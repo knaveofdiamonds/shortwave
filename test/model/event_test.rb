@@ -31,4 +31,15 @@ class EventTest < TestCase
   test "has a name" do
     assert_equal "Phoenix", @event.name
   end
+
+  test "has a review count" do
+    assert_equal 0, @event.review_count
+  end
+
+  test "has artists" do
+    @event.session = StubSession.new
+    artists = @event.artists
+    assert_equal 2, @event.artists_raw.size
+    assert_equal "Phoenix", @event.artists.first.name
+  end
 end

@@ -8,7 +8,7 @@ module Shortwave
       end
 
       def artist
-        @artist_provider ||= Provider.ArtistProvider.new(artist_facade)
+        @artist_provider ||= Provider::ArtistProvider.new(artist_facade)
       end
 
       def tag_facade
