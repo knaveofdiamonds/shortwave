@@ -1,6 +1,15 @@
 = shortwave
 
-Description goes here.
+Shortwave aims to be a complete API wrapper for the Last.fm web service.
+
+== Dependencies & Credits
+
+Shortwave depends on the following gems:
+
+* Nokogiri
+* Restclient
+
+Shortwave also includes a version of HappyMapper (under vendor) copyright John Nunemaker, hacked about to work directly with Nokogiri documents and fix some bugs. See vendor/happymapper/License for details.
 
 == Copyright
 
