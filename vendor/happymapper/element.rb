@@ -1,3 +1,5 @@
-module HappyMapper
-  class Element < Item; end
+module Shortwave
+  module HappyMapper
+    class Element < Item; end
+  end
 end

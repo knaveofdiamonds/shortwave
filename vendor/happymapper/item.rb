@@ -1,3 +1,4 @@
+module Shortwave
 module HappyMapper
   class Item
     attr_accessor :name, :type, :tag, :options, :namespace
@@ -123,7 +124,7 @@ module HappyMapper
         end
 
         if element?
-          result = node.find(xpath(namespace))
+          result = node.xpath(xpath(namespace))
           # puts "vfxn: #{xpath} #{result.inspect}"
           if result
             value = yield(result)
@@ -148,4 +149,5 @@ module HappyMapper
         end
       end
   end
+end
 end
