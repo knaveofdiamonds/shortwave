@@ -1,0 +1,1778 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lfm status="ok">
+<events venue="Koko" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" page="1" perPage="50" total="558" totalPages="12">
+    <event status="2">
+  <id>1078687</id>
+  <title>CONNECTED</title>
+
+  <artists>
+    <artist>Bart B More</artist>
+    <artist>Style of Eye</artist>
+    <artist>James Murray</artist>
+    <artist>Filth &amp; Splendour</artist>
+    <artist>dj 2</artist>
+    <artist>ryan mac</artist>
+    <artist>Lewis wright</artist>
+    <artist>Jon Kong</artist>
+    <artist>Jon O</artist>
+    <artist>Jesse James &amp; Chris Aidy</artist>
+    <artist>Lewi Five-O &amp; Brad Hepburn</artist>
+    <headliner>Bart B More</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Sun, 24 May 2009 22:30:00</startDate>
+  <description><![CDATA[<div class="bbcode">On Bank Holiday Sunday 24th May, Lock N Load Events presents Connected featuring two of Europe’s most exciting breakthrough DJ/Producers of the past few years - Style Of Eye and Bart B More, alongside some of the capital’s hottest up-and-coming talent.</div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/26844361.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/26844361.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/26844361.jpg</image>
+   <attendance>1</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1078687</tag>    
+  <url>http://www.last.fm/event/1078687</url>
+</event>    <event status="2">
+  <id>1007548</id>
+  <title>Mr. Scruff</title>
+
+  <artists>
+    <artist>Mr. Scruff</artist>
+    <headliner>Mr. Scruff</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Sat, 23 May 2009 21:09:01</startDate>
+  <description><![CDATA[<div class="bbcode">Keep it Unreal</div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/1531.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/1531.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/1531.jpg</image>
+   <attendance>25</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1007548</tag>    
+  <url>http://www.last.fm/event/1007548</url>
+</event>    <event status="2">
+  <id>1029757</id>
+  <title>Mr Scruff</title>
+
+  <artists>
+    <artist>Mr Scruff</artist>
+    <headliner>Mr Scruff</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Sat, 23 May 2009 21:00:00</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/22942115.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/22942115.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/22942115.jpg</image>
+   <attendance>10</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1029757</tag>    
+  <url>http://www.last.fm/event/1029757</url>
+</event>    <event status="2">
+  <id>982550</id>
+  <title>Club NME @ Koko</title>
+
+  <artists>
+    <artist>Baddies</artist>
+    <headliner>Baddies</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Fri, 22 May 2009 13:23:01</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/12070229.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/12070229.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/12070229.jpg</image>
+   <attendance>1</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=982550</tag>    
+  <url>http://www.last.fm/event/982550</url>
+</event>    <event status="2">
+  <id>936557</id>
+  <title>Cage the Elephant</title>
+
+  <artists>
+    <artist>Cage the Elephant</artist>
+    <headliner>Cage the Elephant</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Fri, 22 May 2009 12:47:01</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/3478362.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/3478362.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/3478362.jpg</image>
+   <attendance>18</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=936557</tag>    
+  <url>http://www.last.fm/event/936557</url>
+</event>    <event status="2">
+  <id>932522</id>
+  <title>Ladyhawke</title>
+
+  <artists>
+    <artist>Ladyhawke</artist>
+    <artist>Charlie ASH</artist>
+    <headliner>Ladyhawke</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Thu, 21 May 2009 19:00:00</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/18073073.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/18073073.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/18073073.jpg</image>
+   <attendance>51</attendance>
+   <reviews>1</reviews>
+   <tag>lastfm:event=932522</tag>    
+  <url>http://www.last.fm/event/932522</url>
+</event>    <event status="2">
+  <id>941459</id>
+  <title>Mulatu Astatke &amp; The Heliocentrics</title>
+
+  <artists>
+    <artist>Mulatu Astatke &amp; The Heliocentrics</artist>
+    <artist>Gilles Peterson</artist>
+    <headliner>Mulatu Astatke &amp; The Heliocentrics</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Wed, 20 May 2009 19:00:00</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/28582413.png</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/28582413.png</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/28582413.png</image>
+   <attendance>26</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=941459</tag>    
+  <url>http://www.last.fm/event/941459</url>
+</event>    <event status="2">
+  <id>996655</id>
+  <title>Worldwide 10</title>
+
+  <artists>
+    <artist>Gilles Peterson</artist>
+    <artist>Mulatu Astatke &amp; The Heliocentrics</artist>
+    <headliner>Gilles Peterson</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Wed, 20 May 2009 17:51:01</startDate>
+  <description><![CDATA[<div class="bbcode">AGMP &amp; BROWNSWOOD PRESENT<br />
+<br />
+MULATU ASTATKE &amp; THE HELIOCENTRICS<br />
++<br />
+DJ GILLES PETERSON<br />
+<br />
+KOKO, LONDON<br />
+<br />
+WEDNESDAY 20 MAY 2009<br />
+<br />
+DOORS AT 7.30PM<br />
+<br />
+Mulatu Astatke is an innovative multi-talented musician, composer, arranger and the founder of Ethio Jazz. Born in Jimma, Ethiopia, Mulatu Astatke studied at Lindisfarne College and Trinity College of Music in England and Berklee College of Music in Boston, USA. As a vibraphone, conga and percussion player, he has performed at numerous concerts in Ethiopia and abroad, including appearances at the Kennedy Center in Washington DC, Lincoln Center in New York, Beethoven-Haus in Bonn and Barbican Center in London. Mulatu also performed as a guest artist with the Duke Ellington orchestra during its visit to Ethiopia in 1971. Most recently, Mulatu has contributed prominently to the soundtrack of the film Broken Flowers.<br />
+<br />
+This is a promo film about the new album Mulatu has made with DJ SHadow touring band - The Heliocentrics<br />
+<a href="http://www.youtube.com/watch?gl=GB&amp;hl=en-GB&amp;v=GixmYy6Ytnw" rel="nofollow">http://www.youtube.com/watch?gl=GB&amp;hl=en-GB&amp;v=GixmYy6Ytnw</a><br />
+<br />
+Listen to classic 70's Mulatu of Ethiopia<br />
+<a href="http://www.youtube.com/watch?v=safPXb8wc8A" rel="nofollow">http://www.youtube.com/watch?v=safPXb8wc8A</a><br />
+<br />
+More info from Strut Records<br />
+<a href="http://www.strut-records.com/node/102" rel="nofollow">http://www.strut-records.com/node/102</a><br />
+<br />
+Mulatu recently in concert in Los Angeles with Big Band + support from Madlib + Cut Chemist + Quantic<br />
+<a href="http://www.youtube.com/watch?v=vjddFpAp6z0" rel="nofollow">http://www.youtube.com/watch?v=vjddFpAp6z0</a><br />
+<br />
+<br />
+Buy tickets from these official ticket agencies:<br />
+<a href="http://www.seetickets.com/see/price.asp?code=368197&amp;userid={44DA1FA0-5766-4E2B-BEDC-C2FA4EE4F682}&amp;filler1=see&amp;filler2=art-srch" rel="nofollow">http://www.seetickets.com/see/price.asp?code=368197&amp;userid={44DA1FA0-5766-4E2B-BEDC-C2FA4EE4F682}&amp;filler1=see&amp;filler2=art-srch</a><br />
+or<br />
+<a href="http://www.gigantic.com/gigantic/home_mulatu_astatke__the_heliocentrics.html" rel="nofollow">http://www.gigantic.com/gigantic/home_mulatu_astatke__the_heliocentrics.html</a></div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/37302.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/37302.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/37302.jpg</image>
+   <attendance>1</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=996655</tag>    
+  <url>http://www.last.fm/event/996655</url>
+</event>    <event status="2">
+  <id>1043960</id>
+  <title>La Roux</title>
+
+  <artists>
+    <artist>La Roux</artist>
+    <artist>Heartbreak</artist>
+    <artist>Magistrates</artist>
+    <artist>The Champman Family</artist>
+    <headliner>La Roux</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Tue, 19 May 2009 19:00:00</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/24659083.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/24659083.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/24659083.jpg</image>
+   <attendance>23</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1043960</tag>    
+  <url>http://www.last.fm/event/1043960</url>
+</event>    <event status="2">
+  <id>1032672</id>
+  <title>Juliette &amp; The New Romantiques</title>
+
+  <artists>
+    <artist>Juliette &amp; The New Romantiques</artist>
+    <artist>The Gay Blades</artist>
+    <artist>Simon Subsonic (DJ)</artist>
+    <artist>Ed the Saint (DJ)</artist>
+    <artist>Brainlove Records (DJ)</artist>
+    <headliner>Juliette &amp; The New Romantiques</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Fri, 15 May 2009 22:00:00</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/26069681.png</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/26069681.png</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/26069681.png</image>
+   <attendance>4</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1032672</tag>    
+  <url>http://www.last.fm/event/1032672</url>
+</event>    <event status="2">
+  <id>904106</id>
+  <title>Ben Kweller</title>
+
+  <artists>
+    <artist>Ben Kweller</artist>
+    <artist>The Low Anthem</artist>
+    <headliner>Ben Kweller</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Fri, 15 May 2009 18:30:00</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/22756825.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/22756825.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/22756825.jpg</image>
+   <attendance>49</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=904106</tag>    
+  <url>http://www.last.fm/event/904106</url>
+</event>    <event status="2">
+  <id>964777</id>
+  <title>Love Is All</title>
+
+  <artists>
+    <artist>Love Is All</artist>
+    <headliner>Love Is All</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Sat, 09 May 2009 01:19:01</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/207115.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/207115.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/207115.jpg</image>
+   <attendance>11</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=964777</tag>    
+  <url>http://www.last.fm/event/964777</url>
+</event>    <event status="2">
+  <id>982320</id>
+  <title>The Airborne Toxic Event</title>
+
+  <artists>
+    <artist>The Airborne Toxic Event</artist>
+    <headliner>The Airborne Toxic Event</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Fri, 08 May 2009 10:19:01</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/2017096.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/2017096.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/2017096.jpg</image>
+   <attendance>12</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=982320</tag>    
+  <url>http://www.last.fm/event/982320</url>
+</event>    <event status="2">
+  <id>986278</id>
+  <title>Funkinyou</title>
+
+  <artists>
+    <artist>ARKOSS</artist>
+    <artist>Housaholics</artist>
+    <artist>Philgood and Ram</artist>
+    <headliner>ARKOSS</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Sun, 03 May 2009 11:20:01</startDate>
+  <description><![CDATA[<div class="bbcode">Funkinyou 5th Anniversary &amp; Sunglasses party<br />
+On Bank Holiday Sunday 3rd May 09@Koko 1a High Street Camden London N.W.1.<br />
+<br />
+[youtube]<a href="http://www.youtube.com/watch?v=_YevVm_uDZU" rel="nofollow">http://www.youtube.com/watch?v=_YevVm_uDZU</a><br />
+<br />
+Funkinyou celebrate 5 glorious years of clubbing. We would like to thank<br />
+every signal one of our Funkinyou members and regulars for there support<br />
+and promise to keep delivering memorable and amazing nights and to make<br />
+this anniversary a memorable one we ask you to bring and wear your sun<br />
+glasses on the night.<br />
+<br />
+Over the past 5 years Funkinyou have delivered some fantastic nights that<br />
+have satisfied your Passion 4 Music and clubbing, we know this as over<br />
+time we have built up a loyal following of some of the best clubbers to<br />
+ever hit club land!! Our Funkinyou members and regulars attend our events<br />
+for two things!!! The Music and the Amazing Electric Atmosphere generated<br />
+on our nights, so intense in fact that people have gone home with a fully<br />
+charged mobile phone…Funkinyou nights have that friendly old Skool feeling<br />
+and vibe that we used to have back in the early 90’s; For all those who<br />
+were luck enough to experience that era of club land, then you know what<br />
+we mean.<br />
+Our music policy - is a mixture of quality pumping house music delivered<br />
+by our own resident Funkinyou Dj’s and on occasion special guests. Our<br />
+resident Dj’s are not afraid to play around with the music offered, so<br />
+expect nothing less the very best in Dirty Pumping House, Up lifting<br />
+Vocals, House Anthems, Funky Techno and Electro.<br />
+Our Live on stage Entertainment – Consists of full on Stage production,<br />
+massive glitter drops, Pyro Technique show, laser lights show , live<br />
+performers, from human statues, stilt walkers and trapeze artist that will<br />
+have you hooked with the amazing acts. Funkinyou is not just a night out<br />
+it’s an experience.<br />
+Funkinyou Records – Funkinyou has recently launched its record label with<br />
+some quality releases that you can download first hand from<br />
+<a href="http://www.Funkinyou.com" rel="nofollow">www.Funkinyou.com</a> mp3 store most of the tracks are exclusive and you wont<br />
+fined anywhere else.<br />
+<br />
+So if you have been to a Funkinyou event this is your chance to come and<br />
+Un leash that Funkinyou and treat your self’s to a night out that will<br />
+have you reminiscing at work on a Monday afternoon.<br />
+<br />
+<br />
+<object width="425" height="350">                        <param name="movie" value="http://www.youtube.com/v/_YevVm_uDZU"></param>                        <param name="wmode" value="transparent"></param>                        <embed src="http://www.youtube.com/v/_YevVm_uDZU" wmode="transparent" type="application/x-shockwave-flash" width="425" height="350"></embed>                    </object></div>]]></description>
+  <image size="small"></image>
+  <image size="medium"></image>
+  <image size="large"></image>
+   <attendance>0</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=986278</tag>    
+  <url>http://www.last.fm/event/986278</url>
+</event>    <event status="2">
+  <id>943926</id>
+  <title>Dub Pistols</title>
+
+  <artists>
+    <artist>Dub Pistols</artist>
+    <artist>The Herbaliser</artist>
+    <artist>Trojan Sound System</artist>
+    <headliner>Dub Pistols</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Sat, 02 May 2009 21:00:00</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/7211957.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/7211957.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/7211957.jpg</image>
+   <attendance>22</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=943926</tag>    
+  <url>http://www.last.fm/event/943926</url>
+</event>    <event status="2">
+  <id>974010</id>
+  <title>Annie Mac Presents : Little Boots </title>
+
+  <artists>
+    <artist>Little Boots</artist>
+    <artist>Toddla T</artist>
+    <artist>Annie Mac</artist>
+    <artist>Count and Sinden</artist>
+    <artist>Rachel Barton</artist>
+    <artist>Chase &amp; Status feat. Takura, Rage and Plan B</artist>
+    <artist>Mujava feat. MC Mzura</artist>
+    <headliner>Little Boots</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Thu, 30 Apr 2009 21:00:00</startDate>
+  <description><![CDATA[<div class="bbcode">Annie Mac, Little Boots (LIVE), Chase &amp; Status  (LIVE)feat. Takura, Rage &amp; Plan B, The Count &amp; Sinden, Mujava feat. MC Mzura, Toddla T, Rachel Barton</div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/6076794.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/6076794.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/6076794.jpg</image>
+   <attendance>18</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=974010</tag>    
+  <url>http://www.last.fm/event/974010</url>
+</event>    <event status="2">
+  <id>903844</id>
+  <title>The Rakes</title>
+
+  <artists>
+    <artist>The Rakes</artist>
+    <headliner>The Rakes</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Wed, 29 Apr 2009 19:30:00</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/417843.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/417843.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/417843.jpg</image>
+   <attendance>56</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=903844</tag>    
+  <url>http://www.last.fm/event/903844</url>
+</event>    <event status="2">
+  <id>955160</id>
+  <title>The Rakes</title>
+
+  <artists>
+    <artist>The Rakes</artist>
+    <headliner>The Rakes</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Wed, 29 Apr 2009 19:00:00</startDate>
+  <description><![CDATA[<div class="bbcode">The Rakes play Koko in support of new album 'Klang'</div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/417843.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/417843.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/417843.jpg</image>
+   <attendance>11</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=955160</tag>    
+  <url>http://www.last.fm/event/955160</url>
+</event>    <event status="2">
+  <id>935693</id>
+  <title>Lonely Hearts Dub Band</title>
+
+  <artists>
+    <artist>Easy Star All-Stars</artist>
+    <headliner>Easy Star All-Stars</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Tue, 28 Apr 2009 19:00:00</startDate>
+  <description><![CDATA[<div class="bbcode">Following the widespread critical and commercial success of 2003’s Dub Side of the Moon and 2006’s Radiodread, Easy Star Records announces the Easy Star All-Stars’ complete reggae re-imagining of the Beatles’ Sgt. Pepper’s Lonely Hearts Club Band. The album, titled Easy Star’s Lonely Hearts Dub Band, is set for release April 14 on Easy Star Records and features guest vocals from an impressive list of reggae, dancehall and dub greats including Steel Pulse, Matisyahu, Michael Rose (Black Uhuru), Luciano, U Roy, Bunny Rugs (Third World), Ranking Roger (English Beat), Sugar Minott, Frankie Paul, Max Romeo and The Mighty Diamonds. The first single, “With A Little Help From My Friends,” featuring Luciano, will be released as an iTunes exclusive February 10. It will be paired with a b-side dub version featuring the legendary U Roy.<br />
+<br />
+Dub Side of the Moon, (Easy Star’s reggae tribute to Pink Floyd’s Dark Side of the Moon) is one of the most successful reggae albums of the 21st century and spent over five years on Billboard’s Top Reggae Chart. Mojo selected the record as the second greatest cover album of all time. Radiodread, which tackled Radiohead’s OK Computer, spent over 18 months on Billboard’s Top Reggae Chart and earned praise from Radiohead themselves.<br />
+<br />
+Of the decision to infuse reggae into the Beatles classic, producer Michael Goldwasser says “We’ve focused on re-envisioning concept albums as reggae and it’s really important that the source material works as a whole and is not just a collection of songs. So, what better to take on next than the mother of all concept albums?”<br />
+<br />
+Goldwasser is once more the musical mastermind behind this album, having arranged and produced the music, assembled the musicians and guest artists and played guitar throughout. Goldwasser is joined by Victor Rice (bass), Victor “Ticklah” Axelrod (keyboards) and Patrick Dougher &amp; Eddie Ocampo (drums, percussion). Members of the touring version of the Easy Star All-Stars also contribute, including Ras I Ray, Jenny Hill, Buford O’Sullivan, Ivan Katz, Kirsty Rock, Tamar-kali, Junior Jazz and Menny More. In addition to producing six albums for Easy Star, Goldwasser has produced albums for Corey Harris, Hatikva 6 and others, and has had compositions featured in the motion pictures Failure To Launch and Woody Allen’s Cassandra’s Dream.</div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/20033.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/20033.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/20033.jpg</image>
+   <attendance>19</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=935693</tag>    
+  <url>http://www.last.fm/event/935693</url>
+</event>    <event status="2">
+  <id>1007036</id>
+  <title>Vanessa da Mata</title>
+
+  <artists>
+    <artist>Vanessa da Mata</artist>
+    <headliner>Vanessa da Mata</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Sun, 26 Apr 2009 15:46:01</startDate>
+  <description><![CDATA[<div class="bbcode">UK debut for a great new voice from Brazil. Singer songwriter Vanessa da Mata wrote songs for Daniela Mercury and Chico Cesar, and toured with Black Uhuru before breaking through with her third album Sim and a collaboration with Ben Harper. <object width="425" height="350">                        <param name="movie" value="http://www.youtube.com/v/q7mVB-Ls5KQ"></param>                        <param name="wmode" value="transparent"></param>                        <embed src="http://www.youtube.com/v/q7mVB-Ls5KQ" wmode="transparent" type="application/x-shockwave-flash" width="425" height="350"></embed>                    </object></div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/8514211.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/8514211.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/8514211.jpg</image>
+   <attendance>5</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1007036</tag>    
+  <url>http://www.last.fm/event/1007036</url>
+</event>    <event status="2">
+  <id>863259</id>
+  <title>The Living End</title>
+
+  <artists>
+    <artist>The Living End</artist>
+    <artist>Tellison</artist>
+    <headliner>The Living End</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Wed, 22 Apr 2009 14:39:01</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/6759925.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/6759925.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/6759925.jpg</image>
+   <attendance>32</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=863259</tag>    
+  <url>http://www.last.fm/event/863259</url>
+</event>    <event status="2">
+  <id>882032</id>
+  <title>IAMX</title>
+
+  <artists>
+    <artist>IAMX</artist>
+    <artist>Noblesse Oblige</artist>
+    <artist>Isolated Atoms</artist>
+    <headliner>IAMX</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Sun, 19 Apr 2009 19:56:01</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/2527731.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/2527731.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/2527731.jpg</image>
+   <attendance>110</attendance>
+   <reviews>2</reviews>
+   <tag>lastfm:event=882032</tag>    
+  <url>http://www.last.fm/event/882032</url>
+</event>    <event status="2">
+  <id>986255</id>
+  <title>Key Of Life</title>
+
+  <artists>
+    <artist>Martini Bros</artist>
+    <artist>Lost Souls</artist>
+    <artist>Severn</artist>
+    <artist>Nussem Dorma</artist>
+    <headliner>Martini Bros</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Sat, 18 Apr 2009 11:06:01</startDate>
+  <description><![CDATA[<div class="bbcode">A brand new night devoted to those who love there underground house music.<br />
+<br />
+Delivering those Minimal Techno sounds at this amazing London venue with full on stage production and laser light show</div>]]></description>
+  <image size="small"></image>
+  <image size="medium"></image>
+  <image size="large"></image>
+   <attendance>2</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=986255</tag>    
+  <url>http://www.last.fm/event/986255</url>
+</event>    <event status="2">
+  <id>972639</id>
+  <title>Jukebox the Ghost</title>
+
+  <artists>
+    <artist>Jukebox the Ghost</artist>
+    <headliner>Jukebox the Ghost</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Fri, 17 Apr 2009 11:21:01</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/7211183.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/7211183.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/7211183.jpg</image>
+   <attendance>3</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=972639</tag>    
+  <url>http://www.last.fm/event/972639</url>
+</event>    <event status="2">
+  <id>853524</id>
+  <title>Eskimo Joe</title>
+
+  <artists>
+    <artist>Eskimo Joe</artist>
+    <artist>Jersey Budd</artist>
+    <headliner>Eskimo Joe</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Wed, 08 Apr 2009 19:00:00</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/3864667.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/3864667.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/3864667.jpg</image>
+   <attendance>19</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=853524</tag>    
+  <url>http://www.last.fm/event/853524</url>
+</event>    <event status="2">
+  <id>945724</id>
+  <title>Red Snapper</title>
+
+  <artists>
+    <artist>Red Snapper</artist>
+    <artist>The Bays</artist>
+    <headliner>Red Snapper</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Sat, 04 Apr 2009 22:20:01</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/40103.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/40103.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/40103.jpg</image>
+   <attendance>17</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=945724</tag>    
+  <url>http://www.last.fm/event/945724</url>
+</event>    <event status="2">
+  <id>881781</id>
+  <title>The Bays</title>
+
+  <artists>
+    <artist>The Bays</artist>
+    <artist>Red Snapper</artist>
+    <artist>Pest</artist>
+    <artist>Memory 9</artist>
+    <artist>Big Trains Haymaker</artist>
+    <artist>Jon Kennedy Band</artist>
+    <headliner>The Bays</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Sat, 04 Apr 2009 22:00:00</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/293116.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/293116.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/293116.jpg</image>
+   <attendance>16</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=881781</tag>    
+  <url>http://www.last.fm/event/881781</url>
+</event>    <event status="2">
+  <id>908426</id>
+  <title>The Fall</title>
+
+  <artists>
+    <artist>The Fall</artist>
+    <headliner>The Fall</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Wed, 01 Apr 2009 14:04:01</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/7567349.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/7567349.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/7567349.jpg</image>
+   <attendance>66</attendance>
+   <reviews>1</reviews>
+   <tag>lastfm:event=908426</tag>    
+  <url>http://www.last.fm/event/908426</url>
+</event>    <event status="2">
+  <id>941162</id>
+  <title>Club NME @ KOKO</title>
+
+  <artists>
+    <artist>The Virgins</artist>
+    <headliner>The Virgins</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Fri, 27 Mar 2009 20:43:01</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/30741.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/30741.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/30741.jpg</image>
+   <attendance>27</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=941162</tag>    
+  <url>http://www.last.fm/event/941162</url>
+</event>    <event status="2">
+  <id>845374</id>
+  <title>Tunng with Tinariwen</title>
+
+  <artists>
+    <artist>Tunng</artist>
+    <artist>Tinariwen</artist>
+    <artist>Beth Jeans Houghton</artist>
+    <artist>Soundpot</artist>
+    <headliner>Tunng</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Thu, 26 Mar 2009 19:00:00</startDate>
+  <description><![CDATA[<div class="bbcode">Eat Your Own Ears presents<br />
+TUNNG WITH TINARIWEN<br />
+A CMN Tour in association with Twisted Folk<br />
+<br />
+Tunng inhabit a place in UK music which is entirely their own, and full of contradictions. Their sound is instantly recognisable, but never seems to stand still. Their lyrics explore the dark crevices of life without ever losing hope. And their songs have roots deep in the past, but still crackle with experimental fervour. TUNNG play a mesmerising mix of folky acoustics and busy electronica, overlaying electronic crackles, gorgeous harmonies, bewitching mantras and synthetic beats that are reminiscent of early Beta Band, 'The Wicker Man' soundtrack and Four Tet.<br />
+<br />
+The hypnotic rhythms and trance-like melodies of Tinariwen, the much-lauded purveyors of desert blues, are as intoxicating as they are unsettling. With galloping rhythms, desert wails and, of course, electric guitar - up to four guitars snarl, burr and howl to create the spacious interlocking desert blues groove that is this group's calling card. Eerie call-and-response vocals draw listeners in as well, conjuring up visions of a night around the campfire in the open desert air.<br />
+<br />
+So it's no surprise that when the two bands came together earlier this year, to record a session for BBC Radio 3's Late Junction, the results were startling. They recorded a beautifully fluid set with a sense of space and ease; fragments of vocals, languages, riffs and melodies weaving together effortlessly.<br />
+<br />
+This unique tour offers an opportunity to experience the collaboration live, a spellbinding prospect for fans of either band, and for anyone with open ears.</div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/3021100.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/3021100.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/3021100.jpg</image>
+   <attendance>81</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=845374</tag>    
+  <url>http://www.last.fm/event/845374</url>
+</event>    <event status="2">
+  <id>957422</id>
+  <title>Kid Cudi</title>
+
+  <artists>
+    <artist>Kid Cudi</artist>
+    <headliner>Kid Cudi</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Tue, 24 Mar 2009 01:40:01</startDate>
+  <description><![CDATA[<div class="bbcode">Acclaimed US rap star Kid Cudi has announced London and Manchester dates in March to showcase tracks from his eagerly anticipated debut 'Man on the Moon: The Guardians'.<br />
+<br />
+Over 18s Only</div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/26119549.png</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/26119549.png</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/26119549.png</image>
+   <attendance>18</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=957422</tag>    
+  <url>http://www.last.fm/event/957422</url>
+</event>    <event status="2">
+  <id>987366</id>
+  <title>The Album Chart Show</title>
+
+  <artists>
+    <artist>Pet Shop Boys</artist>
+    <artist>Maxïmo Park</artist>
+    <artist>The Maccabees</artist>
+    <artist>Lady Sovereign</artist>
+    <headliner>Pet Shop Boys</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Mon, 23 Mar 2009 00:02:01</startDate>
+  <description><![CDATA[<div class="bbcode">Part of the Channel 4 series.</div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/106152.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/106152.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/106152.jpg</image>
+   <attendance>25</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=987366</tag>    
+  <url>http://www.last.fm/event/987366</url>
+</event>    <event status="2">
+  <id>849763</id>
+  <title>Mr. Scruff</title>
+
+  <artists>
+    <artist>Mr. Scruff</artist>
+    <headliner>Mr. Scruff</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Sat, 21 Mar 2009 19:30:00</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/1531.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/1531.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/1531.jpg</image>
+   <attendance>76</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=849763</tag>    
+  <url>http://www.last.fm/event/849763</url>
+</event>    <event status="2">
+  <id>936503</id>
+  <title>Patrick Wolf at Club NME</title>
+
+  <artists>
+    <artist>Patrick Wolf</artist>
+    <artist>Micachu and the Shapes</artist>
+    <artist>Internet Forever</artist>
+    <headliner>Patrick Wolf</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Fri, 13 Mar 2009 21:30:00</startDate>
+  <description><![CDATA[<div class="bbcode"><a href="http://www.nme.com/news/patrick-wolf/42718" rel="nofollow">http://www.nme.com/news/patrick-wolf/42718</a><br />
+<br />
+18+</div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/20165937.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/20165937.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/20165937.jpg</image>
+   <attendance>89</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=936503</tag>    
+  <url>http://www.last.fm/event/936503</url>
+</event>    <event status="2">
+  <id>968948</id>
+  <title>The Album Chart Show : Live @ KOKO</title>
+
+  <artists>
+    <artist>Akon</artist>
+    <artist>James Morrison</artist>
+    <artist>The Enemy</artist>
+    <artist>Frankmusik</artist>
+    <headliner>Akon</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Mon, 09 Mar 2009 19:00:00</startDate>
+  <description><![CDATA[<div class="bbcode">Recording for the Shockwaves Album Chart Show.</div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/17313435.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/17313435.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/17313435.jpg</image>
+   <attendance>9</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=968948</tag>    
+  <url>http://www.last.fm/event/968948</url>
+</event>    <event status="2">
+  <id>930149</id>
+  <title>Trythisagainandwebeatyoutodeath</title>
+
+  <artists>
+    <artist>Trythisagainandwebeatyoutodeath</artist>
+    <headliner>Trythisagainandwebeatyoutodeath</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Sun, 08 Mar 2009 19:21:01</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/27768107.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/27768107.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/27768107.jpg</image>
+   <attendance>0</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=930149</tag>    
+  <url>http://www.last.fm/event/930149</url>
+</event>    <event status="2">
+  <id>922533</id>
+  <title>Imelda May</title>
+
+  <artists>
+    <artist>Imelda May</artist>
+    <headliner>Imelda May</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Thu, 05 Mar 2009 19:00:00</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/7043367.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/7043367.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/7043367.jpg</image>
+   <attendance>7</attendance>
+   <reviews>1</reviews>
+   <tag>lastfm:event=922533</tag>    
+  <url>http://www.last.fm/event/922533</url>
+</event>    <event status="2">
+  <id>825469</id>
+  <title>Katy Perry</title>
+
+  <artists>
+    <artist>Katy Perry</artist>
+    <artist>3OH!3</artist>
+    <headliner>Katy Perry</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Fri, 27 Feb 2009 19:00:00</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/26636625.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/26636625.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/26636625.jpg</image>
+   <attendance>29</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=825469</tag>    
+  <url>http://www.last.fm/event/825469</url>
+</event>    <event status="2">
+  <id>813152</id>
+  <title>Katy Perry</title>
+
+  <artists>
+    <artist>Katy Perry</artist>
+    <artist>3OH!3</artist>
+    <headliner>Katy Perry</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Thu, 26 Feb 2009 19:00:00</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/26636625.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/26636625.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/26636625.jpg</image>
+   <attendance>30</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=813152</tag>    
+  <url>http://www.last.fm/event/813152</url>
+</event>    <event status="2">
+  <id>828980</id>
+  <title>Amadou &amp; Mariam</title>
+
+  <artists>
+    <artist>Amadou &amp; Mariam</artist>
+    <headliner>Amadou &amp; Mariam</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Wed, 25 Feb 2009 19:00:00</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/2465208.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/2465208.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/2465208.jpg</image>
+   <attendance>47</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=828980</tag>    
+  <url>http://www.last.fm/event/828980</url>
+</event>    <event status="2">
+  <id>867079</id>
+  <title>NME Awards Shows 2009: Metronomy</title>
+
+  <artists>
+    <artist>Metronomy</artist>
+    <artist>Chairlift</artist>
+    <artist>Micachu</artist>
+    <artist>thecocknbullkid</artist>
+    <headliner>Metronomy</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Tue, 24 Feb 2009 19:00:00</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/22052833.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/22052833.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/22052833.jpg</image>
+   <attendance>67</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=867079</tag>    
+  <url>http://www.last.fm/event/867079</url>
+</event>    <event status="2">
+  <id>945881</id>
+  <title>Shockwaves Album Chart Show</title>
+
+  <artists>
+    <artist>White Lies</artist>
+    <artist>Kelly Clarkson</artist>
+    <artist>Chris Cornell</artist>
+    <artist>Ladyhawke</artist>
+    <headliner>White Lies</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Mon, 23 Feb 2009 19:30:00</startDate>
+  <description><![CDATA[<div class="bbcode">Performing live on the night are:<br />
+Kelly Clarkson<br />
+Chris Cornell<br />
+White Lies<br />
+Ladyhawke</div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/24248699.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/24248699.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/24248699.jpg</image>
+   <attendance>24</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=945881</tag>    
+  <url>http://www.last.fm/event/945881</url>
+</event>    <event status="2">
+  <id>851280</id>
+  <title>Buttoned Down Disco</title>
+
+  <artists>
+    <artist>dollyrocker</artist>
+    <headliner>dollyrocker</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Sat, 21 Feb 2009 10:33:01</startDate>
+  <description><![CDATA[<div class="bbcode">With Ping Pong P*ssy hosting the JD Lounge. <br />
+<br />
+Musically, we play tracks that we like at the time, rather than just the bands of the moment. Club founder and resident <a href="http://ws.audioscrobbler.com/music/dollyrocker" class="bbcode_artist">dollyrocker</a> mashes up <a href="http://ws.audioscrobbler.com/tag/eclectic" class="bbcode_tag" rel="tag">eclectic</a> <a href="http://ws.audioscrobbler.com/tag/pop" class="bbcode_tag" rel="tag">pop</a>, <a href="http://ws.audioscrobbler.com/tag/indie" class="bbcode_tag" rel="tag">indie</a>, <a href="http://ws.audioscrobbler.com/tag/punk" class="bbcode_tag" rel="tag">punk</a>, <a href="http://ws.audioscrobbler.com/tag/electro" class="bbcode_tag" rel="tag">electro</a>, <a href="http://ws.audioscrobbler.com/tag/funk" class="bbcode_tag" rel="tag">funk</a> &amp; <a href="http://ws.audioscrobbler.com/tag/disco" class="bbcode_tag" rel="tag">disco</a>, although you might also hear some <a href="http://ws.audioscrobbler.com/tag/dub" class="bbcode_tag" rel="tag">dub</a>, <a href="http://ws.audioscrobbler.com/tag/reggae" class="bbcode_tag" rel="tag">reggae</a>, <a href="http://ws.audioscrobbler.com/tag/ska" class="bbcode_tag" rel="tag">ska</a>, <a href="http://ws.audioscrobbler.com/tag/soul" class="bbcode_tag" rel="tag">soul</a>, <a href="http://ws.audioscrobbler.com/tag/motown" class="bbcode_tag" rel="tag">motown</a>, <a href="http://ws.audioscrobbler.com/tag/psychedelic%20garage%20rock" class="bbcode_tag" rel="tag">psychedelic garage rock</a>, <a href="http://ws.audioscrobbler.com/tag/bubblegum%20pop" class="bbcode_tag" rel="tag">bubblegum pop</a>, <a href="http://ws.audioscrobbler.com/tag/baile%20funk" class="bbcode_tag" rel="tag">baile funk</a>, <a href="http://ws.audioscrobbler.com/tag/new%20wave" class="bbcode_tag" rel="tag">new wave</a>, <a href="http://ws.audioscrobbler.com/tag/neu-rave" class="bbcode_tag" rel="tag">neu-rave</a>, <a href="http://ws.audioscrobbler.com/tag/one%20hit%20wonders" class="bbcode_tag" rel="tag">one hit wonders</a>, <a href="http://ws.audioscrobbler.com/tag/breakdance" class="bbcode_tag" rel="tag">breakdance</a>, <a href="http://ws.audioscrobbler.com/tag/bhangra" class="bbcode_tag" rel="tag">bhangra</a>, <a href="http://ws.audioscrobbler.com/tag/bollywood" class="bbcode_tag" rel="tag">bollywood</a>, <a href="http://ws.audioscrobbler.com/tag/quirky%20cover%20versions" class="bbcode_tag" rel="tag">quirky cover versions</a>, <a href="http://ws.audioscrobbler.com/tag/japanese%20pop" class="bbcode_tag" rel="tag">japanese pop</a>, <a href="http://ws.audioscrobbler.com/tag/doo%20wop" class="bbcode_tag" rel="tag">doo wop</a>, <a href="http://ws.audioscrobbler.com/tag/hip%20hop" class="bbcode_tag" rel="tag">hip hop</a>, <a href="http://ws.audioscrobbler.com/tag/mash%20ups" class="bbcode_tag" rel="tag">mash ups</a> and <a href="http://ws.audioscrobbler.com/tag/soundtracks" class="bbcode_tag" rel="tag">soundtracks</a>. Check out the <br />
+<a href="http://buttoneddowndisco.com/deejays.htm" rel="nofollow">DJ top ten</a> to see where we're at this week. <br />
+<br />
+Our parties are FREE before 10pm, then £7 afterwards. All parties are invite only and we operate a door policy to ensure a happy, safe atmosphere for everyone to enjoy the night.</div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/17756961.gif</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/17756961.gif</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/17756961.gif</image>
+   <attendance>4</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=851280</tag>    
+  <url>http://www.last.fm/event/851280</url>
+</event>    <event status="2">
+  <id>887496</id>
+  <title>Club NME</title>
+
+  <artists>
+    <artist>Apache Beat</artist>
+    <artist>Official Secrets Act</artist>
+    <artist>+ Special Guest K******</artist>
+    <headliner>Apache Beat</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Fri, 20 Feb 2009 19:39:01</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/25685953.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/25685953.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/25685953.jpg</image>
+   <attendance>3</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=887496</tag>    
+  <url>http://www.last.fm/event/887496</url>
+</event>    <event status="2">
+  <id>883515</id>
+  <title>Roots Manuva, Live</title>
+
+  <artists>
+    <artist>Roots Manuva</artist>
+    <headliner>Roots Manuva</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Thu, 19 Feb 2009 13:28:01</startDate>
+  <description><![CDATA[<div class="bbcode">Rodney Smith returns to the stage, daahling, on February 19th 2009 when he plays at Koko as part of the NME Shockwaves tour.[album artist=roots manuva]slime &amp; reason</div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/5972766.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/5972766.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/5972766.jpg</image>
+   <attendance>41</attendance>
+   <reviews>1</reviews>
+   <tag>lastfm:event=883515</tag>    
+  <url>http://www.last.fm/event/883515</url>
+</event>    <event status="2">
+  <id>942851</id>
+  <title>Black Kids</title>
+
+  <artists>
+    <artist>Black Kids</artist>
+    <headliner>Black Kids</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Wed, 18 Feb 2009 20:00:00</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/5481142.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/5481142.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/5481142.jpg</image>
+   <attendance>2</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=942851</tag>    
+  <url>http://www.last.fm/event/942851</url>
+</event>    <event status="2">
+  <id>872249</id>
+  <title>Black Kids</title>
+
+  <artists>
+    <artist>Black Kids</artist>
+    <artist>Passion Pit</artist>
+    <headliner>Black Kids</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Wed, 18 Feb 2009 09:55:01</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/5481142.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/5481142.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/5481142.jpg</image>
+   <attendance>40</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=872249</tag>    
+  <url>http://www.last.fm/event/872249</url>
+</event>    <event status="2">
+  <id>810618</id>
+  <title>Alkaline Trio</title>
+
+  <artists>
+    <artist>Alkaline Trio</artist>
+    <artist>The Audition</artist>
+    <artist>Broadway calls</artist>
+    <headliner>Alkaline Trio</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Tue, 17 Feb 2009 15:03:01</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/103615.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/103615.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/103615.jpg</image>
+   <attendance>48</attendance>
+   <reviews>1</reviews>
+   <tag>lastfm:event=810618</tag>    
+  <url>http://www.last.fm/event/810618</url>
+</event>    <event status="2">
+  <id>806734</id>
+  <title>Alkaline Trio</title>
+
+  <artists>
+    <artist>Alkaline Trio</artist>
+    <artist>The Audition</artist>
+    <artist>Broadway calls</artist>
+    <headliner>Alkaline Trio</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Mon, 16 Feb 2009 20:22:01</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/103615.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/103615.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/103615.jpg</image>
+   <attendance>66</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=806734</tag>    
+  <url>http://www.last.fm/event/806734</url>
+</event>    <event status="2">
+  <id>849971</id>
+  <title>Simian Mobile Disco</title>
+
+  <artists>
+    <artist>Simian Mobile Disco</artist>
+    <artist>Heartbreak</artist>
+    <artist>Chrome Hoof</artist>
+    <headliner>Simian Mobile Disco</headliner>
+  </artists>
+  <venue>
+    <id>8777134</id>
+    <name>Koko</name>
+    <location>
+      <city>London</city>
+      <country>United Kingdom</country>
+      <street>1a Camden High Street, Camden</street>
+      <postalcode>NW1 7JE</postalcode>
+      <geo:point>
+         <geo:lat>51.53469</geo:lat>
+         <geo:long>-0.138434</geo:long>
+      </geo:point>
+    </location>
+    <url>http://www.last.fm/venue/8777134</url>
+  </venue>
+  <startDate>Thu, 12 Feb 2009 19:32:01</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/4911910.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/4911910.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/4911910.jpg</image>
+   <attendance>80</attendance>
+   <reviews>2</reviews>
+   <tag>lastfm:event=849971</tag>    
+  <url>http://www.last.fm/event/849971</url>
+</event></events></lfm>
