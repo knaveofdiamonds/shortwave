@@ -12,6 +12,10 @@ class VenueTest < TestCase
     assert_equal "Koko", @venue.name
   end
 
+  test "venue has a city" do
+    assert_equal "London", @venue.city
+  end
+
   test "venue has a url" do
     assert_equal "http://www.last.fm/venue/8777134", @venue.url
   end
@@ -22,5 +26,9 @@ class VenueTest < TestCase
 
   test "venue has an id" do
     assert_equal 8777134, @venue.id
+  end
+
+  test "venue has events" do
+
   end
 end

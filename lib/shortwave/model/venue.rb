@@ -7,6 +7,7 @@ module Shortwave
       element :id, Integer
       element :name, String
       element :url, String
+      element :city, String, :tag => "location/city"
       has_one :location, Location
 
       def events
