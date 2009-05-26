@@ -20,6 +20,10 @@ class VenueTest < TestCase
     assert_equal "United Kingdom", @venue.country
   end
 
+  test "venue has a street address" do
+    assert_equal "1a Camden High Street, Camden", @venue.street_address
+  end
+
   test "venue has a url" do
     assert_equal "http://www.last.fm/venue/8777134", @venue.url
   end
