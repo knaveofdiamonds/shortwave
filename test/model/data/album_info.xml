@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lfm status="ok">
+<album>
+    <name>Only Life</name>
+    <artist>The Feelies</artist>
+    <id>2045356</id>
+    <mbid>464efacc-a133-4ae6-a9ff-7573c448eb32</mbid>
+    <url>http://www.last.fm/music/The+Feelies/Only+Life</url>
+    <releasedate>    30 Nov 1987, 00:00</releasedate>
+    <image size="small">http://images.amazon.com/images/P/B000002GI2.01.MZZZZZZZ.jpg</image>
+    <image size="medium">http://images.amazon.com/images/P/B000002GI2.01.MZZZZZZZ.jpg</image>
+    <image size="large">http://images.amazon.com/images/P/B000002GI2.01.MZZZZZZZ.jpg</image>
+    <image size="extralarge">http://images.amazon.com/images/P/B000002GI2.01.MZZZZZZZ.jpg</image>
+    <listeners>10068</listeners>
+    <playcount>67545</playcount>
+    <toptags>
+        <tag>
+	  <name>indie</name>
+	  <url>http://www.last.fm/tag/indie</url>
+	</tag>
+        <tag>
+	  <name>wave</name>
+	  <url>http://www.last.fm/tag/wave</url>
+	</tag>
+        <tag>
+	  <name>favorite albums</name>
+	  <url>http://www.last.fm/tag/favorite%20albums</url>
+	</tag>
+        <tag>
+	  <name>pub</name>
+	  <url>http://www.last.fm/tag/pub</url>
+	</tag>
+        <tag>
+	  <name>records and tapes</name>
+	  <url>http://www.last.fm/tag/records%20and%20tapes</url>
+	</tag>
+      </toptags>
+   </album></lfm>
