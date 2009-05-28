@@ -1,6 +1,6 @@
 module Shortwave
   module Provider
-    class Base
+    class BaseProvider
       # Create a provider with a facade
       def initialize(facade)
         @klass  = Model.const_get(self.class.name.split("::").last.sub("Provider",''))

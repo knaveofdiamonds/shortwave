@@ -1,6 +1,6 @@
 module Shortwave
   module Provider
-    class TagProvider < Base
+    class TagProvider < BaseProvider
       # Returns a tag named "name"
       def get(name)
         parse_model @facade.search(name), :single => true
