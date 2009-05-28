@@ -33,7 +33,8 @@ class VenueTest < TestCase
   end
 
   test "venue has a location" do
-    assert @venue.location.kind_of?( Model::Location )
+    assert_in_delta 51.53469, @venue.location.latitude, 0.000001
+    assert_in_delta -0.138434, @venue.location.longitude, 0.000001
   end
 
   test "venue has an id" do

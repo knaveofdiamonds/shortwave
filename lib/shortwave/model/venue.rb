@@ -1,6 +1,9 @@
 module Shortwave
   module Model
     class Location < BaseModel
+      tag "geo:point"
+      element :latitude, Float, :tag => "geo:lat"
+      element :longitude, Float, :tag => "geo:long"
     end
 
     class Venue < BaseModel
@@ -11,7 +14,7 @@ module Shortwave
       element :country, String, :tag => "location/country"
       element :street_address, String, :tag => "location/street"
       element :postcode, String, :tag => "location/postalcode"
-      has_one :location, Location
+      has_one :location, Location, :tag => "location/geo:point"
 
       def events
         response = @session.venue_facade.events(id)
