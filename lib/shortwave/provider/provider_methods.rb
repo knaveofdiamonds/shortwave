@@ -1,24 +1,19 @@
 module Shortwave
   module Provider
-
+    # Intended to be mixed in to authentication classes
     module ProviderMethods
-      # Returns a tag provider.
-      def tag
-        @tag_provider ||= Provider::TagProvider.new(tag_facade)
-      end
+      [:tag, :album, :artist].each do |name|
+        klass_name = name.to_s.capitalize
+        module_eval <<-EOV
+          def #{name}
+            @#{name}_provider ||= Provider::#{klass_name}Provider.new(#{name}_facade)
+          end
 
-      def artist
-        @artist_provider ||= Provider::ArtistProvider.new(artist_facade)
-      end
-
-      def tag_facade
-        @tag_facade ||= Facade::Tag.new(self)
-      end
-
-      def artist_facade
-        @artist_facade ||= Facade::Artist.new(self)
+          def #{name}_facade
+            @#{name}_facade ||= Facade::#{klass_name}.new(self)            
+          end
+        EOV
       end
     end
-
   end
 end
