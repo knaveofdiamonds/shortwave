@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lfm status="ok">
+<results for="The Feelies" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">
+<opensearch:Query role="request" searchTerms="The Feelies" startPage="1" />
+<opensearch:totalResults>11</opensearch:totalResults>
+<opensearch:startIndex>0</opensearch:startIndex>
+<opensearch:itemsPerPage>20</opensearch:itemsPerPage>
+<artistmatches>
+<artist>
+    <name>The Feelies</name>
+    <mbid>28c07254-aeae-42ad-beea-67f59c3c8baf</mbid>
+    <url>www.last.fm/music/The+Feelies</url>
+    <image size="small">http://userserve-ak.last.fm/serve/34/2160902.jpg</image>
+    <image size="medium">http://userserve-ak.last.fm/serve/64/2160902.jpg</image>
+    <image size="large">http://userserve-ak.last.fm/serve/126/2160902.jpg</image>
+    <streamable>1</streamable>
+</artist>
+<artist>
+    <name>The  Feelies</name>
+    <mbid></mbid>
+    <url>www.last.fm/music/+noredirect/The++Feelies</url>
+    <image size="small"></image>
+    <image size="medium"></image>
+    <image size="large"></image>
+    <streamable>0</streamable>
+</artist>
+<artist>
+    <name>feelies, the</name>
+    <mbid></mbid>
+    <url>www.last.fm/music/+noredirect/feelies%2C+the</url>
+    <image size="small"></image>
+    <image size="medium"></image>
+    <image size="large"></image>
+    <streamable>0</streamable>
+</artist>
+<artist>
+    <name>Let's Go - The Feelies</name>
+    <mbid></mbid>
+    <url>www.last.fm/music/+noredirect/Let%27s+Go+-+The+Feelies</url>
+    <image size="small"></image>
+    <image size="medium"></image>
+    <image size="large"></image>
+    <streamable>0</streamable>
+</artist>
+<artist>
+    <name>Feelies (The)</name>
+    <mbid></mbid>
+    <url>www.last.fm/music/Feelies+%28The%29</url>
+    <image size="small"></image>
+    <image size="medium"></image>
+    <image size="large"></image>
+    <streamable>0</streamable>
+</artist>
+<artist>
+    <name>Feelies , The</name>
+    <mbid></mbid>
+    <url>www.last.fm/music/Feelies+%2C+The</url>
+    <image size="small"></image>
+    <image size="medium"></image>
+    <image size="large"></image>
+    <streamable>0</streamable>
+</artist>
+<artist>
+    <name>La - The Feelies</name>
+    <mbid></mbid>
+    <url>www.last.fm/music/+noredirect/La+-+The+Feelies</url>
+    <image size="small"></image>
+    <image size="medium"></image>
+    <image size="large"></image>
+    <streamable>0</streamable>
+</artist>
+<artist>
+    <name>The Feelies; The Stooges</name>
+    <mbid></mbid>
+    <url>www.last.fm/music/The%2BFeelies%253B%2BThe%2BStooges</url>
+    <image size="small"></image>
+    <image size="medium"></image>
+    <image size="large"></image>
+    <streamable>0</streamable>
+</artist>
+<artist>
+    <name>The Feelies/The Stooges</name>
+    <mbid></mbid>
+    <url>www.last.fm/music/The%2BFeelies%252FThe%2BStooges</url>
+    <image size="small"></image>
+    <image size="medium"></image>
+    <image size="large"></image>
+    <streamable>0</streamable>
+</artist>
+<artist>
+    <name>Lou Reed &amp; The Feelies</name>
+    <mbid></mbid>
+    <url>www.last.fm/music/Lou%2BReed%2B%2526%2BThe%2BFeelies</url>
+    <image size="small"></image>
+    <image size="medium"></image>
+    <image size="large"></image>
+    <streamable>0</streamable>
+</artist>
+<artist>
+    <name>The Touchy Feelies</name>
+    <mbid></mbid>
+    <url>www.last.fm/music/The+Touchy+Feelies</url>
+    <image size="small"></image>
+    <image size="medium"></image>
+    <image size="large"></image>
+    <streamable>0</streamable>
+</artist>
+</artistmatches>
+</results></lfm>
