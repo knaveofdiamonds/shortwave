@@ -37,6 +37,12 @@ class VenueTest < TestCase
     assert_in_delta -0.138434, @venue.location.longitude, 0.000001
   end
 
+  test "venue's location has session set" do
+    @venue.session = stub()
+    assert @venue.instance_variable_get("@session".to_sym)
+    assert @venue.location.instance_variable_get("@session".to_sym)
+  end
+
   test "venue has an id" do
     assert_equal 8777134, @venue.id
   end

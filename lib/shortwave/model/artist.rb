@@ -9,7 +9,7 @@ module Shortwave
       element :listeners, Integer, :tag => "stats/listeners"
       element :biography_summary, String, :tag => "bio/content"
       element :biography, String, :tag => "bio/content"
-      has_many :images, String, :tag => "image"
+      element :images, String, :tag => "image", :single => false
     end
   end
 end
