@@ -98,6 +98,11 @@ module Shortwave
       def popular
         parse_collection @facade.top_tags
       end
+
+      # Searches for an artist by name.
+      def search(name)
+        parse_collection @facade.search(name)
+      end
     end
 
   end
