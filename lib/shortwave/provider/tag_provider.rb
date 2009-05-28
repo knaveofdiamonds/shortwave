@@ -3,7 +3,7 @@ module Shortwave
     class TagProvider < BaseProvider
       # Returns a tag named "name"
       def get(name)
-        parse_model @facade.search(name), :single => true
+        parse_model @facade.search(name)
       end
 
       # Returns the most popular tags from Last.fm

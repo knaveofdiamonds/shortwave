@@ -17,8 +17,8 @@ module Shortwave
 
       protected
 
-      def parse_model(response, options)
-        model = @klass.parse(response, options)
+      def parse_model(response)
+        model = @klass.parse(response, :single => true)
         model.session = @facade.session
         model
       end

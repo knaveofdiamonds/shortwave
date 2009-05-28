@@ -3,7 +3,7 @@ module Shortwave
     class AlbumProvider < BaseProvider
       def get_by_name(artist, name)
         response = @facade.info(:artist => artist, :album => name)
-        parse_model response, :single => true
+        parse_model response
       end
 
       def search(name)
