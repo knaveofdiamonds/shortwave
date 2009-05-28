@@ -11,4 +11,8 @@ class AlbumTest < TestCase
   test "has a name" do
     assert_equal "Only Life", @album.name
   end
+
+  test "has an id" do
+    assert_equal 2045356, @album.id
+  end
 end
