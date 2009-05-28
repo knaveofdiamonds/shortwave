@@ -1,15 +1,16 @@
+require 'forwardable'
+
 module Shortwave
   module Model
     # A venue that hosts events.
     class Venue < BaseModel
+      extend Forwardable
+      def_delegators(:location, :city, :street_address, :country, :postcode)
+
       element :id, Integer
       element :name, String
       element :url, String
-      element :city, String, :tag => "location/city"
-      element :country, String, :tag => "location/country"
-      element :street_address, String, :tag => "location/street"
-      element :postcode, String, :tag => "location/postalcode"
-      has_one :location, "Shortwave::Model::Location", :tag => "location/geo:point"
+      has_one :location, "Shortwave::Model::Location"
 
       # Returns upcoming events at this venue
       def events
