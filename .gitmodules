@@ -1,0 +1,3 @@
+[submodule "vendor/happymapper"]
+	path = vendor/happymapper
+	url = git://github.com/knaveofdiamonds/happymapper.git
