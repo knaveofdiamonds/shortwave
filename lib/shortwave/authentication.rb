@@ -1,6 +1,5 @@
 require 'nokogiri'
 require 'digest/md5'
-require 'provider/provider_methods'
 include Digest
 
 module Shortwave
