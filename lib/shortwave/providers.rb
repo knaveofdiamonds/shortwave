@@ -76,7 +76,15 @@ module Shortwave
     class ArtistProvider < BaseProvider
       # Returns an artist, given either an artist's name or a musicbrainz id
       def get(identifier)
-        key = (identifier =~ /[\da-f]{8}-[\da-f]{4}-[\da-f]{4}-[\da-f]{4}-[\da-f]{12}/) ? :mbid : :artist
+        if identifier.respond_to? :uuid
+          key = :mbid
+          identifier = identifier.uuid
+        elsif identifier =~ /[\da-f]{8}-[\da-f]{4}-[\da-f]{4}-[\da-f]{4}-[\da-f]{12}/ 
+          key = :mbid
+        else
+          key = :artist
+        end
+
         parse_model @facade.info(key => identifier)
       end
     end

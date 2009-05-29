@@ -18,6 +18,11 @@ class ArtistProviderTest < TestCase
     assert_equal "The Feelies", @provider.get("28c07254-aeae-42ad-beea-67f59c3c8baf").name
   end
 
+  test "can get an artist by an Rbrainz MBID model via uuid attribute" do
+    @facade.expects(:info).with(:mbid => "28c07254-aeae-42ad-beea-67f59c3c8baf").returns(xml("artist_info"))
+    assert_equal "The Feelies", @provider.get(stub(:uuid => "28c07254-aeae-42ad-beea-67f59c3c8baf")).name
+  end
+
   test "can search for artists by name" do
     @facade.expects(:search).with("The Feelies").returns(xml("artist_search"))
     assert_equal 11, @provider.search("The Feelies").size
