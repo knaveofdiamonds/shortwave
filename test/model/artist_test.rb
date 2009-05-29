@@ -5,7 +5,9 @@ class ArtistTest < TestCase
 
   def setup
     super
+    @facade.stubs(:session).returns(stub(:artist_facade => @facade))
     @artist = Model::Artist.parse(xml("artist_info"), :single => true)
+    @artist.session = @facade.session
   end
 
   test "has a name" do
@@ -35,5 +37,10 @@ class ArtistTest < TestCase
 
   test "has images" do
     assert_equal 3, @artist.images.size
+  end
+
+  test "has tags" do
+    @facade.expects(:tags).with("The Feelies").returns([])
+    @artist.tags
   end
 end

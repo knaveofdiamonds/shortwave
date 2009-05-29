@@ -5,7 +5,9 @@ class TrackTest < TestCase
 
   def setup
     super
+    @facade.stubs(:session).returns(stub(:track_facade => @facade))
     @track = Model::Track.parse(xml("track_info"), :single => true)
+    @track.session = @facade.session
   end
 
   test "has a name" do
@@ -42,5 +44,10 @@ class TrackTest < TestCase
 
   test "has an album" do
     assert_equal "Led Zeppelin IV", @track.album.name
+  end
+
+  test "has tags" do
+    @facade.expects(:tags).with("Led Zeppelin", "Stairway to Heaven").returns([])
+    @track.tags
   end
 end

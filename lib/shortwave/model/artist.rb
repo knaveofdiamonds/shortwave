@@ -10,6 +10,8 @@ module Shortwave
       element :biography_summary, String, :tag => "bio/content"
       element :biography, String, :tag => "bio/content"
       element :images, String, :tag => "image", :single => false
+
+      taggable :name
     end
   end
 end

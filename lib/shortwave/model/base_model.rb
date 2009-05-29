@@ -13,6 +13,27 @@ module Shortwave
         session
       end
 
+      # Adds two methods to a model to deal with tags: add_tags and remove_tag
+      #
+      # Up to ten tags can be added, either strings, or Tag models
+      # A single tag can be removed
+      def self.taggable(*methods)
+        class_eval <<-EOV
+          def add_tags(*tags)
+            tag_param = tags[0...10].map {|t| t.to_s }.join(",")
+            @session.#{tag_name}_facade.add_tags(#{methods.join(",")}, tag_param)
+          end
+
+          def remove_tag(tag)
+            @session.#{tag_name}_facade.remove_tag(#{methods.join(",")}, tag.to_s)
+          end
+
+          def tags
+            @session.#{tag_name}_facade.tags(#{methods.join(",")})
+          end
+        EOV
+      end
+
       def self.inherited(klass)
         klass.send(:include, HappyMapper)
         klass.send(:tag, klass.name.split("::").last.downcase)
