@@ -20,14 +20,11 @@ module Shortwave
       # Adds methods to a model to deal with shouts: shouts and shout
       def self.shoutable
         class_eval <<-EOV
-          def shouts
-            response = @session.#{tag_name}_facade.shouts(#{@lastfm_keys.join(",")})
-            Shout.parse(response).each {|s| s.session = @session }
-          end
-
           def shout(message)
             @session.#{tag_name}_facade.shout(#{@lastfm_keys.join(",")}, message)
           end
+
+          link_to "Shout", :shouts
         EOV
       end
 
@@ -46,11 +43,30 @@ module Shortwave
             @session.#{tag_name}_facade.remove_tag(#{@lastfm_keys.join(",")}, tag.to_s)
           end
 
-          def tags
-            @session.#{tag_name}_facade.tags(#{@lastfm_keys.join(",")})
+          link_to "Tag", :tags
+        EOV
+      end
+
+      def self.sharable
+        class_eval <<-EOV
+          def share(recipients, message=nil)
+            params = {}
+            params[:message] = message if message
+            @session.#{tag_name}_facade.share(#{@lastfm_keys.join(",")}, recipients[0...10].map{|r| r.to_s }.join(','), params)
           end
         EOV
       end
+
+      def self.link_to(klass, method, remote_method=nil)
+        remote_method ||= method
+        class_eval <<-EOV
+          def #{method}
+            response = @session.#{tag_name}_facade.#{remote_method}(#{@lastfm_keys.join(',')}) 
+            #{klass}.parse(response).each {|obj| obj.session = @session }
+          end
+        EOV
+      end
+
 
       def self.inherited(klass)
         klass.send(:include, HappyMapper)

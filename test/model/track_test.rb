@@ -47,7 +47,7 @@ class TrackTest < TestCase
   end
 
   test "has tags" do
-    @facade.expects(:tags).with("Led Zeppelin", "Stairway to Heaven").returns([])
+    @facade.expects(:tags).with("Led Zeppelin", "Stairway to Heaven").returns(xml("tag_search"))
     @track.tags
   end
 end

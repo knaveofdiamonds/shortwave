@@ -40,7 +40,7 @@ class ArtistTest < TestCase
   end
 
   test "has tags" do
-    @facade.expects(:tags).with("The Feelies").returns([])
+    @facade.expects(:tags).with("The Feelies").returns(xml("tag_search"))
     @artist.tags
   end
 
@@ -52,5 +52,12 @@ class ArtistTest < TestCase
   test "can be shouted at" do
     @facade.expects(:shout).with("The Feelies", "Hi there").returns(xml("ok"))
     @artist.shout("Hi there")
+  end
+
+  test "can be shared with other users or email addresses" do
+    args = ["The Feelies", "roland@example.com,kate", {:message => "This is awesome!"}]
+    @facade.expects(:share).with(*args).returns(xml("ok"))
+    # TODO should be a user object, not just a username
+    @artist.share(["roland@example.com", "kate"], "This is awesome!")
   end
 end

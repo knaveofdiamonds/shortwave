@@ -13,6 +13,10 @@ module Shortwave
 
       identified_by :id
       shoutable
+      sharable
+
+      link_to "Shout", :shouts
+      link_to "User", :attendees
 
       # Returns the headline act for this event
       def headliner

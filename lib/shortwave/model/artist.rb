@@ -14,6 +14,14 @@ module Shortwave
       identified_by :name
       taggable
       shoutable
+      sharable
+      
+      link_to "Event",  :events
+      link_to "Artist", :similar
+      link_to "Album",  :albums, :top_albums
+      link_to "User",   :fans, :top_fans
+      link_to "Tag",    :top_tags
+      link_to "Track",  :tracks, :top_tracks
     end
   end
 end
