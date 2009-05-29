@@ -10,6 +10,10 @@ module Shortwave
         response = @session.tag_facade.similar(name)
         self.class.parse(response).each {|tag| tag.session = @session }
       end
+
+      def to_s
+        name
+      end
     end
   end
 end

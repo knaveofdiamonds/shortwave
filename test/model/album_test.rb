@@ -5,7 +5,9 @@ class AlbumTest < TestCase
 
   def setup
     super
+    @facade.stubs(:session).returns(stub(:album_facade => @facade))
     @album = Model::Album.parse(xml("album_info"), :single => true)
+    @album.session = @facade.session
   end
 
   test "has a name" do
@@ -40,11 +42,21 @@ class AlbumTest < TestCase
     assert_equal 67545, @album.play_count
   end
 
-  test "has tags" do
-    assert_equal 5, @album.tags.size
+  test "has top tags" do
+    assert_equal 5, @album.top_tags.size
   end
 
   test "has an artist name" do
     assert_equal "The Feelies", @album.artist_name
+  end
+
+  test "can be tagged" do
+    @facade.expects(:add_tags).with("The Feelies", "Only Life", "tag1,tag2,tag3")
+    @album.add_tags("tag1", "tag2", "tag3")
+  end
+
+  test "can remove a tag" do
+    @facade.expects(:remove_tag).with("The Feelies", "Only Life", "tag1")
+    @album.remove_tag("tag1")
   end
 end
