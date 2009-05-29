@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lfm status="ok">
+<track>
+    <id>12729</id>
+    <name>Stairway to Heaven</name>
+    <mbid></mbid>
+    <url>http://www.last.fm/music/Led+Zeppelin/_/Stairway+to+Heaven</url>
+    <duration>478000</duration>
+    <streamable fulltrack="0">1</streamable>    
+        <listeners>514346</listeners>
+    <playcount>3438976</playcount>    
+    <artist>
+        <name>Led Zeppelin</name>
+        <mbid>678d88b2-87b0-403b-b63d-5da7465aecc3</mbid>
+        <url>http://www.last.fm/music/Led+Zeppelin</url>
+    </artist>
+        <album position="4">
+        <artist>Led Zeppelin</artist>
+        <title>Led Zeppelin IV</title>
+        <mbid>71eafe5d-33b0-4e41-9b51-754b8450302e</mbid>
+        <url>http://www.last.fm/music/Led+Zeppelin/Led+Zeppelin+IV</url>        
+        <image size="small">http://userserve-ak.last.fm/serve/64s/27913379.jpg</image>
+        <image size="medium">http://userserve-ak.last.fm/serve/126/27913379.jpg</image>
+        <image size="large">http://userserve-ak.last.fm/serve/174s/27913379.jpg</image>
+    </album>
+        <toptags>
+        <tag>
+	  <name>classic rock</name>
+	  <url>http://www.last.fm/tag/classic%20rock</url>
+	</tag>
+        <tag>
+	  <name>rock</name>
+	  <url>http://www.last.fm/tag/rock</url>
+	</tag>
+        <tag>
+	  <name>led zeppelin</name>
+	  <url>http://www.last.fm/tag/led%20zeppelin</url>
+	</tag>
+        <tag>
+	  <name>70s</name>
+	  <url>http://www.last.fm/tag/70s</url>
+	</tag>
+        <tag>
+	  <name>hard rock</name>
+	  <url>http://www.last.fm/tag/hard%20rock</url>
+	</tag>
+      </toptags>
+          <wiki>
+        <published>Fri, 23 May 2008 13:39:18 +0000</published>
+        <summary><![CDATA[&quot;Stairway to Heaven&quot; is a song by the English rock band Led Zeppelin. It was composed by guitarist Jimmy Page and vocalist Robert Plant for the band's fourth studio album, Led Zeppelin IV. It is the most requested and most played song on FM radio stations in the United States, despite never having been released as a single there. In November 2007, through download sales promoting their recent Mothership release, the song hit #37 on the UK Singles Chart  and #13 on the New Zealand Singles Chart.]]></summary>
+        <content><![CDATA[&quot;Stairway to Heaven&quot; is a song by the English rock band Led Zeppelin. It was composed by guitarist Jimmy Page and vocalist Robert Plant for the band's fourth studio album, Led Zeppelin IV. It is the most requested and most played song on FM radio stations in the United States, despite never having been released as a single there. In November 2007, through download sales promoting their recent Mothership release, the song hit #37 on the UK Singles Chart  and #13 on the New Zealand Singles Chart.]]></content>
+      </wiki>
+    </track></lfm>

@@ -1,7 +1,7 @@
 module Shortwave
   module Model
     class Album < BaseModel
-      element :name, String
+      element :name, String, :tag => "name|title"
       element :url, String
       element :id, Integer
       element :release_date, Time, :tag => "releasedate"

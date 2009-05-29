@@ -2,7 +2,7 @@ module Shortwave
   module Provider
     # Intended to be mixed in to authentication classes
     module ProviderMethods
-      [:tag, :album, :artist].each do |name|
+      [:album, :artist, :track, :tag, :venue].each do |name|
         klass_name = name.to_s.capitalize
         module_eval <<-EOV
           def #{name}
@@ -34,6 +34,11 @@ module Shortwave
         model
       end
 
+      # Searches for the model by name.
+      def search(name)
+        parse_collection @facade.search(name)
+      end
+
       protected
 
       # Parses an xml response into a Shortwave::Model::* object
@@ -61,11 +66,6 @@ module Shortwave
       def get_by_name(artist, name)
         parse_model @facade.info(:artist => artist, :album => name)
       end
-
-      # Searches for an album by name.
-      def search(name)
-        parse_collection @facade.search(name)
-      end
     end
 
 
@@ -78,11 +78,6 @@ module Shortwave
       def get(identifier)
         key = (identifier =~ /[\da-f]{8}-[\da-f]{4}-[\da-f]{4}-[\da-f]{4}-[\da-f]{12}/) ? :mbid : :artist
         parse_model @facade.info(key => identifier)
-      end
-
-      # Searches for an artist by name.
-      def search(name)
-        parse_collection @facade.search(name)
       end
     end
 
@@ -98,12 +93,24 @@ module Shortwave
       def popular
         parse_collection @facade.top_tags
       end
-
-      # Searches for an artist by name.
-      def search(name)
-        parse_collection @facade.search(name)
-      end
     end
 
+    # Produces Venue objects
+    class VenueProvider < BaseProvider
+    end
+
+
+    # Produces track objects.
+    class TrackProvider < BaseProvider
+      # Gets an track, given a musicbrainz id.
+      def get(mbid)
+        parse_model @facade.info(:mbid => mbid)
+      end
+
+      # Gets a track, given an artist name and a track name
+      def get_by_name(artist, name)
+        parse_model @facade.info(:artist => artist, :track => name)
+      end
+    end
   end
 end
