@@ -43,4 +43,14 @@ class ArtistTest < TestCase
     @facade.expects(:tags).with("The Feelies").returns([])
     @artist.tags
   end
+
+  test "has shouts" do
+    @facade.expects(:shouts).with("The Feelies").returns(xml("artist_shouts"))
+    assert_equal 104, @artist.shouts.size
+  end
+
+  test "can be shouted at" do
+    @facade.expects(:shout).with("The Feelies", "Hi there").returns(xml("ok"))
+    @artist.shout("Hi there")
+  end
 end

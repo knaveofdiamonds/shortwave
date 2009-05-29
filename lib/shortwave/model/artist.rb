@@ -12,6 +12,7 @@ module Shortwave
       element :images, String, :tag => "image", :single => false
 
       taggable :name
+      shoutable :name
     end
   end
 end

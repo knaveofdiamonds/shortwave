@@ -10,7 +10,9 @@ module Shortwave
       element :name, String, :tag => "title"
       element :headliner_raw, String, :tag => "artists/headliner"
       element :artists_raw, String, :tag => "artists/artist", :single => false
-      
+
+      shoutable :name
+
       # Returns the headline act for this event
       def headliner
         @headliner ||= artists.detect {|a| a.name == headliner_raw }

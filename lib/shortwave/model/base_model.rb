@@ -13,7 +13,21 @@ module Shortwave
         session
       end
 
-      # Adds two methods to a model to deal with tags: add_tags and remove_tag
+      # Adds methods to a model to deal with shouts: shouts and shout
+      def self.shoutable(*methods)
+        class_eval <<-EOV
+          def shouts
+            response = @session.#{tag_name}_facade.shouts(#{methods.join(",")})
+            Shout.parse(response).each {|s| s.session = @session }
+          end
+
+          def shout(message)
+            @session.#{tag_name}_facade.shout(#{methods.join(",")}, message)
+          end
+        EOV
+      end
+
+      # Adds methods to a model to deal with tags: tags, add_tags and remove_tag
       #
       # Up to ten tags can be added, either strings, or Tag models
       # A single tag can be removed
