@@ -14,6 +14,10 @@ module Shortwave
       def streamable?
         @streamable
       end
+
+      def add_track(track)
+        @session.playlist_facade.add_track(id, track.name, track.artist_name)
+      end
     end
   end
 end

@@ -39,4 +39,13 @@ class PlaylistTest < TestCase
   test "has a url" do
     assert_equal "http://www.last.fm/user/knaveofdiamonds/library/playlists/loit_knaveofdiamonds%25E2%2580%2599s_playlist", @playlist.url
   end
+
+  test "can have tracks added to it" do
+    @facade.stubs(:session => stub(:playlist_facade => @facade))
+    @playlist.session = @facade.session
+    @facade.expects(:add_track).with(1011557, "Title", "Artist").returns(xml("ok"))
+    track = stub(:name => "Title", :artist_name => "Artist")
+
+    @playlist.add_track(track)
+  end
 end
