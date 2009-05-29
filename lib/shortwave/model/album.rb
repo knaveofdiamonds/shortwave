@@ -12,7 +12,8 @@ module Shortwave
       element :artist_name, String, :tag => "artist"
       has_many :top_tags, "Shortwave::Model::Tag", :tag => "toptags/tag"
 
-      taggable :artist_name, :name
+      identified_by :artist_name, :name
+      taggable
     end
   end
 end

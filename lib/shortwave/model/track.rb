@@ -12,7 +12,8 @@ module Shortwave
       has_one :artist, Artist
       has_one :album, Album
 
-      taggable "artist.name", :name
+      identified_by "artist.name", :name
+      taggable 
 
       def streamable?
         @streamable

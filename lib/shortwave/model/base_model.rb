@@ -13,16 +13,20 @@ module Shortwave
         session
       end
 
+      def self.identified_by(*methods)
+        @lastfm_keys = methods
+      end
+
       # Adds methods to a model to deal with shouts: shouts and shout
-      def self.shoutable(*methods)
+      def self.shoutable
         class_eval <<-EOV
           def shouts
-            response = @session.#{tag_name}_facade.shouts(#{methods.join(",")})
+            response = @session.#{tag_name}_facade.shouts(#{@lastfm_keys.join(",")})
             Shout.parse(response).each {|s| s.session = @session }
           end
 
           def shout(message)
-            @session.#{tag_name}_facade.shout(#{methods.join(",")}, message)
+            @session.#{tag_name}_facade.shout(#{@lastfm_keys.join(",")}, message)
           end
         EOV
       end
@@ -31,19 +35,19 @@ module Shortwave
       #
       # Up to ten tags can be added, either strings, or Tag models
       # A single tag can be removed
-      def self.taggable(*methods)
+      def self.taggable
         class_eval <<-EOV
           def add_tags(*tags)
             tag_param = tags[0...10].map {|t| t.to_s }.join(",")
-            @session.#{tag_name}_facade.add_tags(#{methods.join(",")}, tag_param)
+            @session.#{tag_name}_facade.add_tags(#{@lastfm_keys.join(",")}, tag_param)
           end
 
           def remove_tag(tag)
-            @session.#{tag_name}_facade.remove_tag(#{methods.join(",")}, tag.to_s)
+            @session.#{tag_name}_facade.remove_tag(#{@lastfm_keys.join(",")}, tag.to_s)
           end
 
           def tags
-            @session.#{tag_name}_facade.tags(#{methods.join(",")})
+            @session.#{tag_name}_facade.tags(#{@lastfm_keys.join(",")})
           end
         EOV
       end

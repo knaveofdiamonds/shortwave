@@ -11,7 +11,8 @@ module Shortwave
       element :headliner_raw, String, :tag => "artists/headliner"
       element :artists_raw, String, :tag => "artists/artist", :single => false
 
-      shoutable :name
+      identified_by :id
+      shoutable
 
       # Returns the headline act for this event
       def headliner

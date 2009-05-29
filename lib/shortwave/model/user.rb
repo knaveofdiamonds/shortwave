@@ -13,7 +13,8 @@ module Shortwave
       element :subscriber, Boolean
       element :play_count, Integer, :tag => "playcount"
 
-      shoutable :name
+      identified_by :name
+      shoutable
     end
   end
 end

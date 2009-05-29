@@ -11,8 +11,9 @@ module Shortwave
       element :biography, String, :tag => "bio/content"
       element :images, String, :tag => "image", :single => false
 
-      taggable :name
-      shoutable :name
+      identified_by :name
+      taggable
+      shoutable
     end
   end
 end
