@@ -59,6 +59,7 @@ module Shortwave
     class AlbumProvider < BaseProvider
       # Gets an album, given a musicbrainz id.
       def get(mbid)
+        mbid = mbid.uuid if mbid.respond_to? :uuid
         parse_model @facade.info(:mbid => mbid)
       end
 
@@ -112,6 +113,7 @@ module Shortwave
     class TrackProvider < BaseProvider
       # Gets an track, given a musicbrainz id.
       def get(mbid)
+        mbid = mbid.uuid if mbid.respond_to? :uuid
         parse_model @facade.info(:mbid => mbid)
       end
 
