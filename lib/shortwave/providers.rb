@@ -2,7 +2,7 @@ module Shortwave
   module Provider
     # Intended to be mixed in to authentication classes
     module ProviderMethods
-      [:album, :artist, :track, :tag, :venue].each do |name|
+      [:album, :artist, :track, :tag, :user, :venue].each do |name|
         klass_name = name.to_s.capitalize
         module_eval <<-EOV
           def #{name}
@@ -111,6 +111,9 @@ module Shortwave
       def get_by_name(artist, name)
         parse_model @facade.info(:artist => artist, :track => name)
       end
+    end
+
+    class UserProvider < BaseProvider
     end
   end
 end
