@@ -34,9 +34,11 @@ module Shortwave
         model
       end
 
-      # Searches for the model by name.
-      def search(name)
-        parse_collection @facade.search(name)
+
+      def self.searchable
+        define_method :search do |name|
+          parse_collection @facade.search(name)
+        end
       end
 
       protected
@@ -57,6 +59,8 @@ module Shortwave
 
     # Produces album objects.
     class AlbumProvider < BaseProvider
+      searchable
+
       # Gets an album, given a musicbrainz id.
       def get(mbid)
         mbid = mbid.uuid if mbid.respond_to? :uuid
@@ -75,6 +79,8 @@ module Shortwave
     # You should generally use an instance of this class provided by a session:
     # session.artist
     class ArtistProvider < BaseProvider
+      searchable
+
       # Returns an artist, given either an artist's name or a musicbrainz id
       def get(identifier)
         if identifier.respond_to? :uuid
@@ -93,6 +99,8 @@ module Shortwave
 
     # Produces Tag objects
     class TagProvider < BaseProvider
+      searchable
+
       # Returns a tag named "name"
       def get(name)
         parse_model @facade.search(name)
@@ -116,6 +124,8 @@ module Shortwave
 
     # Produces track objects.
     class TrackProvider < BaseProvider
+      searchable
+
       # Gets an track, given a musicbrainz id.
       def get(mbid)
         mbid = mbid.uuid if mbid.respond_to? :uuid
