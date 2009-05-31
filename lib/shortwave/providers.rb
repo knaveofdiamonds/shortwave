@@ -106,6 +106,11 @@ module Shortwave
 
     # Produces Venue objects
     class VenueProvider < BaseProvider
+      def search(name, country=nil)
+        hsh = {}
+        hsh[:country] = country if country
+        parse_collection @facade.search(name, hsh)
+      end
     end
 
 
