@@ -139,6 +139,9 @@ module Shortwave
     end
 
     class UserProvider < BaseProvider
+      def logged_in_user
+        parse_model @facade.info
+      end
     end
   end
 end
