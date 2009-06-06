@@ -314,13 +314,13 @@ module Shortwave
       
       # Get an album chart for a group, for a given date range. If no date range is supplied, it will return the most recent album chart for this group.
       #
-      # +user+:: The last.fm group name to fetch the charts of.
+      # +group+:: Group name
       #
       # <b>Options</b>
       # +from+:: The date at which the chart should start from. See Group.getWeeklyChartList for more.
       # +to+:: The date at which the chart should end on. See Group.getWeeklyChartList for more.
-      def weekly_album_chart(user, options={})
-        get(:standard, {:method => "group.getWeeklyAlbumChart", :user => user}.merge(options))
+      def weekly_album_chart(group, options={})
+        get(:standard, {:method => "group.getWeeklyAlbumChart", :group => group}.merge(options))
       end
       
       # Get a track chart for a group, for a given date range. If no date range is supplied, it will return the most recent album chart for this group.

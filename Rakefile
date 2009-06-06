@@ -39,6 +39,10 @@ begin
       patch_methods "Tag", :top_artists, :top_tracks, :top_albums do |method|
         method.parameters << Parameter.new(:tag, true, "Last.fm tag")
       end
+      patch_methods "Group", :weekly_album_chart do |method|
+        method.parameters.delete_if {|p| p.name == :user}
+        method.parameters << Parameter.new(:group, true, "Group name")
+      end
     end
 
     def patch_methods(klass, *methods, &block)
