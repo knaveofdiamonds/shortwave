@@ -4,6 +4,10 @@ include Digest
 
 module Shortwave
   # Authentication classes.
+  #
+  # See http://www.last.fm/api/authentication for more details on how Last.fm expects
+  # you to authenticate. The Sessions take care of method signatures and so on for
+  # you.
   module Authentication
     # Indicates that you have tried to call a remote method that require authentication,
     # but have not authenticated yet.
@@ -15,7 +19,9 @@ module Shortwave
     class Session
       attr_reader :session_key
       
-      # Creates a new authneticator with your api account key and secret.
+      # Creates a new session with your api account key and secret. If you have already
+      # authenticated and stored a session key, you can provide it to save having to
+      # authenticate again.
       def initialize(api_key, secret, session_key=nil)
         @api_key, @secret, @session_key = api_key, secret, session_key
         @facade = Facade::Auth.new(self)
