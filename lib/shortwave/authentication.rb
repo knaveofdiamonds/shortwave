@@ -13,8 +13,6 @@ module Shortwave
     # Base functionality for session-based authentication mechanisms. Don't use this
     # directly - use one of its subclasses: Web, Desktop or Mobile.
     class Session
-      include Provider::ProviderMethods
-
       attr_reader :session_key
       
       # Creates a new authneticator with your api account key and secret.
