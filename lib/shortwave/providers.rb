@@ -2,7 +2,7 @@ module Shortwave
   module Provider
     # Intended to be mixed in to authentication classes
     module ProviderMethods
-      [:album, :artist, :track, :tag, :user, :venue].each do |name|
+      [:album, :artist, :group, :location, :playlist, :track, :tag, :user, :venue].each do |name|
         klass_name = name.to_s.capitalize
         module_eval <<-EOV
           def #{name}
@@ -13,6 +13,10 @@ module Shortwave
             @#{name}_facade ||= Facade::#{klass_name}.new(self)            
           end
         EOV
+      end
+
+      def location_facade
+        @location_facade ||= Facade::Geo.new(self)            
       end
     end
 
@@ -34,14 +38,21 @@ module Shortwave
         model
       end
 
+      protected
 
+      # Defines a search method on this provider
       def self.searchable
         define_method :search do |name|
           parse_collection @facade.search(name)
         end
       end
 
-      protected
+      def self.identifiable_by_mbid
+        define_method :get_by_id do |mbid|
+          mbid = mbid.uuid if mbid.respond_to? :uuid
+          parse_model @facade.info(:mbid => mbid)
+        end
+      end
 
       # Parses an xml response into a Shortwave::Model::* object
       def parse_model(response)
@@ -56,44 +67,42 @@ module Shortwave
       end
     end
 
+    class PlaylistProvider < BaseProvider
+      def create(title, description=nil)
+        hsh = description ? {:description => description} : {}
+        parse_model @facade.create(hsh.merge(:title => title))
+      end
+    end
 
     # Produces album objects.
     class AlbumProvider < BaseProvider
       searchable
-
-      # Gets an album, given a musicbrainz id.
-      def get(mbid)
-        mbid = mbid.uuid if mbid.respond_to? :uuid
-        parse_model @facade.info(:mbid => mbid)
-      end
+      identifiable_by_mbid
 
       # Gets an album, given an artist name and an album name
-      def get_by_name(artist, name)
+      def get(artist, name)
         parse_model @facade.info(:artist => artist, :album => name)
       end
     end
 
 
     # Produces artist objects.
-    #
-    # You should generally use an instance of this class provided by a session:
-    # session.artist
     class ArtistProvider < BaseProvider
       searchable
+      identifiable_by_mbid
 
-      # Returns an artist, given either an artist's name or a musicbrainz id
-      def get(identifier)
-        if identifier.respond_to? :uuid
-          key = :mbid
-          identifier = identifier.uuid
-        elsif identifier =~ /[\da-f]{8}-[\da-f]{4}-[\da-f]{4}-[\da-f]{4}-[\da-f]{12}/ 
-          key = :mbid
-        else
-          key = :artist
-        end
-
-        parse_model @facade.info(key => identifier)
+      def get(artist)
+        parse_model @facade.info(:artist => artist)
       end
+    end
+
+
+    class GroupProvider < BaseProvider
+    end
+
+
+    # Locations can only be built
+    class LocationProvider < BaseProvider
     end
 
 
@@ -112,6 +121,19 @@ module Shortwave
       end
     end
 
+
+    # Produces track objects.
+    class TrackProvider < BaseProvider
+      searchable
+      identifiable_by_mbid
+
+      # Gets a track, given an artist name and a track name
+      def get(artist, name)
+        parse_model @facade.info(:artist => artist, :track => name)
+      end
+    end
+
+
     # Produces Venue objects
     class VenueProvider < BaseProvider
       def search(name, country=nil)
@@ -121,22 +143,6 @@ module Shortwave
       end
     end
 
-
-    # Produces track objects.
-    class TrackProvider < BaseProvider
-      searchable
-
-      # Gets an track, given a musicbrainz id.
-      def get(mbid)
-        mbid = mbid.uuid if mbid.respond_to? :uuid
-        parse_model @facade.info(:mbid => mbid)
-      end
-
-      # Gets a track, given an artist name and a track name
-      def get_by_name(artist, name)
-        parse_model @facade.info(:artist => artist, :track => name)
-      end
-    end
 
     class UserProvider < BaseProvider
       def logged_in_user
