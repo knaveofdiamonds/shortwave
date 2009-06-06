@@ -13,6 +13,10 @@ module Shortwave
         session
       end
 
+      def self.facade_name
+        @facade_name ||= name.split("::").last.downcase + "_facade"
+      end
+
       def self.identified_by(*methods)
         @lastfm_keys = methods
       end
@@ -21,7 +25,7 @@ module Shortwave
       def self.shoutable
         class_eval <<-EOV
           def shout(message)
-            @session.#{tag_name}_facade.shout(#{@lastfm_keys.join(",")}, message)
+            @session.#{facade_name}.shout(#{@lastfm_keys.join(",")}, message)
           end
 
           link_to "Shout", :shouts
@@ -36,14 +40,14 @@ module Shortwave
         class_eval <<-EOV
           def add_tags(*tags)
             tag_param = tags[0...10].map {|t| t.to_s }.join(",")
-            @session.#{tag_name}_facade.add_tags(#{@lastfm_keys.join(",")}, tag_param)
+            @session.#{facade_name}.add_tags(#{@lastfm_keys.join(",")}, tag_param)
           end
 
           def remove_tag(tag)
-            @session.#{tag_name}_facade.remove_tag(#{@lastfm_keys.join(",")}, tag.to_s)
+            @session.#{facade_name}.remove_tag(#{@lastfm_keys.join(",")}, tag.to_s)
           end
 
-          link_to "Tag", :tags
+          link_to "Tag", :my_tags, :tags
         EOV
       end
 
@@ -52,7 +56,7 @@ module Shortwave
           def share(recipients, message=nil)
             params = {}
             params[:message] = message if message
-            @session.#{tag_name}_facade.share(#{@lastfm_keys.join(",")}, recipients[0...10].map{|r| r.to_s }.join(','), params)
+            @session.#{facade_name}.share(#{@lastfm_keys.join(",")}, recipients[0...10].map{|r| r.to_s }.join(','), params)
           end
         EOV
       end
@@ -61,7 +65,7 @@ module Shortwave
         remote_method ||= method
         class_eval <<-EOV
           def #{method}
-            response = @session.#{tag_name}_facade.#{remote_method}(#{@lastfm_keys.join(',')}) 
+            response = @session.#{facade_name}.#{remote_method}(#{@lastfm_keys.join(',')}) 
             #{klass}.parse(response).each {|obj| obj.session = @session }
           end
         EOV
