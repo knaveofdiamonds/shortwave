@@ -15,7 +15,7 @@ module Shortwave
 
       class << self
         def facade_name
-          @facade_name ||= name.split("::").last.downcase + "_facade"
+          @facade_name ||= (name.split("::").last.downcase + "_facade").to_sym
         end
 
         def identified_by(*methods)
@@ -98,6 +98,14 @@ module Shortwave
             end
           end
         end
+      end
+      
+      protected
+
+      def link(remote_method, klass, *args)
+        response = @session.send(self.class.facade_name).send(remote_method, *args) 
+        klass = ::Shortwave::Model.const_get(klass)
+        klass.parse(response).each {|obj| obj.session = @session }
       end
     end
   end
