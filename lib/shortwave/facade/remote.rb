@@ -42,7 +42,7 @@ module Shortwave
     # This class is mainly provided for api stability in case we switch from using RestClient.
     class RemoteError < RuntimeError
       extend Forwardable
-      def_delegators :cause, :message, :to_s, :http_code, :response
+      def_delegators :@cause, :message, :to_s, :http_code, :response
 
       def initialize(cause)
         @cause = cause
