@@ -5,8 +5,8 @@ class TagTest < TestCase
 
   def setup
     super
-    @facade.stubs(:session).returns(stub(:tag_facade => @facade))
-    @provider = Provider::TagProvider.new(@facade)
+    @tag = Model::Tag.parse("<tag><name>disco</name></tag>")
+    @tag.session = StubSession.new
   end
 
   test "can be parsed from xml" do
@@ -18,10 +18,22 @@ class TagTest < TestCase
   end
 
   test "has similar tags" do
-    @facade.expects(:similar).with("disco").returns(xml("tag_similar"))
-    similar = @provider.build(:name => "disco").similar
+    expect_get "method=tag.getSimilar&tag=disco", :tag_similar
+    assert @tag.similar.first.kind_of? Model::Tag
+  end
 
-    assert_equal 50, similar.size
-    assert_equal true, similar.first.streamable
+  test "has artists" do
+    expect_get "method=tag.getTopArtists&tag=disco", :tag_top_artists
+    assert @tag.artists.first.kind_of? Model::Artist
+  end
+
+  test "has albums" do
+    expect_get "method=tag.getTopAlbums&tag=disco", :tag_top_albums
+    assert @tag.albums.first.kind_of? Model::Album
+  end
+
+  test "has tracks" do
+    expect_get "method=tag.getTopTracks&tag=disco", :tag_top_tracks
+    assert @tag.tracks.first.kind_of? Model::Track
   end
 end
