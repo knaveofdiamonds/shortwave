@@ -79,13 +79,13 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "shortwave"
-    gem.summary = %Q{TODO}
+    gem.summary = "A Last.fm API wrapper"
     gem.email = "roland.swingler@gmail.com"
     gem.homepage = "http://github.com/knaveofdiamonds/shortwave"
     gem.authors = ["Roland Swingler"]
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_dependency("rest-client", ">= 0.9.2")
+    gem.add_dependency("nokogiri", ">= 1.2.3")
   end
-
 rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
 end
