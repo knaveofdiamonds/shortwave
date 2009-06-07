@@ -69,4 +69,10 @@ class UserTest < TestCase
     expect_get "method=user.getEvents&user=knaveofdiamonds", :venue_events
     assert @user.events.first.kind_of? Model::Event
   end
+
+  # Logged in user only
+  test "has recommended events" do
+    expect_get "method=user.getRecommendedEvents", :venue_events
+    assert @user.recommended_events.first.kind_of? Model::Event
+  end
 end

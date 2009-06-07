@@ -21,6 +21,11 @@ module Shortwave
       def events
         link :events, :Event, name
       end
+
+      # Events this user may be interested in.
+      def recommended_events
+        link :recommended_events, :Event
+      end
     end
   end
 end
