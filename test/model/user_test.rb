@@ -75,4 +75,9 @@ class UserTest < TestCase
     expect_get "method=user.getRecommendedEvents", :venue_events
     assert @user.recommended_events.first.kind_of? Model::Event
   end
+
+  test "has recommended artists" do
+    expect_get "method=user.getRecommendedArtists", :user_recommended_artists
+    assert @user.recommended_artists.first.kind_of? Model::Artist
+  end
 end

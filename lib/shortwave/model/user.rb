@@ -26,6 +26,11 @@ module Shortwave
       def recommended_events
         link :recommended_events, :Event
       end
+
+      # Artists this user may be interested in.
+      def recommended_artists
+        link :recommended_artists, :Artist
+      end
     end
   end
 end
