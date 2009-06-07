@@ -6,6 +6,7 @@ class VenueTest < TestCase
   def setup
     super
     @venue = Model::Venue.parse(xml("venue_search"), :single => true)
+    @venue.session = StubSession.new
   end
 
   test "venue has a name" do
@@ -47,7 +48,13 @@ class VenueTest < TestCase
     assert_equal 8777134, @venue.id
   end
 
-  test "venue has events" do
+  test "has events" do
+    expect_get "method=venue.getEvents&venue=8777134", :venue_events
+    assert @venue.events.first.kind_of? Model::Event
+  end
 
+  test "has past events" do
+    expect_get "method=venue.getPastEvents&venue=8777134", :venue_events
+    assert @venue.past_events.first.kind_of? Model::Event
   end
 end
