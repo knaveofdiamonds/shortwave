@@ -1,5 +1,16 @@
 module Shortwave
   module Model
+    # An event.
+    #
+    # == Attributes
+    # +id+:: Last.fm id
+    # +name+:: Event name
+    # +description+:: Event description
+    # +attendance_count+:: Number of last.fm user's attending
+    # +review_count+:: Number of reviews
+    # +starts_at+:: The start time
+    # +url+:: Last.fm site url
+    # +venue+:: Event venue
     class Event < BaseModel
       element :id, Integer
       element :description, String
@@ -10,13 +21,24 @@ module Shortwave
       element :name, String, :tag => "title"
       element :headliner_raw, String, :tag => "artists/headliner"
       element :artists_raw, String, :tag => "artists/artist", :single => false
+      element :venue, :Venue
 
       identified_by :id
       shoutable
       sharable
 
-      link_to "Shout", :shouts
-      link_to "User", :attendees
+      # Returns the list of users attending this event
+      def attendees
+        link :attendees, :User, id
+      end
+
+      # Mark the current session user's attendance at this event
+      #
+      # Possible statuses are +:yes+, +:no+ and +:maybe+
+      def attend(status=:yes)
+        i = [:yes, :maybe, :no].index(status)
+        @session.event_facade.attend(id, i)
+      end
 
       # Returns the headline act for this event
       def headliner

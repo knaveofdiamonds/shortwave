@@ -47,4 +47,17 @@ class EventTest < TestCase
     @event.session = StubSession.new
     assert_equal "Phoenix", @event.headliner.name
   end
+
+  test "has attendees" do
+    @event.session = StubSession.new
+    expect_get "method=event.getAttendees&event=968618", :artist_top_fans
+    assert @event.attendees.first.kind_of? Model::User
+  end
+
+  test "can be attended by the session user" do
+    @facade.stubs(:session => stub(:event_facade => @facade))
+    @event.session = @facade.session
+    @facade.expects(:attend).with(968618, 0)
+    @event.attend
+  end
 end
