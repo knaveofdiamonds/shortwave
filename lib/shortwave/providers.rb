@@ -15,6 +15,10 @@ module Shortwave
         EOV
       end
 
+      def event_facade
+        @event_facade ||= Facade::Event.new(self)
+      end
+
       def location_facade
         @location_facade ||= Facade::Geo.new(self)            
       end

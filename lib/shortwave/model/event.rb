@@ -21,7 +21,7 @@ module Shortwave
       element :name, String, :tag => "title"
       element :headliner_raw, String, :tag => "artists/headliner"
       element :artists_raw, String, :tag => "artists/artist", :single => false
-      element :venue, :Venue
+      has_one :venue, "Model::Venue"
 
       identified_by :id
       shoutable
@@ -38,6 +38,7 @@ module Shortwave
       def attend(status=:yes)
         i = [:yes, :maybe, :no].index(status)
         @session.event_facade.attend(id, i)
+        true
       end
 
       # Returns the headline act for this event

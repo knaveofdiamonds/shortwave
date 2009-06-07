@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lfm status="ok">
+<events location="Cheltenham, United Kingdom" page="1" totalpages="82" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" total="818">
+<event>
+  <id>990487</id>
+  <title>Madeline Ava / Max Weiss / Kids of Cons</title>
+  <artists>
+    <artist>Kids of Cons</artist>
+    <headliner>Kids of Cons</headliner>
+  </artists>
+  <venue>
+    <name>Love &amp; Reason</name>
+    <location>
+      <city>Arlington, TX</city>
+      <country>United States</country>
+      <street></street>
+      <postalcode></postalcode>
+      <geo:point>
+         <geo:lat>51.75</geo:lat>
+         <geo:long>-1.8333333</geo:long>
+      </geo:point>
+              <timezone>GMT</timezone>
+          </location>
+    <url>http://www.last.fm/venue/9016931</url>
+  </venue>
+  <startDate>Sun, 07 Jun 2009</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/5890415.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/5890415.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/5890415.jpg</image>
+   <attendance>0</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=990487</tag>  
+  <url>http://www.last.fm/event/990487</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1089188</id>
+  <title>Mark Morriss</title>
+  <artists>
+    <artist>Mark Morriss</artist>
+    <headliner>Mark Morriss</headliner>
+  </artists>
+  <venue>
+    <name>The Little Civic</name>
+    <location>
+      <city>Wolverhampton</city>
+      <country>United Kingdom</country>
+      <street>North Street</street>
+      <postalcode>WV1 1RQ</postalcode>
+      <geo:point>
+         <geo:lat>52.586168</geo:lat>
+         <geo:long>-2.130417</geo:long>
+      </geo:point>
+              <timezone>GMT</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8777824</url>
+  </venue>
+  <startDate>Sun, 07 Jun 2009</startDate>
+  <description><![CDATA[<div class="bbcode"><a href="http://ws.audioscrobbler.com/music/Mark+Morriss" class="bbcode_artist">Mark Morriss</a></div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/185339.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/185339.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/185339.jpg</image>
+   <attendance>2</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1089188</tag>  
+  <url>http://www.last.fm/event/1089188</url>
+  <website>http://www.wolvescivic.co.uk/index.asp?loc=whatsonshow&amp;woid=13928</website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1004105</id>
+  <title>The Joy Formidable</title>
+  <artists>
+    <artist>The Joy Formidable</artist>
+    <headliner>The Joy Formidable</headliner>
+  </artists>
+  <venue>
+    <name>Bar Academy</name>
+    <location>
+      <city>Birmingham</city>
+      <country>United Kingdom</country>
+      <street>51 Dale End</street>
+      <postalcode>B4 7LS</postalcode>
+      <geo:point>
+         <geo:lat>52.480747</geo:lat>
+         <geo:long>-1.894495</geo:long>
+      </geo:point>
+              <timezone>GMT</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8781001</url>
+  </venue>
+  <startDate>Sun, 07 Jun 2009</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/5784952.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/5784952.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/5784952.jpg</image>
+   <attendance>10</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1004105</tag>  
+  <url>http://www.last.fm/event/1004105</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1051714</id>
+  <title>Zombina and the Skeletones</title>
+  <artists>
+    <artist>Zombina and the Skeletones</artist>
+    <headliner>Zombina and the Skeletones</headliner>
+  </artists>
+  <venue>
+    <name>Bierkeller</name>
+    <location>
+      <city>Bristol</city>
+      <country>United Kingdom</country>
+      <street>All Saints Street</street>
+      <postalcode>BS1 2NA</postalcode>
+      <geo:point>
+         <geo:lat>51.45599</geo:lat>
+         <geo:long>-2.592671</geo:long>
+      </geo:point>
+              <timezone>GMT</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8777990</url>
+  </venue>
+  <startDate>Sun, 07 Jun 2009</startDate>
+  <startTime>19:00</startTime>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/24398177.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/24398177.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/24398177.jpg</image>
+   <attendance>4</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1051714</tag>  
+  <url>http://www.last.fm/event/1051714</url>
+  <website>http://www.bristolbierkeller.co.uk/page3.html</website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1054904</id>
+  <title>My Passion</title>
+  <artists>
+    <artist>My Passion</artist>
+    <artist>Outspoken</artist>
+    <artist>Highrise</artist>
+    <artist>summerlin</artist>
+    <artist>Junkyard Morning</artist>
+    <headliner>My Passion</headliner>
+  </artists>
+  <venue>
+    <name>Eddies Rock Club</name>
+    <location>
+      <city>Birmingham</city>
+      <country>United Kingdom</country>
+      <street>Eddie's Rock Club, Gough Street</street>
+      <postalcode>B1 1HN</postalcode>
+      <geo:point>
+         <geo:lat>52.477071</geo:lat>
+         <geo:long>-1.901075</geo:long>
+      </geo:point>
+              <timezone>GMT</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8985605</url>
+  </venue>
+  <startDate>Sun, 07 Jun 2009</startDate>
+  <startTime>19:00</startTime>
+  <description><![CDATA[<div class="bbcode">This show is a 16+ event. ID may be required. ROAR.<br />
+<br />
+See more on &quot;<strong><a href="http://www.myspace.com/mypassion" rel="nofollow">MySpace</a></strong>&quot;.</div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/359202.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/359202.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/359202.jpg</image>
+   <attendance>2</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1054904</tag>  
+  <url>http://www.last.fm/event/1054904</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>905666</id>
+  <title>‘You Are The Music’ - An Evening Of Trapeze</title>
+  <artists>
+    <artist>Glenn Hughes</artist>
+    <headliner>Glenn Hughes</headliner>
+  </artists>
+  <venue>
+    <name>Robin 2</name>
+    <location>
+      <city>Bilston</city>
+      <country>United Kingdom</country>
+      <street>20-22 Mount Pleasant</street>
+      <postalcode>WV14 7LJ</postalcode>
+      <geo:point>
+         <geo:lat>52.56741</geo:lat>
+         <geo:long>-2.074638</geo:long>
+      </geo:point>
+              <timezone>GMT</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8779496</url>
+  </venue>
+  <startDate>Sun, 07 Jun 2009</startDate>
+  <startTime>19:00</startTime>
+  <description><![CDATA[<div class="bbcode">Glenn and his band will perform a unique and exclusive musical tribute to his former band, the legendary TRAPEZE. The show will consist of a full set of Trapeze music, including songs from the classic albums ‘MEDUSA’ and ‘YOU ARE THE MUSIC…WE’RE JUST THE BAND’.<br />
+<br />
+<br />
+This guarantees to be an unmissable evening as it will be the first time that Glenn will have played exclusively a full Trapeze set as a solo artist, and it will also be a particularly poignant and emotional evening as the show will be dedicated to the memory of Glenn’s dear friend, the former Trapeze and Whitesnake guitarist Mel Galley, who sadly died in July 2008. <br />
+<br />
+IMPORTANT NOTICE<br />
+Glenn Hughes &amp; the band live on stage 7.30pm prompt<br />
+<br />
+The ticket also includes <br />
+Sunday afternoon showing of rare Glenn Hughes &amp; Trapeze related films and etc <br />
+<br />
+Doors/Bars open at 1.00pm<br />
+<br />
+Sunday Afternoon B-B-Q £5.00<br />
+<br />
+Will be served in the courtyard from 1.00pm - 3.00pm<br />
+<br />
+This can be pre-booked @ £5.00 extra, which will include: Hot jacket potato with butter - spicy chicken - salads &amp; sauces (vegetarian options available)</div>]]></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/21964787.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/21964787.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/21964787.jpg</image>
+   <attendance>1</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=905666</tag>  
+  <url>http://www.last.fm/event/905666</url>
+  <website>https://www.therobintickets.co.uk/ticketshop/giglist.asp?month=6&amp;year=2009#1688</website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1077714</id>
+  <title>Petra Bocus-Thurn</title>
+  <artists>
+    <artist>Petra Bocus-Thurn</artist>
+    <headliner>Petra Bocus-Thurn</headliner>
+  </artists>
+  <venue>
+    <name>Wiltshire Music Centre/ Bradford on Avon</name>
+    <location>
+      <city>Bradford-on-Avon</city>
+      <country>United Kingdom</country>
+      <street></street>
+      <postalcode></postalcode>
+      <geo:point>
+         <geo:lat>51.351847</geo:lat>
+         <geo:long>-2.260845</geo:long>
+      </geo:point>
+              <timezone>GMT</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8811080</url>
+  </venue>
+  <startDate>Sun, 07 Jun 2009</startDate>
+  <startTime>19:30</startTime>
+  <description><![CDATA[<div class="bbcode">Performing with Vocal Works Gospel Choir @</div>]]></description>
+  <image size="small"></image>
+  <image size="medium"></image>
+  <image size="large"></image>
+   <attendance>1</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1077714</tag>  
+  <url>http://www.last.fm/event/1077714</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1087075</id>
+  <title>Cara Dillon</title>
+  <artists>
+    <artist>Cara Dillon</artist>
+    <headliner>Cara Dillon</headliner>
+  </artists>
+  <venue>
+    <name>Komedia</name>
+    <location>
+      <city>Bath</city>
+      <country>United Kingdom</country>
+      <street>22-23 Westgate Street</street>
+      <postalcode>BA1 1EP</postalcode>
+      <geo:point>
+         <geo:lat>51.380772</geo:lat>
+         <geo:long>-2.358665</geo:long>
+      </geo:point>
+              <timezone>GMT</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8970230</url>
+  </venue>
+  <startDate>Sun, 07 Jun 2009</startDate>
+  <startTime>19:30</startTime>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/315729.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/315729.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/315729.jpg</image>
+   <attendance>1</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1087075</tag>  
+  <url>http://www.last.fm/event/1087075</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1085341</id>
+  <title>Guiltless Adam Gig</title>
+  <artists>
+    <artist>GU</artist>
+    <headliner>GU</headliner>
+  </artists>
+  <venue>
+    <name>The Louisiana</name>
+    <location>
+      <city>Bristol</city>
+      <country>United Kingdom</country>
+      <street>Wapping Road, Bathurst Terrace</street>
+      <postalcode>BS1 6UA</postalcode>
+      <geo:point>
+         <geo:lat>51.4766667</geo:lat>
+         <geo:long>-2.5572222</geo:long>
+      </geo:point>
+              <timezone>GMT</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8777898</url>
+  </venue>
+  <startDate>Sun, 07 Jun 2009</startDate>
+  <startTime>20:00</startTime>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/4943384.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/4943384.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/4943384.jpg</image>
+   <attendance>1</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1085341</tag>  
+  <url>http://www.last.fm/event/1085341</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+<event>
+  <id>1039884</id>
+  <title>Broken Records</title>
+  <artists>
+    <artist>Broken Records</artist>
+    <headliner>Broken Records</headliner>
+  </artists>
+  <venue>
+    <name>The Thekla</name>
+    <location>
+      <city>Bristol</city>
+      <country>United Kingdom</country>
+      <street>Thekla Social, The Grove, East Mud Dock</street>
+      <postalcode>BS1 4RB</postalcode>
+      <geo:point>
+         <geo:lat>51.449025</geo:lat>
+         <geo:long>-2.593989</geo:long>
+      </geo:point>
+              <timezone>GMT</timezone>
+          </location>
+    <url>http://www.last.fm/venue/8906506</url>
+  </venue>
+  <startDate>Mon, 08 Jun 2009</startDate>
+  <description></description>
+  <image size="small">http://userserve-ak.last.fm/serve/34/4825653.jpg</image>
+  <image size="medium">http://userserve-ak.last.fm/serve/64/4825653.jpg</image>
+  <image size="large">http://userserve-ak.last.fm/serve/126/4825653.jpg</image>
+   <attendance>4</attendance>
+   <reviews>0</reviews>
+   <tag>lastfm:event=1039884</tag>  
+  <url>http://www.last.fm/event/1039884</url>
+  <website></website>
+  <tickets>
+  </tickets>
+</event>
+</events></lfm>

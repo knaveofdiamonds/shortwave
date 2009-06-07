@@ -16,6 +16,11 @@ module Shortwave
       def members
         link :members, "User", name
       end
+
+      # The group name
+      def to_s
+        name
+      end
     end
   end
 end
