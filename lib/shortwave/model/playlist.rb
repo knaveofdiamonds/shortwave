@@ -10,11 +10,12 @@ module Shortwave
       element :streamable, Boolean
       element :creator_url, String, :tag => "creator"
       element :url, String
-
+      
       def streamable?
         @streamable
       end
 
+      # This can only be called on a user's own playlist
       def add_track(track)
         @session.playlist_facade.add_track(id, track.name, track.artist_name)
       end
