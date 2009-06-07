@@ -15,6 +15,7 @@ module Shortwave
 
       identified_by :name
       shoutable
+      include WeeklyCharts
     end
   end
 end

@@ -5,9 +5,8 @@ class UserTest < TestCase
 
   def setup
     super
-    @facade.stubs(:session).returns(stub(:user_facade => @facade))
     @user = Model::User.parse(xml("user_info"), :single => true)
-    @user.session = @facade.session
+    @user.session = StubSession.new
   end
 
   test "has a name" do
@@ -44,5 +43,25 @@ class UserTest < TestCase
 
   test "has a play count" do
     assert_equal 8251, @user.play_count
+  end
+
+  test "has album chart" do
+    expect_get "method=user.getWeeklyAlbumChart&user=knaveofdiamonds", :group_weekly_album_chart
+    assert_equal 250, @user.album_chart.size
+  end
+
+  test "has artist chart" do
+    expect_get "method=user.getWeeklyArtistChart&user=knaveofdiamonds", :group_weekly_artist_chart
+    assert_equal 100, @user.artist_chart.size
+  end
+
+  test "has track chart" do
+    expect_get "method=user.getWeeklyTrackChart&user=knaveofdiamonds", :group_weekly_track_chart
+    assert_equal 100, @user.track_chart.size
+  end
+
+  test "has chart dates" do
+    expect_get "method=user.getWeeklyChartList&user=knaveofdiamonds", :tag_weekly_chart_list
+    assert_equal 53, @user.chart_dates.size
   end
 end
