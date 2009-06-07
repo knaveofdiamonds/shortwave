@@ -70,12 +70,43 @@ class UserTest < TestCase
     assert @user.events.first.kind_of? Model::Event
   end
 
+  test "has past events" do
+    expect_get "method=user.getPastEvents&user=knaveofdiamonds", :venue_events
+    assert @user.past_events.first.kind_of? Model::Event
+  end
+
   test "has recent tracks" do
     expect_get "method=user.getRecentTracks&user=knaveofdiamonds", :user_recent_tracks
     assert @user.recent_tracks.first.kind_of? Model::Track
   end
 
+  test "has neighbours" do
+    expect_get "method=user.getNeighbours&user=knaveofdiamonds", :user_neighbours
+    assert @user.neighbours.first.kind_of? Model::User
+  end
+
+  test "has friends" do
+    expect_get "method=user.getFriends&user=knaveofdiamonds", :user_neighbours
+    assert @user.friends.first.kind_of? Model::User
+  end
+
+  test "has loved tracks" do
+    expect_get "method=user.getLovedTracks&user=knaveofdiamonds", :track_search
+    assert @user.loved_tracks.first.kind_of? Model::Track
+  end
+
+  test "has playlists" do
+    expect_get "method=user.getPlaylists&user=knaveofdiamonds", :user_playlists
+    assert @user.playlists.first.kind_of? Model::Playlist
+  end
+
+  test "has shouts" do
+    expect_get "method=user.getShouts&user=knaveofdiamonds", :user_shouts
+    assert @user.shouts.first.kind_of? Model::Shout
+  end
+
   # Logged in user only
+
   test "has recommended events" do
     expect_get "method=user.getRecommendedEvents", :venue_events
     assert @user.recommended_events.first.kind_of? Model::Event
