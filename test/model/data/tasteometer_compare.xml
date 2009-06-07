@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lfm status="ok">
+    <comparison>
+        <result>
+            <score>0.71107162951922</score>
+            <artists matches="4">
+                <artist>
+                    <name>The Beatles</name>
+                    <url>http://www.last.fm/music/The+Beatles</url>
+                    <image size="large">http://userserve-ak.last.fm/serve/126/2588646.jpg</image>
+                    <image size="medium">http://userserve-ak.last.fm/serve/64/2588646.jpg</image>
+                    <image size="small">http://userserve-ak.last.fm/serve/34/2588646.jpg</image>
+                </artist>
+                <artist>
+                    <name>Iron &amp; Wine</name>
+                    <url>http://www.last.fm/music/Iron%2B%2526%2BWine</url>
+                    <image size="large">http://userserve-ak.last.fm/serve/126/90625.jpg</image>
+                    <image size="medium">http://userserve-ak.last.fm/serve/64/90625.jpg</image>
+                    <image size="small">http://userserve-ak.last.fm/serve/34/90625.jpg</image>
+                </artist>
+                <artist>
+                    <name>Stars</name>
+                    <url>http://www.last.fm/music/Stars</url>
+                    <image size="large">http://userserve-ak.last.fm/serve/126/122831.jpg</image>
+                    <image size="medium">http://userserve-ak.last.fm/serve/64/122831.jpg</image>
+                    <image size="small">http://userserve-ak.last.fm/serve/34/122831.jpg</image>
+                </artist>
+                <artist>
+                    <name>Architecture in Helsinki</name>
+                    <url>http://www.last.fm/music/Architecture+in+Helsinki</url>
+                    <image size="large">http://userserve-ak.last.fm/serve/126/271466.jpg</image>
+                    <image size="medium">http://userserve-ak.last.fm/serve/64/271466.jpg</image>
+                    <image size="small">http://userserve-ak.last.fm/serve/34/271466.jpg</image>
+                </artist>
+            </artists>
+        </result>
+        <input>
+            <user>
+                <name>knaveofdiamonds</name>
+                <url>http://www.last.fm/user/knaveofdiamonds</url>
+                <image size="large">http://userserve-ak.last.fm/serve/126/10636291.jpg</image>
+                <image size="medium">http://userserve-ak.last.fm/serve/64/10636291.jpg</image>
+                <image size="small">http://userserve-ak.last.fm/serve/34/10636291.jpg</image>
+            </user>
+            <user>
+                <name>Infovore</name>
+                <url>http://www.last.fm/user/Infovore</url>
+                <image size="large">http://userserve-ak.last.fm/serve/126/1217695.jpg</image>
+                <image size="medium">http://userserve-ak.last.fm/serve/64/1217695.jpg</image>
+                <image size="small">http://userserve-ak.last.fm/serve/34/1217695.jpg</image>
+            </user>
+        </input>
+    </comparison>
+</lfm>
