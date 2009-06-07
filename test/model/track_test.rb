@@ -46,8 +46,29 @@ class TrackTest < TestCase
     assert_equal "Led Zeppelin IV", @track.album.name
   end
 
-  test "has tags" do
+  test "has user tags" do
     @facade.expects(:tags).with("Led Zeppelin", "Stairway to Heaven").returns(xml("tag_search"))
-    @track.tags
+    @track.my_tags
+  end
+
+  test "has similar tracks" do
+    expect_get "method=track.getSimilar&track=Stairway%20to%20Heaven&artist=Led%20Zeppelin", :track_search
+    @track = Model::Track.parse(xml("track_info"), :single => true)
+    @track.session = StubSession.new
+    assert @track.similar.first.kind_of? Model::Track
+  end
+
+  test "has fans" do
+    expect_get "method=track.getTopFans&track=Stairway%20to%20Heaven&artist=Led%20Zeppelin", :artist_top_fans
+    @track = Model::Track.parse(xml("track_info"), :single => true)
+    @track.session = StubSession.new
+    assert @track.fans.first.kind_of? Model::User
+  end
+
+  test "has tags" do
+    expect_get "method=track.getTopTags&track=Stairway%20to%20Heaven&artist=Led%20Zeppelin", :tag_similar
+    @track = Model::Track.parse(xml("track_info"), :single => true)
+    @track.session = StubSession.new
+    assert @track.tags.first.kind_of? Model::Tag
   end
 end
