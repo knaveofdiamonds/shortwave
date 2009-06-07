@@ -22,12 +22,17 @@ module Shortwave
         link :events, :Event, name
       end
 
+      # Returns the recent tracks played by this user.
+      def recent_tracks
+        link :recent_tracks, :Track, name
+      end
+
       # Events this user may be interested in.
       def recommended_events
         link :recommended_events, :Event
       end
 
-      # Artists this user may be interested in.
+      # The first 50 artists this user may be interested in.
       def recommended_artists
         link :recommended_artists, :Artist
       end

@@ -70,6 +70,11 @@ class UserTest < TestCase
     assert @user.events.first.kind_of? Model::Event
   end
 
+  test "has recent tracks" do
+    expect_get "method=user.getRecentTracks&user=knaveofdiamonds", :user_recent_tracks
+    assert @user.recent_tracks.first.kind_of? Model::Track
+  end
+
   # Logged in user only
   test "has recommended events" do
     expect_get "method=user.getRecommendedEvents", :venue_events
