@@ -9,8 +9,8 @@ class ShoutTest < TestCase
     @shout.session = StubSession.new
   end
 
-  test "has a body" do
-    assert @shout.body
+  test "has a message" do
+    assert @shout.message
   end
 
   test "has a time" do
