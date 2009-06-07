@@ -16,6 +16,11 @@ module Shortwave
       identified_by :name
       shoutable
       include WeeklyCharts
+
+      # Returns the events that this user is attending.
+      def events
+        link :events, :Event, name
+      end
     end
   end
 end

@@ -64,4 +64,9 @@ class UserTest < TestCase
     expect_get "method=user.getWeeklyChartList&user=knaveofdiamonds", :tag_weekly_chart_list
     assert_equal 53, @user.chart_dates.size
   end
+
+  test "has events" do
+    expect_get "method=user.getEvents&user=knaveofdiamonds", :venue_events
+    assert @user.events.first.kind_of? Model::Event
+  end
 end
