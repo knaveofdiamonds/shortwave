@@ -60,4 +60,40 @@ class ArtistTest < TestCase
     # TODO should be a user object, not just a username
     @artist.share(["roland@example.com", "kate"], "This is awesome!")
   end
+
+  test "has events" do
+    @artist.session = StubSession.new
+    expect_get "method=artist.getEvents&artist=The%20Feelies", :venue_events
+    assert @artist.events.first.kind_of? Model::Event
+  end
+
+  test "has similar artists" do
+    @artist.session = StubSession.new
+    expect_get "method=artist.getSimilar&artist=The%20Feelies", :artist_search
+    assert @artist.similar.first.kind_of? Model::Artist
+  end
+
+  test "has albums" do
+    @artist.session = StubSession.new
+    expect_get "method=artist.getTopAlbums&artist=The%20Feelies", :album_search
+    assert @artist.albums.first.kind_of? Model::Album
+  end
+
+  test "has fans" do
+    @artist.session = StubSession.new
+    expect_get "method=artist.getTopFans&artist=The%20Feelies", :artist_top_fans
+    assert @artist.fans.first.kind_of? Model::User
+  end
+
+  test "has tags" do
+    @artist.session = StubSession.new
+    expect_get "method=artist.getTopTags&artist=The%20Feelies", :tag_search
+    assert @artist.tags.first.kind_of? Model::Tag
+  end
+
+  test "has tracks" do
+    @artist.session = StubSession.new
+    expect_get "method=artist.getTopTracks&artist=The%20Feelies", :track_search
+    assert @artist.tracks.first.kind_of? Model::Track
+  end
 end
