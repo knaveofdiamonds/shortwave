@@ -5,9 +5,7 @@ class ArtistTest < TestCase
 
   def setup
     super
-    @facade.stubs(:session).returns(stub(:artist_facade => @facade))
     @artist = Model::Artist.parse(xml("artist_info"), :single => true)
-    @artist.session = @facade.session
   end
 
   test "has a name" do
@@ -40,21 +38,27 @@ class ArtistTest < TestCase
   end
 
   test "has user tags" do
-    @facade.expects(:tags).with("The Feelies").returns(xml("tag_search"))
+    @artist.session = StubSession.new
+    expect_get "method=artist.getTags&artist=The%20Feelies", :tag_search
     @artist.my_tags
   end
 
   test "has shouts" do
-    @facade.expects(:shouts).with("The Feelies").returns(xml("artist_shouts"))
+    @artist.session = StubSession.new
+    expect_get "method=artist.getShouts&artist=The%20Feelies", :artist_shouts
     assert_equal 104, @artist.shouts.size
   end
 
   test "can be shouted at" do
+    @facade.stubs(:session).returns(stub(:artist_facade => @facade))
+    @artist.session = @facade.session
     @facade.expects(:shout).with("The Feelies", "Hi there").returns(xml("ok"))
     @artist.shout("Hi there")
   end
 
   test "can be shared with other users or email addresses" do
+    @facade.stubs(:session).returns(stub(:artist_facade => @facade))
+    @artist.session = @facade.session
     args = ["The Feelies", "roland@example.com,kate", {:message => "This is awesome!"}]
     @facade.expects(:share).with(*args).returns(xml("ok"))
     # TODO should be a user object, not just a username
