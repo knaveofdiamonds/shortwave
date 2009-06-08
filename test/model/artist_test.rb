@@ -39,9 +39,9 @@ class ArtistTest < TestCase
     assert_equal 3, @artist.images.size
   end
 
-  test "has tags" do
+  test "has user tags" do
     @facade.expects(:tags).with("The Feelies").returns(xml("tag_search"))
-    @artist.tags
+    @artist.my_tags
   end
 
   test "has shouts" do
