@@ -22,6 +22,10 @@ module Shortwave
       def location_facade
         @location_facade ||= Facade::Geo.new(self)            
       end
+
+      def tasteometer_facacde
+        @tasteometer_facade ||= Facade::Tasteometer.new(self)
+      end
     end
 
 

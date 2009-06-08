@@ -116,4 +116,10 @@ class UserTest < TestCase
     expect_get "method=user.getRecommendedArtists", :user_recommended_artists
     assert @user.recommended_artists.first.kind_of? Model::Artist
   end
+
+  test "can be compared with other users" do
+    other = Model::User.parse("<user><name>other</name></user>")
+    expect_get "method=tasteometer.compare&type1=user&type2=user&value1=knaveofdiamonds&value2=other", :tasteometer_compare
+    assert @user.compare_with(other).kind_of? Model::Comparison
+  end
 end

@@ -61,6 +61,10 @@ module Shortwave
       def recommended_artists
         link :recommended_artists, :Artist
       end
+
+      def compare_with(other_user)
+        Comparison.parse(@session.tasteometer_facacde.compare("user", "user", name, other_user.name), :single => true)
+      end
     end
   end
 end
