@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{shortwave}
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Roland Swingler"]
-  s.date = %q{2009-06-08}
+  s.date = %q{2009-06-11}
   s.email = %q{roland.swingler@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -43,6 +43,7 @@ Gem::Specification.new do |s|
      "lib/shortwave/model/venue.rb",
      "lib/shortwave/model/weekly_charts.rb",
      "lib/shortwave/providers.rb",
+     "shortwave.gemspec",
      "test/authentication_test.rb",
      "test/build/build_test.rb",
      "test/build/data/intro.yml",
@@ -118,9 +119,10 @@ Gem::Specification.new do |s|
      "test/remote_test.rb"
   ]
   s.has_rdoc = true
-  s.homepage = %q{http://github.com/knaveofdiamonds/shortwave}
+  s.homepage = %q{http://shortwave.rubyforge.org}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
+  s.rubyforge_project = %q{shortwave}
   s.rubygems_version = %q{1.3.2}
   s.summary = %q{A Last.fm API wrapper}
   s.test_files = [

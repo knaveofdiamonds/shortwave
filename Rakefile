@@ -81,10 +81,11 @@ begin
     gem.name = "shortwave"
     gem.summary = "A Last.fm API wrapper"
     gem.email = "roland.swingler@gmail.com"
-    gem.homepage = "http://github.com/knaveofdiamonds/shortwave"
+    gem.homepage = "http://shortwave.rubyforge.org"
     gem.authors = ["Roland Swingler"]
     gem.add_dependency("rest-client", ">= 0.9.2")
     gem.add_dependency("nokogiri", ">= 1.2.3")
+    gem.rubyforge_project = "shortwave"
   end
 rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
