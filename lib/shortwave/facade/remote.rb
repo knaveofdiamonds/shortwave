@@ -65,17 +65,18 @@ module Shortwave
       
       BASE_URI = "http://ws.audioscrobbler.com/2.0/"
       DISALLOWED = Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
+      AGENT = "Shortwave 0.0.1 http://shortwave.rubyforge.org/"
 
       def get(type, data)
         @session.merge!(type, data)
         uri = BASE_URI + "?" + data.map {|k,v| "#{k.to_s}=#{URI.escape(v.to_s, DISALLOWED)}"}.join("&")
-        RestClient.get uri
+        RestClient.get uri, {"User-Agent" => AGENT}
       rescue RestClient::RequestFailed => e
         raise RemoteError.new(e)
       end
 
       def post(type, data)
-        @session.merge!(type, data)
+        @session.merge!(type, data, {"User-Agent" => AGENT})
         RestClient.post BASE_URI, data
       rescue RestClient::RequestFailed => e
         raise RemoteError.new(e)
