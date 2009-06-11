@@ -6,7 +6,10 @@ Shortwave is split into two: the Facade, which provides a low-level thin wrapper
 remote api, and the Model (which uses the Facade) which provides a more OO view of the api.
 It would be possible to build your own api on top of the Facade if you don't like the Model
 api provided - the two are fairly separate. See the docs for the Facade model if you want to
-use it directly
+use it directly.
+
+<b>Shortwave is currently pre-alpha. This means both the API and dependencies may change quite 
+a bit over forthcoming releases.</b>
 
 == Advantages over other libraries.
 
@@ -50,6 +53,12 @@ and links to other models.
   as needed by further api calls.
 * Might be nice to have Playlists use another ruby XSPF library for more functionality.
 * Radio tuning not done yet.
+* HTTP caching
+* in-built request throttling
+
+== Contributions
+
+Contributions are welcome. Source is on github at http://github.com/knaveofdiamonds/shortwave
 
 == Dependencies & Credits
 
